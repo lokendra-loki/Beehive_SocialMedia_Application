@@ -1,7 +1,20 @@
+import Login from "./pages/login/Login";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+
+
 function App() {
   return (
     <div className="App">
-     Hi I am ready to go on a ride lets have fun 
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
