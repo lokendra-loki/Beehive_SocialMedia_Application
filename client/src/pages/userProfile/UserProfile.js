@@ -7,6 +7,7 @@ import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
+import JobPost from '../../components/jobPost/JobPost';
 
 
 function UserProfile() {
@@ -23,8 +24,8 @@ function UserProfile() {
                     <img src="/assets/profile.jpeg" alt="" className="upProfilePic" />
                 </div>
 
-               
-                
+
+
 
 
 
@@ -34,37 +35,47 @@ function UserProfile() {
                         <UserInfo />
                     </div>
                     <div className="upCenterCon">
-                    <div className="upRowIconCon">
-                    <div className="upRowIconItem">
-                        <Badge badgeContent={4} color="primary">
-                            <HomeOutlinedIcon color="action" />
-                        </Badge>
-                    </div>
+                        <div className="upRowIconCon">
+                            <div className="upRowIconItem">
+                                <Badge badgeContent={4} color="primary">
+                                    <HomeOutlinedIcon color="action" />
+                                </Badge>
+                            </div>
 
-                    <div className="upRowIconItem">
-                        <Badge badgeContent={4} color="primary">
-                            <ChatOutlinedIcon color="action" />
-                        </Badge>
-                    </div>
+                            <div className="upRowIconItem">
+                                <Badge badgeContent={4} color="primary">
+                                    <ChatOutlinedIcon color="action" />
+                                </Badge>
+                            </div>
 
-                    <div className="upRowIconItem">
-                        <Badge badgeContent={4} color="primary">
-                            <NotificationsNoneOutlinedIcon color="action" />
-                        </Badge>
-                    </div>
+                            <div className="upRowIconItem">
+                                <Badge badgeContent={4} color="primary">
+                                    <NotificationsNoneOutlinedIcon color="action" />
+                                </Badge>
+                            </div>
 
-                    <div className="upRowIconItem">
-                        <Badge badgeContent={4} color="primary">
-                            <PeopleAltOutlinedIcon color="action" />
-                        </Badge>
-                    </div>
+                            <div className="upRowIconItem">
+                                <Badge badgeContent={4} color="primary">
+                                    <PeopleAltOutlinedIcon color="action" />
+                                </Badge>
+                            </div>
 
-                    <div className="upRowIconItem">
-                        <Badge badgeContent={4} color="primary">
-                            <OndemandVideoOutlinedIcon color="action" />
-                        </Badge>
-                    </div>
-                </div>
+                            <div className="upRowIconItem">
+                                <Badge badgeContent={4} color="primary">
+                                    <OndemandVideoOutlinedIcon color="action" />
+                                </Badge>
+                            </div>
+                        </div>
+
+
+                        {/* job post */}
+                        <JobPost/>
+                        <JobPost/>
+                        <JobPost/>
+                        <JobPost/>
+                        <JobPost/>
+                        <JobPost/>
+                        <JobPost/>
 
                     </div>
                     <div className="upRightCon"></div>

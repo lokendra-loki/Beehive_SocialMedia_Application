@@ -1,0 +1,72 @@
+.jobPost {
+    margin: 10px 15px;
+    padding: 20px 30px;
+    background-color: white;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.33);
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.33);
+
+    .jobCompanyLogo {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        border: 1px solid grey;
+        object-fit: cover;
+    }
+
+    .jpInfoCon {
+        display: flex;
+        flex-direction: column;
+
+        .jpJobTitle {
+            font-size: 26px;
+            font-weight: 700;
+            color: rgb(56, 56, 56);
+        }
+
+        .jpPostTime {
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .jpCompanyAddress {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgb(43, 42, 42);
+            margin-top: 10px;
+        }
+        .jpCompanyName {
+            color: blueviolet;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    }
+
+    .jpHr {
+        width: 0.5px;
+        height: 100px;
+        background-color: grey;
+        
+    }
+
+    .fullTimeBut {
+        width: 100px;
+        height: 38px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        color: white;
+        background-color: blueviolet;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
