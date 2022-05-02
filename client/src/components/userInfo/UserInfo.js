@@ -10,6 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Hobby from '../hobby/Hobby';
 
 function UserInfo() {
     return (
@@ -120,6 +121,18 @@ function UserInfo() {
                     <span className='uiDetailInfoValue'>See more about Ashish</span>
                 </div>
             </div>
+
+            <span className='interestHobby'>Interest and Hobby</span>
+
+            <div className="hobbyListCon">
+                <Hobby />
+                <Hobby />
+                {/* <Hobby /> */}
+                
+
+            </div>
+            
+            
 
 
 
