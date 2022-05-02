@@ -21,6 +21,9 @@ function Blogs() {
 
         <div className="blogsRightSide">
           <Blog/>
+          <Blog/>
+          <Blog/>
+          
         </div>
 
       </div>

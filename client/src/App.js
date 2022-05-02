@@ -7,6 +7,7 @@ import {
 import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Blogs from "./pages/blogs/Blogs";
+import BlogRead from "./pages/blogRead/BlogRead";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogRead" element={<BlogRead />} />
 
         </Routes>
       </Router>

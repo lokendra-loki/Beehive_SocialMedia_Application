@@ -1,15 +1,12 @@
-.blogs {
-    // height: 500vh;
-    .header {
+.blogRead{
+    .brHeader {
         height: 30vh;
         background-color: yellow;
     }
 
-    .blogsWrapper {
+    .brWrapper {
         display: flex;
-        // padding: 0px 100px;
-
-        .blogsLeftSide {
+        .brLeftSide {
             flex: 1;
             background-color: aqua;
             overflow: scroll;
@@ -17,7 +14,7 @@
             
         }
 
-        .blogsRightSide {
+        .brRightSide {
             padding: 0px 16px;
             flex: 3;
             background-color: brown;

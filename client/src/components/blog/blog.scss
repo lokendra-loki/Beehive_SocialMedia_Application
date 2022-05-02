@@ -1,5 +1,5 @@
 .blog {
-    height: 500px;
+    height: 550px;
     width: 360px;
     background-color: white;
     border: 1px solid grey;
@@ -21,7 +21,7 @@
         height: 360px;
         margin-left: 14px;
         position: absolute;
-        bottom: 5px;
+        bottom: 40px;
         background-color: white;
         border-radius: 16px;
         display: flex;
@@ -50,6 +50,21 @@
 
             &:hover {
                 color: rgb(134, 70, 195);
+            }
+        }
+
+        .blogAuthorAndLocation{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgb(77, 76, 76);
+
+            .author{
+                color: blueviolet;
+                font-weight: 700;
             }
         }
         .blogDesc {
