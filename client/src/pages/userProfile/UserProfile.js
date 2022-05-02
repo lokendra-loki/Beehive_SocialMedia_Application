@@ -8,6 +8,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
 import JobPost from '../../components/jobPost/JobPost';
+import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 
 
 function UserProfile() {
@@ -72,10 +73,8 @@ function UserProfile() {
                         <JobPost/>
                         <JobPost/>
                         <JobPost/>
-                        <JobPost/>
-                        <JobPost/>
-                        <JobPost/>
-                        <JobPost/>
+                        <JobPostLg/>
+                        
 
                     </div>
                     <div className="upRightCon"></div>
