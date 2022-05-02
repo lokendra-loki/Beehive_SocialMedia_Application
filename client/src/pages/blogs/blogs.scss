@@ -1,0 +1,26 @@
+.blogs {
+    // height: 500vh;
+    .header {
+        height: 30vh;
+        background-color: yellow;
+    }
+
+    .blogsWrapper {
+        display: flex;
+        padding: 0px 100px;
+
+        .blogsLeftSide {
+            flex: 1;
+            background-color: aqua;
+            overflow: scroll;
+            height: 200vh;
+            
+        }
+
+        .blogsRightSide {
+            flex: 3;
+            background-color: brown;
+            height: 500vh;
+        }
+    }
+}
