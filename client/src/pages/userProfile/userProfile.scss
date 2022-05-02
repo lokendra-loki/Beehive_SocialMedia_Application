@@ -1,0 +1,82 @@
+.userProfile {
+    height: 500vh;
+
+    .upWrapper {
+        
+        .upCoverPicCon {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .upCoverPic {
+                height: 40vh;
+                object-fit: cover;
+                overflow: hidden;
+            }
+
+            .upProfilePic {
+                height: 220px;
+                object-fit: cover;
+                overflow: hidden;
+                width: 220px;
+                border: 2px solid blueviolet;
+                border-radius: 15px;
+                position: absolute;
+                top: 15vh;
+                left: 70px;
+            }
+
+            
+        }
+        // .userNameProfessionActive{
+        //     display: flex;
+        //     flex-direction: column;
+        // }
+
+        .upRowIconCon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+
+            .upRowIconItem {
+                margin-right: 70px;
+            }
+        }
+
+        .upBeforeSplit{
+            display: flex;
+           
+            
+           
+            
+            .upLeftCon{
+                flex: 1;
+                // background-color: red;
+                overflow-y: scroll;
+                height: 100vh;
+                
+                
+                
+               
+                
+                
+                
+
+            }
+            .upCenterCon{
+                flex: 2;
+                background-color: yellow;
+                overflow-y: scroll;
+                
+                
+                
+            }
+            .upRightCon{
+                flex: 1;
+                background-color: green;
+                
+            }
+        }
+    }
+}
