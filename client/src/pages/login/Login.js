@@ -1,6 +1,7 @@
 import React from 'react'
 import "./login.scss"
-// import {PersonOutlinedIcon} from '@mui/icons-material/PersonOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 
 
 function Login() {
@@ -20,13 +21,15 @@ function Login() {
 
                         <div className="loginInputCon">
                             <div className="inputIconCon">
-                                {/* <PersonOutlinedIcon /> */}
+                                <PersonOutlinedIcon className='lpInput-icon'/>
                             </div>
                             <input class="lpInput" type="text" placeholder='Email or username' />
                         </div>
 
                         <div className="loginInputCon">
-                            <div className="inputIconCon">lo</div>
+                            <div className="inputIconCon">
+                                <KeyOutlinedIcon className='lpInput-icon' />
+                            </div>
                             <input class="lpInput" type="text" placeholder="Password" />
 
                         </div>

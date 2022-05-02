@@ -1,72 +1,82 @@
-.loginPage {
-    height: 500vh;
-    
-    .lpWrapper {
+.registerPage {
+    overflow-y: hidden;
+    height: 100vh;
+
+    .rp-Wrapper {
         display: flex;
-        .lpLeft {
+        .rp-Left {
             flex: 1;
             background-color: #ffff;
             height: 100vh;
             display: flex;
             align-items: center;
 
-            flex-direction: column;
-
-            .lpLeftRow1 {
+            .rp-LeftRow1 {
                 display: flex;
                 align-self: flex-start;
                 margin-top: -25px;
                 margin-left: 35px;
 
-                .logo {
+                .rp-logo {
                     height: 150px;
                     width: 150px;
                 }
             }
 
-            .loginContainer {
+            .rp-loginContainer {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
                 width: 420px;
-                background-color: beige;
                 padding-bottom: 20px;
-                margin-top: 10px;
 
-                .logoIcon {
+                .rp-logoIcon {
                     height: 60px;
                     width: 60px;
                 }
-                .welcomeTxt {
+                .rp-welcomeTxt {
                     font-size: 30px;
-                    margin-top: 25px;
-                    font-weight: 900;
+                    margin-top: 10px;
+                    font-weight: 700;
                     color: rgb(78, 78, 78);
-                    
-                    
                 }
-                .loginDesc {
+
+                .rp-newHere {
+                    font-size: 20px;
+                    margin-top: 10px;
+                    font-weight: 500;
+                    color: rgb(52, 51, 51);
+
+                    .newHereSpan {
+                        font-size: 20px;
+                        margin-top: 10px;
+                        font-weight: 600;
+                        color: blueviolet;
+                    }
+                }
+
+                .rp-loginDesc {
                     font-size: 18px;
                     margin-top: 25px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     margin-bottom: 5px;
-                    
+
                     color: rgb(59, 59, 59);
                 }
 
-                .loginInputCon {
+                .rp-loginInputCon {
                     display: flex;
                     width: 320px;
                     height: 42px;
                     background-color: #f0eded;
-                    margin-top: 15px;
+                    margin-top: 10px;
                     border-radius: 20px;
                     border: 1px solid blueviolet;
 
-                    .inputIconCon {
+                    .rp-inputIconCon {
                         width: 42px;
                         height: 42px;
                         border-radius: 50%;
@@ -76,14 +86,13 @@
                         justify-content: center;
                         margin-left: 0.8px;
 
-                        .lpInput-icon{
-                            
+                        .rp-Input-icon {
                             font-size: 22px;
                             color: rgb(93, 93, 93);
                         }
                     }
 
-                    .lpInput {
+                    .rp-Input {
                         width: 267px;
                         height: 100%;
                         border: none;
@@ -94,11 +103,11 @@
                     }
                 }
 
-                .loginBut {
+                .rp-loginBut {
                     width: 320px;
                     height: 42px;
                     background-color: blueviolet;
-                    margin-top: 14px;
+                    margin-top: 12px;
                     border-radius: 20px;
                     border: none;
                     outline: none;
@@ -111,39 +120,10 @@
                     cursor: pointer;
                 }
 
-                .checkboxAndForgetCon {
-                    display: flex;
-                    margin-top: 15px;
-                    align-items: center;
-                    justify-content: space-between;
-                    
-                       
-
-                    .checkboxCon {
-                        display: flex;
-                        align-items: center;
-                        gap: 4px;
-                        font-size: 14px;
-                        
-                       
-                        
-                       
-                       
-      
-                    }
-
-                    .forgotPass{
-                        margin-left: 102px;
-                        font-size: 14px;
-                        cursor: pointer;
-
-                        &:hover {
-                            cursor: pointer;
-                            color: blueviolet;
-                        }
-                        
-
-                    }
+                .rp-alreadyAcc {
+                    font-size: 14px;
+                    margin-top: 12px;
+                    color: blueviolet;
                 }
             }
         }
