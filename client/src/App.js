@@ -8,6 +8,7 @@ import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Blogs from "./pages/blogs/Blogs";
 import BlogRead from "./pages/blogRead/BlogRead";
+import BlogWrite from "./pages/blogWrite/BlogWrite";
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead" element={<BlogRead />} />
+          <Route path="/blogWrite" element={<BlogWrite />} />
 
         </Routes>
       </Router>
