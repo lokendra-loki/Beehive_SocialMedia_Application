@@ -1,0 +1,114 @@
+.jobPostCreate {
+    .jpcHeader {
+        height: 30vh;
+        background-color: yellow;
+    }
+
+    .jpcWrapper {
+        display: flex;
+
+        .jpcLeftSide {
+            flex: 1;
+            background-color: white;
+            overflow: scroll;
+            height: 200vh;
+        }
+
+        .jpcRightSide {
+            padding: 0px 16px;
+            flex: 3;
+            height: 500vh;
+            display: flex;
+
+            justify-content: space-between;
+
+            .jpcWholeContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .jpcTitle {
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: rgb(38, 38, 38);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 40px;
+                }
+
+                .jpcHr {
+                    width: 700px;
+                    border: 1px solid blueviolet;
+                    margin-top: 8px;
+                    margin-left: 18%;
+                }
+                .jpcImg {
+                    width: 60px;
+                    height: 60px;
+                    margin-top: 40px;
+                    border-radius: 5px;
+                    object-fit: cover;
+                }
+
+                // }
+
+                .jpcIconAndTxt {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 10px;
+
+                    .jpcImgIcon {
+                        font-size: 36px;
+                        cursor: pointer;
+                    }
+                    .jpcSelectImgTxt {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-left: 5px;
+                    }
+                }
+
+                .jpcColumnCon {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-top: 30px;
+
+                    .jpc {
+                        font-size: 16px;
+                        font-weight: 800;
+                        color: rgb(75, 74, 74);
+                        margin-top: 30px;
+                    }
+
+                    .jpcInput {
+                        height: 40px;
+                        border-radius: 8px;
+                        margin-top: 10px;
+                        border: none;
+                        outline: none;
+                        border: 1px solid rgb(159, 158, 158);
+                    }
+
+                    .jpcPostBut {
+                        height: 40px;
+                        border-radius: 8px;
+                        margin-top: 28px;
+                        border: none;
+                        outline: none;
+                        border: 1px solid rgb(159, 158, 158);
+                        color: white;
+                        background-color: blueviolet;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

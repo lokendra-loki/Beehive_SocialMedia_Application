@@ -7,7 +7,7 @@ import WhatshotIcon from '@mui/icons-material/Whatshot';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import HomeOutlined from '@mui/icons-material/HomeOutlined';
-
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 
 
 
@@ -35,6 +35,11 @@ function LeftBar() {
         <div className="lbListItem">
           <QuestionMarkIcon className="lbListItemKey"/>
           <span className="lbListItemValue">Ask Doubts</span>
+        </div>
+
+        <div className="lbListItem">
+          <BusinessCenterOutlinedIcon className="lbListItemKey"/>
+          <span className="lbListItemValue">Find Jobs</span>
         </div>
 
         <div className="lbListItem">

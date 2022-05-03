@@ -9,6 +9,7 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import Blogs from "./pages/blogs/Blogs";
 import BlogRead from "./pages/blogRead/BlogRead";
 import BlogWrite from "./pages/blogWrite/BlogWrite";
+import JobPostCreate from "./pages/jobPostCreate/JobPostCreate";
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
+          <Route path="/jobPostCreate" element={<JobPostCreate />} />
 
         </Routes>
       </Router>
