@@ -1,5 +1,6 @@
 import React from 'react'
 import BlogLg from '../../components/blogLg/BlogLg'
+import Category from '../../components/category/Category'
 import LeftBar from '../../components/leftBar/LeftBar'
 import Navbar from '../../components/navbar/Navbar'
 import RecentPost from '../../components/recentPost/RecentPost'
@@ -18,6 +19,8 @@ function BlogRead() {
         <div className="brLeftSide">
           <LeftBar />
           <RecentPost/>
+          <Category/>
+
         </div>
 
         <div className="brRightSide">
