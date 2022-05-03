@@ -10,6 +10,7 @@ import UserInfo from '../../components/userInfo/UserInfo';
 import JobPost from '../../components/jobPost/JobPost';
 import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import FeedPost from '../../components/feedPost/FeedPost';
+import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
 
 
 function UserProfile() {
@@ -76,6 +77,7 @@ function UserProfile() {
                         
                         <JobPostLg/>
                         <FeedPost/>
+                        <FeedPostCreate/>
                         
 
                     </div>
