@@ -9,6 +9,7 @@ import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
 import JobPost from '../../components/jobPost/JobPost';
 import JobPostLg from '../../components/jobPPostLg/JobPostLg';
+import FeedPost from '../../components/feedPost/FeedPost';
 
 
 function UserProfile() {
@@ -71,9 +72,10 @@ function UserProfile() {
 
                         {/* job post */}
                         <JobPost/>
-                        <JobPost/>
-                        <JobPost/>
+                       
+                        
                         <JobPostLg/>
+                        <FeedPost/>
                         
 
                     </div>

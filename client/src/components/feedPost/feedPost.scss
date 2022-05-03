@@ -1,0 +1,111 @@
+.feedPost {
+    border: 1px solid grey;
+    margin: 0px 15px;
+    background-color: white;
+
+    .fpRow1 {
+        display:flex ;
+        align-items: center;
+        margin-bottom: 16px;
+
+        .fpProfilePic {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .fpProfileInfoColumn{
+            margin-left: 8px;
+            display: flex;
+            flex-direction: column;
+
+            .fpUsername{
+                font-size: 16px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+            .fpProfession{
+                font-size: 14px;
+                color: grey;
+                cursor: pointer;
+            }
+            .fpTime{
+                font-size: 12px;
+                color: grey;
+            }
+           
+            
+        }
+
+        .fpMoreIconColumn{
+            display: flex;
+            margin-left: 500px;
+            cursor: pointer;
+            
+           
+        }
+
+        
+    }
+    
+    .fpDesc{
+        font-size: 16px;
+        font-weight: 500;
+        
+        
+    }
+    .fpPostImg{
+        margin-top: 10px;
+        width: 100%;
+        object-fit: cover;
+        height: 330px;
+       
+    }
+    .fpHr{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 0;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .fpIconsRow{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px ;
+        margin-top: 14px;
+        margin-bottom: 10px;
+
+        .fpLikeDislikeIconWrapper{
+            display:flex;
+            align-items: center;
+            gap: 15px;
+            
+        }
+
+        .fpIconsItemColumn{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .fpIconsItemIcon{
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            .fpIconsItemTxt{
+                font-size: 12px;
+                color: rgb(44, 44, 44);
+                font-weight: 700;
+                cursor: pointer;
+                
+                
+            }
+            
+        }
+        
+    }
+}
