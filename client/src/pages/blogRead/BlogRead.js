@@ -2,6 +2,7 @@ import React from 'react'
 import BlogLg from '../../components/blogLg/BlogLg'
 import LeftBar from '../../components/leftBar/LeftBar'
 import Navbar from '../../components/navbar/Navbar'
+import RecentPost from '../../components/recentPost/RecentPost'
 import "./blogRead.scss"
 
 
@@ -16,10 +17,12 @@ function BlogRead() {
       <div className="brWrapper">
         <div className="brLeftSide">
           <LeftBar />
+          <RecentPost/>
         </div>
 
         <div className="brRightSide">
           <BlogLg />
+          
         </div>
       </div>
     </div>
