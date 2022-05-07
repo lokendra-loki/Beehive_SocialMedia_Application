@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./register.scss"
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
+import axios from 'axios'
+// import axios from 'src/utils/axios'
+
 
 
 function Register() {
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    // const [fullName, setFullName] = useState("")
+    const [password, setPassword] = useState("")
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const res = await axios.post("/auth/register/", {
+            username,
+            email,
+            // fullName,
+            password
+        })
+        console.log(res.data)
+
+    }
+
+
+
     return (
         <div className='registerPage'>
             <div className="rp-Wrapper">
@@ -13,7 +36,7 @@ function Register() {
                         <img className='rp-logo' src="assets/logo.svg" alt="" />
                     </div>
 
-                    <div className="rp-loginContainer">
+                    <form className="rp-loginContainer" onSubmit={handleSubmit}>
                         <img className='rp-logoIcon' src="assets/logo-icon.svg" alt="" />
                         <span className='rp-welcomeTxt'>Welcome</span>
                         <span className='rp-newHere'><span className='newHereSpan'>New here !</span> Create an account</span>
@@ -24,52 +47,49 @@ function Register() {
                             <div className="rp-inputIconCon">
                                 <PersonOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input class="rp-Input" type="text" placeholder='Username' />
+                            <input className="rp-Input" type="text" placeholder='Username' onChange={(e) => setUsername(e.target.value)} />
                         </div>
 
                         <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <PersonOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input class="rp-Input" type="text" placeholder='Email' />
+                            <input className="rp-Input" type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
                         </div>
 
-                        <div className="rp-loginInputCon">
+                        {/* <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <PersonOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input class="rp-Input" type="text" placeholder='Full name' />
+                            <input className="rp-Input" type="text" placeholder='Full name' onChange={(e) => setFullName(e.target.value)} />
                         </div>
 
-
+ */}
 
                         <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <KeyOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input class="rp-Input" type="text" placeholder="Password" />
+                            <input className="rp-Input" type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
-                        <div className="rp-loginInputCon">
+                        {/* <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <KeyOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input class="rp-Input" type="text" placeholder="Confirm password" />
+                            <input className="rp-Input" type="text" placeholder="Confirm password" />
 
-                        </div>
+                        </div> */}
 
+                        <button className='rp-loginBut' type='submit'  >Register</button>
+                        {/* onClick={handleRegister} */}
 
-                        <button className='rp-loginBut'>Register</button>
                         <span className='rp-alreadyAcc'>Already have an account ?</span>
                         <button className='rp-loginBut'>Log into your account</button>
 
-                    </div>
+                    </form>
 
                 </div>
-
-
-
-
                 <div className="lpRight">right</div>
             </div>
         </div>

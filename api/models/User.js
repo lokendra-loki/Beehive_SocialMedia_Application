@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 
 const UserSchema = new mongoose.Schema({
-    fullName: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 5,
-        maxlength: 50,
-    },
+    // fullName: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    //     minlength: 5,
+    //     maxlength: 50,
+    // },
 
     username: {
         type: String,
@@ -22,23 +22,19 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
-        trim: true,
         lowercase: true,
     }
 
     , password: {
         type: String,
         required: true,
-        trim: true,
         minlength: 5,
     },
 
-    age: {
-        type: Number,
-        required: true,
-        min: 16,
-    },
+    // age: {
+    //     type: Number,
+    //     min: 16,
+    // },
 
     isAdmin: {
         type: Boolean,
