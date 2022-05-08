@@ -5,8 +5,6 @@ import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 import { Context } from '../../context/Context';
 import { loginCall } from "../../apiCalls"
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-
 
 
 function Login() {
@@ -19,6 +17,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         loginCall({ email: emailRef.current.value, password: passwordRef.current.value }, dispatch)
+       
     }
     console.log(user)
 

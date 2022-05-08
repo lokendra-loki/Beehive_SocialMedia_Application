@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate
 } from "react-router-dom";
 import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
@@ -11,22 +12,29 @@ import BlogRead from "./pages/blogRead/BlogRead";
 import BlogWrite from "./pages/blogWrite/BlogWrite";
 import JobPostCreate from "./pages/jobPostCreate/JobPostCreate";
 import FeedPage from "./pages/feedPage/FeedPage";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 
 
 function App() {
+
+  const { user } = useContext(Context)
+
+
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobPostCreate" element={<JobPostCreate />} />
-          <Route path="/feedPage" element={<FeedPage />} />
+          <Route path="/" element={<FeedPage />} />
 
 
         </Routes>
