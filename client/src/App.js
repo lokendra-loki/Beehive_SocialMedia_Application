@@ -17,48 +17,8 @@ import { Context } from "./context/Context";
 
 
 
-//=======
-// import { useState } from 'react';
-
-
-// ///socialMediaAuth
-// const LoginFalse = () => {
-//     <h1>login please..</h1>
-
-// }
-
-
-
-// const LoginTrue = () => {
-//     <h1>login success</h1>
-// }
-
-
-
-
-
-
-
-
-
-    
-
-
-
 function App() {
-
-  //social media auth
-  // const [isLogin, setIsLogin] = useState(false)
-
-
-
-  
-
-
   const { user } = useContext(Context)
-
-
-
   return (
     <div className="App">
       <Router>
@@ -71,8 +31,7 @@ function App() {
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobPostCreate" element={<JobPostCreate />} />
           <Route path="/" element={<FeedPage />} />
-          {/* <Route path="/" element={isLogin ? <FeedPage /> : <Login/>} /> */}
-
+          {/* <Route path="/" element={user ? <FeedPage /> : <Login/>} /> */}
 
         </Routes>
       </Router>
