@@ -27,7 +27,7 @@ function Login() {
 
     //=========
     const google=()=>{
-        window.open("http://localhost:3000/auth/google", "_self")	//opens in same tab
+        window.open("http://localhost:5000/api/auth/google/", "_self")	//opens in same tab
 
     }
     const github=()=>{
