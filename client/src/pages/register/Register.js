@@ -5,6 +5,8 @@ import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 
 function Register() {
@@ -12,16 +14,17 @@ function Register() {
     const [email, setEmail] = useState("")
     const [fullName, setFullName] = useState("")
     const [password, setPassword] = useState("")
+    const [snackbar, setSnackbar] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        const res = await axios.post("/auth/register/", {
-            username,
-            email,
-            fullName,
-            password
-        })
+        const res = await axios.post("/auth/register/", { username, email, fullName, password })
+        
+        if (password !== confirmPassword) {
+            alert("Password does not match")
+        }
         console.log(res.data)
     }
 
@@ -64,7 +67,6 @@ function Register() {
                         </div>
 
 
-
                         <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <KeyOutlinedIcon className='rp-Input-icon' />
@@ -76,17 +78,17 @@ function Register() {
                             <div className="rp-inputIconCon">
                                 <KeyOutlinedIcon className='rp-Input-icon' />
                             </div>
-                            <input className="rp-Input" type="password" placeholder="Confirm password" />
+                            <input className="rp-Input" type="password" placeholder="Confirm password" onChange={(e) => setConfirmPassword(e.target.value)} />
                         </div>
 
                         <button className='rp-loginBut' type='submit'  >Register</button>
 
-
                         <span className='rp-alreadyAcc'>Already have an account ?</span>
-                        <button className='rp-loginBut'>Log into your account</button>
 
+                        <Link to="/login" className="link">
+                            <button className='rp-loginBut'>Log into your account</button>
+                        </Link>
                     </form>
-
                 </div>
                 <div className="lpRight">right</div>
             </div>
