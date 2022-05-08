@@ -3,32 +3,24 @@ import "./login.scss"
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 import { Context } from '../../context/Context';
-import axios from 'axios'
-
+import { loginCall } from "../../apiCalls"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
 function Login() {
+
+    //Sending data
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { user, dispatch } = useContext(Context)
+    const { user, dispatch, isFetching } = useContext(Context)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch({ type: "LOGIN_START" })
-        try {
-            const res = await axios.post("/auth/login", {
-                email: emailRef.current.value,
-                password: passwordRef.current.value,
-
-            });
-            dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
-
-        } catch (error) {
-            dispatch({ type: "LOGIN_FAILURE" })
-        }
+        loginCall({ email: emailRef.current.value, password: passwordRef.current.value }, dispatch)
     }
-    console.log(user);
+    console.log(user)
 
 
 
@@ -50,17 +42,19 @@ function Login() {
                             <div className="inputIconCon">
                                 <PersonOutlinedIcon className='lpInput-icon' />
                             </div>
-                            <input className="lpInput" type="text" placeholder='Email or username' ref={emailRef} />
+                            <input className="lpInput" type="email" placeholder='Email or username' ref={emailRef} />
                         </div>
+
 
                         <div className="loginInputCon">
                             <div className="inputIconCon">
                                 <KeyOutlinedIcon className='lpInput-icon' />
                             </div>
-                            <input className="lpInput" type="text" placeholder="Password" ref={passwordRef} />
+                            <input className="lpInput" type="password" placeholder="Password" ref={passwordRef} />
                         </div>
 
-                        <button className='loginBut' type='submit' >Log into your account</button>
+
+                        <button className='loginBut' type='submit'   >{isFetching ? <CircularProgress className='loginCircularProgress' size="1.4rem" color="inherit" /> : "Log into your account"}</button>
                         <div className="checkboxAndForgetCon">
                             <div className="checkboxCon">
                                 <input type="checkbox" id="vehicle1" name="vehicle1" value="" />

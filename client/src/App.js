@@ -10,6 +10,7 @@ import Blogs from "./pages/blogs/Blogs";
 import BlogRead from "./pages/blogRead/BlogRead";
 import BlogWrite from "./pages/blogWrite/BlogWrite";
 import JobPostCreate from "./pages/jobPostCreate/JobPostCreate";
+import FeedPage from "./pages/feedPage/FeedPage";
 
 
 
@@ -21,10 +22,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<UserProfile />} />
-          <Route path="/" element={<Blogs />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobPostCreate" element={<JobPostCreate />} />
+          <Route path="/feedPage" element={<FeedPage />} />
+
 
         </Routes>
       </Router>
