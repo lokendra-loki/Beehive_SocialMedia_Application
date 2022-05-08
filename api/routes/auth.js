@@ -2,6 +2,8 @@ const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
+
 
 
 
@@ -20,11 +22,11 @@ router.post("/register", async (req, res) => {
 
         //create new user
         const newUser = new User({
-            // fullName: req.body.fullName,
+            fullName: req.body.fullName,
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
-            // age: req.body.age,
+
         })
 
 
@@ -59,7 +61,7 @@ router.post("/login", async (req, res) => {
                 }, process.env.JWT_SECRET, { expiresIn: '3d' })
 
                 const { password, ...others } = user._doc;
-                res.status(200).json({others, accessToken})
+                res.status(200).json({ others, accessToken })
             }
             else {
                 res.status(401).json("Invalid Password")
@@ -73,5 +75,52 @@ router.post("/login", async (req, res) => {
         res.status(500).json(error)
     }
 })
+
+//==========================
+// Auth 
+router.get('/google', passport.authenticate('google', {
+    scope:
+        ['email', 'profile']
+}));
+
+// Auth Callback
+router.get('/google/callback',
+    passport.authenticate('google', {
+        successRedirect: 'http://localhost:3000/',
+        failureRedirect: 'http://localhost:3000/register'
+    }));
+
+// Success 
+router.get('/login/success', (req, res) => {
+    if (req.user)
+    res.status(200).json({
+        message: 'Login Successful',
+        user: req.user,
+        accessToken: req.accessToken,
+        refreshToken: req.refreshToken,
+        expiresIn: req.expiresIn,
+        success: true
+    })
+        
+    
+});
+
+// failure
+router.get('/login/failed', (req, res) => {
+    res.status(401).json({
+        message: 'Login Failed',
+        success: false,
+        user: null
+    })
+})
+
+//logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect("http://localhost:3000/");
+})
+
+
+
 
 module.exports = router
