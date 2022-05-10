@@ -1,50 +1,48 @@
-const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session') // used to create a session
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const authRoute = require('./routes/auth')
+const jobPostRoute = require('./routes/jobPost')
 const passport = require('passport')
 const cors = require('cors')
 const passportSetup = require('./passport')
 
 
 //MongoDB connection
-mongoose.connect(process.env.MONGODB_URL)//its a promise so we can use .then and .catch
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log("MongoDB connection successful"))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log({ msg: "MongoDB connection error", err }))
 
 
 //Middleware
 app.use(express.json())
 app.use("/api/auth", authRoute)
+app.use("/api/jobPost", jobPostRoute)
+
 
 
 //Passport middleware
-// app.use(cookieSession({
-//     name: 'session',
-//     keys: [process.env.COOKIE_KEY],
-//     maxAge: 24 * 60 * 60 * 100,//1 day 
-// }
-// ))
-// app.use(passport.initialize())
-// app.use(passport.session())
-
-// app.use(
-//     cors({
-//         origin: "http://localhost:3000",
-//         methods: "GET, POST, PUT ,DELETE",
-//         credentials: true
-//     })
-// )
-
+app.use(cookieSession({
+    name: 'session',
+    keys: ["loki"],
+    maxAge: 24 * 60 * 60 * 100,  //1 day 
+}
+))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(
+    cors({
+        origin: "http://localhost:3000", //client url
+        methods: "GET, POST, PUT ,DELETE",
+        credentials: true,
+    })
+)
 
 
-
-
-
-//post listening
-app.listen(process.env.PORT || 5000, () => {
-    console.log("Server is running on port 5000");
+//Post listening
+app.listen(process.env.PORT, () => {
+    console.log("Backend Server is running on port " + process.env.PORT);
 
 })

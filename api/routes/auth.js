@@ -76,33 +76,31 @@ router.post("/login", async (req, res) => {
     }
 })
 
-//==========================
+//Social Media auth===============
 // Auth 
 router.get('/google', passport.authenticate('google', {
-    scope:
-        ['email', 'profile']
+    scope: ['email', 'profile']
 }));
 
 // Auth Callback
 router.get('/google/callback',
     passport.authenticate('google', {
         successRedirect: 'http://localhost:3000/',
-        failureRedirect: 'http://localhost:3000/register'
+        failureRedirect: '/login/failed'
     }));
 
 // Success 
 router.get('/login/success', (req, res) => {
     if (req.user)
-    res.status(200).json({
-        message: 'Login Successful',
-        user: req.user,
-        accessToken: req.accessToken,
-        refreshToken: req.refreshToken,
-        expiresIn: req.expiresIn,
-        success: true
-    })
-        
-    
+        res.status(200).json({
+            message: 'Login Successful',
+            user: req.user,
+            accessToken: req.accessToken,
+            refreshToken: req.refreshToken,
+            success: true,
+        })
+
+
 });
 
 // failure
