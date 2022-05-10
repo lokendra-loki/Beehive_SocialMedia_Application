@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const authRoute = require('./routes/auth')
 const jobPostRoute = require('./routes/jobPost')
+const blogRoute = require('./routes/blog')
 const passport = require('passport')
 const cors = require('cors')
 const passportSetup = require('./passport')
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URL)
 app.use(express.json())
 app.use("/api/auth", authRoute)
 app.use("/api/jobPost", jobPostRoute)
+app.use("/api/blog", blogRoute)
 
 
 
