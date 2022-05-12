@@ -1,8 +1,8 @@
 .feedPage {
-position: relative;
-top: 70px;
+    position: relative;
+    top: 70px;
+
     .fpWrapper {
-        
         .fpCoverPicCon {
             display: flex;
             flex-direction: column;
@@ -25,10 +25,7 @@ top: 70px;
                 top: 15vh;
                 left: 70px;
             }
-
-            
         }
-        
 
         .fpRowIconCon {
             display: flex;
@@ -41,40 +38,57 @@ top: 70px;
             }
         }
 
-        .fpBeforeSplit{
+        .fpBeforeSplit {
             display: flex;
-           
-            
-           
-            
-            .fpLeftCon{
+
+            .fpLeftCon {
                 flex: 1;
                 background-color: cadetblue;
                 overflow-y: scroll;
                 height: 200vh;
-                
-            
-                
-                
-                
-               
-                
-                
-                
-
             }
-            .fpCenterCon{
+            .fpCenterCon {
                 flex: 2;
                 background-color: yellow;
                 overflow-y: scroll;
-                
-                
-                
+
+                .smallWhatsOnYourMindCon {
+                    height: 80px;
+                    background-color: white;
+                    box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    -webkit-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    margin-top: 10px;
+                    margin: 20px 15px;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .tinyProfilePic {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin-right: 12px;
+                        cursor: pointer;
+                    }
+
+                    .onYourMindInput {
+                        width: 85%;
+                        height: 40px;
+                        border-radius: 22px;
+                        border: none;
+                        outline: none;
+                        border: 2px solid blueviolet;
+                        cursor: pointer;
+                        padding-left: 15px;
+                    }
+                }
             }
-            .fpRightCon{
+            .fpRightCon {
                 flex: 1;
                 background-color: green;
-                
             }
         }
     }
