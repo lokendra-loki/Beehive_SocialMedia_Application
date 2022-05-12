@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogRead" element={<BlogRead />} />
+          <Route path="/blogRead/:id" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobPostCreate" element={<JobPostCreate />} />
           <Route path="/" element={<FeedPage />} />
