@@ -8,11 +8,6 @@ const JobPostSchema = new mongoose.Schema({
         maxlength: 100,
     },
 
-    desc: {
-        type: String,
-        required: true,
-    },
-
     salaryRange: {
         type: String,
         required: true,
@@ -46,10 +41,15 @@ const JobPostSchema = new mongoose.Schema({
         enum: [1, 2, 3, 4], //intern ,junior ,mid-senior,senior,manager
         required: true,
     },
+    officeOrRemote:{
+        type:Number,
+        enum:[1,2],   //office or remote
+        required: true
+    },
 
     jobType: {
         type: Number,
-        enum: [1, 2],
+        enum: [1, 2],  //full time,part time
         required: true,
     },
 

@@ -17,11 +17,25 @@ mongoose.connect(process.env.MONGODB_URL)
     .catch((err) => console.log({ msg: "MongoDB connection error", err }))
 
 
+    
 //Middleware
 app.use(express.json())
 app.use("/api/auth", authRoute)
-app.use("/api/jobPost", jobPostRoute)
-app.use("/api/blog", blogRoute)
+app.use("/api/jobPosts", jobPostRoute)
+app.use("/api/blogs", blogRoute)
+
+
+//Error handling middleware
+app.use((error, req, res, next) => {
+    const errorStatus = error.status || 500
+    const errorMessage = error.message || "Something went wrong"
+    return res.status(errorStatus).json({
+        success: false,
+        status: errorStatus,
+        message: errorMessage,
+        stack: error.stack
+    })
+})
 
 
 
