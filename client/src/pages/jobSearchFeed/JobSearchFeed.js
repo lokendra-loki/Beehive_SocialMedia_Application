@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./jobSearchFeed.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
@@ -10,15 +10,37 @@ import UserInfo from '../../components/userInfo/UserInfo';
 import JobPost from '../../components/jobPost/JobPost';
 import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import Navbar from '../../components/navbar/Navbar';
+import axios from 'axios'
 
 
 
 
 function JobSearchFeed() {
+
+
+    //Fetching all JobPosts
+    const [jobPosts, setJobPosts] = useState([])
+    useEffect(() => {
+        const fetchJobPosts = async () => {
+            const res = await axios.get("/jobPosts/getAll")
+            console.log(res.data)
+            setJobPosts(res.data)
+        }
+        fetchJobPosts()
+    }, [])
+
+
+
+
+
+
+
+
+
     return (
         <div className="jobSearchFeed">
             <div className="jsfWrapper">
-                <Navbar/>
+                <Navbar />
                 {/* <div className="jsfCoverPicCon">
                     <img src="/assets/cover.jpeg" alt="" className="jsfCoverPic" />
                     <img src="/assets/profile.jpeg" alt="" className="jsfProfilePic" />
@@ -61,9 +83,15 @@ function JobSearchFeed() {
                                 </Badge>
                             </div>
                         </div>
-                        {/* job post */}
-                        <JobPost />
-                        <JobPostLg />
+
+
+
+                        {jobPosts.map((jobPost, key) => (
+                            <JobPost key={key} jobPost={jobPost} />
+                        ))}
+
+            
+                        {/* <JobPostLg /> */}
                     </div>
                     <div className="jsfRightCon"></div>
                 </div>
