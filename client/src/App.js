@@ -15,6 +15,7 @@ import FeedPage from "./pages/feedPage/FeedPage";
 import { useContext } from "react";
 import { Context } from "./context/Context";
 import JobSearchFeed from "./pages/jobSearchFeed/JobSearchFeed";
+import JobPostRead from "./pages/JobPostRead/JobPostRead";
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobPostCreate" element={<JobPostCreate />} />
           <Route path="/jobSearch" element={<JobSearchFeed />} />
+          <Route path="/jobPost/:id" element={<JobPostRead />} />
           <Route path="/" element={<FeedPage />} />
           {/* <Route path="/" element={user ? <FeedPage /> : <Login/>} /> */}
 

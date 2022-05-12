@@ -3,34 +3,35 @@ import "./jobPostLg.scss"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import { format} from 'timeago.js';
 
 
-function JobPostLg() {
+function JobPostLg({ jobPost }) {
     return (
         <div className='jobPostLgCon' >
-            <span className='jplTitle'>Senior Blockchain developer</span>
+            <span className='jplTitle'>{jobPost.position}</span>
             <div className="jplCompanyIconName">
-                <img className='jplImg' src="/assets/profile.jpeg" alt="" />
+                <img className='jplImg' src={jobPost.companyProfileImg || "/assets/profile.jpeg"} alt="" />
                 <div className="jplCompanyNameCon">
-                    <span className="jplCompanyName">Topal</span>
-                    <span className="jplCompanyName">Cornwall,PE <span>(Remote)</span></span>
+                    <span className="jplCompanyName">{jobPost.companyName}</span>
+                    <span className="jplCompanyName">{jobPost.location} <span> ({jobPost.officeOrRemote === 1 ? "Office" : "Remote"})</span></span>
                 </div>
             </div>
 
             <div className="dayAgoApplication">
-                <span className='jplPostDay'>2 days ago .</span>
+                <span className='jplPostDay'>{format(jobPost.createdAt)} .</span>
                 <span className='jplApplicantsNum'>5 applicants</span>
             </div>
 
             <div className="jplIconAndTxt">
                 <BusinessCenterIcon className='jplIcon' />
                 <span className='jplTxt'>Contract .</span>
-                <span className='jplTxt2'>Mid-Senior level</span>
+                <span className='jplTxt2'>{jobPost.contractType === 1 ? "Intern" : jobPost.contractType === 2 ? "Junior" : jobPost.contractType === 3 ? "Mid-Senior" : jobPost.contractType === 4 ? "Senior" : jobPost.contractType === 5 ? "Manager" : "notMentioned"}</span>
             </div>
 
             <div className="jplIconAndTxt">
                 <BusinessCenterIcon className='jplIcon' />
-                <span className='jplTxt' >1000-5000 </span>
+                <span className='jplTxt' >{jobPost.noOfEmployee} </span>
                 <span className='jplTxt2'>Internet Publishing </span>
             </div>
 
@@ -39,34 +40,31 @@ function JobPostLg() {
                 <span className='activelyRecruitTxt'>Actively recruiting</span>
             </div>
 
-
             <div className="jplApplySaveBut">
                 <button className="jplApplyBtn">Apply  <SendOutlinedIcon className='jplButIcon' />  </button>
                 <button className="jplSaveBtn">Save</button>
             </div>
-
             <hr className='jplHr' />
 
-            {/* Job description=======> */}
+            {/* Job description===================================> */}
             <div className="jobDescCon">
-            <span className="jobDescriptionTitleTxt">Job Description</span>
-            <span className="aboutTheJob">AboutThe Job</span>
-            <span className="jobDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla at voluptatibus beatae illo magni ipsam temporibus, suscipit, quo exercitationem adipisci porro in! Ipsam ex suscipit, voluptas asperiores odio praesentium ratione nobis, ab similique corrupti neque dolores aperiam iusto eligendi velit doloremque iste deserunt reiciendis? Aperiam commodi maiores modi accusantium veritatis sit quo, atque, obcaecati voluptatem natus vero, velit eius rerum? Aspernatur, beatae architecto laborum neque adipisci eos magnam! Quidem reprehenderit, ipsam quas voluptatum laboriosam quibusdam cum minus alias deleniti sapiente.</span>
-            <span className="aboutTheJob"> About <span className='jplCompanyName'>Topal</span></span>
-            <span className="jobDesc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis consequuntur enim fuga, corporis, dignissimos delectus perspiciatis odio molestiae minima tenetur saepe, necessitatibus error. Asperiores reprehenderit veniam quibusdam, ullam sint sed, vel repellendus quaerat, fuga laboriosam animi fugit nesciunt at. Quas, consequatur sunt. Optio animi, neque nobis sint odit incidunt laudantium!</span>
-            <span className="aboutTheJob">AboutThe Role</span>
-            <span className="jobDesc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis consequuntur enim fuga, corporis, dignissimos delectus perspiciatis odio molestiae minima tenetur saepe, necessitatibus error. Asperiores reprehenderit veniam quibusdam, ullam sint sed, vel repellendus quaerat, fuga laboriosam animi fugit nesciunt at. Quas, consequatur sunt. Optio animi, neque nobis sint odit incidunt laudantium!</span>
-            <span className="aboutTheJob">Requirements</span>
-            <ul className='requirementsUl'>
-               <li className='requirementLi jobDesc'>Bachelors and/or Masters degree in Computer Science, Computer Engineering or related technical discipline</li>
-               <li className='requirementLi jobDesc'>5+ years of professional software development experience</li>
-               <li className='requirementLi jobDesc'>Proficiency in Java or C++, and object-oriented design skills</li>
-               <li className='requirementLi jobDesc'>Experience in development of distributed/scalable systems and high-volume transaction applications</li>
-               <li className='requirementLi jobDesc'>Experience in development of distributed/scalable systems and high-volume transaction applications</li>
-               <li className='requirementLi jobDesc'>nowledge of professional software engineering and best practices for the full software development life cycle, including coding standards</li>
-               <li className='requirementLi jobDesc'>Experience in development of distributed/scalable systems and high-volume transaction applications</li>
-            </ul>
-
+                <span className="jobDescriptionTitleTxt">Job Description</span>
+                <span className="aboutTheJob">AboutThe Job</span>
+                <span className="jobDesc">{jobPost.aboutTheJob}</span>
+                <span className="aboutTheJob"> About <span className='jplCompanyName'>Topal</span></span>
+                <span className="jobDesc">{jobPost.aboutTheCompany}</span>
+                <span className="aboutTheJob">AboutThe Role</span>
+                <span className="jobDesc">{jobPost.aboutTheRole}</span>
+                <span className="aboutTheJob">Requirements</span>
+                <ul className='requirementsUl'>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement1}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement2}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement3}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement4}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement5}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement6}</li>
+                    <li className='requirementLi jobDesc'>{jobPost.requirement7}</li>
+                </ul>
             </div>
         </div>
     )

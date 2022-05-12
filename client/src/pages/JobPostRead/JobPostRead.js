@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./jobSearchFeed.scss"
+import "./jobPostRead.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
@@ -7,26 +7,34 @@ import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
-import JobPost from '../../components/jobPost/JobPost';
+// import JobPost from '../../components/jobPost/JobPost';
+import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios'
+import { useLocation } from 'react-router'
 
 
 
 
-function JobSearchFeed() {
+function JobPostRead() {
 
+    //Fetching JobPost data from URL id
+    const location = useLocation()
+    console.log(location);
+    console.log(location.pathname);
+    const path = location.pathname.split("/")[2]
+    console.log(path);
 
-    //Fetching all JobPosts
-    const [jobPosts, setJobPosts] = useState([])
+    const [jobPost, setJobPost] = useState({})
     useEffect(() => {
-        const fetchJobPosts = async () => {
-            const res = await axios.get("/jobPosts/getAll")
+        const fetchJobPost = async () => {
+            const res = await axios.get(`/jobPosts/get/${path}`)
             console.log(res.data)
-            setJobPosts(res.data)
+            setJobPost(res.data)
         }
-        fetchJobPosts()
-    }, [])
+        fetchJobPost()
+    }, [path])
+
 
 
 
@@ -37,66 +45,67 @@ function JobSearchFeed() {
 
 
     return (
-        <div className="jobSearchFeed">
-            <div className="jsfWrapper">
+        <div className="jobPostRead">
+            <div className="jprWrapper">
                 <Navbar />
-                {/* <div className="jsfCoverPicCon">
-                    <img src="/assets/cover.jpeg" alt="" className="jsfCoverPic" />
-                    <img src="/assets/profile.jpeg" alt="" className="jsfProfilePic" />
+                {/* <div className="jprCoverPicCon">
+                    <img src="/assets/cover.jpeg" alt="" className="jprCoverPic" />
+                    <img src="/assets/profile.jpeg" alt="" className="jprProfilePic" />
                 </div> */}
 
-                <div className="jsfBeforeSplit">
-                    <div className="jsfLeftCon">
+                <div className="jprBeforeSplit">
+                    <div className="jprLeftCon">
                         <UserInfo />
                     </div>
 
-                    <div className="jsfCenterCon">
-                        <div className="jsfRowIconCon">
-                            <div className="jsfRowIconItem">
+                    <div className="jprCenterCon">
+                        <div className="jprRowIconCon">
+                            <div className="jprRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <HomeOutlinedIcon color="action" />
                                 </Badge>
                             </div>
 
-                            <div className="jsfRowIconItem">
+                            <div className="jprRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <ChatOutlinedIcon color="action" />
                                 </Badge>
                             </div>
 
-                            <div className="jsfRowIconItem">
+                            <div className="jprRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <NotificationsNoneOutlinedIcon color="action" />
                                 </Badge>
                             </div>
 
-                            <div className="jsfRowIconItem">
+                            <div className="jprRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <PeopleAltOutlinedIcon color="action" />
                                 </Badge>
                             </div>
 
-                            <div className="jsfRowIconItem">
+                            <div className="jprRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <OndemandVideoOutlinedIcon color="action" />
                                 </Badge>
                             </div>
                         </div>
 
+                        
+
+                
+                        <JobPostLg jobPost={jobPost}/>
+                      
 
 
-                        {jobPosts.map((jobPost, key) => (
-                            <JobPost key={key} jobPost={jobPost} />
-                        ))}
 
-            
-                        {/* <JobPostLg /> */}
+
                     </div>
-                    <div className="jsfRightCon"></div>
+                    <div className="jprRightCon"></div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default JobSearchFeed
+export default JobPostRead
