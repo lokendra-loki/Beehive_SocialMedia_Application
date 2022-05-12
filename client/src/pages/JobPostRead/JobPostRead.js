@@ -12,6 +12,7 @@ import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios'
 import { useLocation } from 'react-router'
+import LeftBar from '../../components/leftBar/LeftBar';
 
 
 
@@ -55,7 +56,7 @@ function JobPostRead() {
 
                 <div className="jprBeforeSplit">
                     <div className="jprLeftCon">
-                        <UserInfo />
+                        <LeftBar/>
                     </div>
 
                     <div className="jprCenterCon">

@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile/:id" element={<UserProfile />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead/:id" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
@@ -35,7 +35,8 @@ function App() {
           <Route path="/jobSearch" element={<JobSearchFeed />} />
           <Route path="/jobPost/:id" element={<JobPostRead />} />
           <Route path="/" element={<FeedPage />} />
-          {/* <Route path="/" element={user ? <FeedPage /> : <Login/>} /> */}
+         
+          
 
         </Routes>
       </Router>

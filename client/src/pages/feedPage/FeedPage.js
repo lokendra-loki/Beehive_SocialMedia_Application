@@ -6,12 +6,9 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Badge from '@mui/material/Badge';
-import UserInfo from '../../components/userInfo/UserInfo';
-import JobPost from '../../components/jobPost/JobPost';
-import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import FeedPost from '../../components/feedPost/FeedPost';
-import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
 import Navbar from '../../components/navbar/Navbar';
+import LeftBar from '../../components/leftBar/LeftBar';
 
 
 
@@ -29,6 +26,7 @@ function FeedPage() {
 
                     <div className="fpLeftCon">
                         {/* <UserInfo /> */}
+                        <LeftBar/>
                     </div>
 
                     
@@ -65,16 +63,8 @@ function FeedPage() {
                             </div>
                         </div>
 
-
-                        {/* job post */}
-                        <JobPost />
-
-
-                        <JobPostLg />
                         <FeedPost />
-                        <FeedPostCreate />
-
-
+                        
                     </div>
                     <div className="fpRightCon"></div>
                 </div>

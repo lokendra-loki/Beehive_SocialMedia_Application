@@ -8,6 +8,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import HomeOutlined from '@mui/icons-material/HomeOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
+import { Link } from 'react-router-dom'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 
 
@@ -18,42 +20,58 @@ function LeftBar() {
       <div className="lbWrapper">
 
         <div className="lbListItem">
-          <HomeOutlined className="lbListItemKey"/>
+          <HomeOutlined className="lbListItemKey" />
           <span className="lbListItemValue">Home</span>
         </div>
 
+
+
+        <Link to="/profile" className='link'>
         <div className="lbListItem">
-          <BookOutlinedIcon className="lbListItemKey"/>
-          <span className="lbListItemValue">Blogs</span>
+          <PersonOutlineOutlinedIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Profile</span>
         </div>
+        </Link>
+
+
+        <Link to="/blogs" className='link'>
+          <div className="lbListItem">
+            <BookOutlinedIcon className="lbListItemKey" />
+            <span className="lbListItemValue">Blogs</span>
+          </div>
+        </Link>
+
 
         <div className="lbListItem">
-          <WhatshotIcon className="lbListItemKey"/>
+          <WhatshotIcon className="lbListItemKey" />
           <span className="lbListItemValue">Trending</span>
         </div>
 
         <div className="lbListItem">
-          <QuestionMarkIcon className="lbListItemKey"/>
+          <QuestionMarkIcon className="lbListItemKey" />
           <span className="lbListItemValue">Ask Doubts</span>
         </div>
 
+
+        <Link to="/jobSearch" className='link'>
         <div className="lbListItem">
-          <BusinessCenterOutlinedIcon className="lbListItemKey"/>
+          <BusinessCenterOutlinedIcon className="lbListItemKey" />
           <span className="lbListItemValue">Find Jobs</span>
         </div>
+        </Link>
 
         <div className="lbListItem">
-          <AutoStoriesIcon className="lbListItemKey"/>
+          <AutoStoriesIcon className="lbListItemKey" />
           <span className="lbListItemValue">Success Story</span>
         </div>
 
         <div className="lbListItem">
-          <HelpCenterOutlinedIcon className="lbListItemKey"/>
+          <HelpCenterOutlinedIcon className="lbListItemKey" />
           <span className="lbListItemValue">Help </span>
         </div>
 
         <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey"/>
+          <LogoutIcon className="lbListItemKey" />
           <span className="lbListItemValue">Logout </span>
         </div>
 

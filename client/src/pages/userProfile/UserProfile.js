@@ -71,11 +71,11 @@ function UserProfile() {
                         </div>
 
 
-                        {/* job post */}
-                        <JobPost/>
+                       
+                       
                        
                         
-                        <JobPostLg/>
+                       
                         <FeedPost/>
                         <FeedPostCreate/>
                         
