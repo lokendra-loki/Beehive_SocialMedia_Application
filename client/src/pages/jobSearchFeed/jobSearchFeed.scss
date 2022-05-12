@@ -1,20 +1,20 @@
-.feedPage {
+.jobSearchFeed {
     height: 500vh;
 
-    .fpWrapper {
+    .jsfWrapper {
         
-        .fpCoverPicCon {
+        .jsfCoverPicCon {
             display: flex;
             flex-direction: column;
             position: relative;
 
-            .fpCoverPic {
+            .jsfCoverPic {
                 height: 40vh;
                 object-fit: cover;
                 overflow: hidden;
             }
 
-            .fpProfilePic {
+            .jsfProfilePic {
                 height: 220px;
                 object-fit: cover;
                 overflow: hidden;
@@ -30,24 +30,24 @@
         }
         
 
-        .fpRowIconCon {
+        .jsfRowIconCon {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 30px;
 
-            .fpRowIconItem {
+            .jsfRowIconItem {
                 margin-right: 70px;
             }
         }
 
-        .fpBeforeSplit{
+        .jsfBeforeSplit{
             display: flex;
            
             
            
             
-            .fpLeftCon{
+            .jsfLeftCon{
                 flex: 1;
                 background-color: cadetblue;
                 overflow-y: scroll;
@@ -63,7 +63,7 @@
                 
 
             }
-            .fpCenterCon{
+            .jsfCenterCon{
                 flex: 2;
                 background-color: yellow;
                 overflow-y: scroll;
@@ -71,7 +71,7 @@
                 
                 
             }
-            .fpRightCon{
+            .jsfRightCon{
                 flex: 1;
                 background-color: green;
                 
