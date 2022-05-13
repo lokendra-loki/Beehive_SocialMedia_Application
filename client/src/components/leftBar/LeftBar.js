@@ -21,10 +21,12 @@ function LeftBar() {
     <div className='leftBar'>
       <div className="lbWrapper">
 
+      <Link to="/" className='link'>
         <div className="lbListItem">
           <HomeOutlined className="lbListItemKey" />
           <span className="lbListItemValue">Home</span>
         </div>
+      </Link>
 
 
 

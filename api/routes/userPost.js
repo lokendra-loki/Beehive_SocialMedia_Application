@@ -1,25 +1,22 @@
 const router = require("express").Router()
+const { createUserPost, updateUserPost, getAllUserPosts, getUserPost, deleteUserPost } = require("../controllers/userPostController")
 const UserPost = require("../models/UserPost")
 
 
+//Create UserPost
+router.post("/create", createUserPost)
 
-//Create a user post
-router.post("/create", async (req, res) => {
-    const newUserPost = new UserPost(req.body)
-    try {
-        const savedUserPost = await newUserPost.save();
-        res.status(200).json(savedUserPost)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-})
+//Update UserPost
+router.put("/update/:id", updateUserPost)
 
+//Get UserPost
+router.get("/get/:id", getUserPost)
 
+//Get All UserPost
+router.get("/getAll", getAllUserPosts)
 
-
-
-
-
+//Delete UserPost
+router.delete("/delete/:id", deleteUserPost)
 
 
 //export

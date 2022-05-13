@@ -6,10 +6,12 @@ const dotenv = require('dotenv').config()
 const authRoute = require('./routes/auth')
 const jobPostRoute = require('./routes/jobPost')
 const blogRoute = require('./routes/blog')
+const userPostRoute = require('./routes/userPost')
 const userRoute = require('./routes/user')
 const passport = require('passport')
 const cors = require('cors')
 const passportSetup = require('./passport')
+
 
 
 //MongoDB connection
@@ -18,12 +20,13 @@ mongoose.connect(process.env.MONGODB_URL)
     .catch((err) => console.log({ msg: "MongoDB connection error", err }))
 
 
-    
+
 //Middleware
 app.use(express.json())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/jobPosts", jobPostRoute)
+app.use("/api/userPosts", userPostRoute)
 app.use("/api/blogs", blogRoute)
 
 
