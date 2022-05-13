@@ -11,6 +11,10 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 function UserInfoEdit() {
@@ -40,68 +44,91 @@ function UserInfoEdit() {
                 <span className="uieSpan1">Bio</span>
                 <span className="uieSpan2">Edit</span>
             </div>
-            <input type="text" className="bioInput" />
+            <input type="text" className="bioInput" placeholder='Add Bio Here' />
 
 
             <div className="userInfoItemEditCon">
                 <BusinessCenterIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='Software Engineer at Lendis' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <BusinessCenterIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='Co-founder at Ask Buddie'   />
             </div>
-            
+
             <div className="userInfoItemEditCon">
                 <BusinessCenterIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='Former WordPress Engineer at Eagle Eye' />
             </div>
 
 
             <div className="userInfoItemEditCon">
                 <SchoolOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='Went to Oxfors Academy' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <ApartmentOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='R.M.E school' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <PermIdentityOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='lokendra' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <CakeOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='2002/12/28' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <BadgeOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='loki' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <LoyaltyOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='single/relationship/married/divorced' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <LocationOnOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='From Butwal' />
+            </div>
+
+
+
+
+            <div className="userInfoItemEditCon">
+                <InstagramIcon className="userInfoItemEditIcon" />
+                <input type="text" className="userInfoItemEditInput" placeholder='ashiishme' />
+            </div>
+
+            <div className="userInfoItemEditCon">
+                <TwitterIcon className="userInfoItemEditIcon" />
+                <input type="text" className="userInfoItemEditInput" placeholder='ashiishme' />
+            </div>
+
+            <div className="userInfoItemEditCon">
+                <GitHubIcon className="userInfoItemEditIcon" />
+                <input type="text" className="userInfoItemEditInput" placeholder='ashiishme' />
+            </div>
+
+            <div className="userInfoItemEditCon">
+                <LinkedInIcon className="userInfoItemEditIcon" />
+                <input type="text" className="userInfoItemEditInput" placeholder='ashiishme' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <EmailOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='ashiishme@gmail.com' />
             </div>
 
             <div className="userInfoItemEditCon">
                 <LocalPhoneOutlinedIcon className="userInfoItemEditIcon" />
-                <input type="text" className="userInfoItemEditInput" />
+                <input type="text" className="userInfoItemEditInput" placeholder='9864755749' />
             </div>
 
             <button className="uieSaveBtn">Save</button>

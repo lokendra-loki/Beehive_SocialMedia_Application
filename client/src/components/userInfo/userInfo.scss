@@ -1,5 +1,4 @@
 .userInfoCon {
-    
     padding: 0px 40px;
     .userNameProfessionActive {
         display: flex;
@@ -51,20 +50,15 @@
 
     .uiDetailInfo {
         margin-top: 50px;
-        
+
         .uiDetailInfoItem {
             display: flex;
             margin-top: 10px;
             cursor: pointer;
 
-            
-
-            
-
             .uiIcon {
                 color: rgb(94, 94, 94);
                 font-size: 20px;
-                
             }
 
             .uiDetailInfoValue {
@@ -72,19 +66,38 @@
                 font-weight: 600;
                 color: rgb(32, 32, 32);
                 margin-left: 10px;
-                
             }
-            
         }
     }
 
-    .interestHobby{
-        font-size: 18px;
-        font-weight: 700;
-        color: rgb(57, 57, 57);  
+    .InterestHobbyTxtAndEditButCon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .interestHobby {
+            font-size: 18px;
+            font-weight: 700;
+            color: rgb(57, 57, 57);
+        }
+
+        .userInfoEditBut{
+            height: 30px;
+            width: 90px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+    
+        }
     }
 
-    .hobbyListCon{
+    .hobbyListCon {
         display: flex;
         margin-top: 15px;
     }

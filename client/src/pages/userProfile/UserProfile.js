@@ -27,7 +27,7 @@ function UserProfile() {
     // const { user } = useContext(AuthContext)
     // console.log(user);
 
-
+   
 
     return (
         <div className="userProfile">
@@ -97,7 +97,6 @@ function UserProfile() {
                     </div>
                     <div className="upRightCon">
                         <UserInfo />
-                        <UserInfoEdit/>
                     </div>
                 </div>
             </div>

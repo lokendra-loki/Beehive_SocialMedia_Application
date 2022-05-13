@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./userInfo.scss"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SchoolIcon from '@mui/icons-material/School';
@@ -12,6 +12,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Hobby from '../hobby/Hobby';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import UserInfoEdit from '../userInfoEdit/UserInfoEdit';
 
 
 
@@ -19,6 +20,12 @@ function UserInfo() {
     //Calling currentUser from AuthContext
     const { user } = useContext(AuthContext)
     console.log(user);
+
+
+
+    //To open userInfoEditContainer
+    const [showUserInfoEditCon, setShowUserInfoEditCon] = useState(false)
+
 
 
 
@@ -127,12 +134,18 @@ function UserInfo() {
                 </div>
             </div>
 
-            <span className='interestHobby'>Interest and Hobby</span>
+            <div className="InterestHobbyTxtAndEditButCon">
+                <span className='interestHobby'>Interest and Hobby</span>
+                <button onClick={()=>setShowUserInfoEditCon(!showUserInfoEditCon)} className="userInfoEditBut">Edit</button>
+            </div>
+
+            {showUserInfoEditCon && <UserInfoEdit/>}
+
 
             <div className="hobbyListCon">
                 <Hobby />
                 <Hobby />
-                {/* <Hobby /> */}
+
 
 
             </div>
