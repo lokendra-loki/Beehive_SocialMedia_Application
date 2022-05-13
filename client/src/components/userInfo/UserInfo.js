@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./userInfo.scss"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SchoolIcon from '@mui/icons-material/School';
@@ -11,13 +11,22 @@ import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Hobby from '../hobby/Hobby';
+import { AuthContext } from '../../context/authContext/AuthContext';
+
+
 
 function UserInfo() {
+    //Calling currentUser from AuthContext
+    const { user } = useContext(AuthContext)
+    console.log(user);
+
+
+
     return (
         <div className="userInfoCon">
 
             <div className="userNameProfessionActive">
-                <span className='uiName'>Lokendra Chaulagain</span>
+                <span className='uiName'>{user.fullName}</span>
                 <span className='uiProfession'>Software Engineer</span>
                 <span className="uiActive">active 5 hour ago</span>
             </div>
@@ -34,10 +43,6 @@ function UserInfo() {
                     <span className='uiFollowerNum'>184</span>
                 </div>
             </div>
-
-
-
-
 
 
 
@@ -128,11 +133,11 @@ function UserInfo() {
                 <Hobby />
                 <Hobby />
                 {/* <Hobby /> */}
-                
+
 
             </div>
-            
-            
+
+
 
 
 

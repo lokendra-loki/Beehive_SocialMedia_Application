@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./userProfile.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
@@ -9,10 +9,12 @@ import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
 import FeedPost from '../../components/feedPost/FeedPost';
 import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar'
 import LeftBar from '../../components/leftBar/LeftBar';
-import axios from 'axios'
+import UserInfoEdit from '../../components/userInfoEdit/UserInfoEdit';
+// import axios from 'axios'
+// import { AuthContext } from '../../context/authContext/AuthContext';
 
 
 
@@ -21,18 +23,9 @@ function UserProfile() {
     //To open the FeedPostCreateContainer
     const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false)
 
-
-
-     //Fetching All UserInfo according to the userId
-    //  const [user, setUser] = useState[{}]
-    //  useEffect(() => {
-    //      const fetchUser = async () => {
-    //          const res = await axios.get("/users/get/627dacd54582c5751c2b9f84")
-    //          console.log(res.data)
-    //      }
-    //      fetchUser()
-    //  })
-
+    //calling currentUser from AuthContext
+    // const { user } = useContext(AuthContext)
+    // console.log(user);
 
 
 
@@ -47,9 +40,9 @@ function UserProfile() {
 
                 <div className="upBeforeSplit">
                     <div className="upLeftCon">
-                    <LeftBar />
+                        <LeftBar />
 
-                        
+
                     </div>
                     <div className="upCenterCon">
 
@@ -57,7 +50,7 @@ function UserProfile() {
                         <div className="upRowIconCon">
                             <div className="upRowIconItem">
                                 <Link to="/" className='link'>
-                                <HomeOutlinedIcon color="action" />
+                                    <HomeOutlinedIcon color="action" />
                                 </Link>
                             </div>
 
@@ -103,7 +96,8 @@ function UserProfile() {
 
                     </div>
                     <div className="upRightCon">
-                    <UserInfo />
+                        <UserInfo />
+                        <UserInfoEdit/>
                     </div>
                 </div>
             </div>

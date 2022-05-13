@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
@@ -13,14 +12,14 @@ import BlogWrite from "./pages/blogWrite/BlogWrite";
 import JobPostCreate from "./pages/jobPostCreate/JobPostCreate";
 import FeedPage from "./pages/feedPage/FeedPage";
 import { useContext } from "react";
-import { Context } from "./context/Context";
+import { AuthContext } from "./context/authContext/AuthContext";
 import JobSearchFeed from "./pages/jobSearchFeed/JobSearchFeed";
 import JobPostRead from "./pages/JobPostRead/JobPostRead";
 
 
 
 function App() {
-  const { user } = useContext(Context)
+  const { user } = useContext(AuthContext)
   return (
     <div className="App">
       <Router>

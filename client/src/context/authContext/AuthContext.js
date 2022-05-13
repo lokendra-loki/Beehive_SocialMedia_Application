@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect} from "react";
-import Reducer from "./Reducer";
+import AuthReducer from "./AuthReducer";
 
 
 const INITIAL_STATE = {
@@ -10,25 +10,25 @@ const INITIAL_STATE = {
 
 
 //context
-export const Context = createContext(INITIAL_STATE);
+export const AuthContext = createContext(INITIAL_STATE);
 
 //contextProvider
-export const ContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(Reducer, INITIAL_STATE);
+export const AuthContextProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
 
     //saving user in local storage
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state.user));
-    }, [state.user]) //whenever user changes save that user in local storage
+        localStorage.setItem("user", JSON.stringify(state.user))
+    }, [state.user])
 
 
     return (
-        <Context.Provider value={{
+        <AuthContext.Provider value={{
             user: state.user, isFetching: state.isFetching, error: state.error, dispatch
         }}>
             {children}
-        </Context.Provider>
+        </AuthContext.Provider>
     )
 }
 
