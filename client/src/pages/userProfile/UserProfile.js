@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./userProfile.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
@@ -12,6 +12,7 @@ import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar'
 import LeftBar from '../../components/leftBar/LeftBar';
+import axios from 'axios'
 
 
 
@@ -19,6 +20,18 @@ function UserProfile() {
 
     //To open the FeedPostCreateContainer
     const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false)
+
+
+
+     //Fetching All UserInfo according to the userId
+    //  const [user, setUser] = useState[{}]
+    //  useEffect(() => {
+    //      const fetchUser = async () => {
+    //          const res = await axios.get("/users/get/627dacd54582c5751c2b9f84")
+    //          console.log(res.data)
+    //      }
+    //      fetchUser()
+    //  })
 
 
 

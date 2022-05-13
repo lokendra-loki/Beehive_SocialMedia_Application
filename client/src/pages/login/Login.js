@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./login.scss"
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
@@ -13,26 +13,32 @@ import { Link } from 'react-router-dom';
 
 
 function Login() {
+
     //Sending data
     const emailRef = useRef()
     const passwordRef = useRef()
     const { user, dispatch, isFetching } = useContext(Context)
+    // console.log(emailRef.current.value,passwordRef.current.value)
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
+    // console.log(username, password);
+    const [inputes, setInputes] = useState({
+        username: "",
+        password: ""
+    })
+
+    const handleInputesChange = (e) => {
+        setInputes({ ...inputes, [e.target.name]: e.target.value })
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        loginCall({ email: emailRef.current.value, password: passwordRef.current.value }, dispatch)
+        loginCall(inputes, dispatch)
     }
-    console.log(user)
 
 
-    //=========
-    const google=()=>{
-        window.open("http://localhost:5000/api/auth/google/", "_self")	//opens in same tab
 
-    }
-    const github=()=>{
-        
-    }
 
 
 
@@ -54,7 +60,7 @@ function Login() {
                             <div className="inputIconCon">
                                 <PersonOutlinedIcon className='lpInput-icon' />
                             </div>
-                            <input className="lpInput" type="email" placeholder='Email or username' ref={emailRef} />
+                            <input className="lpInput" type="text" name='username' onChange={handleInputesChange} placeholder='Email or username' />
                         </div>
 
 
@@ -62,7 +68,8 @@ function Login() {
                             <div className="inputIconCon">
                                 <KeyOutlinedIcon className='lpInput-icon' />
                             </div>
-                            <input className="lpInput" type="password" placeholder="Password" ref={passwordRef} />
+                            <input className="lpInput" type="password" placeholder="Password" name='password'
+                                onChange={handleInputesChange} />
                         </div>
 
 
@@ -82,8 +89,8 @@ function Login() {
 
                         <span className="socialMediaAuthTxt">Or login with</span>
                         <div className="socialMediaAuthCon">
-                            <GoogleIcon className='socialMediaAuthIcon' onClick={google} />
-                            <GitHubIcon className='socialMediaAuthIcon' onClick={github} />
+                            <GoogleIcon className='socialMediaAuthIcon' />
+                            <GitHubIcon className='socialMediaAuthIcon' />
                             <FacebookIcon className='socialMediaAuthIcon' />
                         </div>
                     </form>

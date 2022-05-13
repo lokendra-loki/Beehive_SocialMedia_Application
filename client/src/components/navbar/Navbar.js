@@ -18,11 +18,18 @@ function Navbar() {
             <img src="/assets/logo.svg" alt="" className="navbarLogo" />
 
             <div className="navbarLinks">
+
+                <Link to="/" className='link'>
                 <span className='navLink'>Home</span>
+                </Link>
+                
                 <span className='navLink'>About </span>
                 <span className='navLink'  >Contact</span>
 
+
+                <Link to="/blogs" className='link'>
                 <span className='navLink'>Blog</span>
+                </Link>
 
                 {/* <div className="blogDropdown">
                     <span className='dropDownNavLink'>Read Blogs</span>

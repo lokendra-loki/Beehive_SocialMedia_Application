@@ -12,19 +12,14 @@ import { Link } from 'react-router-dom'
 function Register() {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
-    const [fullName, setFullName] = useState("")
+    // const [fullName, setFullName] = useState("")
     const [password, setPassword] = useState("")
-    const [snackbar, setSnackbar] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+    // const [confirmPassword, setConfirmPassword] = useState("")
 
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        const res = await axios.post("/auth/register/", { username, email, fullName, password })
-        
-        if (password !== confirmPassword) {
-            alert("Password does not match")
-        }
+        const res = await axios.post("/auth/register/", { username, email, password })
         console.log(res.data)
     }
 
@@ -59,12 +54,12 @@ function Register() {
                             <input className="rp-Input" type="email" required placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
                         </div>
 
-                        <div className="rp-loginInputCon">
+                        {/* <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <BadgeOutlinedIcon className='rp-Input-icon' />
                             </div>
                             <input className="rp-Input" type="text" required placeholder='Full name' onChange={(e) => setFullName(e.target.value)} />
-                        </div>
+                        </div> */}
 
 
                         <div className="rp-loginInputCon">
@@ -74,12 +69,12 @@ function Register() {
                             <input className="rp-Input" type="password" required placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
-                        <div className="rp-loginInputCon">
+                        {/* <div className="rp-loginInputCon">
                             <div className="rp-inputIconCon">
                                 <KeyOutlinedIcon className='rp-Input-icon' />
                             </div>
                             <input className="rp-Input" type="password" placeholder="Confirm password" onChange={(e) => setConfirmPassword(e.target.value)} />
-                        </div>
+                        </div> */}
 
                         <button className='rp-loginBut' type='submit'  >Register</button>
 

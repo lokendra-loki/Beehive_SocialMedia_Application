@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./feedPage.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
@@ -13,15 +13,26 @@ import LeftBar from '../../components/leftBar/LeftBar';
 import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
 import RecentPost from '../../components/recentPost/RecentPost';
 import Category from '../../components/category/Category';
-import {Link} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 
 function FeedPage() {
 
-
     //To open the FeedPostCreateContainer
     const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false)
+
+
+    // //Fetching All UserPosts 
+    // const [userPosts, setUserPosts] = useState[{}]
+    // useEffect(() => {
+    //     const fetchUserPosts = async () => {
+    //         const res = await axios.get("/userPosts/getAll")
+    //         console.log(res.data)
+
+    //     }
+    //     fetchUserPosts()
+    // })
 
 
 
@@ -37,7 +48,7 @@ function FeedPage() {
 
                     <div className="fpCenterCon">
 
-                    <div className="fpRowIconCon">
+                        <div className="fpRowIconCon">
                             <div className="fpRowIconItem">
                                 <Badge badgeContent={4} color="primary">
                                     <HomeOutlinedIcon color="action" />
@@ -46,13 +57,13 @@ function FeedPage() {
 
 
                             <div className="fpRowIconItem">
-                                <Link to ="/profile">
-                                <PersonOutlineOutlinedIcon color="action" />
+                                <Link to="/profile">
+                                    <PersonOutlineOutlinedIcon color="action" />
                                 </Link>
                             </div>
 
 
-                            
+
 
                             <div className="fpRowIconItem">
                                 <Badge badgeContent={4} color="primary">
@@ -81,7 +92,7 @@ function FeedPage() {
 
 
 
-                        
+
 
                         <div className="smallWhatsOnYourMindCon">
                             <img src="assets/profile.jpeg" alt="" className="tinyProfilePic" />
@@ -98,7 +109,7 @@ function FeedPage() {
 
 
 
-                        
+
 
 
 
