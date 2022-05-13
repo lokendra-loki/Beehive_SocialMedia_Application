@@ -1,20 +1,6 @@
 const User = require('../models/User');
 
 
-
-// Create User
-const createUser = async (req, res, next) => {
-    const newUser = new User(req.body)
-    try {
-        const savedUser = await newUser.save()
-        res.status(201).json(savedUser)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
-
-
-
 //Update User
 const updateUser = async (req, res, next) => {
     try {
@@ -26,7 +12,6 @@ const updateUser = async (req, res, next) => {
 }
 
 
-
 //Get User
 const getUser = async (req, res, next) => {
     try {
@@ -36,7 +21,6 @@ const getUser = async (req, res, next) => {
         res.status(500).json(error)
     }
 }
-
 
 
 //Get All Users
@@ -62,4 +46,4 @@ const deleteUser = async (req, res, next) => {
 
 
 //export
-module.exports = {createUser, updateUser, getUser, getAllUsers, deleteUser}
+module.exports = { updateUser, getUser, getAllUsers, deleteUser}

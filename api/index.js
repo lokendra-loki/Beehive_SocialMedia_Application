@@ -45,21 +45,21 @@ app.use((error, req, res, next) => {
 
 
 //Passport middleware
-app.use(cookieSession({
-    name: 'session',
-    keys: ["loki"],
-    maxAge: 24 * 60 * 60 * 100,  //1 day 
-}
-))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(
-    cors({
-        origin: "http://localhost:3000", //client url
-        methods: "GET, POST, PUT ,DELETE",
-        credentials: true,
-    })
-)
+// app.use(cookieSession({
+//     name: 'session',
+//     keys: ["loki"],
+//     maxAge: 24 * 60 * 60 * 100,  //1 day 
+// }
+// ))
+// app.use(passport.initialize())
+// app.use(passport.session())
+// app.use(
+//     cors({
+//         origin: "http://localhost:3000", //client url
+//         methods: "GET, POST, PUT ,DELETE",
+//         credentials: true,
+//     })
+// )
 
 
 //Post listening

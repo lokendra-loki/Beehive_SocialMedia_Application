@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 
 const UserSchema = new mongoose.Schema({
-    fullName: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 50,
-    },
+    // fullName: {
+    //     type: String,
+    //     required: true,
+    //     minlength: 5,
+    //     maxlength: 50,
+    // },
 
     username: {
         type: String,
@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
 
     bio: {
         type: String,
-        required: true,
+        
     },
 
     profession: {

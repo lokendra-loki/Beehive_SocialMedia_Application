@@ -2,9 +2,6 @@ const { createUser, updateUser, getUser, getAllUsers, deleteUser } = require('..
 const router = require('express').Router();
 
 
-//Create User
-router.post("/create", createUser)
-
 //Update User
 router.put("/update/:id", updateUser)
 
