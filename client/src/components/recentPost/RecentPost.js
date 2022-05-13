@@ -6,7 +6,7 @@ import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 function RecentPost() {
     return (
         <div className='recentPost'>
-            <span className="rpTitle">Recent Posts</span>
+            <span className="rpTitle">Recent Blogs</span>
             <hr className="rpHr" />
             <div className="rpList">
                 <FeedOutlinedIcon className="rpListKey" />

@@ -10,6 +10,7 @@ import UserInfo from '../../components/userInfo/UserInfo';
 import JobPost from '../../components/jobPost/JobPost';
 import Navbar from '../../components/navbar/Navbar';
 import axios from 'axios'
+import LeftBar from '../../components/leftBar/LeftBar';
 
 
 
@@ -47,7 +48,7 @@ function JobSearchFeed() {
 
                 <div className="jsfBeforeSplit">
                     <div className="jsfLeftCon">
-                        <UserInfo />
+                        <LeftBar/>
                     </div>
 
                     <div className="jsfCenterCon">

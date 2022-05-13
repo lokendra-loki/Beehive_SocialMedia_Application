@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./userProfile.scss"
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
@@ -7,42 +7,45 @@ import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Badge from '@mui/material/Badge';
 import UserInfo from '../../components/userInfo/UserInfo';
-import JobPost from '../../components/jobPost/JobPost';
-import JobPostLg from '../../components/jobPPostLg/JobPostLg';
 import FeedPost from '../../components/feedPost/FeedPost';
 import FeedPostCreate from '../../components/feedPostCreate/FeedPostCreate';
+import {Link} from 'react-router-dom'
+import Navbar from '../../components/navbar/Navbar'
+import LeftBar from '../../components/leftBar/LeftBar';
+
 
 
 function UserProfile() {
 
+    //To open the FeedPostCreateContainer
+    const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false)
 
 
 
 
     return (
         <div className="userProfile">
+            <Navbar />
             <div className="upWrapper">
                 <div className="upCoverPicCon">
                     <img src="/assets/cover.jpeg" alt="" className="upCoverPic" />
                     <img src="/assets/profile.jpeg" alt="" className="upProfilePic" />
                 </div>
 
-
-
-
-
-
-
                 <div className="upBeforeSplit">
                     <div className="upLeftCon">
-                        <UserInfo />
+                    <LeftBar />
+
+                        
                     </div>
                     <div className="upCenterCon">
+
+
                         <div className="upRowIconCon">
                             <div className="upRowIconItem">
-                                <Badge badgeContent={4} color="primary">
-                                    <HomeOutlinedIcon color="action" />
-                                </Badge>
+                                <Link to="/" className='link'>
+                                <HomeOutlinedIcon color="action" />
+                                </Link>
                             </div>
 
                             <div className="upRowIconItem">
@@ -71,30 +74,28 @@ function UserProfile() {
                         </div>
 
 
-                       
-                       
-                       
-                        
-                       
-                        <FeedPost/>
-                        <FeedPostCreate/>
-                        
+
+
+                        <div className="upSmallWhatsOnYourMindCon">
+                            <img src="assets/profile.jpeg" alt="" className="upTinyProfilePic" />
+                            <input onClick={() => setShowFeedPostCreateCon(!showFeedPostCreateCon)} type="text" className="upOnYourMindInput" placeholder="What's on your mind Lokendra ?  Post photos / videos / text from here" />
+                        </div>
+                        {/* On Click ma yo container show hunxa */}
+                        {showFeedPostCreateCon && <FeedPostCreate />}
+
+
+
+
+                        <FeedPost />
 
                     </div>
-                    <div className="upRightCon"></div>
+                    <div className="upRightCon">
+                    <UserInfo />
+                    </div>
                 </div>
-
-
-
-
-
-
-
             </div>
-
         </div>
     )
-
 }
 
 

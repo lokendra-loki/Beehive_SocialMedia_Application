@@ -7,6 +7,8 @@ import WhatshotIcon from '@mui/icons-material/Whatshot';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import HomeOutlined from '@mui/icons-material/HomeOutlined';
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
+import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import { Link } from 'react-router-dom'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -42,6 +44,14 @@ function LeftBar() {
         </Link>
 
 
+        <Link to="/blogWrite" className='link'>
+          <div className="lbListItem">
+            <BorderColorOutlinedIcon className="lbListItemKey" />
+            <span className="lbListItemValue">Write Blogs</span>
+          </div>
+        </Link>
+
+
         <div className="lbListItem">
           <WhatshotIcon className="lbListItemKey" />
           <span className="lbListItemValue">Trending</span>
@@ -57,6 +67,14 @@ function LeftBar() {
         <div className="lbListItem">
           <BusinessCenterOutlinedIcon className="lbListItemKey" />
           <span className="lbListItemValue">Find Jobs</span>
+        </div>
+        </Link>
+
+
+        <Link to="/jobCreate" className='link'>
+        <div className="lbListItem">
+          <EngineeringOutlinedIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Create Jobs</span>
         </div>
         </Link>
 

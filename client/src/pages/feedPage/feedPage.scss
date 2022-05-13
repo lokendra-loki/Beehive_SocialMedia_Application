@@ -52,6 +52,30 @@
                 background-color: yellow;
                 overflow-y: scroll;
 
+
+                .fpRowIconCon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 30px;
+                    box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    -webkit-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+                    margin-top: 10px;
+                    margin: 20px 15px;
+                    border-radius: 6px;
+                    height: 60px;
+                    background-color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    
+        
+                    .fpRowIconItem {
+                        cursor: pointer;
+                    }
+                }
+
                 .smallWhatsOnYourMindCon {
                     height: 80px;
                     background-color: white;

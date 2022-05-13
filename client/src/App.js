@@ -31,7 +31,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead/:id" element={<BlogRead />} />
           <Route path="/blogWrite" element={<BlogWrite />} />
-          <Route path="/jobPostCreate" element={<JobPostCreate />} />
+          <Route path="/jobCreate" element={<JobPostCreate />} />
           <Route path="/jobSearch" element={<JobSearchFeed />} />
           <Route path="/jobPost/:id" element={<JobPostRead />} />
           <Route path="/" element={<FeedPage />} />

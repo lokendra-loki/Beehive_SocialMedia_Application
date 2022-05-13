@@ -1,5 +1,5 @@
 .jobSearchFeed {
-    height: 500vh;
+    margin-top: 70px;
 
     .jsfWrapper {
         
@@ -49,27 +49,15 @@
             
             .jsfLeftCon{
                 flex: 1;
-                background-color: cadetblue;
                 overflow-y: scroll;
                 height: 200vh;
                 
-            
-                
-                
-                
-               
-                
-                
-                
-
             }
             .jsfCenterCon{
                 flex: 2;
                 background-color: yellow;
                 overflow-y: scroll;
-                
-                
-                
+   
             }
             .jsfRightCon{
                 flex: 1;
