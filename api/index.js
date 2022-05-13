@@ -11,7 +11,12 @@ const userRoute = require('./routes/user')
 const passport = require('passport')
 const cors = require('cors')
 const passportSetup = require('./passport')
+const cookieParser = require('cookie-parser')
 
+
+
+//json parser
+app.use(express.json())
 
 
 //MongoDB connection
@@ -20,9 +25,8 @@ mongoose.connect(process.env.MONGODB_URL)
     .catch((err) => console.log({ msg: "MongoDB connection error", err }))
 
 
-
 //Middleware
-app.use(express.json())
+app.use(cookieParser())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/jobPosts", jobPostRoute)

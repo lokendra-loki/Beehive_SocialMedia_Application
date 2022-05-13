@@ -1,5 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const { createError } = require('../utils/error');
+const jwt = require('jsonwebtoken');
 
 
 //Register
@@ -30,7 +32,7 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         //find user by email
-        const user = await User.findOne({ email: req.body.email })
+        const user = await User.findOne({ username: req.body.username })
 
         //if user exists check password
         if (user) {
@@ -38,25 +40,29 @@ const login = async (req, res, next) => {
 
             //if password match create token
             if (validPassword) {
-                //create token
-                const accessToken = jwt.sign({
+
+                //create token//hiding these details in the token and passing this token in cookies
+                const token = jwt.sign({
                     id: user._id,
+                    username: user.username,
                     isAdmin: user.isAdmin
-                }, process.env.JWT_SECRET, { expiresIn: '3d' })
+                }, process.env.JWT_SECRET, { expiresIn: '1d' })
+                //now saving the token in the cookies
 
                 const { password, ...others } = user._doc;
-                res.status(200).json({ others, accessToken })
+
+                res.cookie("access_token", token, { httpOnly: true }).status(200).json(others)
             }
             else {
-                res.status(401).json("Invalid Password")
+                return next(createError(401, 'Invalid password'))
             }
         }
         else {
-            res.status(401).json("User not found")
+            return next(createError(401, "User not found"))
         }
 
     } catch (error) {
-        res.status(500).json(error)
+        next(error)
     }
 }
 
