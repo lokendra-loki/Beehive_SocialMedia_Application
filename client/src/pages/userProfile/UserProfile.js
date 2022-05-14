@@ -16,10 +16,10 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 
 function UserProfile() {
+  const { user } = useContext(AuthContext);
+
   //To open the FeedPostCreateContainer
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
-
-  const { user } = useContext(AuthContext);
 
   //Fetching userDetail
   const [currentUser, setCurrentUser] = useState({});
@@ -86,7 +86,7 @@ function UserProfile() {
 
             <div className="upSmallWhatsOnYourMindCon">
               <img
-                src="assets/profile.jpeg"
+                src={currentUser.profilePic}
                 alt=""
                 className="upTinyProfilePic"
               />
@@ -94,9 +94,14 @@ function UserProfile() {
                 onClick={() => setShowFeedPostCreateCon(!showFeedPostCreateCon)}
                 type="text"
                 className="upOnYourMindInput"
-                placeholder="What's on your mind Lokendra ?  Post photos / videos / text from here"
+                placeholder={
+                  "what's on your mind " +
+                  user.fullName +
+                  "?  Post photos / videos / text from here"
+                }
               />
             </div>
+
             {/* On Click ma yo container show hunxa */}
             {showFeedPostCreateCon && <FeedPostCreate />}
 
