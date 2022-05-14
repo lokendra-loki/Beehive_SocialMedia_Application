@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./userInfo.scss"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SchoolIcon from '@mui/icons-material/School';
@@ -13,18 +13,32 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Hobby from '../hobby/Hobby';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import UserInfoEdit from '../userInfoEdit/UserInfoEdit';
+import axios from 'axios';
 
 
 
 function UserInfo() {
-    //Calling currentUser from AuthContext
     const { user } = useContext(AuthContext)
-    console.log(user);
-
-
 
     //To open userInfoEditContainer
     const [showUserInfoEditCon, setShowUserInfoEditCon] = useState(false)
+
+    //Fetching userDetail 
+    const [currentUser, setCurrentUser] = useState({});
+    useEffect(() => {
+        const userDetailsOny = async () => {
+            try {
+                const res = await axios.post("/userDetails/get", {
+                    userID: user._id
+                })
+                setCurrentUser(res.data[0])
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        userDetailsOny()
+    }, [user._id]);
+    console.log(currentUser);
 
 
 
@@ -57,7 +71,8 @@ function UserInfo() {
             <div className="uiDetailInfo">
                 <div className="uiDetailInfoItem">
                     <BusinessCenterIcon className='uiIcon' />
-                    <span className='uiDetailInfoValue'>Software Engineer at Lendis</span>
+                    {/* <span className='uiDetailInfoValue'>Software Engineer at Lendis</span> */}
+                    <span className='uiDetailInfoValue'>{currentUser?.currentJobPosition}</span>
                 </div>
 
                 <div className="uiDetailInfoItem">
@@ -81,7 +96,7 @@ function UserInfo() {
                 <div className="uiDetailInfoItem">
                     <LocationOnIcon className='uiIcon' />
 
-                    <span className='uiDetailInfoValue'>From Butwal</span>
+                    <span className='uiDetailInfoValue'>{currentUser.homeTown}</span>
                 </div>
 
                 <div className="uiDetailInfoItem">
@@ -136,10 +151,10 @@ function UserInfo() {
 
             <div className="InterestHobbyTxtAndEditButCon">
                 <span className='interestHobby'>Interest and Hobby</span>
-                <button onClick={()=>setShowUserInfoEditCon(!showUserInfoEditCon)} className="userInfoEditBut">Edit</button>
+                <button onClick={() => setShowUserInfoEditCon(!showUserInfoEditCon)} className="userInfoEditBut">Edit</button>
             </div>
 
-            {showUserInfoEditCon && <UserInfoEdit/>}
+            {showUserInfoEditCon && <UserInfoEdit />}
 
 
             <div className="hobbyListCon">
