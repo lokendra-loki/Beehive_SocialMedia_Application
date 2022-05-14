@@ -11,7 +11,7 @@ function JobPostLg({ jobPost }) {
         <div className='jobPostLgCon' >
             <span className='jplTitle'>{jobPost.position}</span>
             <div className="jplCompanyIconName">
-                <img className='jplImg' src={jobPost.companyProfileImg || "/assets/profile.jpeg"} alt="" />
+                <img className='jplImg' src={jobPost.companyProfileImg} alt="" />
                 <div className="jplCompanyNameCon">
                     <span className="jplCompanyName">{jobPost.companyName}</span>
                     <span className="jplCompanyName">{jobPost.location} <span> ({jobPost.officeOrRemote === 1 ? "Office" : "Remote"})</span></span>
@@ -32,7 +32,7 @@ function JobPostLg({ jobPost }) {
             <div className="jplIconAndTxt">
                 <BusinessCenterIcon className='jplIcon' />
                 <span className='jplTxt' >{jobPost.noOfEmployee} </span>
-                <span className='jplTxt2'>Internet Publishing </span>
+                <span className='jplTxt2'>{jobPost.copanyType }</span>
             </div>
 
             <div className="jplRecruiticonTxt">
@@ -50,11 +50,11 @@ function JobPostLg({ jobPost }) {
             <div className="jobDescCon">
                 <span className="jobDescriptionTitleTxt">Job Description</span>
                 <span className="aboutTheJob">AboutThe Job</span>
-                <span className="jobDesc">{jobPost.aboutTheJob}</span>
-                <span className="aboutTheJob"> About <span className='jplCompanyName'>Topal</span></span>
-                <span className="jobDesc">{jobPost.aboutTheCompany}</span>
+                <span className="jobDesc">{jobPost.aboutJob}</span>
+                <span className="aboutTheJob"> About <span className='jplCompanyName'>{jobPost.companyName}</span></span>
+                <span className="jobDesc">{jobPost.aboutCompany}</span>
                 <span className="aboutTheJob">AboutThe Role</span>
-                <span className="jobDesc">{jobPost.aboutTheRole}</span>
+                <span className="jobDesc">{jobPost.aboutRole}</span>
                 <span className="aboutTheJob">Requirements</span>
                 <ul className='requirementsUl'>
                     <li className='requirementLi jobDesc'>{jobPost.requirement1}</li>

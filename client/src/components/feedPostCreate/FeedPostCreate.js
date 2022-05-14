@@ -1,15 +1,35 @@
-import React from 'react'
-import "./feedPostCreate.scss"
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActualOutlined';
-import VideoCameraBackOutlinedIcon from '@mui/icons-material/VideoCameraBackOutlined';
-import LinkIcon from '@mui/icons-material/Link';
-import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
+import React, { useContext, useState } from "react";
+import "./feedPostCreate.scss";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PhotoSizeSelectActualOutlinedIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
+import VideoCameraBackOutlinedIcon from "@mui/icons-material/VideoCameraBackOutlined";
+import LinkIcon from "@mui/icons-material/Link";
+import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import axios from "axios";
 
 function FeedPostCreate() {
-  return (
-    <div className='feedPostCreate'>
+  const { user } = useContext(AuthContext);
+  //Create UserFeed Post
+  const [desc, setDesc] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newPost = {
+      username: user.username,
+      fullName: user.fullName,
+      desc,
+    };
+    try {
+      const res = await axios.post("/userPosts/create", newPost);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <form className="feedPostCreate" onSubmit={handleSubmit}>
       <div className="fpcRow1">
         <div className="fpcRow1IconAndBackTxt">
           <ArrowBackIcon className="fpcRow1Icon" />
@@ -25,9 +45,13 @@ function FeedPostCreate() {
         <span className="fpcUsername">Loki Chaulagain</span>
       </div>
 
-
       <div className="fpcwhatsOnMindAndSelectedItemCon">
-        <input type="text" className="fpcwhatsOnMind" placeholder="What's on your mind ?" />
+        <input
+          type="text"
+          className="fpcwhatsOnMind"
+          placeholder="What's on your mind ?"
+          onChange={(e) => setDesc(e.target.value)}
+        />
         <div className="fpcSelectedItemList">
           <div className="fpcSelectedItemCon">1</div>
           <div className="fpcSelectedItemCon">1</div>
@@ -35,41 +59,35 @@ function FeedPostCreate() {
         </div>
       </div>
 
-
-
-
-
-      <label className='fpcImgVideoInput' htmlFor="fileInput1">
+      <label className="fpcImgVideoInput" htmlFor="fileInput1">
         <PhotoSizeSelectActualOutlinedIcon className="fpcImgIcon" />
-        <span className='fpcSelectImgTxt'>Image</span>
+        <span className="fpcSelectImgTxt">Image</span>
       </label>
-      <input type="file" id='fileInput1' style={{ display: " none" }} />
+      <input type="file" id="fileInput1" style={{ display: " none" }} />
 
-
-
-      <label className='fpcImgVideoInput' htmlFor="fileInput2">
+      <label className="fpcImgVideoInput" htmlFor="fileInput2">
         <VideoCameraBackOutlinedIcon className="fpcImgIcon" />
-        <span className='fpcSelectImgTxt'>Video</span>
+        <span className="fpcSelectImgTxt">Video</span>
       </label>
-      <input type="file" id='fileInput2' style={{ display: " none" }} />
+      <input type="file" id="fileInput2" style={{ display: " none" }} />
 
-      <label className='fpcImgVideoInput' htmlFor="fileInput3">
+      <label className="fpcImgVideoInput" htmlFor="fileInput3">
         <LinkIcon className="fpcImgIcon" />
-        <span className='fpcSelectImgTxt'>Video</span>
+        <span className="fpcSelectImgTxt">Video</span>
       </label>
-      <input type="url" id='fileInput3' style={{ display: " none" }} />
+      <input type="url" id="fileInput3" style={{ display: " none" }} />
 
-
-      <label className='fpcImgVideoInput' htmlFor="fileInput4">
+      <label className="fpcImgVideoInput" htmlFor="fileInput4">
         <PollOutlinedIcon className="fpcImgIcon" />
-        <span className='fpcSelectImgTxt'>Poll</span>
+        <span className="fpcSelectImgTxt">Poll</span>
       </label>
-      <input type="url" id='fileInput4' style={{ display: " none" }} />
+      <input type="url" id="fileInput4" style={{ display: " none" }} />
 
-      <button className="fpcPostBut">Post</button>
-
-    </div>
-  )
+      <button className="fpcPostBut" type="submit">
+        Post
+      </button>
+    </form>
+  );
 }
 
-export default FeedPostCreate
+export default FeedPostCreate;

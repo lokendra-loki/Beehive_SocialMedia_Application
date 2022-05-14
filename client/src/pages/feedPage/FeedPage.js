@@ -37,7 +37,17 @@ function FeedPage() {
     };
     userDetailsOny();
   }, [user._id]);
-  console.log(currentUser);
+
+  //Fetching all feed posts
+  const [feedPosts, setFeedPosts] = useState([]);
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      const res = await axios.get("/userPosts/getAll");
+      setFeedPosts(res.data);
+    };
+    fetchAllPosts();
+  }, []);
+  console.log(feedPosts);
 
   return (
     <div className="feedPage">
@@ -103,7 +113,13 @@ function FeedPage() {
             {/* On Click ma yo container show hunxa */}
             {showFeedPostCreateCon && <FeedPostCreate />}
 
-            <FeedPost />
+            {/* {feedPosts.content?.map((item, i) => (
+              <FeedPost index={i} item={item} key={i} />
+            ))}  */}
+
+            {feedPosts.map((feedPost, key) => (
+              <FeedPost feedPost={feedPost} key={key} />
+            ))}
           </div>
           <div className="fpRightCon">
             <Category />

@@ -23,6 +23,13 @@ function JobPostCreate() {
   const [aboutJob, setAboutJob] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [aboutRole, setAboutRole] = useState("");
+  const [requirement1, setRequirement1] = useState("");
+  const [requirement2, setRequirement2] = useState("");
+  const [requirement3, setRequirement3] = useState("");
+  const [requirement4, setRequirement4] = useState("");
+  const [requirement5, setRequirement5] = useState("");
+  const [requirement6, setRequirement6] = useState("");
+  const [requirement7, setRequirement7] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +45,13 @@ function JobPostCreate() {
       aboutJob,
       aboutCompany,
       aboutRole,
+      requirement1,
+      requirement2,
+      requirement3,
+      requirement4,
+      requirement5,
+      requirement6,
+      requirement7,
     };
     console.log(newJob);
     try {
@@ -150,12 +164,54 @@ function JobPostCreate() {
                 onChange={(e) => setAboutRole(e.target.value)}
               />
 
-              {/* <span className="jpcRequirements jpc">Requirements</span>
+              <span className="jpcRequirements jpc">Requirements</span>
               <input
                 type="text"
                 className="jpcRequirementsInput jpcInput"
-                onChange={(e) => setRequirements(e.target.value)}
-              />  */}
+                onChange={(e) => setRequirement1(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement2(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement3(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement4(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement5(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement6(e.target.value)}
+              />
+
+              <span className="jpcRequirements jpc">Requirements</span>
+              <input
+                type="text"
+                className="jpcRequirementsInput jpcInput"
+                onChange={(e) => setRequirement7(e.target.value)}
+              />
 
               <button className="jpcPostBut" type="submit">
                 Create Job

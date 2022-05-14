@@ -105,7 +105,7 @@ function UserProfile() {
             {/* On Click ma yo container show hunxa */}
             {showFeedPostCreateCon && <FeedPostCreate />}
 
-            <FeedPost />
+            {/* <FeedPost /> */}
           </div>
           <div className="upRightCon">
             <UserInfo />
