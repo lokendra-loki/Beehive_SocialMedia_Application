@@ -10,19 +10,19 @@ function Navbar() {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = useState({});
-  useEffect(() => {
-    const userDetailsOnly = async () => {
-      try {
-        const res = await axios.post("/userDetails/get", { userID: user._id });
-        console.log(res.data);
-        setCurrentUser(res.data[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    userDetailsOnly();
-  }, [user._id]);
+  // const [currentUser, setCurrentUser] = useState({});
+  // useEffect(() => {
+  //   const userDetailsOnly = async () => {
+  //     try {
+  //       const res = await axios.post("/userDetails/get", { userID: user._id });
+  //       console.log(res.data);
+  //       setCurrentUser(res.data[0]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   userDetailsOnly();
+  // }, [user._id]);
 
   //Logout Handler
   // const handleLogout = (e) => {
@@ -72,13 +72,13 @@ function Navbar() {
 
       <Link to="/profile">
         <img
-          src={currentUser.profilePic}
+          // src={currentUser.profilePic}
           alt=""
           className="navbarCircleAvatar"
         />
       </Link>
 
-      <button className="navbarLogOutBut" >
+      <button className="navbarLogOutBut">
         <LogoutIcon />
         <span className="logOutSpan">Logout</span>
       </button>

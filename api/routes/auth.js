@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const { register, login } = require('../controllers/authController');
+const { verifyUser } = require('../utils/verifyToken');
 
 
 //REGISTER

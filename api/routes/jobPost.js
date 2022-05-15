@@ -2,13 +2,14 @@ const router = require('express').Router();
 const JobPost = require('../models/JobPost');
 const bcrypt = require('bcrypt');
 const { createJobPost, updateJobPost, deleteJobPost, getJobPost, GetAllJobPosts } = require('../controllers/jobPostController');
+const { verifyUser, verifyToken } = require('../utils/verifyToken');
 
 
 //Create JobPost
-router.post("/create", createJobPost)
+router.post("/create",verifyToken, createJobPost)
 
 //Update JobPost
-router.put("/update/:id", updateJobPost)
+router.put("/update/:id",verifyUser, updateJobPost)
 
 //Get JobPost
 router.get("/get/:id", getJobPost)
@@ -17,7 +18,7 @@ router.get("/get/:id", getJobPost)
 router.get("/getAll", GetAllJobPosts)
 
 //Delete JobPost
-router.delete("/delete/:id", deleteJobPost)
+router.delete("/delete/:id",verifyUser, deleteJobPost)
 
 
 //export

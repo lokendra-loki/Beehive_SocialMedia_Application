@@ -17,8 +17,8 @@
         .brRightSide {
             padding: 0px 16px;
             flex: 3;
-            height: 500vh;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             
         }

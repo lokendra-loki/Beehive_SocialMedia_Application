@@ -20,17 +20,18 @@ const router = require('express').Router();
 
 
 
+
 //Update User
-router.put("/update/:id", updateUser)
+router.put("/update/:id",verifyUser, updateUser)
 
 //Get User
-router.get("/get/:id", getUser)
+router.get("/get/:id",verifyUser, getUser)
 
 //Get All User
 router.get("/getAll", getAllUsers)
 
-//Get User
-router.delete("/delete/:id", deleteUser)
+//Delete User
+router.delete("/delete/:id",verifyUser, deleteUser)
 
 
 //export

@@ -4,6 +4,7 @@ const { createError } = require('../utils/error');
 const jwt = require('jsonwebtoken');
 
 
+
 //Register
 const register = async (req, res, next) => {
     try {
@@ -13,9 +14,12 @@ const register = async (req, res, next) => {
         //create new user
         const newUser = new User({
             // fullName: req.body.fullName,
+            fullName: req.body.fullName,
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
+            //phoneNumber is optional
+            phoneNumber: "",
         })
         //save user
         const savedUser = await newUser.save()
@@ -31,7 +35,7 @@ const register = async (req, res, next) => {
 //Login
 const login = async (req, res, next) => {
     try {
-        //find user by email
+        //find user by username
         const user = await User.findOne({ username: req.body.username })
 
         //if user exists check password
@@ -44,7 +48,7 @@ const login = async (req, res, next) => {
                 //create token//hiding these details in the token and passing this token in cookies
                 const token = jwt.sign({
                     id: user._id,
-                    username: user.username,
+                    // username: user.username,
                     isAdmin: user.isAdmin
                 }, process.env.JWT_SECRET, { expiresIn: '1d' })
                 //now saving the token in the cookies
@@ -58,7 +62,7 @@ const login = async (req, res, next) => {
             }
         }
         else {
-            return next(createError(401, "User not found"))
+            return next(createError(401, "User not found abc"))
         }
 
     } catch (error) {

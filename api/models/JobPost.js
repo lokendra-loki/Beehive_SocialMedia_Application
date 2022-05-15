@@ -1,110 +1,108 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const JobPostSchema = new mongoose.Schema({
+const JobPostSchema = new mongoose.Schema(
+  {
     position: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 100,
-    },
-
-    salaryRange: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
 
     location: {
-        type: String,
+      type: String,
+      required: true,
+    },
+
+    // officeOrRemote: {
+    //   type: Number,
+    //   enum: [1, 2], //office or remote
+    // },
+
+    salaryRange: {
+      type: String,
+      required: true,
     },
 
     companyName: {
-        type: String,
-        required: true,
-        
+      type: String,
+      required: true,
     },
 
     companyType: {
-        type: String, //software provider
+      type: String, //software provider
+      required: true,
     },
 
     noOfEmployee: {
-        type: String,
+      type: String,
+      required: true,
     },
 
     companyProfileImg: {
-        type: String,
-        default:""
+      type: String,
+      default: "",
     },
 
     contractType: {
-        type: Number,
-        enum: [1, 2, 3, 4], //intern ,junior ,mid-senior,senior,manager
-        required: true,
-    },
-    officeOrRemote:{
-        type:Number,
-        enum:[1,2],   //office or remote
-        required: true
+      type: Number,
+      enum: [1, 2, 3, 4], //intern ,junior ,mid-senior,senior,manager
     },
 
     jobType: {
-        type: Number,
-        enum: [1, 2],  //full time,part time
-        required: true,
+      type: Number,
+      enum: [1, 2], //full time,part time
     },
 
-    aboutTheJob: {
-        type: String,
-        required: true,
+    aboutJob: {
+      type: String,
+      required: true,
     },
 
-    aboutTheCompany: {
-        type: String,
-        required: true,
+    aboutCompany: {
+      type: String,
+      required: true,
     },
 
-    aboutTheRole: {
-        type: String,
-        required: true,
+    aboutRole: {
+      type: String,
+      required: true,
     },
 
     requirement1: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement2: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement3: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement4: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement5: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement6: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
 
     requirement7: {
-        type: String,
-        required: true,
+      type: String,
+      default: "",
     },
+  },
+  { timestamps: true }
+);
 
-    
-
-}, { timestamps: true })
-
-module.exports = mongoose.model("JobPost", JobPostSchema)
+module.exports = mongoose.model("JobPost", JobPostSchema);

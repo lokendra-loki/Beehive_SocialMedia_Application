@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { createError } = require('../utils/error');
 
+
 //VerifyToken
 const verifyToken = (req, res, next) => {
     const token = req.cookies.access_token   //take token from cookies
@@ -21,7 +22,7 @@ const verifyToken = (req, res, next) => {
 //VerifyUser
 const verifyUser = (req, res, next) => {
     //to verify user it should be authenticated first
-    verifyToken(req, res, () => {
+    verifyToken(req, res, next, () => {
         if (req.user.id === req.params.id || req.user.isAdmin) {  //req.user.id is the id that is inside twt token
             next()                                                 //req.params.id is the id passed in the url
         } else {          //if id dont match and user is nit admin
@@ -31,9 +32,8 @@ const verifyUser = (req, res, next) => {
 }
 
 
-
 //VerifyAdmin
- const verifyAdmin = (req, res, next) => {
+const verifyAdmin = (req, res, next) => {
     verifyToken(req, res, next, () => {
         if (req.user.isAdmin) {
             next();

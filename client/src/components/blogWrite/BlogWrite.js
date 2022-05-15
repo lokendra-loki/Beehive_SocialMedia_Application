@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
-import Category from "../../components/category/Category";
-import LeftBar from "../../components/leftBar/LeftBar";
-import Navbar from "../../components/navbar/Navbar";
-import RecentPost from "../../components/recentPost/RecentPost";
+import Category from "../category/Category";
+import LeftBar from "../leftBar/LeftBar";
+import Navbar from "../navbar/Navbar";
+import RecentPost from "../recentPost/RecentPost";
 import "./blogWrite.scss";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
-import BlogEdit from "../../components/blogEdi/BlogEdit";
 
 function BlogWrite() {
   const { user } = useContext(AuthContext);
@@ -36,8 +35,6 @@ function BlogWrite() {
     }
   };
 
-  
-
   return (
     <div className="blogWrite">
       <Navbar />
@@ -49,8 +46,6 @@ function BlogWrite() {
           <RecentPost />
           <Category />
         </div>
-
-      
 
         <div className="bWriteRightSide">
           <div className="bwWholeContainer">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BlogLg from "../../components/blogLg/BlogLg";
 import Category from "../../components/category/Category";
 import LeftBar from "../../components/leftBar/LeftBar";
@@ -7,6 +7,7 @@ import RecentPost from "../../components/recentPost/RecentPost";
 import { useLocation } from "react-router";
 import "./blogRead.scss";
 import axios from "axios";
+import BlogEdit from "../../components/blogEdi/BlogEdit";
 
 function BlogRead() {
   //Fetching data from the URL id

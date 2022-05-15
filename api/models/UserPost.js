@@ -1,50 +1,54 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-
-const UserPostSchema = new mongoose.Schema({
+const UserPostSchema = new mongoose.Schema(
+  {
     username: {
-        type: String,
-        required: true
+      type: String,
+      default: "",
+    },
+
+    fullName: {
+      type: String,
+      default: "",
     },
 
     profession: {
-        type: String,
-        required: true
+      type: String,
+      default: "",
     },
 
     desc: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
 
     postImg: {
-        type: String,
-        default: ""
+      type: String,
+      default: "",
     },
 
     likes: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
 
-    disLike:{
-        type: Array,
-        default: []
+    disLike: {
+      type: Array,
+      default: [],
     },
 
-    likeCount:{
-        type: Number,
-        default: 0
+    likeCount: {
+      type: Number,
+      default: 0,
     },
 
-    disLikeCount:{
-        type: Number,
-        default: 0
-    }
-    
-
-}, { timestamps: true })
-
+    disLikeCount: {
+      type: Number,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+);
 
 //export
-module.exports = mongoose.model('UserPost', UserPostSchema);
+module.exports = mongoose.model("UserPost", UserPostSchema);

@@ -27,10 +27,6 @@ const BlogSchema = new mongoose.Schema({
         required: true
     },
 
-    author: {
-        type: String,
-        required: true
-    }
 },{timestamps: true});
 
 //export
