@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-import "./leftBar.scss";
 import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
 import HelpCenterOutlinedIcon from "@mui/icons-material/HelpCenterOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
@@ -12,6 +10,7 @@ import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import { Link } from "react-router-dom";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import "./leftBar.scss";
 
 function LeftBar() {
   return (
@@ -79,86 +78,6 @@ function LeftBar() {
           <span className="lbListItemValue">Help </span>
         </div>
 
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
         <div className="lbListItem">
           <LogoutIcon className="lbListItemKey" />
           <span className="lbListItemValue">Logout </span>

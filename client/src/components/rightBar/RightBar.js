@@ -8,6 +8,7 @@ function RightBar() {
     <div className="rightBarComponent">
       <Category />
       <RecentPost />
+      <span className="helper"></span>
     </div>
   );
 }

@@ -7,14 +7,11 @@ import BlogRead from "./pages/blogRead/BlogRead";
 import BlogWrite from "./pages/blogWrite/BlogWrite";
 import JobPostCreate from "./pages/jobPostCreate/JobPostCreate";
 import FeedPage from "./pages/feedPage/FeedPage";
-import { useContext } from "react";
-import { AuthContext } from "./context/authContext/AuthContext";
 import JobSearchFeed from "./pages/jobSearchFeed/JobSearchFeed";
 import JobPostRead from "./pages/JobPostRead/JobPostRead";
 import Trending from "./pages/trending/Trending";
 
 function App() {
-  const { user } = useContext(AuthContext);
   return (
     <div className="App">
       <Router>

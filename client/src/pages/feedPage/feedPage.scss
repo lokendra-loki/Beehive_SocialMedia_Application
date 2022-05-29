@@ -1,19 +1,20 @@
 .feedPage {
-  margin-top: 70px;
+  margin-top: 60px;
 
   .fpWrapper {
     .fpBeforeSplit {
       display: flex;
 
       .fpLeftCon {
-        flex: 1;
-        background-color: cadetblue;
+        flex: 1.1;
         overflow-y: scroll;
         height: 200vh;
+        background-color: rgb(234, 231, 238);
       }
+
       .fpCenterCon {
         flex: 2.5;
-        background-color: yellow;
+        // background-color: yellow;
 
         .smallWhatsOnYourMindCon {
           height: 80px;
@@ -51,7 +52,7 @@
       }
       .fpRightCon {
         flex: 1.1;
-        background-color: green;
+        background-color: rgb(234, 231, 238);
       }
     }
   }
