@@ -9,37 +9,37 @@ function Navbar() {
       <img src="/assets/logo.svg" alt="" className="navbarLogo" />
 
       <div className="navbarLinks ">
-        <NavLink to="/" activeClassName="active" className="link">
+        <NavLink to="/" activeclassname="active" className="link">
           <div className="navLinkCon ">
             <span className="navLink">Home</span>
           </div>
         </NavLink>
 
-        <NavLink to="/blogs" activeClassName="active" className="link">
+        <NavLink to="/blogs" activeclassname="active" className="link">
           <div className="navLinkCon">
             <span className="navLink">Blog</span>
           </div>
         </NavLink>
 
-        <NavLink to="/jobSearch" activeClassName="active" className="link">
+        <NavLink to="/jobSearch" activeclassname="active" className="link">
           <div className="navLinkCon">
             <span className="navLink">Jobs</span>
           </div>
         </NavLink>
 
-        <NavLink to="/trending" activeClassName="active" className="link">
+        <NavLink to="/trending" activeclassname="active" className="link">
           <div className="navLinkCon ">
             <span className="navLink">Trending</span>
           </div>
         </NavLink>
 
-        <NavLink to="/askQuery" activeClassName="active" className="link">
+        <NavLink to="/askQuery" activeclassname="active" className="link">
           <div className="navLinkCon">
             <span className="navLink">AskQuery </span>
           </div>
         </NavLink>
 
-        <NavLink to="/about" activeClassName="active" className="link">
+        <NavLink to="/about" activeclassname="active" className="link">
           <div className="navLinkCon">
             <span className="navLink">About </span>
           </div>

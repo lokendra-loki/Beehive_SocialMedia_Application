@@ -18,17 +18,12 @@ export const AuthContextProvider = ({ children }) => {
   const [didMount, setDidMount] = useState(false);
   useEffect(() => {
     setDidMount(true);
-
     localStorage.setItem("user", JSON.stringify(state.user));
     return () => setDidMount(false);
   }, [state.user]);
   if (!didMount) {
     return null;
   }
-
-  // useEffect(() => {
-
-  // }, [])
 
   return (
     <AuthContext.Provider
