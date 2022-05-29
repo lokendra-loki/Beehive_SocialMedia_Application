@@ -104,3 +104,10 @@
         }
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .navbar {
+        height: 30px;
+        width: 100%;
+    }
+}

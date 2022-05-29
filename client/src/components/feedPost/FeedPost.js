@@ -4,25 +4,22 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
-import { format } from "timeago.js";
 
-function FeedPost({ feedPost }) {
-  console.log(feedPost);
-
+function FeedPost() {
   return (
     <div className="feedPost">
       <div className="fpRow1">
         <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
         <div className="fpProfileInfoColumn">
-          <span className="fpUsername">{feedPost.fullName}</span>
-          <span className="fpProfession">{feedPost.profession}</span>
-          <span className="fpTime">{format(feedPost.createdAt)}</span>
+          <span className="fpUsername">Loki Chaulagain</span>
+          <span className="fpProfession">Software engineer</span>
+          <span className="fpTime">7min ago</span>
         </div>
         <div className="fpMoreIconColumn">
           <MoreVertOutlinedIcon />
         </div>
       </div>
-      <span className="fpDesc">{feedPost.desc}</span>
+      <span className="fpDesc">desc</span>
       <img src="/assets/cover.jpeg" alt="" className="fpPostImg" />
       <hr className="fpHr" />
       <div className="fpIconsRow">

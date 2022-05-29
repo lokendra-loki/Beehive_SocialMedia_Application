@@ -17,6 +17,8 @@ import axios from "axios";
 
 function UserProfile() {
   const { user } = useContext(AuthContext);
+  console.log(user)
+  
 
   //To open the FeedPostCreateContainer
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
@@ -108,7 +110,7 @@ function UserProfile() {
             {/* <FeedPost /> */}
           </div>
           <div className="upRightCon">
-            <UserInfo />
+            {/* <UserInfo /> */}
           </div>
         </div>
       </div>
