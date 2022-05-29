@@ -1,9 +1,5 @@
 import Login from "./pages/login/Login";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/register/Register";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Blogs from "./pages/blogs/Blogs";
@@ -15,16 +11,15 @@ import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 import JobSearchFeed from "./pages/jobSearchFeed/JobSearchFeed";
 import JobPostRead from "./pages/JobPostRead/JobPostRead";
-
-
+import Trending from "./pages/trending/Trending";
 
 function App() {
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/login" element={ <Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/blogs" element={<Blogs />} />
@@ -32,11 +27,9 @@ function App() {
           <Route path="/blogWrite" element={<BlogWrite />} />
           <Route path="/jobCreate" element={<JobPostCreate />} />
           <Route path="/jobSearch" element={<JobSearchFeed />} />
+          <Route path="/trending" element={<Trending />} />
           <Route path="/jobPost/:id" element={<JobPostRead />} />
           <Route path="/" element={<FeedPage />} />
-         
-          
-
         </Routes>
       </Router>
     </div>

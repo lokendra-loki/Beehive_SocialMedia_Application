@@ -1,87 +1,69 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./navbar.scss";
+import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
-import axios from "axios";
+import { Link, NavLink } from "react-router-dom";
+import "./navbar.scss";
 
 function Navbar() {
-  const { user, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  // const [currentUser, setCurrentUser] = useState({});
-  // useEffect(() => {
-  //   const userDetailsOnly = async () => {
-  //     try {
-  //       const res = await axios.post("/userDetails/get", { userID: user._id });
-  //       console.log(res.data);
-  //       setCurrentUser(res.data[0]);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   userDetailsOnly();
-  // }, [user._id]);
-
-  //Logout Handler
-  // const handleLogout = (e) => {
-  //   dispatch({ type: "LOGOUT" });
-  //   navigate("/");
-  // };
-
   return (
     <div className="navbar">
       <img src="/assets/logo.svg" alt="" className="navbarLogo" />
 
-      <div className="navbarLinks">
-        <Link to="/" className="link">
-          <span className="navLink">Home</span>
-        </Link>
+      <div className="navbarLinks ">
+        <NavLink to="/" activeClassName="active" className="link">
+          <div className="navLinkCon ">
+            <span className="navLink">Home</span>
+          </div>
+        </NavLink>
 
-        <span className="navLink">About </span>
-        <span className="navLink">Contact</span>
+        <NavLink to="/blogs" activeClassName="active" className="link">
+          <div className="navLinkCon">
+            <span className="navLink">Blog</span>
+          </div>
+        </NavLink>
 
-        <Link to="/blogs" className="link">
-          <span className="navLink">Blog</span>
-        </Link>
+        <NavLink to="/jobSearch" activeClassName="active" className="link">
+          <div className="navLinkCon">
+            <span className="navLink">Jobs</span>
+          </div>
+        </NavLink>
 
-        <Link to="/jobSearch" className="link">
-          <span className="navLink">Jobs</span>
-        </Link>
+        <NavLink to="/trending" activeClassName="active" className="link">
+          <div className="navLinkCon ">
+            <span className="navLink">Trending</span>
+          </div>
+        </NavLink>
+
+        <NavLink to="/askQuery" activeClassName="active" className="link">
+          <div className="navLinkCon">
+            <span className="navLink">AskQuery </span>
+          </div>
+        </NavLink>
+
+        <NavLink to="/about" activeClassName="active" className="link">
+          <div className="navLinkCon">
+            <span className="navLink">About </span>
+          </div>
+        </NavLink>
       </div>
 
-      <div className="navSearchCon">
-        <SearchIcon className="navSearchIcon" />
-        <input
-          type="text"
-          className="navSearchInput"
-          placeholder="Type Search Word"
-        />
-      </div>
+      <div className="navRight">
+        <div className="navSearchCon">
+          <SearchIcon className="navSearchIcon" />
+          <input
+            type="text"
+            className="navSearchInput"
+            placeholder="Type Search Word"
+          />
+        </div>
 
-      <div className="navbarButtons">
-        <Link to="/register">
-          <button className="navbarButton">Sign Up</button>
+        <Link to="/profile">
+          <img
+            src="/assets/profile.jpeg"
+            alt=""
+            className="navbarCircleAvatar"
+          />
         </Link>
-
-        <Link to="/login">
-          <button className="navbarButton  navbarButton1">Log In</button>
-        </Link>
       </div>
-
-      <Link to="/profile">
-        <img
-          // src={currentUser.profilePic}
-          alt=""
-          className="navbarCircleAvatar"
-        />
-      </Link>
-
-      <button className="navbarLogOutBut">
-        <LogoutIcon />
-        <span className="logOutSpan">Logout</span>
-      </button>
     </div>
   );
 }
