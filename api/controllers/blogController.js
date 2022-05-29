@@ -1,64 +1,77 @@
-const Blog = require('../models/Blog');
+const Blog = require("../models/Blog");
 
-
-//Create Blog
+//Create
 const createBlog = async (req, res, next) => {
-    const newBlog = new Blog(req.body)
-    try {
-        const savedBlog = await newBlog.save();
-        res.status(200).json(savedBlog)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
+  const newBlog = new Blog(req.body);
+  try {
+    const savedBlog = await newBlog.save();
+    res.status(200).json(savedBlog);
+  } catch (error) {
+    next(error);
+  }
+};
 
-
-//Update Blog
+//Update
 const updateBlog = async (req, res, next) => {
-    try {
-        const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-        res.status(200).json(updatedBlog)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
+  try {
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updatedBlog);
+  } catch (error) {
+    next(error);
+  }
+};
 
-
-//Get Blog
+//Get
 const getBlog = async (req, res, next) => {
-    try {
-        const blog = await Blog.findById(req.params.id)
-        res.status(200).json(blog)
-    }
-    catch (error) {
-        res.status(500).json(error)
-    }
-}
+  try {
+    const blog = await Blog.findById(req.params.id);
+    res.status(200).json(blog);
+  } catch (error) {
+    next(error);
+  }
+};
 
-
-//GetAll Blogs
+//GetAll
 const getAllBlogs = async (req, res, next) => {
-    try {
-        const blogs = await Blog.find()
-        res.status(200).json(blogs)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
+  try {
+    const blogs = await Blog.find();
+    res.status(200).json(blogs);
+  } catch (error) {
+    next(error);
+  }
+};
 
-
-//Delete Blog
+//Delete
 const deleteBlog = async (req, res, next) => {
-    try {
-        const deletedBlog = await Blog.findByIdAndDelete(req.params.id)
-        res.status(200).json(deletedBlog)
-    }
-    catch (error) {
-        res.status(500).json(error)
-    }
-}
+  try {
+    const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedBlog);
+  } catch (error) {
+    next(error);
+  }
+};
 
+//Get allBlogs of a user (by userID) element
+const getAllBlogsOfAUser = async (req, res, next) => {
+  const { authorID } = req.body;
+  try {
+    userKoAllPosts = await Blog.find({ authorID });
+    res.status(200).json(userKoAllPosts);
+  } catch (error) {
+    next(error);
+  }
+};
 
-//export 
-module.exports = { createBlog, updateBlog, getBlog, getAllBlogs, deleteBlog };
-
+//export
+module.exports = {
+  createBlog,
+  updateBlog,
+  getBlog,
+  getAllBlogs,
+  deleteBlog,
+  getAllBlogsOfAUser,
+};

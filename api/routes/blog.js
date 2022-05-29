@@ -1,28 +1,31 @@
 const router = require("express").Router();
+const { verifyAdmin, verifyUser } = require("../utils/verifyToken");
 const {
   createBlog,
   updateBlog,
   getBlog,
   getAllBlogs,
   deleteBlog,
+  getAllBlogsOfAUser,
 } = require("../controllers/blogController");
-const { verifyAdmin, verifyUser } = require("../utils/verifyToken");
-const Blog = require("../models/Blog");
 
-//Create Blog
+//Create
 router.post("/create", verifyUser, createBlog);
 
-//Update Blog
+//Update
 router.put("/update/:id", verifyUser, updateBlog);
 
-//Get Blog
+//Get
 router.get("/get/:id", getBlog);
 
-//GetAll Blogs
+//GetAll
 router.get("/getAll", getAllBlogs);
 
-//Delete Blog
+//Delete
 router.delete("/delete/:id", verifyAdmin, deleteBlog);
+
+//Get allBlogs of a user
+router.post("/getAllBlogsOfAUser", getAllBlogsOfAUser);
 
 //export
 module.exports = router;
