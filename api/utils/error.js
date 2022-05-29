@@ -1,10 +1,10 @@
 //Error handling function for the API requests
- const createError = (status, message) => {
-    const error = new Error()
-    error.status = status
-    error.message = message
-    return error
-}
+const createError = (status, message) => {
+  const error = new Error();
+  error.status = status;
+  error.message = message;
+  return error;
+};
 
 //export
-module.exports = { createError }
+module.exports = { createError };

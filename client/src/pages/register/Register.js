@@ -1,17 +1,17 @@
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import KeyOutlinedIcon from "@mui/icons-material/KeyOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import React, { useContext } from "react";
 import { registerSchema } from "./formValidationSchema";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./register.scss";
-import { AuthContext } from "../../context/authContext/AuthContext";
 const { useFormik } = require("formik");
 
 function Register() {
-  const { user, dispatch } = useContext(AuthContext);
-  console.log(user);
+  //Register
+  const { dispatch } = useContext(AuthContext);
 
   const onSubmit = async (values, actions) => {
     console.log(values);
@@ -25,7 +25,7 @@ function Register() {
         password: values.password,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      await new Promise((resolve) => setTimeout(resolve, 1000)); //wait 1 sec
+      await new Promise((resolve) => setTimeout(resolve, 500)); //wait 0.5 sec
       actions.resetForm();
       console.log(res.data);
       window.location.replace("/");
@@ -52,7 +52,6 @@ function Register() {
     validationSchema: registerSchema,
     onSubmit,
   });
-  console.log(errors);
 
   return (
     <div className="registerPage">
@@ -81,11 +80,11 @@ function Register() {
                 <input
                   type="text"
                   id="username"
-                  placeholder="Username"
+                  placeholder="Full Name"
                   value={values.username}
                   autoComplete="off"
                   onChange={handleChange}
-                  onBlur={handleBlur} //blur when leave the input
+                  onBlur={handleBlur}
                   className={
                     errors.username && touched.username
                       ? "input-error"
@@ -93,7 +92,6 @@ function Register() {
                   }
                 />
               </div>
-
               {errors.username && touched.username && (
                 <p className="error">{errors.username}</p>
               )}
@@ -174,23 +172,21 @@ function Register() {
               )}
             </div>
 
-            <button className="rp-loginBut" type="submit">
+            <button
+              className="rp-loginBut"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Register
             </button>
 
             <span className="rp-alreadyAcc">Already have an account ?</span>
 
             <Link to="/login" className="link">
-              <button className="rp-loginBut">Log into your account</button>
+              <button className="rp-loginBut rp-loginBut1">
+                Log into your account
+              </button>
             </Link>
-
-            {/* <button
-              className="registerSubmitBut"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Register
-            </button> */}
           </form>
         </div>
         <div className="lpRight">right</div>

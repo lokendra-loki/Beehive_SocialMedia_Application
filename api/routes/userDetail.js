@@ -1,32 +1,30 @@
-const { createUserDetail } = require('../controllers/userDetailController');
-const { getUserDetailLogin } = require('../controllers/userDetailController');
-const { verifyUser } = require('../utils/verifyToken');
-const router = require('express').Router();
+const router = require("express").Router();
+const {
+  createUserDetail,
+  updateUserDetail,
+  getUserDetail,
+  getAllUserDetail,
+  deleteUserDetail,
+  getUserDetailByUserID,
+} = require("../controllers/userDetailController");
 
+//Create
+router.post("/create", createUserDetail);
 
-//create UserDetail
-router.post("/create", createUserDetail)
+//Update
+router.put("/update/:id", updateUserDetail);
 
-//get UserDetail	
-router.post("/get", getUserDetailLogin)
+//Get
+router.get("/get/:id", getUserDetail);
 
+//Get all
+router.get("/getAll", getAllUserDetail);
 
+//Delete
+router.delete("/delete/:id", deleteUserDetail);
 
-
-
-
-// //Update UserDetail
-// router.put("/update/:id", verifyUser, updateUser) 
-
-// //Get UserDetail
-// router.get("/get/:id", verifyUser, getUser)
-
-// //Get UserDetail
-// router.get("/getAll", getAllUsers)
-
-// //Delete UserDetail
-// router.delete("/delete/:id", verifyUser, deleteUser)
-
+//Find userDetail by element {userID}
+router.post("/getByUserID", getUserDetailByUserID);
 
 //export
 module.exports = router;

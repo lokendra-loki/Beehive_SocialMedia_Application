@@ -1,73 +1,77 @@
-const UserDetail = require('../models/userDetail')
+const UserDetail = require("../models/userDetail");
 
-
-//create UserDetail
+//Create
 const createUserDetail = async (req, res, next) => {
-    const userDetail = new UserDetail(req.body)
-    try {
-        const savedUserDetail = await userDetail.save();
-        res.status(200).json(savedUserDetail)
-    } catch (error) {
-        next(error)
-    }
-}
+  const userDetail = new UserDetail(req.body);
+  try {
+    const savedUserDetail = await userDetail.save();
+    res.status(200).json(savedUserDetail);
+  } catch (error) {
+    next(error);
+  }
+};
 
+//Update
+const updateUserDetail = async (req, res, next) => {
+  try {
+    const updatedUser = await UserDetail.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    next(error);
+  }
+};
 
-//Find userID from UserDetail //child bata parents fetch garey ko//userID is child and userDetail is parent
-const getUserDetailLogin = async (req, res, next) => {
-    const { userID } = req.body
-    try {
-        const getUserID = await UserDetail.find({ userID })
-        return res = res.status(200).json(getUserID)
-    } catch (error) {
-        next(error)
-    }
-}
+//Get
+const getUserDetail = async (req, res, next) => {
+  try {
+    const userDetail = await UserDetail.findById(req.params.id);
+    res.status(200).json(userDetail) + "UserDetail found";
+  } catch (error) {
+    next(error);
+  }
+};
 
+//Get all
+const getAllUserDetail = async (req, res, next) => {
+  try {
+    const allUserDetail = await UserDetail.find();
+    res.status(200).json(allUserDetail);
+  } catch (error) {
+    next(error);
+  }
+};
 
-// //Update UserDetail
-// const updateUser = async (req, res, next) => {
-//     try {
-//         const updatedUser = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-//         res.status(200).json(updatedUser)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// }
+//Delete
+const deleteUserDetail = async (req, res, next) => {
+  try {
+    const deletedUserDetail = await UserDetail.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedUserDetail);
+  } catch (error) {
+    next(error);
+  }
+};
 
-
-// //Get UserDetail
-// const getUser = async (req, res, next) => {
-//     try {
-//         const user = await User.findById(req.params.id)
-//         res.status(200).json(user) + "User found"
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// }
-
-
-// //GetUserDetail
-// const getAllUsers = async (req, res, next) => {
-//     try {
-//         const users = await User.find()
-//         res.status(200).json(users) + "Users found"
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// }
-
-
-// //Delete UserDetail
-// const deleteUser = async (req, res, next) => {
-//     try {
-//         const deletedUser = await User.findByIdAndDelete(req.params.id)
-//         res.status(200).json(deletedUser) + "User deleted"
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// }
-
+//Find by element {userID}
+const getUserDetailByUserID = async (req, res, next) => {
+  const { userID } = req.body;
+  try {
+    const userDetail = await UserDetail.find({ userID });
+    return (res = res.status(200).json(userDetail));
+  } catch (error) {
+    next(error);
+  }
+};
 
 //export
-module.exports = { createUserDetail, getUserDetailLogin }
+module.exports = {
+  createUserDetail,
+  updateUserDetail,
+  getUserDetail,
+  getAllUserDetail,
+  deleteUserDetail,
+  getUserDetailByUserID,
+};
