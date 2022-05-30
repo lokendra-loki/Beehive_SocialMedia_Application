@@ -1,16 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Category from "../../components/category/Category";
 import LeftBar from "../../components/leftBar/LeftBar";
 import Navbar from "../../components/navbar/Navbar";
 import RecentPost from "../../components/recentPost/RecentPost";
 import "./jobPostCreate.scss";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
-import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 
 function JobPostCreate() {
-  const { user } = useContext(AuthContext);
-
   //Create Job Post
   const [position, setPosition] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -55,8 +52,7 @@ function JobPostCreate() {
     };
     console.log(newJob);
     try {
-      const res = await axios.post("jobPosts/create", newJob);
-      console.log(res);
+      await axios.post("jobPosts/create", newJob);
     } catch (err) {
       console.error(err.message);
     }

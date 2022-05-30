@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from "timeago.js";
 import "./jobPost.scss";
+import { Link } from "react-router-dom";
 
 function JobPost({ jobPost }) {
   return (
@@ -11,6 +12,9 @@ function JobPost({ jobPost }) {
         <span className="jpPostTime">{format(jobPost.createdAt)}</span>
         <span className="jpCompanyAddress">{jobPost.location}</span>
         <span className="jpCompanyName">{jobPost.companyName}</span>
+        <Link to={`/jobPost/${jobPost._id}`} className="link">
+          <span className="viewMore">ViewMore...</span>
+        </Link>
       </div>
       <hr className="jpHr" />
       <button className="fullTimeBut">Full Time</button>

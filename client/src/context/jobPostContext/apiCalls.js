@@ -30,7 +30,7 @@ const deleteJobPost = async (id, dispatch) => {
 const createJobPost = async (jobPost, dispatch) => {
   dispatch({ type: "CREATE_JOB_POST_START" });
   try {
-    await axios.post("/posts/create", jobPost);
+    await axios.post("/jobPosts/create", jobPost);
     dispatch({ type: "CREATE_JOB_POST_SUCCESS", payload: jobPost });
   } catch (error) {
     dispatch({ type: "CREATE_JOB_POST_FAILURE" });
