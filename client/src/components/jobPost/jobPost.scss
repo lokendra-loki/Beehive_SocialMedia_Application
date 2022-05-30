@@ -1,11 +1,9 @@
 .jobPost {
   margin: 10px 15px;
-  padding: 20px 30px;
+  padding: 20px;
   background-color: white;
-  justify-content: space-between;
   display: flex;
   align-items: center;
-  //   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.33);
   -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.33);
@@ -22,6 +20,8 @@
   .jpInfoCon {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    width: 470px;
 
     .jpJobTitle {
       font-size: 26px;
@@ -34,25 +34,58 @@
       font-weight: 600;
       margin-top: 10px;
     }
+
     .jpCompanyAddress {
       font-size: 14px;
       font-weight: 600;
       color: rgb(43, 42, 42);
       margin-top: 10px;
     }
+
     .jpCompanyName {
       color: blueviolet;
       font-size: 18px;
       font-weight: 600;
       margin-top: 10px;
     }
-    .viewMore {
-      font-size: 14px;
-      font-weight: 700;
-      color: blueviolet;
-      margin-top: 10px;
-      cursor: pointer;
-      margin-left: 90%;
+
+    .jobPostDeleteSaveCon {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      align-items: center;
+
+      .jpDelete {
+        width: 100px;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid blueviolet;
+
+        &:hover {
+          background-color: blueviolet;
+          color: white;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      .viewMore {
+        font-size: 14px;
+        font-weight: 700;
+        color: blueviolet;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline blueviolet 1px;
+        }
+      }
     }
   }
 
@@ -60,6 +93,7 @@
     width: 0.5px;
     height: 100px;
     background-color: grey;
+    margin-right: 30px;
   }
 
   .fullTimeBut {

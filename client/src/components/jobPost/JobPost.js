@@ -16,16 +16,22 @@ function JobPost({ jobPost }) {
         <span className="jpPostTime">{format(jobPost.createdAt)}</span>
         <span className="jpCompanyAddress">{jobPost.location}</span>
         <span className="jpCompanyName">{jobPost.companyName}</span>
-        <Link to={`/jobPost/${jobPost._id}`} className="link">
-          <span className="viewMore">ViewMore...</span>
-        </Link>
+
         <div className="jobPostDeleteSaveCon">
-          <button className="jpDelete" onClick={()=>setShowDeleteAlert(!showDeleteAlert)}>Delete</button>
-          <button className="jpSave">Save</button>
+          <button
+            className="jpDelete"
+            onClick={() => setShowDeleteAlert(!showDeleteAlert)}
+          >
+            Delete
+          </button>
+          <button className="jpDelete">Save</button>
+          <Link to={`/jobPost/${jobPost._id}`} className="link">
+            <span className="viewMore">ViewMore...</span>
+          </Link>
         </div>
       </div>
       <hr className="jpHr" />
-     {showDeleteAlert && <DeleteAlert />}
+      {showDeleteAlert && <DeleteAlert />}
       <button className="fullTimeBut">Full Time</button>
     </div>
   );
