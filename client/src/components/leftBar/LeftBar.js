@@ -82,6 +82,21 @@ function LeftBar() {
           <LogoutIcon className="lbListItemKey" />
           <span className="lbListItemValue">Logout </span>
         </div>
+
+        <div className="lbListItem">
+          <LogoutIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Logout </span>
+        </div>
+
+        <div className="lbListItem">
+          <LogoutIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Logout </span>
+        </div>
+
+        <div className="lbListItem">
+          <LogoutIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Logout </span>
+        </div>
       </div>
     </div>
   );
