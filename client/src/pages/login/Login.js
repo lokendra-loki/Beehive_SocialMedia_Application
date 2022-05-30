@@ -48,8 +48,9 @@ function Login() {
                 className="lpInput"
                 type="email"
                 name="username"
+                required
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email or username"
+                placeholder="Email"
               />
             </div>
 
@@ -63,6 +64,7 @@ function Login() {
                 placeholder="Password"
                 name="password"
                 autoComplete="off"
+                required
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>

@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { AuthContextProvider } from "./context/authContext/AuthContext";
-import { UserDetailContextProvider } from "./context/userDetails/UserDetailsContext"
+import { JobPostsContextProvider } from "./context/jobPostContext/JobPostContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      {/* <UserDetailContextProvider> */}
+      <JobPostsContextProvider>
         <App />
-      {/* </UserDetailContextProvider> */}
+      </JobPostsContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")

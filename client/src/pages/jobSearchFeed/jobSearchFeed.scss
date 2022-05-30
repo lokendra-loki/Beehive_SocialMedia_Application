@@ -1,69 +1,24 @@
-.jobSearchFeed {
-    margin-top: 70px;
+.jobSearchPage {
+  margin-top: 60px;
 
-    .jsfWrapper {
-        
-        .jsfCoverPicCon {
-            display: flex;
-            flex-direction: column;
-            position: relative;
+  .jspWrapper {
+    .jspBeforeSplit {
+      display: flex;
 
-            .jsfCoverPic {
-                height: 40vh;
-                object-fit: cover;
-                overflow: hidden;
-            }
+      .jspLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
+        background-color: rgb(234, 231, 238);
+      }
 
-            .jsfProfilePic {
-                height: 220px;
-                object-fit: cover;
-                overflow: hidden;
-                width: 220px;
-                border: 2px solid blueviolet;
-                border-radius: 15px;
-                position: absolute;
-                top: 15vh;
-                left: 70px;
-            }
-
-            
-        }
-        
-
-        .jsfRowIconCon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-
-            .jsfRowIconItem {
-                margin-right: 70px;
-            }
-        }
-
-        .jsfBeforeSplit{
-            display: flex;
-           
-            
-           
-            
-            .jsfLeftCon{
-                flex: 1;
-                overflow-y: scroll;
-                height: 200vh;
-                
-            }
-            .jsfCenterCon{
-                flex: 2;
-                background-color: yellow;
-                overflow-y: scroll;
-   
-            }
-            .jsfRightCon{
-                flex: 1;
-                background-color: green;
-                
-            }
-        }
+      .jspCenterCon {
+        flex: 2.5;
+      }
+      .jspRightCon {
+        flex: 1.1;
+        background-color: rgb(234, 231, 238);
+      }
     }
+  }
 }

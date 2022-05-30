@@ -1,5 +1,4 @@
 import * as yup from "yup";
-
 const passwordRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;
 
 export const registerSchema = yup.object().shape({
