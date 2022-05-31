@@ -12,10 +12,15 @@ const JobPostSchema = new mongoose.Schema(
       required: true,
     },
 
-    // officeOrRemote: {
-    //   type: Number,
-    //   enum: [1, 2], //office or remote
-    // },
+    category: {
+      type: String,
+      default: "",
+    },
+
+    officeOrRemote: {
+      type: Number,
+      enum: [1, 2], //office or remote
+    },
 
     salaryRange: {
       type: String,
@@ -28,7 +33,7 @@ const JobPostSchema = new mongoose.Schema(
     },
 
     companyType: {
-      type: String, //software provider
+      type: String,
       required: true,
     },
 
@@ -105,4 +110,5 @@ const JobPostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//export
 module.exports = mongoose.model("JobPost", JobPostSchema);

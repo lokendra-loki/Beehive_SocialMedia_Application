@@ -165,6 +165,11 @@ const UserDetailSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+
+    jobPostsBookmark: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: true }
 );

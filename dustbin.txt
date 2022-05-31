@@ -1,0 +1,36 @@
+//Fetching all feed posts
+  // const [feedPosts, setFeedPosts] = useState([]);
+  // const [didMount, setDidMount] = useState(false); //To prevent the fetching of feed posts on first load
+  // useEffect(() => {
+  //   setDidMount(true);
+  //   const fetchAllPosts = async () => {
+  //     const res = await axios.get("/userPosts/getAll");
+  //     setFeedPosts(res.data);
+  //   };
+  //   fetchAllPosts();
+  //   return () => setDidMount(false);
+  // }, []);
+  // if (!didMount) {
+  //   return null;
+  // }
+
+
+  / const [currentUser, setCurrentUser] = useState({});
+  // useEffect(() => {
+  //   const userDetailsOnly = async () => {
+  //     try {
+  //       const res = await axios.post("/userDetails/get", { userID: user._id });
+  //       console.log(res.data);
+  //       setCurrentUser(res.data[0]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   userDetailsOnly();
+  // }, [user._id]);
+
+  //Logout Handler
+  // const handleLogout = (e) => {
+  //   dispatch({ type: "LOGOUT" });
+  //   navigate("/");
+  // };

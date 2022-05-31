@@ -1,4 +1,5 @@
 const UserDetail = require("../models/userDetail");
+const JobPost = require("../models/JobPost");
 
 //Create
 const createUserDetail = async (req, res, next) => {
@@ -66,6 +67,27 @@ const getUserDetailByUserID = async (req, res, next) => {
   }
 };
 
+//Bookmark
+const bookmark = async (req, res, next) => {
+  try {
+    const post = await JobPost.findById(req.params.postId);
+    const currentUserDetail = await UserDetail.findById(req.body.userDetailId);
+    if (!currentUserDetail.jobPostsBookmark.includes(req.params.postId)) {
+      await currentUserDetail.updateOne({
+        $push: { jobPostsBookmark: req.params.postId },
+      });
+      res.status(200).json("JobPost has been bookmarked");
+    } else {
+      await currentUserDetail.updateOne({
+        $pull: { jobPostsBookmark: req.params.postId },
+      });
+      res.status(200).json("JobPost has been unbookmarked");
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 //export
 module.exports = {
   createUserDetail,
@@ -74,4 +96,5 @@ module.exports = {
   getAllUserDetail,
   deleteUserDetail,
   getUserDetailByUserID,
+  bookmark,
 };

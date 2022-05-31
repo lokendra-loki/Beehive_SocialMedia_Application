@@ -44,7 +44,7 @@ const login = async (req, res, next) => {
             isAdmin: user.isAdmin,
           },
           process.env.JWT_SECRET,
-          { expiresIn: "1h" }
+          { expiresIn: "7h" }
         );
         //now saving the token in the cookies
         const { password, ...others } = user._doc;
