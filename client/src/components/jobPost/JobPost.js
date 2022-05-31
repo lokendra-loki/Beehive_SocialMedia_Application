@@ -7,10 +7,6 @@ import DeleteAlert from "../deleteAlert/DeleteAlert";
 import { useAPI } from "../../context/userDetailContext";
 
 function JobPost({ jobPost }) {
-  //Open Close delete alert
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-
-  //currentUserDetail
   const { currentUserDetail } = useAPI();
 
   //Bookmark
@@ -26,6 +22,9 @@ function JobPost({ jobPost }) {
       console.log(error);
     }
   };
+
+  //Open Close delete alert
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
   return (
     <div className="jobPost">
@@ -62,7 +61,9 @@ function JobPost({ jobPost }) {
       {showDeleteAlert && (
         <DeleteAlert setShowDeleteAlert={setShowDeleteAlert} id={jobPost._id} />
       )}
-      <button className="fullTimeBut">Full Time</button>
+      <button className="fullTimeBut">
+        {jobPost.jobType === 1 ? "Full Time" : "Part Time"}
+      </button>
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
-import "./jobPostLg.scss";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import { format } from "timeago.js";
+import "./jobPostLg.scss";
 
 function JobPostLg({ jobPost }) {
   return (
@@ -48,13 +49,58 @@ function JobPostLg({ jobPost }) {
 
       <div className="jplIconAndTxt">
         <BusinessCenterIcon className="jplIcon" />
-        <span className="jplTxt">{jobPost?.noOfEmployee} </span>
+        <span className="jplTxt">
+          {jobPost.noOfEmployee === 1
+            ? "5-10 Employees"
+            : jobPost.noOfEmployee === 2
+            ? "10-15 Employees"
+            : jobPost.noOfEmployee === 3
+            ? "15-20 Employees"
+            : jobPost.noOfEmployee === 4
+            ? "20-30 Employees"
+            : jobPost.noOfEmployee === 5
+            ? "30-40 Employees"
+            : jobPost.noOfEmployee === 6
+            ? "40-50 Employees"
+            : jobPost.noOfEmployee === 7
+            ? "50-60 Employees"
+            : jobPost.noOfEmployee === 8
+            ? "60-70 Employees"
+            : jobPost.noOfEmployee === 9
+            ? "70-80 Employees"
+            : "More than 100 Employees"}
+        </span>
         <span className="jplTxt2">{jobPost?.companyType}</span>
       </div>
 
       <div className="jplRecruiticonTxt">
         <TrackChangesIcon className="jplHiringIcon" />
         <span className="activelyRecruitTxt">Actively recruiting</span>
+      </div>
+
+      <div className="jplRecruiticonTxt">
+        <AttachMoneyIcon className="jplHiringIcon" />
+        <span className="activelyRecruitTxt">
+          {jobPost.salaryRange === 1
+            ? "5k-10k"
+            : jobPost.salaryRange === 2
+            ? "10k-15k"
+            : jobPost.salaryRange === 3
+            ? "15k-20k"
+            : jobPost.salaryRange === 4
+            ? "20k-30k"
+            : jobPost.salaryRange === 5
+            ? "30k-40k"
+            : jobPost.salaryRange === 6
+            ? "40k-50k"
+            : jobPost.salaryRange === 7
+            ? "50k-60k"
+            : jobPost.salaryRange === 8
+            ? "60k-70k"
+            : jobPost.salaryRange === 9
+            ? "70k-80k"
+            : "Negotiable"}
+        </span>
       </div>
 
       <div className="jplApplySaveBut">

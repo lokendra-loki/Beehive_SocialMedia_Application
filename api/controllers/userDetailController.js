@@ -88,6 +88,14 @@ const bookmark = async (req, res, next) => {
   }
 };
 
+//GetAll bookmark jobPostId of a user
+const getBookmarkJobPost = async (req, res, next) => {
+  try {
+    const userDetail = await UserDetail.findById(req.params.userDetailId);
+    res.status(200).json(userDetail.jobPostsBookmark);
+  } catch (error) {}
+};
+
 //export
 module.exports = {
   createUserDetail,
@@ -97,4 +105,5 @@ module.exports = {
   deleteUserDetail,
   getUserDetailByUserID,
   bookmark,
+  getBookmarkJobPost,
 };

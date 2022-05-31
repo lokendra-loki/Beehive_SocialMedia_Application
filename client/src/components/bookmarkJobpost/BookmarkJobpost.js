@@ -22,7 +22,7 @@ function BookmarkJobpost({ bookmarkJobpostId }) {
     fetchJobPostData();
   }, [bookmarkJobpostId]);
 
-  //Bookmark
+  //Bookmark remove
   const [removeBookmark, setRemoveBookmark] = useState(false);
   const handleRemoveBookmark = async (id) => {
     try {

@@ -5,6 +5,7 @@ import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import RightBar from "../../components/rightBar/RightBar";
 import axios from "axios";
 import "./jobPostCreate.scss";
+import { useNavigate } from "react-router-dom";
 
 function JobSearchFeed() {
   //Create Job Post
@@ -26,6 +27,8 @@ function JobSearchFeed() {
   const [requirement5, setRequirement5] = useState("");
   const [requirement6, setRequirement6] = useState("");
   const [requirement7, setRequirement7] = useState("");
+
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,6 +55,8 @@ function JobSearchFeed() {
     console.log(newJob);
     try {
       await axios.post("jobPosts/create", newJob);
+      navigate("/jobSearch")
+
     } catch (err) {
       console.error(err.message);
     }
@@ -89,6 +94,7 @@ function JobSearchFeed() {
                   onChange={(e) => setPosition(e.target.value)}
                   placeholder="FullStack Developer"
                 />
+                {/* == */}
                 <span className="jpcCompanyName jpc">Company Name</span>
                 <input
                   type="text"
@@ -96,6 +102,7 @@ function JobSearchFeed() {
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="ABC company"
                 />
+                {/* ==*/}
                 <span className="jpcCompanyLocation jpc">Company Location</span>
                 <input
                   type="text"
@@ -103,13 +110,31 @@ function JobSearchFeed() {
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="Bangalore"
                 />
-                <span className="jpcCompanyLocation jpc">Salary Range</span>
+                {/* == */}
+                {/* <span className="jpcCompanyLocation jpc">Salary Range</span>
                 <input
                   type="text"
                   className="jpcCompanyLocationInput jpcInput jpcInput2"
                   onChange={(e) => setSalaryRange(e.target.value)}
                   placeholder="40k-50k"
-                />
+                /> */}
+                {/* == */}
+                <span className="jpcNoOfEmployee jpc">Salary Range</span>{" "}
+                <select
+                  className="jpcNoOfEmployeeInput jpcInput"
+                  onChange={(e) => setSalaryRange(e.target.value)}
+                >
+                  <option value="1">5k-10k</option>
+                  <option value="2">10k-15k</option>
+                  <option value="3">15k-20k</option>
+                  <option value="4">20k-30k</option>
+                  <option value="5">30k-40k</option>
+                  <option value="6">40k-50k</option>
+                  <option value="7">50k-60k</option>
+                  <option value="8">60k-70k</option>
+                  <option value="9">70k-80k</option>
+                  <option value="10">Negotiate</option>
+                </select>
                 <span className="jpcCompanyLocation jpc">Company Type</span>{" "}
                 <input
                   type="text"
@@ -124,18 +149,31 @@ function JobSearchFeed() {
                   onChange={(e) => setNoOfEmployee(e.target.value)}
                   placeholder="65"
                 />
+                {/* == */}
                 <span className="jpcNoOfEmployee jpc">Contract Type</span>{" "}
-                <input
-                  type="number"
+                <select
                   className="jpcNoOfEmployeeInput jpcInput"
                   onChange={(e) => setContractType(e.target.value)}
-                />
+                  name="contractType"
+                >
+                  <option disabled selected={true}>
+                    Select
+                  </option>
+                  <option value="1">Intern</option>
+                  <option value="2">Junior</option>
+                  <option value="3">Mid-Senior</option>
+                  <option value="4">Senior</option>
+                </select>
+                {/* == */}
                 <span className="jpcNoOfEmployee jpc">Job Type</span>{" "}
-                <input
-                  type="number"
+                <select
                   className="jpcNoOfEmployeeInput jpcInput"
                   onChange={(e) => setJobType(e.target.value)}
-                />
+                >
+                  <option value="1">Full Time</option>
+                  <option value="2">Part Time</option>
+                </select>
+                {/* == */}
                 <span className="jpcAboutTheJob jpc">About The Job</span>{" "}
                 <textarea
                   type="text"

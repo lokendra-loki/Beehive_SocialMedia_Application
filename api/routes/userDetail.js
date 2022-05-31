@@ -7,6 +7,7 @@ const {
   deleteUserDetail,
   getUserDetailByUserID,
   bookmark,
+  getBookmarkJobPost,
 } = require("../controllers/userDetailController");
 
 //Create
@@ -29,6 +30,9 @@ router.post("/getByUserID", getUserDetailByUserID);
 
 //jobPost bookmark
 router.put("/bookmark/:postId", bookmark);
+
+//GetAll bookmarks of a user
+router.get("/getAllBookmarks/:userDetailId", getBookmarkJobPost);
 
 //export
 module.exports = router;

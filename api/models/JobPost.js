@@ -23,8 +23,8 @@ const JobPostSchema = new mongoose.Schema(
     },
 
     salaryRange: {
-      type: String,
-      required: true,
+      type: Number,
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
 
     companyName: {
@@ -38,8 +38,8 @@ const JobPostSchema = new mongoose.Schema(
     },
 
     noOfEmployee: {
-      type: String,
-      required: true,
+      type: Number,
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
 
     companyProfileImg: {
