@@ -1,82 +1,26 @@
-.jobPostRead {
-    position: relative;
-    top: 70px;
+.jobPostReadPage {
+  margin-top: 60px;
 
-    .jprWrapper {
-        
-        .jprCoverPicCon {
-            display: flex;
-            flex-direction: column;
-            position: relative;
+  .jprWrapper {
+    .jprBeforeSplit {
+      display: flex;
 
-            .jprCoverPic {
-                height: 40vh;
-                object-fit: cover;
-                overflow: hidden;
-            }
+      .jprLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
+        display: flex;
+        justify-content: end;
+      }
 
-            .jprProfilePic {
-                height: 220px;
-                object-fit: cover;
-                overflow: hidden;
-                width: 220px;
-                border: 2px solid blueviolet;
-                border-radius: 15px;
-                position: absolute;
-                top: 15vh;
-                left: 70px;
-            }
+      .jprCenterCon {
+        flex: 2.5;
+      }
 
-            
-        }
-        
-
-        .jprRowIconCon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-
-            .jprRowIconItem {
-                margin-right: 70px;
-            }
-        }
-
-        .jprBeforeSplit{
-            display: flex;
-           
-            
-           
-            
-            .jprLeftCon{
-                flex: 1;
-                background-color: cadetblue;
-                overflow-y: scroll;
-                height: 200vh;
-                
-            
-                
-                
-                
-               
-                
-                
-                
-
-            }
-            .jprCenterCon{
-                flex: 2;
-                background-color: yellow;
-                overflow-y: scroll;
-                
-                
-                
-            }
-            .jprRightCon{
-                flex: 1;
-                background-color: green;
-                
-            }
-        }
+      .jprRightCon {
+        flex: 1.4;
+        background-color: rgb(234, 231, 238);
+      }
     }
+  }
 }

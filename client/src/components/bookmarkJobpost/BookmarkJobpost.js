@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { format } from "timeago.js";
 import "./bookmarkJobpost.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import DeleteAlert from "../deleteAlert/DeleteAlert";
 import { useAPI } from "../../context/userDetailContext";
 
 function BookmarkJobpost({ bookmarkJobpostId }) {
   const { currentUserDetail } = useAPI();
-
-  const navigate = useNavigate();
-
-  //Open Close delete alert
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
   //Fetching data from jobPost id
   const [jobPost, setJobPost] = useState({});
@@ -30,7 +24,7 @@ function BookmarkJobpost({ bookmarkJobpostId }) {
 
   //Bookmark
   const [removeBookmark, setRemoveBookmark] = useState(false);
-  const handleBookmark = async (id) => {
+  const handleRemoveBookmark = async (id) => {
     try {
       await axios.put(`/userDetails/bookmark/${id}`, {
         userDetailId: currentUserDetail?._id,
@@ -46,33 +40,24 @@ function BookmarkJobpost({ bookmarkJobpostId }) {
     <div className="bookmarkJobpost">
       <img src="/assets/cover.jpeg" alt="" className="bjpjobCompanyLogo" />
       <div className="bjpInfoCon">
-        <span className="bjpJobTitle">{jobPost.position}</span>
-        <span className="bjpPostTime">{format(jobPost.createdAt)}</span>
-        <span className="bjpCompanyAddress">{jobPost.location}</span>
-        <span className="bjpCompanyName">{jobPost.companyName}</span>
+        <span className="bjpJobTitle">{jobPost?.position}</span>
+        <span className="bjpPostTime">{format(jobPost?.createdAt)}</span>
+        <span className="bjpCompanyAddress">{jobPost?.location}</span>
+        <span className="bjpCompanyName">{jobPost?.companyName}</span>
 
         <div className="bjpjobPostDeleteSaveCon">
           <button
             className="bjpDelete"
-            onClick={() => setShowDeleteAlert(!showDeleteAlert)}
-          >
-            Delete
-          </button>
-
-          <button
-            className="bjpDelete"
-            onClick={() => handleBookmark(jobPost._id)}
+            onClick={() => handleRemoveBookmark(jobPost?._id)}
           >
             remove
           </button>
-
-          <Link to={`/jobPost/${jobPost._id}`} className="link">
+          <Link to={`/jobPost/${jobPost?._id}`} className="link">
             <span className="bjpviewMore">ViewMore...</span>
           </Link>
         </div>
       </div>
       <hr className="bjpHr" />
-      {showDeleteAlert && <DeleteAlert />}
       <button className="bjpfullTimeBut">Full Time</button>
     </div>
   );

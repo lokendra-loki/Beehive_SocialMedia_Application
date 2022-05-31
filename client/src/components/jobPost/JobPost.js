@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { format } from "timeago.js";
 import "./jobPost.scss";
 import { Link } from "react-router-dom";
@@ -46,9 +46,9 @@ function JobPost({ jobPost }) {
 
           <button
             className="jpDelete"
-            onClick={() => handleBookmark(jobPost._id)}
+            onClick={() => handleBookmark(jobPost?._id)}
           >
-            {currentUserDetail.jobPostsBookmark?.includes(jobPost._id)
+            {currentUserDetail?.jobPostsBookmark?.includes(jobPost?._id)
               ? "Saved"
               : "Save"}
           </button>
@@ -59,7 +59,9 @@ function JobPost({ jobPost }) {
         </div>
       </div>
       <hr className="jpHr" />
-      {showDeleteAlert && <DeleteAlert />}
+      {showDeleteAlert && (
+        <DeleteAlert setShowDeleteAlert={setShowDeleteAlert} id={jobPost._id} />
+      )}
       <button className="fullTimeBut">Full Time</button>
     </div>
   );

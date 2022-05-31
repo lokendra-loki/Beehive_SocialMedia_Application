@@ -8,8 +8,9 @@ import HomeOutlined from "@mui/icons-material/HomeOutlined";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
-import { Link } from "react-router-dom";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { Link } from "react-router-dom";
 import "./leftBar.scss";
 
 function LeftBar() {
@@ -53,6 +54,13 @@ function LeftBar() {
           <QuestionMarkIcon className="lbListItemKey" />
           <span className="lbListItemValue">Ask Doubts</span>
         </div>
+
+        <Link to="/bookmark" className="link">
+          <div className="lbListItem">
+            <BookmarkIcon className="lbListItemKey" />
+            <span className="lbListItemValue">Bookmarked</span>
+          </div>
+        </Link>
 
         <Link to="/jobSearch" className="link">
           <div className="lbListItem">

@@ -10,10 +10,15 @@
   -webkit-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.74);
   -moz-box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.74);
   z-index: 100;
+  position: absolute;
+  margin-bottom: 30px;
+  margin-left: 155px;
 
-  .areYouSure{
-      font-size: 19px;
-      font-weight: 600;
+  
+
+  .areYouSure {
+    font-size: 19px;
+    font-weight: 600;
   }
 
   .dacButton {

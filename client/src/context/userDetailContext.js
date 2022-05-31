@@ -13,7 +13,7 @@ export function UserDetailContextProvider({ children }) {
     const fetchCurrentUserDetail = async () => {
       try {
         const res = await axios.post("/userDetails/getByUserID", {
-          userID: user._id,
+          userID: user?._id,
         });
         setCurrentUserDetail(res.data[0]);
       } catch (error) {
@@ -21,7 +21,7 @@ export function UserDetailContextProvider({ children }) {
       }
     };
     fetchCurrentUserDetail();
-  }, [user._id]);
+  }, [user?._id]);
 
   return (
     <UserDetailContext.Provider

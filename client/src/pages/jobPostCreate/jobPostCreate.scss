@@ -1,114 +1,131 @@
 .jobPostCreate {
-    .jpcHeader {
-        height: 30vh;
-        background-color: yellow;
-    }
+  margin-top: 60px;
 
-    .jpcWrapper {
+  .jpcWrapper {
+    .jpcBeforeSplit {
+      display: flex;
+
+      .jpcLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
         display: flex;
+        justify-content: end;
+      }
 
-        .jpcLeftSide {
-            flex: 1;
-            background-color: white;
-            overflow: scroll;
-            height: 200vh;
+      .jpcCenterCon {
+        flex: 2.5;
+
+        .jpcHeader {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+          font-size: 28px;
+          height: 100px;
+          // background-color: pink;
         }
 
-        .jpcRightSide {
-            padding: 0px 16px;
-            flex: 3;
-            height: 500vh;
+        .jpcWholeContainer {
+          display: flex;
+          flex-direction: column;
+          padding: 20px 15px;
+          margin-bottom: 100px;
+
+          .jpcTitle {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
             display: flex;
+            justify-content: center;
+          }
 
-            justify-content: space-between;
+          .jpcHr {
+            margin-bottom: 20px;
+          }
 
-            .jpcWholeContainer {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
+          .jpcImg {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            margin-bottom: 15px;
+          }
+          .jpcIconAndTxt {
+            display: flex;
+            align-items: center;
 
-                .jpcTitle {
-                    font-size: 28px;
-                    font-weight: 700;
-                    color: rgb(38, 38, 38);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-top: 40px;
-                }
-
-                .jpcHr {
-                    width: 700px;
-                    border: 1px solid blueviolet;
-                    margin-top: 8px;
-                    margin-left: 18%;
-                }
-                .jpcImg {
-                    width: 60px;
-                    height: 60px;
-                    margin-top: 40px;
-                    border-radius: 5px;
-                    object-fit: cover;
-                }
-
-                // }
-
-                .jpcIconAndTxt {
-                    display: flex;
-                    align-items: center;
-                    margin-top: 10px;
-
-                    .jpcImgIcon {
-                        font-size: 36px;
-                        cursor: pointer;
-                    }
-                    .jpcSelectImgTxt {
-                        font-size: 16px;
-                        font-weight: 600;
-                        margin-left: 5px;
-                    }
-                }
-
-                .jpcColumnCon {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    margin-top: 30px;
-
-                    .jpc {
-                        font-size: 16px;
-                        font-weight: 800;
-                        color: rgb(75, 74, 74);
-                        margin-top: 30px;
-                    }
-
-                    .jpcInput {
-                        height: 40px;
-                        border-radius: 8px;
-                        margin-top: 10px;
-                        border: none;
-                        outline: none;
-                        border: 1px solid rgb(159, 158, 158);
-                    }
-
-                    .jpcPostBut {
-                        height: 40px;
-                        border-radius: 8px;
-                        margin-top: 28px;
-                        border: none;
-                        outline: none;
-                        border: 1px solid rgb(159, 158, 158);
-                        color: white;
-                        background-color: blueviolet;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-weight: 700;
-                        cursor: pointer;
-                    }
-                }
+            .jpcImgIcon {
+              color: blueviolet;
+              font-size: 40px;
+              cursor: pointer;
             }
+
+            .jpcSelectImgTxt {
+              font-size: 18px;
+              font-weight: 600;
+              color: rgb(43, 42, 42);
+              margin-left: 10px;
+            }
+          }
+
+          .jpcColumnCon {
+            display: flex;
+            flex-direction: column;
+
+            .jpc {
+              font-size: 18px;
+              font-weight: 600;
+              margin-top: 14px;
+              margin-bottom: 2px;
+            }
+
+            .jpcInput {
+              height: 32px;
+              outline: none;
+              border: none;
+              border: 1px solid grey;
+              border-radius: 2px;
+              padding-left: 5px;
+
+              &::placeholder {
+                color: black;
+              }
+            }
+
+            .jpcInput2 {
+              &::placeholder {
+                font-weight: 18px;
+                font-weight: 500;
+                color: grey;
+              }
+            }
+
+            .jpcInputTextArea {
+              max-width: 732px;
+              max-height: 300px;
+              min-height: 150px;
+            }
+
+            .jpcPostBut {
+              height: 38px;
+              background-color: blueviolet;
+              font-size: 17px;
+              font-weight: 600;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              color: white;
+              margin-top: 20px;
+              border-radius: 6px;
+            }
+          }
         }
+      }
+
+      .jpcRightCon {
+        flex: 1.4;
+        background-color: rgb(234, 231, 238);
+      }
     }
+  }
 }

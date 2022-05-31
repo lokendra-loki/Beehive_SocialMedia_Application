@@ -25,7 +25,7 @@ function Bookmark() {
       }
     };
     fetchAllJobPostBookmarkIds();
-  }, [currentUserDetail._id]);
+  }, [currentUserDetail?._id]);
 
   return (
     <div className="bookmarkPage">
