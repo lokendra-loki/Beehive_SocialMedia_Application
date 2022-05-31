@@ -10,6 +10,7 @@ import FeedPage from "./pages/feedPage/FeedPage";
 import JobSearchFeed from "./pages/jobSearchFeed/JobSearchFeed";
 import JobPostRead from "./pages/JobPostRead/JobPostRead";
 import Trending from "./pages/trending/Trending";
+import Bookmark from "./pages/bookmark/Bookmark";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/jobSearch" element={<JobSearchFeed />} />
           <Route path="/trending" element={<Trending />} />
           <Route path="/jobPost/:id" element={<JobPostRead />} />
+          <Route path="/bookmark" element={<Bookmark />} />
           <Route path="/" element={<FeedPage />} />
         </Routes>
       </Router>

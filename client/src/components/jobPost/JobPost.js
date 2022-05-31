@@ -21,6 +21,7 @@ function JobPost({ jobPost }) {
         userDetailId: currentUserDetail?._id,
       });
       setBookmarked(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +48,9 @@ function JobPost({ jobPost }) {
             className="jpDelete"
             onClick={() => handleBookmark(jobPost._id)}
           >
-            Save
+            {currentUserDetail.jobPostsBookmark?.includes(jobPost._id)
+              ? "Saved"
+              : "Save"}
           </button>
 
           <Link to={`/jobPost/${jobPost._id}`} className="link">
