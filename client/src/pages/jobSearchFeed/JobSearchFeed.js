@@ -6,6 +6,7 @@ import RightBar from "../../components/rightBar/RightBar";
 import JobPost from "../../components/jobPost/JobPost";
 import { JobPostsContext } from "../../context/jobPostContext/JobPostContext";
 import { getAllJobPosts } from "../../context/jobPostContext/apiCalls";
+import { useAPI } from "../../context/userDetailContext";
 
 function JobSearchFeed() {
   //Fetch all job posts
@@ -13,7 +14,10 @@ function JobSearchFeed() {
   useEffect(() => {
     getAllJobPosts(dispatch);
   }, [dispatch]);
-  console.log(jobPosts);
+
+  //currentUserDetail
+  const { currentUserDetail } = useAPI();
+  console.log(currentUserDetail);
 
   return (
     <div className="jobSearchPage">

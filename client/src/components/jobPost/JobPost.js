@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { format } from "timeago.js";
 import "./jobPost.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import DeleteAlert from "../deleteAlert/DeleteAlert";
+import { useAPI } from "../../context/userDetailContext";
 
 function JobPost({ jobPost }) {
   //Open Close delete alert
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
+  //currentUserDetail
+  const { currentUserDetail } = useAPI();
+
+  //Bookmark
+  const [bookmarked, setBookmarked] = useState(false);
+  const handleBookmark = async (id) => {
+    try {
+      await axios.put(`/userDetails/bookmark/${id}`, {
+        userDetailId: currentUserDetail?._id,
+      });
+      setBookmarked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="jobPost">
@@ -24,7 +42,14 @@ function JobPost({ jobPost }) {
           >
             Delete
           </button>
-          <button className="jpDelete">Save</button>
+
+          <button
+            className="jpDelete"
+            onClick={() => handleBookmark(jobPost._id)}
+          >
+            Save
+          </button>
+
           <Link to={`/jobPost/${jobPost._id}`} className="link">
             <span className="viewMore">ViewMore...</span>
           </Link>
