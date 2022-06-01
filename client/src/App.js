@@ -12,6 +12,7 @@ import JobPostRead from "./pages/JobPostRead/JobPostRead";
 import Trending from "./pages/trending/Trending";
 import Bookmark from "./pages/bookmark/Bookmark";
 import JobEdit from "./pages/jobEdit/JobEdit";
+import BlogEdit from "./pages/blogEdit/BlogEdit";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/jobPost/:id" element={<JobPostRead />} />
           <Route path="/bookmark" element={<Bookmark />} />
           <Route path="/jobEdit/:id" element={<JobEdit />} />
+          <Route path="/blogEdit/:id" element={<BlogEdit />} />
           <Route path="/" element={<FeedPage />} />
         </Routes>
       </Router>

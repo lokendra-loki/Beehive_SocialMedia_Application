@@ -7,7 +7,7 @@ const JobPostSchema = new mongoose.Schema(
       required: true,
     },
 
-    location: {
+    companyLocation: {
       type: String,
       required: true,
     },
@@ -18,13 +18,24 @@ const JobPostSchema = new mongoose.Schema(
     },
 
     officeOrRemote: {
-      type: Number,
-      enum: [1, 2], //office or remote
+      type: String,
+      enum: ["Office", "Remote"],
     },
 
     salaryRange: {
-      type: Number,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      type: String,
+      enum: [
+        "5k-10k",
+        "10k-15k",
+        "15k-20k",
+        "20k-30k",
+        "30k-40k",
+        "40k-50k",
+        "50k-60k",
+        "60k-70k",
+        "70k-80k",
+        "Negotiate",
+      ],
     },
 
     companyName: {
@@ -48,13 +59,13 @@ const JobPostSchema = new mongoose.Schema(
     },
 
     contractType: {
-      type: Number,
-      enum: [1, 2, 3, 4], //intern ,junior ,mid-senior,senior,manager
+      type: String,
+      enum: ["Intern", "Junior", "Mid Senior", "Senior"],
     },
 
     jobType: {
-      type: Number,
-      enum: [1, 2], //full time,part time
+      type: String,
+      enum: ["Full Time", "Part Time", "Contract"],
     },
 
     aboutJob: {

@@ -3,8 +3,12 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import { format } from "timeago.js";
 import "./blog.scss";
+import BlogDeleteAlert from "../blogDeleteAlert/BlogDeleteAlert";
+import { useState } from "react";
 
 function Blog({ blog }) {
+  const [showBlogDeleteAlert, setShowBlogDeleteAlert] = useState(false);
+
   return (
     <div className="blog">
       <img src="/assets/cover.jpeg" alt="" className="blogImg" />
@@ -26,16 +30,28 @@ function Blog({ blog }) {
         <Link to={`/blogRead/${blog._id}`} className="link">
           <span className="blogContinueReading">Continue reading...</span>
         </Link>
+        {showBlogDeleteAlert && (
+          <BlogDeleteAlert
+            id={blog._id}
+            setShowBlogDeleteAlert={setShowBlogDeleteAlert}
+          />
+        )}
 
         <div className="blogDeleteEditCon">
-          <button className="blogDelete blogDeleteEditBut">
+          <button
+            className="blogDelete blogDeleteEditBut"
+            onClick={() => setShowBlogDeleteAlert(!showBlogDeleteAlert)}
+          >
             <DeleteOutlineIcon className="blogDEIcon" />
             Delete
           </button>
-          <button className="blogEdit blogDeleteEditBut">
-            <EditIcon className="blogDEIcon" />
-            Edit
-          </button>
+
+          <Link to={`/blogEdit/${blog._id}`} className="link">
+            <button className="blogEdit blogDeleteEditBut">
+              <EditIcon className="blogDEIcon" />
+              Edit
+            </button>
+          </Link>
         </div>
       </div>
     </div>

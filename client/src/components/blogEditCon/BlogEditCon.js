@@ -1,8 +1,8 @@
 import React from "react";
-import "./blogEdit.scss";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
+import "./blogEditCon.scss";
 
-function BlogEdit() {
+function BlogEditCon() {
   return (
     <div className="bEriteRightSide">
       <div className="bEWholeContainer">
@@ -40,4 +40,4 @@ function BlogEdit() {
   );
 }
 
-export default BlogEdit;
+export default BlogEditCon;

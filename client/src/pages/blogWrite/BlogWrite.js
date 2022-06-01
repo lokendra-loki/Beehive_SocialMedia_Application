@@ -7,7 +7,7 @@ import "./blogWrite.scss";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
-import BlogEdit from "../../components/blogEdi/BlogEdit";
+// import BlogEdit from "../../components/blogEdi/BlogEdit";
 
 function BlogWrite() {
   const { user } = useContext(AuthContext);
@@ -36,8 +36,6 @@ function BlogWrite() {
     }
   };
 
-  
-
   return (
     <div className="blogWrite">
       <Navbar />
@@ -49,8 +47,6 @@ function BlogWrite() {
           <RecentPost />
           <Category />
         </div>
-
-      
 
         <div className="bWriteRightSide">
           <div className="bwWholeContainer">

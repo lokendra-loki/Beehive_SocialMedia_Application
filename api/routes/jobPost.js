@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const JobPost = require('../models/JobPost');
+// const JobPost = require('../models/JobPost');
 const bcrypt = require('bcrypt');
 const { createJobPost, updateJobPost, deleteJobPost, getJobPost, GetAllJobPosts } = require('../controllers/jobPostController');
 const { verifyUser, verifyToken } = require('../utils/verifyToken');
