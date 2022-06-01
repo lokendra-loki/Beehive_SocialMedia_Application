@@ -79,6 +79,7 @@
     .blogHr {
       margin-top: 20px;
     }
+
     .blogContinueReading {
       margin-top: 14px;
       display: flex;
@@ -86,9 +87,61 @@
       justify-content: center;
       color: blueviolet;
       cursor: pointer;
+      border-bottom: 1px solid transparent;
 
       &:hover {
         border-bottom: 1px solid blueviolet;
+      }
+    }
+
+    .blogDeleteEditCon {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      margin-top: 15px;
+      gap: 20px;
+
+      .blogDeleteEditBut {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        padding: 3px 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+
+        border: none;
+        outline: none;
+        border-radius: 10px;
+
+        .blogDEIcon {
+          font-size: 22px;
+        }
+      }
+      .blogDelete {
+        color: rgb(218, 217, 217);
+        background-color: blueviolet;
+        border: 1px solid blueviolet;
+
+        &:hover {
+          color: blueviolet;
+          background-color: rgb(218, 217, 217);
+          border: 1px solid blueviolet;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      .blogEdit {
+        color: blueviolet;
+        background-color: rgb(218, 217, 217);
+        border: 1px solid blueviolet;
+
+        &:hover {
+          color: rgb(218, 217, 217);
+          background-color: blueviolet;
+          border: 1px solid blueviolet;
+          transition: all 0.3s ease-in-out;
+        }
       }
     }
   }

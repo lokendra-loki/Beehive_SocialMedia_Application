@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { useAPI } from "../../context/userDetailContext";
 import "./deleteAlert.scss";
 
 function DeleteAlert({ setShowDeleteAlert, id }) {

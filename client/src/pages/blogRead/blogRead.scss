@@ -1,26 +1,27 @@
-.blogRead{
-    .brHeader {
-        height: 30vh;
-        background-color: yellow;
-    }
+.blogReadPage {
+  margin-top: 60px;
 
-    .brWrapper {
+  .brpWrapper {
+    .brpBeforeSplit {
+      display: flex;
+
+      .brpLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
         display: flex;
-        .brLeftSide {
-            flex: 1;
-            background-color: white;
-            overflow: scroll;
-            height: 200vh;
-            
-        }
+        justify-content: end;
+      }
 
-        .brRightSide {
-            padding: 0px 16px;
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            
-        }
+      .brpCenterCon {
+        flex: 2.5;
+        margin-top: 20px;
+      }
+
+      .brpRightCon {
+        flex: 1.4;
+        background-color: rgb(234, 231, 238);
+      }
     }
+  }
 }

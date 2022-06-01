@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
 import { format } from "timeago.js";
 import "./blog.scss";
 
@@ -20,8 +23,20 @@ function Blog({ blog }) {
         </div>
         {/* <span className="blogDesc">{blog.desc}</span> */}
         <hr className="blogHr" />
+        <Link to={`/blogRead/${blog._id}`} className="link">
+          <span className="blogContinueReading">Continue reading...</span>
+        </Link>
 
-        <span className="blogContinueReading">Continue reading...</span>
+        <div className="blogDeleteEditCon">
+          <button className="blogDelete blogDeleteEditBut">
+            <DeleteOutlineIcon className="blogDEIcon" />
+            Delete
+          </button>
+          <button className="blogEdit blogDeleteEditBut">
+            <EditIcon className="blogDEIcon" />
+            Edit
+          </button>
+        </div>
       </div>
     </div>
   );

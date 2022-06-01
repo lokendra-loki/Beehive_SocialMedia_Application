@@ -1,46 +1,42 @@
 import React, { useEffect, useState } from "react";
-import BlogLg from "../../components/blogLg/BlogLg";
-import Category from "../../components/category/Category";
-import LeftBar from "../../components/leftBar/LeftBar";
 import Navbar from "../../components/navbar/Navbar";
-import RecentPost from "../../components/recentPost/RecentPost";
-import { useLocation } from "react-router";
+import LeftBar from "../../components/leftBar/LeftBar";
+import RightBar from "../../components/rightBar/RightBar";
 import "./blogRead.scss";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
-import BlogEdit from "../../components/blogEdi/BlogEdit";
+import BlogLg from "../../components/blogLg/BlogLg";
 
 function BlogRead() {
-  //Fetching data from the URL id
   const location = useLocation();
-  console.log(location);
-  console.log(location.pathname);
   const path = location.pathname.split("/")[2];
-  console.log(path);
 
-  const [blog, setBlog] = React.useState({});
+  const [blog, setBlog] = useState({});
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchBlogData = async () => {
       const res = await axios.get(`/blogs/get/${path}`);
-      console.log(res.data);
       setBlog(res.data);
     };
-    fetchPost();
+    fetchBlogData();
   }, [path]);
+  console.log(blog);
 
   return (
-    <div className="blogRead">
-      <Navbar />
-      <div className="brHeader">This is header</div>
+    <div className="blogReadPage">
+      <div className="brpWrapper">
+        <Navbar />
+        <div className="brpBeforeSplit">
+          <div className="brpLeftCon">
+            <LeftBar />
+          </div>
 
-      <div className="brWrapper">
-        <div className="brLeftSide">
-          <LeftBar />
-          <RecentPost />
-          <Category />
-        </div>
+          <div className="brpCenterCon">
+            <BlogLg blog={blog}/>
+          </div>
 
-        <div className="brRightSide">
-          <BlogLg blog={blog} />
+          <div className="brpRightCon">
+            <RightBar />
+          </div>
         </div>
       </div>
     </div>
