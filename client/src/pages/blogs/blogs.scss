@@ -1,26 +1,31 @@
-.blogs {
-    .header {
-        height: 30vh;
-        background-color: yellow;
-    }
+.blogsListPage {
+  margin-top: 60px;
 
-    .blogsWrapper {
+  .blpWrapper {
+    .blpBeforeSplit {
+      display: flex;
+
+      .blpLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
+        // background-color: green;
         display: flex;
-        
-        .blogsLeftSide {
-            flex: 1;
-            overflow: scroll;
-            height: 100vh;    
-        }
+        justify-content: end;
+      }
 
-        .blogsRightSide {
-            padding: 10px 16px;
-            flex: 3;
-            background-color: brown;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+      .blpCenterCon {
+        flex: 2.5;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .blpRightCon {
+        flex: 1.4;
+        background-color: rgb(234, 231, 238);
+      }
     }
+  }
 }
-

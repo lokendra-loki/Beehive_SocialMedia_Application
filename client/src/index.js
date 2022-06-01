@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { AuthContextProvider } from "./context/authContext/AuthContext";
+import { BlogContextProvider } from "./context/blogContext";
 import { JobPostsContextProvider } from "./context/jobPostContext/JobPostContext";
 import { UserDetailContextProvider } from "./context/userDetailContext";
 
@@ -10,7 +11,9 @@ ReactDOM.render(
     <AuthContextProvider>
       <JobPostsContextProvider>
         <UserDetailContextProvider>
-          <App />
+          <BlogContextProvider>
+            <App />
+          </BlogContextProvider>
         </UserDetailContextProvider>
       </JobPostsContextProvider>
     </AuthContextProvider>

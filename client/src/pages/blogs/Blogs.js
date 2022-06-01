@@ -1,39 +1,32 @@
-import React, { useEffect, useState } from "react";
-import Blog from "../../components/blog/Blog";
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import axios from "axios";
-import "./blogs.scss";
 import LeftBar from "../../components/leftBar/LeftBar";
-import RecentPost from "../../components/recentPost/RecentPost";
-import Category from "../../components/category/Category";
+import RightBar from "../../components/rightBar/RightBar";
+import Blog from "../../components/blog/Blog";
+import "./blogs.scss";
+import { useAPI } from "../../context/blogContext";
 
 function Blogs() {
-  //Fetching all blogs
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      const res = await axios.get("/blogs/getAll");
-      console.log(res.data);
-      setBlogs(res.data);
-    };
-    fetchBlogs();
-  }, []);
+  const { blogs } = useAPI();
 
   return (
-    <div className="blogs">
-      <Navbar />
-      <div className="header">This is header</div>
-      <div className="blogsWrapper">
-        <div className="blogsLeftSide">
-          <LeftBar />
-          <RecentPost />
-          <Category />
-        </div>
+    <div className="blogsListPage">
+      <div className="blpWrapper">
+        <Navbar />
+        <div className="blpBeforeSplit">
+          <div className="blpLeftCon">
+            <LeftBar />
+          </div>
 
-        <div className="blogsRightSide">
-          {blogs.map((blog, key) => (
-            <Blog key={key} blog={blog} />
-          ))}
+          <div className="blpCenterCon">
+            {blogs.map((blog, i) => (
+              <Blog key={i} index={i} blog={blog} />
+            ))}
+          </div>
+
+          <div className="blpRightCon">
+            <RightBar />
+          </div>
         </div>
       </div>
     </div>
