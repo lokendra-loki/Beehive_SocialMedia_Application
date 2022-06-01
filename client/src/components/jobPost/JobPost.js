@@ -62,7 +62,11 @@ function JobPost({ jobPost }) {
         <DeleteAlert setShowDeleteAlert={setShowDeleteAlert} id={jobPost._id} />
       )}
       <button className="fullTimeBut">
-        {jobPost.jobType === 1 ? "Full Time" : "Part Time"}
+        {jobPost.jobType === "Full Time"
+          ? "Full Time"
+          : jobPost.jobType === "Part Time"
+          ? "Part Time"
+          : "Contract"}
       </button>
     </div>
   );

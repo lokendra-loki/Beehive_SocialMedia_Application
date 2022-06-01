@@ -6,7 +6,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import { useAPI } from "../../context/userDetailContext";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import axios from "axios";
 import "./jobPostLg.scss";
@@ -50,10 +50,10 @@ function JobPostLg({ jobPost }) {
         <div className="jplCompanyNameCon">
           <span className="jplCompanyName">{jobPost?.companyName}</span>
           <span className="jplCompanyName">
-            {jobPost?.location}{" "}
+            {jobPost?.companyLocation}{" "}
             <span>
               {" "}
-              ({jobPost?.officeOrRemote === 1 ? "Office" : "Remote"})
+              ({jobPost?.officeOrRemote === "Office" ? "Office" : "Remote"})
             </span>
           </span>
         </div>
@@ -68,19 +68,19 @@ function JobPostLg({ jobPost }) {
         <BusinessCenterIcon className="jplIcon" />
         <span className="jplTxt">Contract .</span>
         <span className="jplTxt2">
-          {jobPost?.contractType === 1
+          {jobPost.contractType === "Intern"
             ? "Intern"
-            : jobPost?.contractType === 2
+            : jobPost.contractType === "Junior"
             ? "Junior"
-            : jobPost?.contractType === 3
-            ? "Mid-Senior"
-            : jobPost?.contractType === 4
-            ? "Senior"
-            : jobPost?.contractType === 5
-            ? "Manager"
-            : "notMentioned"}
+            : jobPost.contractType === "Mid Senior"
+            ? "Mid Senior"
+            : "Senior"}
         </span>
       </div>
+
+      {/* ============================= */}
+
+      {/* ============================= */}
 
       <div className="jplIconAndTxt">
         <BusinessCenterIcon className="jplIcon" />
@@ -116,23 +116,23 @@ function JobPostLg({ jobPost }) {
       <div className="jplRecruiticonTxt">
         <AttachMoneyIcon className="jplHiringIcon" />
         <span className="activelyRecruitTxt">
-          {jobPost.salaryRange === 1
+          {jobPost.salaryRange === "5k-10k"
             ? "5k-10k"
-            : jobPost.salaryRange === 2
+            : jobPost.salaryRange === "10k-15k"
             ? "10k-15k"
-            : jobPost.salaryRange === 3
+            : jobPost.salaryRange === "15k-20k"
             ? "15k-20k"
-            : jobPost.salaryRange === 4
+            : jobPost.salaryRange === "20k-30k"
             ? "20k-30k"
-            : jobPost.salaryRange === 5
+            : jobPost.salaryRange === "30k-40k"
             ? "30k-40k"
-            : jobPost.salaryRange === 6
+            : jobPost.salaryRange === "40k-50k"
             ? "40k-50k"
-            : jobPost.salaryRange === 7
+            : jobPost.salaryRange === "50k-60k"
             ? "50k-60k"
-            : jobPost.salaryRange === 8
+            : jobPost.salaryRange === "60k-70k"
             ? "60k-70k"
-            : jobPost.salaryRange === 9
+            : jobPost.salaryRange === "70k-80k"
             ? "70k-80k"
             : "Negotiable"}
         </span>
@@ -146,7 +146,7 @@ function JobPostLg({ jobPost }) {
         {currentUserDetail?.jobPostsBookmark?.includes(jobPost?._id) ? (
           <button
             className="jplSaveBtn"
-            onClick={() => handleRemoveBookmark(jobPost._id)}
+            onClick={() => handleRemoveBookmark(jobPost?._id)}
           >
             <CheckIcon /> Saved
           </button>
