@@ -28,7 +28,7 @@ function JobSearchFeed() {
   const [requirement6, setRequirement6] = useState("");
   const [requirement7, setRequirement7] = useState("");
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,8 +55,7 @@ function JobSearchFeed() {
     console.log(newJob);
     try {
       await axios.post("jobPosts/create", newJob);
-      navigate("/jobSearch")
-
+      navigate("/jobSearch");
     } catch (err) {
       console.error(err.message);
     }
@@ -111,14 +110,6 @@ function JobSearchFeed() {
                   placeholder="Bangalore"
                 />
                 {/* == */}
-                {/* <span className="jpcCompanyLocation jpc">Salary Range</span>
-                <input
-                  type="text"
-                  className="jpcCompanyLocationInput jpcInput jpcInput2"
-                  onChange={(e) => setSalaryRange(e.target.value)}
-                  placeholder="40k-50k"
-                /> */}
-                {/* == */}
                 <span className="jpcNoOfEmployee jpc">Salary Range</span>{" "}
                 <select
                   className="jpcNoOfEmployeeInput jpcInput"
@@ -135,19 +126,44 @@ function JobSearchFeed() {
                   <option value="9">70k-80k</option>
                   <option value="10">Negotiate</option>
                 </select>
-                <span className="jpcCompanyLocation jpc">Company Type</span>{" "}
+                {/* == */}
+                <span className="jpcCompanyLocation jpc">
+                  Company Type
+                </span>{" "}
                 <input
                   type="text"
                   className="jpcCompanyLocationInput jpcInput jpcInput2"
                   onChange={(e) => setCompanyType(e.target.value)}
                   placeholder="WebApp and MobilApp Development"
                 />
-                <span className="jpcNoOfEmployee jpc">No of Employee</span>{" "}
+                {/* == */}
+                <span className="jpcNoOfEmployee jpc">
+                  Required Number
+                </span>{" "}
+                <select
+                  className="jpcNoOfEmployeeInput jpcInput"
+                  onChange={(e) => setNoOfEmployee(e.target.value)}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">More than 10</option>
+                </select>
+                {/* == */}
+                <span className="jpcCompanyLocation jpc">
+                  Company Type
+                </span>{" "}
                 <input
                   type="text"
-                  className="jpcNoOfEmployeeInput jpcInput jpcInput2"
-                  onChange={(e) => setNoOfEmployee(e.target.value)}
-                  placeholder="65"
+                  className="jpcCompanyLocationInput jpcInput jpcInput2"
+                  onChange={(e) => setCompanyType(e.target.value)}
+                  placeholder="WebApp and MobilApp Development"
                 />
                 {/* == */}
                 <span className="jpcNoOfEmployee jpc">Contract Type</span>{" "}

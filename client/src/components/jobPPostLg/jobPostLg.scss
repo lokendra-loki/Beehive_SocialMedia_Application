@@ -101,6 +101,13 @@
       font-weight: 700;
       cursor: pointer;
 
+      &:hover {
+        background-color: white;
+        color: blueviolet;
+        border: 2px solid blueviolet;
+        transition: all 0.3s ease-in;
+      }
+
       .jplButIcon {
         margin-left: 20px;
         font-size: 18px;
@@ -120,9 +127,45 @@
       color: blueviolet;
       font-size: 16px;
       font-weight: 700;
-      border: 1.6px solid blueviolet;
+      border: 1px solid blueviolet;
       margin-left: 5px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &:hover {
+        color: blueviolet;
+        border: 2px solid blueviolet;
+        transition: all 0.1s ease-in;
+      }
+    }
+
+    .editBut {
+      height: 32px;
+      width: 80px;
+      background-color: white;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: blueviolet;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px solid grey;
+      border-radius: 3px;
+      margin-left: 300px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &:hover {
+        color: blueviolet;
+        border: 2px solid blueviolet;
+        transition: all 0.1s ease-in;
+      }
     }
   }
 

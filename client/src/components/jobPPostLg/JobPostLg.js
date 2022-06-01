@@ -1,12 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CheckIcon from "@mui/icons-material/Check";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import EditIcon from "@mui/icons-material/Edit";
+import { useAPI } from "../../context/userDetailContext";
+import {Link} from "react-router-dom";
 import { format } from "timeago.js";
+import axios from "axios";
 import "./jobPostLg.scss";
 
 function JobPostLg({ jobPost }) {
+  const { currentUserDetail } = useAPI();
+
+  //Bookmark
+  const [bookmarked, setBookmarked] = useState(false);
+  const handleBookmark = async (id) => {
+    try {
+      await axios.put(`/userDetails/bookmark/${id}`, {
+        userDetailId: currentUserDetail?._id,
+      });
+      setBookmarked(true);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Remove Bookmark
+  const [removeBookmark, setRemoveBookmark] = useState(false);
+  const handleRemoveBookmark = async (id) => {
+    try {
+      await axios.put(`/userDetails/bookmark/${id}`, {
+        userDetailId: currentUserDetail?._id,
+      });
+      setRemoveBookmark(true);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="jobPostLgCon">
       <span className="jplTitle">{jobPost?.position}</span>
@@ -51,24 +86,24 @@ function JobPostLg({ jobPost }) {
         <BusinessCenterIcon className="jplIcon" />
         <span className="jplTxt">
           {jobPost.noOfEmployee === 1
-            ? "5-10 Employees"
+            ? "1 Post vacancy ."
             : jobPost.noOfEmployee === 2
-            ? "10-15 Employees"
+            ? "2 Post vacancy ."
             : jobPost.noOfEmployee === 3
-            ? "15-20 Employees"
+            ? "3 Post vacancy ."
             : jobPost.noOfEmployee === 4
-            ? "20-30 Employees"
+            ? "4 Post vacancy ."
             : jobPost.noOfEmployee === 5
-            ? "30-40 Employees"
+            ? "5 Post vacancy ."
             : jobPost.noOfEmployee === 6
-            ? "40-50 Employees"
+            ? "6 Post vacancy ."
             : jobPost.noOfEmployee === 7
-            ? "50-60 Employees"
+            ? "7 Post vacancy ."
             : jobPost.noOfEmployee === 8
-            ? "60-70 Employees"
+            ? "8 Post vacancy ."
             : jobPost.noOfEmployee === 9
-            ? "70-80 Employees"
-            : "More than 100 Employees"}
+            ? "9 Post vacancy . "
+            : "More than 10 Vacancy ."}
         </span>
         <span className="jplTxt2">{jobPost?.companyType}</span>
       </div>
@@ -107,7 +142,30 @@ function JobPostLg({ jobPost }) {
         <button className="jplApplyBtn">
           Apply <SendOutlinedIcon className="jplButIcon" />{" "}
         </button>
-        <button className="jplSaveBtn">Save</button>
+
+        {currentUserDetail?.jobPostsBookmark?.includes(jobPost?._id) ? (
+          <button
+            className="jplSaveBtn"
+            onClick={() => handleRemoveBookmark(jobPost._id)}
+          >
+            <CheckIcon /> Saved
+          </button>
+        ) : (
+          <button
+            className="jplSaveBtn"
+            onClick={() => handleBookmark(jobPost._id)}
+          >
+            Save
+          </button>
+        )}
+
+        {/* Edit Button */}
+        <Link to={`/jobEdit/${jobPost._id}`} className="link">
+          <button className="editBut">
+            <EditIcon />
+            Edit
+          </button>
+        </Link>
       </div>
       <hr className="jplHr" />
 
