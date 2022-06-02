@@ -14,6 +14,7 @@ import Home from "./pages/home/Home";
 import BlogCreate from "./pages/blogCreate/BlogCreate";
 import Profile from "./pages/profile/Profile";
 import ProfileEdit from "./pages/profileEdit/ProfileEdit";
+import FeedPostEdit from "./pages/feedPostEdit/FeedPostEdit";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/jobEdit/:id" element={<JobEdit />} />
           <Route path="/blogEdit/:id" element={<BlogEdit />} />
           <Route path="/profileEdit" element={<ProfileEdit />} />
+          <Route path="/postEdit/:id" element={<FeedPostEdit />} />
         </Routes>
       </Router>
     </div>

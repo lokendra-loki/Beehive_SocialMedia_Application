@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import ModeEditTwoToneIcon from "@mui/icons-material/ModeEditTwoTone";
+import { Link } from "react-router-dom";
 import "./deleteSaveCon.scss";
 import axios from "axios";
 
@@ -40,16 +41,16 @@ function DeleteSaveCon({ id, currentUserDetail }) {
       <div className="dscItem" onClick={() => handleBookmark()}>
         <BookmarkAddedIcon className="dscIcon" />
         <span className="decSspan">
-          {currentUserDetail?.jobPostsBookmark?.includes(id)
-            ? "Saved"
-            : "Save"}
+          {currentUserDetail?.jobPostsBookmark?.includes(id) ? "Saved" : "Save"}
         </span>
       </div>
 
-      <div className="dscItem">
-        <ModeEditTwoToneIcon className="dscIcon" />
-        <span className="decSspan">Edit</span>
-      </div>
+      <Link to={`/postEdit/${id}`} className="link">
+        <div className="dscItem">
+          <ModeEditTwoToneIcon className="dscIcon" />
+          <span className="decSspan">Edit</span>
+        </div>
+      </Link>
     </div>
   );
 }
