@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { format } from "timeago.js";
 import BlogDeleteAlert from "../blogDeleteAlert/BlogDeleteAlert";
+import { Link } from "react-router-dom";
+import { format } from "timeago.js";
+
 import "./blogLg.scss";
 
 function BlogLg({ blog }) {
@@ -16,9 +18,11 @@ function BlogLg({ blog }) {
           <span className="blogLgTimeRead">{blog?.timeRead} min read</span>
           <span className="blogLgLocation">{blog?.location}</span>
           <div className="blEditDeleteCon">
-            <button className="blogLgEdit">Edit</button>
+            <Link to={`/blogEdit/${blog._id}`} className="link">
+              <button className="blogLgEdit blogLgEdit1">Edit</button>
+            </Link>
             <button
-              className="blogLgDelete"
+              className="blogLgDelete blogLgEdit1"
               onClick={() => setShowBlogDeleteAlert(!showBlogDeleteAlert)}
             >
               Delete

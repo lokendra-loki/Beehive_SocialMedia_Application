@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
+import BlogEditCon from "../../components/blogEditCon/BlogEditCon";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./blogEdit.scss";
-import BlogEditCon from "../../components/blogEditCon/BlogEditCon";
 
 function BlogEdit() {
   //Data fetching from URl id
@@ -31,7 +31,7 @@ function BlogEdit() {
           </div>
 
           <div className="bepCenterCon">
-            <BlogEditCon />
+            <BlogEditCon blog={blog} />
           </div>
 
           <div className="bepRightCon">

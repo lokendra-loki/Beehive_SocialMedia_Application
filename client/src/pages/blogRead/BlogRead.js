@@ -31,7 +31,7 @@ function BlogRead() {
           </div>
 
           <div className="brpCenterCon">
-            <BlogLg blog={blog}/>
+            <BlogLg blog={blog} />
           </div>
 
           <div className="brpRightCon">
