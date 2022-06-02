@@ -1,0 +1,49 @@
+.homePage {
+  margin-top: 60px;
+
+  .hpWrapper {
+    .hpBeforeSplit {
+      display: flex;
+
+      .hpLeftCon {
+        flex: 1.1;
+        overflow-y: scroll;
+        height: 200vh;
+        display: flex;
+        justify-content: end;
+      }
+
+      .hpCenterCon {
+        flex: 2.5;
+        margin-top: 15px;
+
+        .feedPostCreateCon {
+          height: 50px;
+          background-color: blueviolet;
+          color: rgb(223, 220, 220);
+          display: flex;
+          align-items: center;
+          border-radius: 10px;
+          padding-left: 10px;
+          margin-left: 13px;
+          margin-right: 13px;
+          font-size: 17px;
+          font-weight: 600;
+          cursor: pointer;
+          margin-bottom: 40px;
+          border: 2px solid grey;
+
+          &:hover {
+            color: rgb(243, 239, 239);
+            background-color: rgb(132, 30, 227);
+          }
+        }
+      }
+
+      .hpRightCon {
+        flex: 1.4;
+        background-color: rgb(234, 231, 238);
+      }
+    }
+  }
+}

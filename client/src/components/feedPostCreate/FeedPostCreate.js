@@ -8,7 +8,7 @@ import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 
-function FeedPostCreate() {
+function FeedPostCreate({ setShowFeedPostCreateCon }) {
   const { user } = useContext(AuthContext);
   //Create UserFeed Post
   const [desc, setDesc] = useState("");
@@ -31,7 +31,7 @@ function FeedPostCreate() {
   return (
     <form className="feedPostCreate" onSubmit={handleSubmit}>
       <div className="fpcRow1">
-        <div className="fpcRow1IconAndBackTxt">
+        <div className="fpcRow1IconAndBackTxt" onClick={()=>setShowFeedPostCreateCon(false)}>
           <ArrowBackIcon className="fpcRow1Icon" />
           <span className="fpcBack">Back</span>
         </div>

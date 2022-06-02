@@ -38,7 +38,7 @@ function LeftBar() {
           </div>
         </Link>
 
-        <Link to="/blogWrite" className="link">
+        <Link to="/blogCreate" className="link">
           <div className="lbListItem">
             <BorderColorOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Write Blogs</span>
