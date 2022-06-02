@@ -15,6 +15,7 @@ import BlogCreate from "./pages/blogCreate/BlogCreate";
 import Profile from "./pages/profile/Profile";
 import ProfileEdit from "./pages/profileEdit/ProfileEdit";
 import FeedPostEdit from "./pages/feedPostEdit/FeedPostEdit";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/blogEdit/:id" element={<BlogEdit />} />
           <Route path="/profileEdit" element={<ProfileEdit />} />
           <Route path="/postEdit/:id" element={<FeedPostEdit />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Router>
     </div>

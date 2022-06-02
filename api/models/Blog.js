@@ -12,25 +12,26 @@ const BlogSchema = new mongoose.Schema(
       required: true,
     },
 
-    category: {
-      type: String,
-      required: true,
-    },
+    // category: {
+    //   type: String,
+    //   default: "",
+     
+    // },
 
     authorName: {
       type: String,
       required: true,
     },
 
-    authorID: {
-      type: String,
-      required: true,
-    },
+    // authorID: {
+    //   type: String,
+    //   required: true,
+    // },
 
-    authorEmail: {
-      type: String,
-      required: true,
-    },
+    // authorEmail: {
+    //   type: String,
+    //   required: true,
+    // },
 
     img: {
       type: String,

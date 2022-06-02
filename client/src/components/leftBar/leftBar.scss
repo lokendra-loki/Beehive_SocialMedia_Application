@@ -4,7 +4,6 @@
   position: fixed;
   overflow-y: scroll;
   height: 100vh;
-  // background-color: yellow;
   margin-left: 10px;
   width: 180px;
 
@@ -38,6 +37,10 @@
         border-radius: 20px;
         transition: all 0.3s ease;
       }
+    }
+
+    .lbListItemLogout {
+      margin-bottom: 150px;
     }
   }
 }

@@ -1,6 +1,5 @@
 import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
 import HelpCenterOutlinedIcon from "@mui/icons-material/HelpCenterOutlined";
-import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
@@ -9,11 +8,27 @@ import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { Link } from "react-router-dom";
 import "./leftBar.scss";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function LeftBar() {
+  //Logout
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   window.location.replace("/login");
+  // };
+
+  //Logout
+  const { dispatch } = useContext(AuthContext);
+  const handleLogout = (e) => {
+    dispatch({ type: "LOGOUT" });
+    window.location.replace("/login");
+  };
+
   return (
     <div className="leftBar">
       <div className="lbWrapper">
@@ -45,16 +60,6 @@ function LeftBar() {
           </div>
         </Link>
 
-        <div className="lbListItem">
-          <WhatshotIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Trending</span>
-        </div>
-
-        <div className="lbListItem">
-          <QuestionMarkIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Ask Doubts</span>
-        </div>
-
         <Link to="/bookmark" className="link">
           <div className="lbListItem">
             <BookmarkIcon className="lbListItemKey" />
@@ -76,6 +81,18 @@ function LeftBar() {
           </div>
         </Link>
 
+        <Link to="/settings" className="link">
+        <div className="lbListItem">
+          <SettingsIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Settings</span>
+        </div>
+      </Link>
+
+        <div className="lbListItem">
+          <WhatshotIcon className="lbListItemKey" />
+          <span className="lbListItemValue">Trending</span>
+        </div>
+
         <div className="lbListItem">
           <AutoStoriesIcon className="lbListItemKey" />
           <span className="lbListItemValue">Success Story</span>
@@ -86,22 +103,7 @@ function LeftBar() {
           <span className="lbListItemValue">Help </span>
         </div>
 
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-
-        <div className="lbListItem">
-          <LogoutIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Logout </span>
-        </div>
-
-        <div className="lbListItem">
+        <div className="lbListItem lbListItemLogout" onClick={handleLogout}>
           <LogoutIcon className="lbListItemKey" />
           <span className="lbListItemValue">Logout </span>
         </div>
