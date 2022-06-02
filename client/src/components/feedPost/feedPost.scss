@@ -2,6 +2,7 @@
   border: 1px solid grey;
   margin: 0px 15px;
   background-color: white;
+  margin-bottom: 25px;
 
   .fpRow1 {
     display: flex;
@@ -43,6 +44,14 @@
       margin-left: 500px;
       cursor: pointer;
     }
+  }
+
+  .deleteSaveConWrapper {
+    display: flex;
+    position: absolute;
+    z-index: 99;
+    right: 460px;
+    top: 230px;
   }
 
   .fpDesc {

@@ -8,6 +8,9 @@ import "./profile.scss";
 function Profile() {
   const { currentUserDetail } = useAPI();
   console.log(currentUserDetail);
+
+  
+  const [showFeedCreateCon, setShowFeedCreateCon] = React.useState(false);
   return (
     <div className="profilePage">
       <Navbar />
@@ -19,7 +22,10 @@ function Profile() {
 
         <div className="ppBeforeSplit">
           <div className="ppLeft">
-            <div className="upSmallWhatsOnYourMindCon">
+            <div
+              className="upSmallWhatsOnYourMindCon"
+              onClick={() => setShowFeedCreateCon(!showFeedCreateCon)}
+            >
               <img src="" alt="" className="upTinyProfilePic" />
               <input
                 type="text"
@@ -27,8 +33,14 @@ function Profile() {
                 placeholder="what's on your mind "
               />
             </div>
+
             <div className="feedPostCreateConWrapper">
-              <FeedPostCreate />
+              {showFeedCreateCon && (
+                <FeedPostCreate
+                  setShowFeedCreateCon={setShowFeedCreateCon}
+              
+                />
+              )}
             </div>
           </div>
 

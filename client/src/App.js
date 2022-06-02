@@ -13,7 +13,7 @@ import BlogEdit from "./pages/blogEdit/BlogEdit";
 import Home from "./pages/home/Home";
 import BlogCreate from "./pages/blogCreate/BlogCreate";
 import Profile from "./pages/profile/Profile";
-
+import ProfileEdit from "./pages/profileEdit/ProfileEdit";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile  />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogRead/:id" element={<BlogRead />} />
           <Route path="/blogCreate" element={<BlogCreate />} />
@@ -34,6 +34,7 @@ function App() {
           <Route path="/bookmark" element={<Bookmark />} />
           <Route path="/jobEdit/:id" element={<JobEdit />} />
           <Route path="/blogEdit/:id" element={<BlogEdit />} />
+          <Route path="/profileEdit" element={<ProfileEdit />} />
         </Routes>
       </Router>
     </div>

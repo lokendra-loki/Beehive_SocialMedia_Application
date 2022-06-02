@@ -1,0 +1,26 @@
+.profileInfoEditCon {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  gap: 15px;
+  padding: 10px;
+
+  .piecItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .piecTitle {
+      font-size: 17px;
+      font-weight: 700;
+      color: rgb(52, 51, 51);
+    }
+
+    .piecInput {
+      height: 32px;
+      border-radius: 10px;
+      border: none;
+      border: 1px solid grey;
+    }
+  }
+}

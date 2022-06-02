@@ -5,6 +5,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
+import { Link } from "react-router-dom";
 import "./profileRightBar.scss";
 
 function ProfileRightBar({ currentUserDetail }) {
@@ -139,6 +140,9 @@ function ProfileRightBar({ currentUserDetail }) {
             <span className="boldSpan">{currentUserDetail?.fullName}</span>
           </span>
         </div>
+        <Link to={"/profileEdit"}>
+          <button className="profileInfoEditBut">Edit</button>
+        </Link>
       </div>
     </>
   );

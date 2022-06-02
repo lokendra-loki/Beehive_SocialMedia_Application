@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import FeedPostCreate from "../../components/feedPostCreate/FeedPostCreate";
 import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
-import "./home.scss";
 import FeedPost from "../../components/feedPost/FeedPost";
-import FeedPostCreate from "../../components/feedPostCreate/FeedPostCreate";
+import "./home.scss";
+import { useAPI } from "../../context/blogContext";
 
 function Home() {
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
+  const { posts } = useAPI();
+  console.log(posts);
 
   return (
     <div className="homePage">
@@ -30,7 +33,9 @@ function Home() {
             >
               What's on your mind Lokendra ?
             </div>
-            <FeedPost />
+            {posts.map((post, i) => (
+              <FeedPost index={i} key={i} post={post} />
+            ))}
           </div>
 
           <div className="hpRightCon">

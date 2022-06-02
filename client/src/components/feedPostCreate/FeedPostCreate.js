@@ -5,10 +5,14 @@ import PhotoSizeSelectActualOutlinedIcon from "@mui/icons-material/PhotoSizeSele
 import VideoCameraBackOutlinedIcon from "@mui/icons-material/VideoCameraBackOutlined";
 import LinkIcon from "@mui/icons-material/Link";
 import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
+import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 
-function FeedPostCreate({ setShowFeedPostCreateCon }) {
+function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  console.log(path);
   const { user } = useContext(AuthContext);
   //Create UserFeed Post
   const [desc, setDesc] = useState("");
@@ -30,13 +34,29 @@ function FeedPostCreate({ setShowFeedPostCreateCon }) {
 
   return (
     <form className="feedPostCreate" onSubmit={handleSubmit}>
-      <div className="fpcRow1">
-        <div className="fpcRow1IconAndBackTxt" onClick={()=>setShowFeedPostCreateCon(false)}>
-          <ArrowBackIcon className="fpcRow1Icon" />
-          <span className="fpcBack">Back</span>
+      {path ? (
+        <div className="fpcRow1">
+          <div
+            className="fpcRow1IconAndBackTxt"
+            onClick={() => setShowFeedCreateCon(false)}
+          >
+            <ArrowBackIcon className="fpcRow1Icon" />
+            <span className="fpcBack">Back</span>
+          </div>
+          <button className="fpcPost">Post</button>
         </div>
-        <button className="fpcPost">Post</button>
-      </div>
+      ) : (
+        <div className="fpcRow1">
+          <div
+            className="fpcRow1IconAndBackTxt"
+            onClick={() => setShowFeedPostCreateCon(false)}
+          >
+            <ArrowBackIcon className="fpcRow1Icon" />
+            <span className="fpcBack">Back</span>
+          </div>
+          <button className="fpcPost">Post</button>
+        </div>
+      )}
 
       <hr className="fpcHr" />
 

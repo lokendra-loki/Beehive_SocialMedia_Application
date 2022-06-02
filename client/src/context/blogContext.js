@@ -6,12 +6,15 @@ const BlogContext = createContext();
 
 //context provider
 export function BlogContextProvider({ children }) {
+  const [posts, setPosts] = useState([{}]);
   const [blogs, setBlogs] = useState([{}]);
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const res = await axios.get("/blogs/getAll");
+        const res1 = await axios.get("/userPosts/getAll");
         setBlogs(res.data);
+        setPosts(res1.data);
       } catch (error) {
         console.log(error);
       }
@@ -23,6 +26,7 @@ export function BlogContextProvider({ children }) {
     <BlogContext.Provider
       value={{
         blogs,
+        posts,
       }}
     >
       {children}
