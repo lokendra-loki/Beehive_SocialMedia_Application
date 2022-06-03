@@ -6,13 +6,47 @@ import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
 import DeleteSaveCon from "../deleteSaveCon/DeleteSaveCon";
 import { useAPI } from "../../context/userDetailContext";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { format } from "timeago.js";
 import "./feedPost.scss";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function FeedPost({ post, privatePost }) {
+  const { user } = useContext(AuthContext);
   const [showDeleteSaveCon, setShowDeleteSaveCon] = useState(false);
   const { currentUserDetail } = useAPI();
+
+  //Like dislike
+  const [postLiked, setPostLiked] = useState(false);
+  const handleLike = async (id) => {
+    try {
+      const res = await axios.put(`/userPosts/like/${id}`, {
+        userId: user._id,
+      });
+      setPostLiked(true);
+      window.location.reload();
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //
+  const [liked, setLiked] = useState(false);
+  const handleLikeDislike = async (id) => {
+    try {
+      const res = await axios.put(`/userPosts/like/${id}`, {
+        userId: user._id,
+      });
+      setLiked(true);
+      window.location.reload();
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   return (
     <>
@@ -58,15 +92,21 @@ function FeedPost({ post, privatePost }) {
           <hr className="fpHr" />
           <div className="fpIconsRow">
             <div className="fpLikeDislikeIconWrapper">
-              <div className="fpIconsItemColumn">
+              <div
+                className="fpIconsItemColumn"
+                onClick={() => handleLike(post._id)}
+              >
                 <ThumbUpOutlined className="fpIconsItemIcon" />
-                <span className="fpIconsItemTxt"> 45Likes</span>
+                <span className="fpIconsItemTxt">
+                  {" "}
+                  {post?.likes?.length} Likes
+                </span>
               </div>
 
-              <div className="fpIconsItemColumn ">
+              {/* <div className="fpIconsItemColumn ">
                 <ThumbDownAltOutlinedIcon className="fpIconsItemIcon" />
                 <span className="fpIconsItemTxt"> 19 dislikes</span>
-              </div>
+              </div> */}
             </div>
 
             <div className="fpIconsItemColumn">
@@ -122,15 +162,21 @@ function FeedPost({ post, privatePost }) {
           <hr className="fpHr" />
           <div className="fpIconsRow">
             <div className="fpLikeDislikeIconWrapper">
-              <div className="fpIconsItemColumn">
+              <div
+                className="fpIconsItemColumn"
+                onClick={() => handleLikeDislike(privatePost?._id)}
+              >
                 <ThumbUpOutlined className="fpIconsItemIcon" />
-                <span className="fpIconsItemTxt"> 45Likes</span>
+                <span className="fpIconsItemTxt">
+                  {" "}
+                  {privatePost?.likes?.length} Likes
+                </span>
               </div>
 
-              <div className="fpIconsItemColumn ">
+              {/* <div className="fpIconsItemColumn ">
                 <ThumbDownAltOutlinedIcon className="fpIconsItemIcon" />
                 <span className="fpIconsItemTxt"> 19 dislikes</span>
-              </div>
+              </div> */}
             </div>
 
             <div className="fpIconsItemColumn">
