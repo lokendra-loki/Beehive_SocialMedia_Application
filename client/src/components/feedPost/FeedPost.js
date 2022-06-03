@@ -2,9 +2,10 @@ import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined"
+import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
 import DeleteSaveCon from "../deleteSaveCon/DeleteSaveCon";
 import { useAPI } from "../../context/userDetailContext";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { format } from "timeago.js";
 import "./feedPost.scss";
@@ -12,17 +13,18 @@ import "./feedPost.scss";
 function FeedPost({ post }) {
   const [showDeleteSaveCon, setShowDeleteSaveCon] = useState(false);
   const { currentUserDetail } = useAPI();
-  
 
   return (
     <div className="feedPost">
       <div className="fpRow1">
-        <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
+        <Link to={`/profile/${post.userID}`} className="link">
+          <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
+        </Link>
         <div
           className="fpProfileInfoColumn"
           onClick={() => setShowDeleteSaveCon(false)}
         >
-          <span className="fpUsername">{post.username}</span>
+          <span className="fpUsername">{post.fullName}</span>
           <span className="fpProfession">{post.profession}</span>
           <span className="fpTime">{format(post.createdAt)}</span>
         </div>

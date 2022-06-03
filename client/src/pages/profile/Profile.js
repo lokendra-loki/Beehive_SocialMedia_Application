@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FeedPostCreate from "../../components/feedPostCreate/FeedPostCreate";
 import Navbar from "../../components/navbar/Navbar";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
-import { useAPI } from "../../context/userDetailContext";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 import "./profile.scss";
 
 function Profile() {
-  const { currentUserDetail } = useAPI();
-  console.log(currentUserDetail);
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
 
+  const [userDetail, setUserDetail] = React.useState({});
+  useEffect(() => {
+    const fetchUserDetail = async () => {
+      const res = await axios.post("/userDetails/getByUserID", {
+        userID: path,
+      });
+      setUserDetail(res.data[0]);
+    };
+    fetchUserDetail();
+  }, [path]);
+  console.log(userDetail);
+
+
+  //
   
+
   const [showFeedCreateCon, setShowFeedCreateCon] = React.useState(false);
   return (
     <div className="profilePage">
@@ -30,22 +46,21 @@ function Profile() {
               <input
                 type="text"
                 className="upOnYourMindInput"
-                placeholder="what's on your mind "
+                placeholder={
+                  "what's on your mind " + userDetail.fullName + " ?"
+                }
               />
             </div>
 
             <div className="feedPostCreateConWrapper">
               {showFeedCreateCon && (
-                <FeedPostCreate
-                  setShowFeedCreateCon={setShowFeedCreateCon}
-              
-                />
+                <FeedPostCreate setShowFeedCreateCon={setShowFeedCreateCon} />
               )}
             </div>
           </div>
 
           <div className="ppRight">
-            <ProfileRightBar currentUserDetail={currentUserDetail} />
+            <ProfileRightBar userDetail={userDetail} />
           </div>
         </div>
       </div>

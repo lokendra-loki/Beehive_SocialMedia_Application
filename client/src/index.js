@@ -4,6 +4,7 @@ import App from "./App";
 import { AuthContextProvider } from "./context/authContext/AuthContext";
 import { BlogContextProvider } from "./context/blogContext";
 import { JobPostsContextProvider } from "./context/jobPostContext/JobPostContext";
+import { UserAllPostsContextProvider } from "./context/userAllPostsContext";
 import { UserDetailContextProvider } from "./context/userDetailContext";
 
 ReactDOM.render(
@@ -12,7 +13,9 @@ ReactDOM.render(
       <JobPostsContextProvider>
         <UserDetailContextProvider>
           <BlogContextProvider>
-            <App />
+            <UserAllPostsContextProvider>
+              <App />
+            </UserAllPostsContextProvider>
           </BlogContextProvider>
         </UserDetailContextProvider>
       </JobPostsContextProvider>

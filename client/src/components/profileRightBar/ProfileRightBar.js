@@ -8,7 +8,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import { Link } from "react-router-dom";
 import "./profileRightBar.scss";
 
-function ProfileRightBar({ currentUserDetail }) {
+function ProfileRightBar({ userDetail }) {
+  console.log(userDetail);
   return (
     <>
       <h4 className="userInfo">User Information</h4>
@@ -16,27 +17,23 @@ function ProfileRightBar({ currentUserDetail }) {
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            {currentUserDetail?.currentJob1Position} at{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.currentJob1Company}
-            </span>
+            {userDetail?.currentJob1Position} at{" "}
+            <span className="boldSpan">{userDetail?.currentJob1Company}</span>
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            {currentUserDetail?.currentJob2Position} at{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.currentJob2Company},
-            </span>
+            {userDetail?.currentJob2Position} at{" "}
+            <span className="boldSpan">{userDetail?.currentJob2Company},</span>
           </span>
         </div>
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Founder at{" "}
-            <span className="boldSpan">{currentUserDetail?.founderOf1}</span>
+            <span className="boldSpan">{userDetail?.founderOf1}</span>
           </span>
         </div>
 
@@ -44,7 +41,7 @@ function ProfileRightBar({ currentUserDetail }) {
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Co-founder at{" "}
-            <span className="boldSpan">{currentUserDetail?.founderOf1}</span>
+            <span className="boldSpan">{userDetail?.founderOf1}</span>
           </span>
         </div>
 
@@ -52,10 +49,8 @@ function ProfileRightBar({ currentUserDetail }) {
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Former{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.pastJob1Position}
-            </span>{" "}
-            at {currentUserDetail?.pastJob1Company}
+            <span className="boldSpan">{userDetail?.pastJob1Position}</span> at{" "}
+            {userDetail?.pastJob1Company}
           </span>
         </div>
 
@@ -63,10 +58,8 @@ function ProfileRightBar({ currentUserDetail }) {
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Former{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.pastJob2Position}
-            </span>{" "}
-            at {currentUserDetail?.pastJob2Company}
+            <span className="boldSpan">{userDetail?.pastJob2Position}</span> at{" "}
+            {userDetail?.pastJob2Company}
           </span>
         </div>
 
@@ -75,10 +68,10 @@ function ProfileRightBar({ currentUserDetail }) {
           <span className="ppUserInfoItemTxt">
             Studies{" "}
             <span className="boldSpan">
-              {currentUserDetail?.currentStudyingCourse}
+              {userDetail?.currentStudyingCourse}
             </span>{" "}
             at {""}
-            {currentUserDetail?.currentStudyingUniversity}{" "}
+            {userDetail?.currentStudyingUniversity}{" "}
           </span>
         </div>
 
@@ -87,9 +80,9 @@ function ProfileRightBar({ currentUserDetail }) {
           <span className="ppUserInfoItemTxt">
             +2 Completed from{" "}
             <span className="boldSpan">
-              {currentUserDetail?.plus2CompletedCollege}
+              {userDetail?.plus2CompletedCollege}
             </span>{" "}
-            {currentUserDetail?.plus2CompletedCollegeLocation}
+            {userDetail?.plus2CompletedCollegeLocation}
           </span>
         </div>
 
@@ -97,10 +90,8 @@ function ProfileRightBar({ currentUserDetail }) {
           <SchoolIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             SEE completed from{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.sEECompletedCollege}
-            </span>{" "}
-            {currentUserDetail?.sEECompletedSchoolLocation}{" "}
+            <span className="boldSpan">{userDetail?.sEECompletedCollege}</span>{" "}
+            {userDetail?.sEECompletedSchoolLocation}{" "}
           </span>
         </div>
 
@@ -108,16 +99,14 @@ function ProfileRightBar({ currentUserDetail }) {
           <LocationCityIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Lives in{" "}
-            <span className="boldSpan">
-              {currentUserDetail?.currentlyLiving}
-            </span>{" "}
+            <span className="boldSpan">{userDetail?.currentlyLiving}</span>{" "}
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <LocationOnIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            From <span className="boldSpan">{currentUserDetail?.homeTown}</span>{" "}
+            From <span className="boldSpan">{userDetail?.homeTown}</span>{" "}
           </span>
         </div>
 
@@ -137,7 +126,7 @@ function ProfileRightBar({ currentUserDetail }) {
           <MoreHorizIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             See more about{" "}
-            <span className="boldSpan">{currentUserDetail?.fullName}</span>
+            <span className="boldSpan">{userDetail?.fullName}</span>
           </span>
         </div>
         <Link to={"/profileEdit"}>
