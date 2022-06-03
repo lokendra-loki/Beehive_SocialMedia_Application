@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const BlogSchema = new mongoose.Schema(
   {
+    userID: {
+      type: String,
+      required: true,
+    },
+
     title: {
       type: String,
       required: true,
@@ -12,26 +17,10 @@ const BlogSchema = new mongoose.Schema(
       required: true,
     },
 
-    // category: {
-    //   type: String,
-    //   default: "",
-     
-    // },
-
     authorName: {
       type: String,
       required: true,
     },
-
-    // authorID: {
-    //   type: String,
-    //   required: true,
-    // },
-
-    // authorEmail: {
-    //   type: String,
-    //   required: true,
-    // },
 
     img: {
       type: String,

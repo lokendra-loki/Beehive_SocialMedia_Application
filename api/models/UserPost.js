@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 
 const UserPostSchema = new mongoose.Schema(
   {
-    username: {
+    userID: {
       type: String,
-      default: "",
+      required: true,
     },
 
     fullName: {
       type: String,
-      default: "",
+      required: true,
     },
 
     profession: {
       type: String,
-      default: "",
+      required: true,
     },
 
     desc: {
@@ -32,19 +32,9 @@ const UserPostSchema = new mongoose.Schema(
       default: [],
     },
 
-    disLike: {
+    disLikes: {
       type: Array,
       default: [],
-    },
-
-    likeCount: {
-      type: Number,
-      default: 0,
-    },
-
-    disLikeCount: {
-      type: Number,
-      default: 0,
     },
   },
   { timestamps: true }

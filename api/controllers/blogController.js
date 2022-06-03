@@ -57,9 +57,9 @@ const deleteBlog = async (req, res, next) => {
 
 //Get allBlogs of a user (by userID) element
 const getAllBlogsOfAUser = async (req, res, next) => {
-  const { authorID } = req.body;
+  const { userID } = req.body;
   try {
-    userKoAllPosts = await Blog.find({ authorID });
+    userKoAllPosts = await Blog.find({ userID });
     res.status(200).json(userKoAllPosts);
   } catch (error) {
     next(error);

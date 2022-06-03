@@ -57,6 +57,17 @@ const deleteJobPost = async (req, res, next) => {
   }
 };
 
+//Get all jobPosts of a user (by userID) element
+const getAllJobPostsOfAUser = async (req, res, next) => {
+  const { userID } = req.body;
+  try {
+    userKoAllJobPosts = await JobPost.find({ userID });
+    res.status(200).json(userKoAllJobPosts);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //export
 module.exports = {
   createJobPost,
@@ -64,4 +75,5 @@ module.exports = {
   getJobPost,
   GetAllJobPosts,
   deleteJobPost,
+  getAllJobPostsOfAUser,
 };

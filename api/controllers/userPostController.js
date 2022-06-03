@@ -55,6 +55,17 @@ const deleteUserPost = async (req, res, next) => {
   }
 };
 
+//Get all userPosts of a user (by userID) element
+const getAllPostsOfAUser = async (req, res, next) => {
+  const { userID } = req.body;
+  try {
+    userKoAllPosts = await UserPost.find({ userID });
+    res.status(200).json(userKoAllPosts);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //export
 module.exports = {
   createUserPost,
@@ -62,4 +73,5 @@ module.exports = {
   getUserPost,
   getAllUserPosts,
   deleteUserPost,
+  getAllPostsOfAUser,
 };

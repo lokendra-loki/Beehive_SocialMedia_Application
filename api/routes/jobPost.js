@@ -1,25 +1,33 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // const JobPost = require('../models/JobPost');
-const bcrypt = require('bcrypt');
-const { createJobPost, updateJobPost, deleteJobPost, getJobPost, GetAllJobPosts } = require('../controllers/jobPostController');
-const { verifyUser, verifyToken } = require('../utils/verifyToken');
-
+const bcrypt = require("bcrypt");
+const {
+  createJobPost,
+  updateJobPost,
+  deleteJobPost,
+  getJobPost,
+  GetAllJobPosts,
+  getAllJobPostsOfAUser,
+} = require("../controllers/jobPostController");
+const { verifyUser, verifyToken } = require("../utils/verifyToken");
 
 //Create JobPost
-router.post("/create",verifyToken, createJobPost)
+router.post("/create", verifyToken, createJobPost);
 
 //Update JobPost
-router.put("/update/:id",verifyUser, updateJobPost)
+router.put("/update/:id", verifyUser, updateJobPost);
 
 //Get JobPost
-router.get("/get/:id", getJobPost)
+router.get("/get/:id", getJobPost);
 
 //GetAll JobPost
-router.get("/getAll", GetAllJobPosts)
+router.get("/getAll", GetAllJobPosts);
 
 //Delete JobPost
-router.delete("/delete/:id",verifyUser, deleteJobPost)
+router.delete("/delete/:id", verifyUser, deleteJobPost);
 
+//Get all Posts of a user
+router.post("/getAllJobPostsOfAUser", getAllJobPostsOfAUser);
 
 //export
 module.exports = router;
