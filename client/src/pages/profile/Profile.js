@@ -6,6 +6,8 @@ import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./profile.scss";
+import JobPost from "../../components/jobPost/JobPost";
+import Blog from "../../components/blog/Blog";
 
 function Profile() {
   const location = useLocation();
@@ -37,6 +39,38 @@ function Profile() {
       }
     };
     fetchUserKoPosts();
+  }, [path]);
+
+  //all jobPost of a user from path id
+  const [userKoJobPosts, setUserKoJobPosts] = React.useState([{}]);
+  useEffect(() => {
+    const fetchUserKoJobPosts = async () => {
+      try {
+        const res = await axios.post("/jobPosts/getAllJobPostsOfAUser", {
+          userID: path,
+        });
+        setUserKoJobPosts(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserKoJobPosts();
+  }, [path]);
+
+  //all Blogs of a user from path id
+  const [userKoBlogs, setUserKoBlogs] = React.useState([{}]);
+  useEffect(() => {
+    const fetchUserKoBlogs = async () => {
+      try {
+        const res = await axios.post("/blogs/getAllBlogsOfAUser", {
+          userID: path,
+        });
+        setUserKoBlogs(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserKoBlogs();
   }, [path]);
 
   const [showFeedCreateCon, setShowFeedCreateCon] = React.useState(false);
@@ -73,6 +107,14 @@ function Profile() {
 
             {userKoPosts.map((privatePost, i) => (
               <FeedPost index={i} key={i} privatePost={privatePost} />
+            ))}
+
+            {userKoJobPosts.map((privateJobPost, i) => (
+              <JobPost index={i} key={i} privateJobPost={privateJobPost} />
+            ))}
+
+            {userKoBlogs.map((privateBlog, i) => (
+              <Blog key={i} index={i} privateBlog={privateBlog} />
             ))}
           </div>
 

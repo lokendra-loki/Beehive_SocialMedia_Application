@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
@@ -6,8 +6,10 @@ import RightBar from "../../components/rightBar/RightBar";
 import axios from "axios";
 import "./jobPostCreate.scss";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function JobSearchFeed() {
+  const { user } = useContext(AuthContext);
   //Create Job Post
   const [position, setPosition] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -33,6 +35,7 @@ function JobSearchFeed() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newJob = {
+      userID: user._id,
       position,
       companyName,
       companyLocation,

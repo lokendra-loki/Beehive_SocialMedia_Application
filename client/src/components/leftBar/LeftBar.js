@@ -40,7 +40,7 @@ function LeftBar() {
           </div>
         </Link>
 
-        <Link to={`/profile/${user._id}` }className="link">
+        <Link to={`/profile/${user?._id}` }className="link">
           <div className="lbListItem">
             <PersonOutlineOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Profile</span>

@@ -6,7 +6,7 @@ import axios from "axios";
 import DeleteAlert from "../deleteAlert/DeleteAlert";
 import { useAPI } from "../../context/userDetailContext";
 
-function JobPost({ jobPost }) {
+function JobPost({ jobPost, privateJobPost }) {
   const { currentUserDetail } = useAPI();
 
   //Bookmark
@@ -27,48 +27,105 @@ function JobPost({ jobPost }) {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
   return (
-    <div className="jobPost">
-      <img src="/assets/cover.jpeg" alt="" className="jobCompanyLogo" />
-      <div className="jpInfoCon">
-        <span className="jpJobTitle">{jobPost.position}</span>
-        <span className="jpPostTime">{format(jobPost.createdAt)}</span>
-        <span className="jpCompanyAddress">{jobPost.location}</span>
-        <span className="jpCompanyName">{jobPost.companyName}</span>
+    <>
+      {jobPost ? (
+        <div className="jobPost">
+          <img src="/assets/cover.jpeg" alt="" className="jobCompanyLogo" />
+          <div className="jpInfoCon">
+            <span className="jpJobTitle">{jobPost?.position}</span>
+            <span className="jpPostTime">{format(jobPost?.createdAt)}</span>
+            <span className="jpCompanyAddress">{jobPost?.location}</span>
+            <span className="jpCompanyName">{jobPost?.companyName}</span>
 
-        <div className="jobPostDeleteSaveCon">
-          <button
-            className="jpDelete"
-            onClick={() => setShowDeleteAlert(!showDeleteAlert)}
-          >
-            Delete
+            <div className="jobPostDeleteSaveCon">
+              <button
+                className="jpDelete"
+                onClick={() => setShowDeleteAlert(!showDeleteAlert)}
+              >
+                Delete
+              </button>
+
+              <button
+                className="jpDelete"
+                onClick={() => handleBookmark(jobPost?._id)}
+              >
+                {currentUserDetail?.jobPostsBookmark?.includes(jobPost?._id)
+                  ? "Saved"
+                  : "Save"}
+              </button>
+
+              <Link to={`/jobPost/${jobPost?._id}`} className="link">
+                <span className="viewMore">ViewMore...</span>
+              </Link>
+            </div>
+          </div>
+          <hr className="jpHr" />
+          {showDeleteAlert && (
+            <DeleteAlert
+              setShowDeleteAlert={setShowDeleteAlert}
+              id={jobPost?._id}
+            />
+          )}
+          <button className="fullTimeBut">
+            {jobPost?.jobType === "Full Time"
+              ? "Full Time"
+              : jobPost?.jobType === "Part Time"
+              ? "Part Time"
+              : "Contract"}
           </button>
-
-          <button
-            className="jpDelete"
-            onClick={() => handleBookmark(jobPost?._id)}
-          >
-            {currentUserDetail?.jobPostsBookmark?.includes(jobPost?._id)
-              ? "Saved"
-              : "Save"}
-          </button>
-
-          <Link to={`/jobPost/${jobPost._id}`} className="link">
-            <span className="viewMore">ViewMore...</span>
-          </Link>
         </div>
-      </div>
-      <hr className="jpHr" />
-      {showDeleteAlert && (
-        <DeleteAlert setShowDeleteAlert={setShowDeleteAlert} id={jobPost._id} />
-      )}
-      <button className="fullTimeBut">
-        {jobPost.jobType === "Full Time"
-          ? "Full Time"
-          : jobPost.jobType === "Part Time"
-          ? "Part Time"
-          : "Contract"}
-      </button>
-    </div>
+      ) : privateJobPost ? (
+        <div className="jobPost">
+          <img src="/assets/cover.jpeg" alt="" className="jobCompanyLogo" />
+          <div className="jpInfoCon">
+            <span className="jpJobTitle">{privateJobPost?.position}</span>
+            <span className="jpPostTime">
+              {format(privateJobPost?.createdAt)}
+            </span>
+            <span className="jpCompanyAddress">{privateJobPost?.location}</span>
+            <span className="jpCompanyName">{privateJobPost?.companyName}</span>
+
+            <div className="jobPostDeleteSaveCon">
+              <button
+                className="jpDelete"
+                onClick={() => setShowDeleteAlert(!showDeleteAlert)}
+              >
+                Delete
+              </button>
+
+              <button
+                className="jpDelete"
+                onClick={() => handleBookmark(privateJobPost?._id)}
+              >
+                {currentUserDetail?.jobPostsBookmark?.includes(
+                  privateJobPost?._id
+                )
+                  ? "Saved"
+                  : "Save"}
+              </button>
+
+              <Link to={`/jobPost/${privateJobPost?._id}`} className="link">
+                <span className="viewMore">ViewMore...</span>
+              </Link>
+            </div>
+          </div>
+          <hr className="jpHr" />
+          {showDeleteAlert && (
+            <DeleteAlert
+              setShowDeleteAlert={setShowDeleteAlert}
+              id={privateJobPost?._id}
+            />
+          )}
+          <button className="fullTimeBut">
+            {privateJobPost?.jobType === "Full Time"
+              ? "Full Time"
+              : privateJobPost?.jobType === "Part Time"
+              ? "Part Time"
+              : "Contract"}
+          </button>
+        </div>
+      ) : null}
+    </>
   );
 }
 export default JobPost;
