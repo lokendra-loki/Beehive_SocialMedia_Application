@@ -4,9 +4,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link, NavLink } from "react-router-dom";
 import "./navbar.scss";
 
-
 function Navbar() {
-  const {user} =useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <div className="navbar">
       <img src="/assets/logo.svg" alt="" className="navbarLogo" />
@@ -36,7 +35,11 @@ function Navbar() {
           </div>
         </NavLink>
 
-        <NavLink to={`/profile/${user._id}`} activeclassname="active" className="link">
+        <NavLink
+          to={`/profile/${user._id}`}
+          activeclassname="active"
+          className="link"
+        >
           <div className="navLinkCon">
             <span className="navLink">Profile </span>
           </div>

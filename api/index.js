@@ -8,6 +8,7 @@ const blogRoute = require("./routes/blog");
 const userPostRoute = require("./routes/userPost");
 const userDetailRoute = require("./routes/userDetail");
 const userRoute = require("./routes/user");
+const commentRoute = require("./routes/comment");
 const cors = require("cors");
 const cookieSession = require("cookie-session"); // create  session
 const cookieParser = require("cookie-parser");
@@ -29,6 +30,7 @@ app.use("/api/jobPosts", jobPostRoute);
 app.use("/api/userPosts", userPostRoute);
 app.use("/api/userDetails", userDetailRoute);
 app.use("/api/blogs", blogRoute);
+app.use("/api/comments", commentRoute);
 
 //Error handling middleware
 app.use((error, req, res, next) => {

@@ -11,7 +11,6 @@ function Categories() {
   //Fetching blogs according to category
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
 
   const [catBlogs, setCatBlogs] = React.useState([{}]);
   useEffect(() => {
@@ -21,7 +20,16 @@ function Categories() {
     };
     fetchCatBlogs();
   }, [path]);
-  console.log(catBlogs);
+
+  //Fetching all Titles of blogs for recent blogs
+  const [recentBlogsTitle, setRecentBlogsTitle] = React.useState([{}]);
+  useEffect(() => {
+    const fetchRecentBlogsTitle = async () => {
+      const res = await axios.get("/blogs//getAllTitles");
+      setRecentBlogsTitle(res.data);
+    };
+    fetchRecentBlogsTitle();
+  }, []);
 
   return (
     <div className="categoriesPage">
@@ -37,7 +45,9 @@ function Categories() {
             ))}
           </div>
           <div className="cpRightCon">
-            <RightBar />
+            {recentBlogsTitle.map((recentBlogTitle, i) => (
+              <RightBar index={i} key={i} recentBlogTitle={recentBlogTitle} />
+            ))}
           </div>
         </div>
       </div>

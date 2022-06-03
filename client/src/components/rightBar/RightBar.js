@@ -3,12 +3,12 @@ import Category from "../category/Category";
 import RecentPost from "../recentPost/RecentPost";
 import "./rightBar.scss";
 
-function RightBar() {
+function RightBar({ recentBlogTitle }) {
+  
   return (
     <div className="rightBarComponent">
       <Category />
-      <RecentPost />
-      <span className="helper"></span>
+      <RecentPost recentBlogTitle={recentBlogTitle} />
     </div>
   );
 }

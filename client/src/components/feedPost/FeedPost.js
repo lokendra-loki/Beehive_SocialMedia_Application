@@ -5,7 +5,7 @@ import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
 import DeleteSaveCon from "../deleteSaveCon/DeleteSaveCon";
 import { useAPI } from "../../context/userDetailContext";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { format } from "timeago.js";
 import "./feedPost.scss";
 import axios from "axios";
@@ -50,8 +50,20 @@ function FeedPost({ post, privatePost }) {
 
   //
   const [showCommentCon, setShowCommentCon] = useState(false);
-
   const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
+
+  //Fetching comments of a post
+  const [comments, setComments] = useState([{}]);
+  useEffect(() => {
+    const fetchComments = async () => {
+      const res = await axios.post("comments/getComments", {
+        postID: post._id,
+      });
+      setComments(res.data);
+    };
+    fetchComments();
+  }, [post]);
+  console.log(comments);
 
   return (
     <>
@@ -100,7 +112,10 @@ function FeedPost({ post, privatePost }) {
           )}
           <div className="allCommentWrapper">
             {openAllCommentCon && (
-              <AllComments setOpenAllCommentCon={setOpenAllCommentCon} />
+              <AllComments
+                setOpenAllCommentCon={setOpenAllCommentCon}
+                comments={comments}
+              />
             )}
           </div>
           <div className="fpIconsRow">
