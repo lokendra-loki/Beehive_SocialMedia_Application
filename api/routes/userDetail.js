@@ -9,6 +9,7 @@ const {
   bookmark,
   getBookmarkJobPost,
 } = require("../controllers/userDetailController");
+const { likeDislikePost } = require("../controllers/userPostController");
 
 //Create
 router.post("/create", createUserDetail);
@@ -33,6 +34,8 @@ router.put("/bookmark/:postId", bookmark);
 
 //GetAll bookmarks of a user
 router.get("/getAllBookmarks/:userDetailId", getBookmarkJobPost);
+
+
 
 //export
 module.exports = router;

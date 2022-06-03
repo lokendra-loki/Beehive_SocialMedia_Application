@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, NavLink } from "react-router-dom";
 import "./navbar.scss";
 
+
 function Navbar() {
+  const {user} =useContext(AuthContext);
   return (
     <div className="navbar">
       <img src="/assets/logo.svg" alt="" className="navbarLogo" />
@@ -27,21 +30,21 @@ function Navbar() {
           </div>
         </NavLink>
 
-        <NavLink to="/trending" activeclassname="active" className="link">
+        <NavLink to="/settings" activeclassname="active" className="link">
           <div className="navLinkCon ">
-            <span className="navLink">Trending</span>
+            <span className="navLink">Settings</span>
           </div>
         </NavLink>
 
-        <NavLink to="/askQuery" activeclassname="active" className="link">
+        <NavLink to={`/profile/${user._id}`} activeclassname="active" className="link">
           <div className="navLinkCon">
-            <span className="navLink">AskQuery </span>
+            <span className="navLink">Profile </span>
           </div>
         </NavLink>
 
-        <NavLink to="/about" activeclassname="active" className="link">
+        <NavLink to="/bookmark" activeclassname="active" className="link">
           <div className="navLinkCon">
-            <span className="navLink">About </span>
+            <span className="navLink">Saved </span>
           </div>
         </NavLink>
       </div>

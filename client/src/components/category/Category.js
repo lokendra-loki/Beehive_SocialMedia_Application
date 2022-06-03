@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import { Link } from "react-router-dom";
 import "./category.scss";
 
 function Category() {
@@ -9,32 +10,44 @@ function Category() {
       <hr className="clcHr" />
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">programming</span>
+        <Link to={`/category/programming`} className="link">
+          <span className="clcValue">Programming</span>
+        </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">Data Science & Engineering</span>
+        <Link to={`/category/dataScience`} className="link">
+          <span className="clcValue">Data Science</span>
+        </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">Cloud Computing</span>
+        <Link to={`/category/cloudComputing`} className="link">
+          <span className="clcValue">Cloud Computing</span>
+        </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">AI & Machine Learning</span>
+        <Link to={`/category/machineLearning`} className="link">
+          <span className="clcValue">AI & Machine Learning</span>
+        </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">Web Development</span>
+        <Link to={`/category/webDevelopment`} className="link">
+          <span className="clcValue">Web Development</span>
+        </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <span className="clcValue">Tech News</span>
+        <Link to={`/category/techNews`} className="link">
+          <span className="clcValue">Tech News</span>
+        </Link>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ import Profile from "./pages/profile/Profile";
 import ProfileEdit from "./pages/profileEdit/ProfileEdit";
 import FeedPostEdit from "./pages/feedPostEdit/FeedPostEdit";
 import Settings from "./pages/settings/Settings";
+import Categories from "./pages/categories/Categories";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/profileEdit" element={<ProfileEdit />} />
           <Route path="/postEdit/:id" element={<FeedPostEdit />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/category/:catName" element={<Categories />} />
         </Routes>
       </Router>
     </div>

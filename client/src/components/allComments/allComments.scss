@@ -1,0 +1,44 @@
+.allCommentsContainer {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+  margin: 10px;
+  position: absolute;
+  background-color: white;
+  height: 200px;
+  padding: 10px;
+  gap: 10px;
+  overflow-y: scroll;
+  width: 300px;
+
+  .allComments {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .allCommentClearIcon {
+      padding: 5px;
+      background-color: blueviolet;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .comment1 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .commentImg {
+      height: 18px;
+      width: 18px;
+      background-color: blueviolet;
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+    }
+  }
+}

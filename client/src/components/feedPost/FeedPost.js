@@ -1,4 +1,3 @@
-import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
@@ -11,6 +10,8 @@ import { format } from "timeago.js";
 import "./feedPost.scss";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import CommentCon from "../commentCon/CommentCon";
+import AllComments from "../allComments/AllComments";
 
 function FeedPost({ post, privatePost }) {
   const { user } = useContext(AuthContext);
@@ -46,7 +47,11 @@ function FeedPost({ post, privatePost }) {
       console.log(error);
     }
   };
-  
+
+  //
+  const [showCommentCon, setShowCommentCon] = useState(false);
+
+  const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
 
   return (
     <>
@@ -90,6 +95,14 @@ function FeedPost({ post, privatePost }) {
             onClick={() => setShowDeleteSaveCon(false)}
           />
           <hr className="fpHr" />
+          {showCommentCon && (
+            <CommentCon setShowCommentCon={setShowCommentCon} />
+          )}
+          <div className="allCommentWrapper">
+            {openAllCommentCon && (
+              <AllComments setOpenAllCommentCon={setOpenAllCommentCon} />
+            )}
+          </div>
           <div className="fpIconsRow">
             <div className="fpLikeDislikeIconWrapper">
               <div
@@ -109,14 +122,20 @@ function FeedPost({ post, privatePost }) {
               </div> */}
             </div>
 
-            <div className="fpIconsItemColumn">
+            <div
+              className="fpIconsItemColumn"
+              onClick={() => setShowCommentCon(!showCommentCon)}
+            >
               <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt"> 7 comments</span>
+              <span className="fpIconsItemTxt">comments</span>
             </div>
 
-            <div className="fpIconsItemColumn">
-              <ShareOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt"> 4 share</span>
+            <div
+              className="fpIconsItemColumn"
+              onClick={() => setOpenAllCommentCon(true)}
+            >
+              <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
+              <span className="fpIconsItemTxt">Total 4 comments</span>
             </div>
           </div>
         </div>

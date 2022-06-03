@@ -66,6 +66,27 @@ const getAllBlogsOfAUser = async (req, res, next) => {
   }
 };
 
+//Get blog according to category
+const getAllBlogsOfACategory = async (req, res, next) => {
+  const { category } = req.params;
+  try {
+    catBlogs = await Blog.find({ category });
+    res.status(200).json(catBlogs);
+  } catch (error) {
+    next(error);
+  }
+};
+
+//Get title of all blogs
+const getAllBlogsTitles = async (req, res, next) => {
+  try {
+    allBlogsTitles = await Blog.find({}, { title: 1, _id: 0 });
+    res.status(200).json(allBlogsTitles);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //export
 module.exports = {
   createBlog,
@@ -74,4 +95,6 @@ module.exports = {
   getAllBlogs,
   deleteBlog,
   getAllBlogsOfAUser,
+  getAllBlogsOfACategory,
+  getAllBlogsTitles,
 };

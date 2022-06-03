@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const JobPostSchema = new mongoose.Schema(
   {
+    userID: {
+      type: String,
+      required: true,
+    },
+
     position: {
       type: String,
       required: true,

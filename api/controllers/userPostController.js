@@ -66,6 +66,22 @@ const getAllPostsOfAUser = async (req, res, next) => {
   }
 };
 
+//LIKE / DISLIKE A POST
+const likeDislikePost = async (req, res, next) => {
+  try {
+    const post = await UserPost.findById(req.params.id);
+    if (!post.likes.includes(req.body.userId)) {
+      await post.updateOne({ $push: { likes: req.body.userId } });
+      res.status(200).json("The post has been liked");
+    } else {
+      await post.updateOne({ $pull: { likes: req.body.userId } });
+      res.status(200).json("The post has been disliked");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 //export
 module.exports = {
   createUserPost,
@@ -74,4 +90,5 @@ module.exports = {
   getAllUserPosts,
   deleteUserPost,
   getAllPostsOfAUser,
+  likeDislikePost,
 };
