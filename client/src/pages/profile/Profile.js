@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import FeedPostCreate from "../../components/feedPostCreate/FeedPostCreate";
 import Navbar from "../../components/navbar/Navbar";
+import FeedPost from "../../components/feedPost/FeedPost";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +11,7 @@ function Profile() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
+  //userDetail from path id
   const [userDetail, setUserDetail] = React.useState({});
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -20,11 +22,22 @@ function Profile() {
     };
     fetchUserDetail();
   }, [path]);
-  console.log(userDetail);
 
-
-  //
-  
+  //all posts of a user from path id
+  const [userKoPosts, setUserKoPosts] = React.useState([{}]);
+  useEffect(() => {
+    const fetchUserKoPosts = async () => {
+      try {
+        const res = await axios.post("/userPosts/getAllPostsOfAUser", {
+          userID: path,
+        });
+        setUserKoPosts(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserKoPosts();
+  }, [path]);
 
   const [showFeedCreateCon, setShowFeedCreateCon] = React.useState(false);
   return (
@@ -57,6 +70,10 @@ function Profile() {
                 <FeedPostCreate setShowFeedCreateCon={setShowFeedCreateCon} />
               )}
             </div>
+
+            {userKoPosts.map((privatePost, i) => (
+              <FeedPost index={i} key={i} privatePost={privatePost} />
+            ))}
           </div>
 
           <div className="ppRight">

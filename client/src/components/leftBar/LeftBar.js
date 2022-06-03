@@ -16,6 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 function LeftBar() {
+  const {user} = useContext(AuthContext);
   //Logout
   // const handleLogout = () => {
   //   localStorage.clear();
@@ -39,7 +40,7 @@ function LeftBar() {
           </div>
         </Link>
 
-        <Link to="/profile" className="link">
+        <Link to={`/profile/${user._id}` }className="link">
           <div className="lbListItem">
             <PersonOutlineOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Profile</span>

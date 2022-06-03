@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import "./profileRightBar.scss";
 
 function ProfileRightBar({ userDetail }) {
-  console.log(userDetail);
   return (
     <>
       <h4 className="userInfo">User Information</h4>

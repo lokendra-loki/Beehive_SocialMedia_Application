@@ -10,7 +10,6 @@ import { useAPI } from "../../context/blogContext";
 function Home() {
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
   const { posts } = useAPI();
-  console.log(posts);
 
   return (
     <div className="homePage">

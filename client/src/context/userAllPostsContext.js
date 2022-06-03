@@ -35,9 +35,6 @@ export function UserAllPostsContextProvider({ children }) {
     };
     fetchUserAllPosts();
   }, [user]);
-  console.log(userAllJobPosts);
-  console.log(userAllBlogs);
-  console.log(userFeedPosts);
 
   return (
     <UserAllPostsContext.Provider
