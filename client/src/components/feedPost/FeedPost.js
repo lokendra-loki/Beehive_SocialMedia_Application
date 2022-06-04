@@ -63,7 +63,7 @@ function FeedPost({ post, privatePost }) {
     };
     fetchComments();
   }, [post]);
-  console.log(comments);
+  console.log(comments.length);
 
   return (
     <>
@@ -108,7 +108,7 @@ function FeedPost({ post, privatePost }) {
           />
           <hr className="fpHr" />
           {showCommentCon && (
-            <CommentCon setShowCommentCon={setShowCommentCon} />
+            <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
           )}
           <div className="allCommentWrapper">
             {openAllCommentCon && (
@@ -150,7 +150,7 @@ function FeedPost({ post, privatePost }) {
               onClick={() => setOpenAllCommentCon(true)}
             >
               <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt">Total 4 comments</span>
+              <span className="fpIconsItemTxt">Total {comments.length} comments</span>
             </div>
           </div>
         </div>

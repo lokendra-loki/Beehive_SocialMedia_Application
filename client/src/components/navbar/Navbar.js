@@ -8,7 +8,9 @@ function Navbar() {
   const { user } = useContext(AuthContext);
   return (
     <div className="navbar">
+      <Link to ={"/"} className="link">
       <img src="/assets/logo.svg" alt="" className="navbarLogo" />
+      </Link>
 
       <div className="navbarLinks ">
         <NavLink to="/" activeclassname="active" className="link">
@@ -36,7 +38,7 @@ function Navbar() {
         </NavLink>
 
         <NavLink
-          to={`/profile/${user._id}`}
+          to={`/profile/${user?._id}`}
           activeclassname="active"
           className="link"
         >
