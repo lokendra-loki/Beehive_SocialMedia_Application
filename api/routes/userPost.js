@@ -7,6 +7,7 @@ const {
   deleteUserPost,
   getAllPostsOfAUser,
   likeDislikePost,
+  getAllLikesId,
 } = require("../controllers/userPostController");
 const UserPost = require("../models/UserPost");
 const { verifyUser, verifyToken } = require("../utils/verifyToken");
@@ -31,6 +32,9 @@ router.post("/getAllPostsOfAUser", getAllPostsOfAUser);
 
 //LIKE / DISLIKE A POST
 router.put("/like/:id", likeDislikePost);
+
+//Get all likes id
+router.get("/getAllLikesId/:id", getAllLikesId);
 
 //export
 module.exports = router;

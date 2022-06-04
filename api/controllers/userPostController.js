@@ -82,6 +82,16 @@ const likeDislikePost = async (req, res, next) => {
   }
 };
 
+//Get all id from likes array
+const getAllLikesId = async (req, res, next) => {
+  try {
+    const post = await UserPost.findById(req.params.id);
+    res.status(200).json(post.likes);
+  } catch (err) {
+    next(err);
+  }
+};
+
 //export
 module.exports = {
   createUserPost,
@@ -91,4 +101,5 @@ module.exports = {
   deleteUserPost,
   getAllPostsOfAUser,
   likeDislikePost,
+  getAllLikesId,
 };

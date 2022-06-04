@@ -12,6 +12,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import CommentCon from "../commentCon/CommentCon";
 import AllComments from "../allComments/AllComments";
+import AllLikes from "../allLikes/AllLikes";
 
 function FeedPost({ post, privatePost }) {
   const { user } = useContext(AuthContext);
@@ -51,19 +52,31 @@ function FeedPost({ post, privatePost }) {
   //
   const [showCommentCon, setShowCommentCon] = useState(false);
   const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
+  const [openLikesCon, setOpenLikesCon] = useState(false);
 
   //Fetching comments of a post
   const [comments, setComments] = useState([{}]);
   useEffect(() => {
     const fetchComments = async () => {
       const res = await axios.post("comments/getComments", {
-        postID: post._id,
+        postID: post?._id,
       });
       setComments(res.data);
     };
     fetchComments();
   }, [post]);
   console.log(comments.length);
+
+  //Fetching who liked the post
+  const [peopleKoIds, setPeopleKoIds] = useState([]);
+  useEffect(() => {
+    const fetchPeopleKIds = async () => {
+      const res = await axios.get(`userPosts/getAllLikesId/${post?._id}`);
+      setPeopleKoIds(res.data);
+    };
+    fetchPeopleKIds();
+  }, [post]);
+  console.log(peopleKoIds);
 
   return (
     <>
@@ -110,6 +123,17 @@ function FeedPost({ post, privatePost }) {
           {showCommentCon && (
             <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
           )}
+          {peopleKoIds.map((peopleKoId, i) => (
+            <div key={i} index={i} className="allLikesConWrapper">
+              {openLikesCon && (
+                <AllLikes
+                  peopleKoId={peopleKoId}
+                  setOpenLikesCon={setOpenLikesCon}
+                />
+              )}
+            </div>
+          ))}
+
           <div className="allCommentWrapper">
             {openAllCommentCon && (
               <AllComments
@@ -120,16 +144,22 @@ function FeedPost({ post, privatePost }) {
           </div>
           <div className="fpIconsRow">
             <div className="fpLikeDislikeIconWrapper">
-              <div
-                className="fpIconsItemColumn"
-                onClick={() => handleLike(post._id)}
-              >
-                <ThumbUpOutlined className="fpIconsItemIcon" />
+              <div className="fpIconsItemColumn">
+                <ThumbUpOutlined
+                  className="fpIconsItemIcon"
+                  onClick={() => handleLike(post._id)}
+                />
                 <span className="fpIconsItemTxt">
                   {" "}
-                  {post?.likes?.length} Likes
+                  {post?.likes?.length}Likes
                 </span>
               </div>
+              <span
+                className="whLiked"
+                onMouseEnter={() => setOpenLikesCon(true)}
+              >
+                who Liked
+              </span>
 
               {/* <div className="fpIconsItemColumn ">
                 <ThumbDownAltOutlinedIcon className="fpIconsItemIcon" />
@@ -150,7 +180,9 @@ function FeedPost({ post, privatePost }) {
               onClick={() => setOpenAllCommentCon(true)}
             >
               <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt">Total {comments.length} comments</span>
+              <span className="fpIconsItemTxt">
+                Total {comments.length} comments
+              </span>
             </div>
           </div>
         </div>
