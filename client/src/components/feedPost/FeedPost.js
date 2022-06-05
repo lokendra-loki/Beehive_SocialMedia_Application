@@ -1,25 +1,25 @@
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
 import DeleteSaveCon from "../deleteSaveCon/DeleteSaveCon";
-import { useAPI } from "../../context/userDetailContext";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { format } from "timeago.js";
-import "./feedPost.scss";
-import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import CommentCon from "../commentCon/CommentCon";
 import AllComments from "../allComments/AllComments";
 import AllLikes from "../allLikes/AllLikes";
+import { format } from "timeago.js";
+import "./feedPost.scss";
+import axios from "axios";
 
 function FeedPost({ post, privatePost }) {
   const { user } = useContext(AuthContext);
   const [showDeleteSaveCon, setShowDeleteSaveCon] = useState(false);
-  const { currentUserDetail } = useAPI();
+  const [showCommentCon, setShowCommentCon] = useState(false);
+  const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
+  const [openLikesCon, setOpenLikesCon] = useState(false);
 
-  //Like dislike
+  //Like Dislike feedPost
   const [postLiked, setPostLiked] = useState(false);
   const handleLike = async (id) => {
     try {
@@ -34,7 +34,7 @@ function FeedPost({ post, privatePost }) {
     }
   };
 
-  //
+  // Like Dislike PrivatePost
   const [liked, setLiked] = useState(false);
   const handleLikeDislike = async (id) => {
     try {
@@ -49,25 +49,33 @@ function FeedPost({ post, privatePost }) {
     }
   };
 
-  //
-  const [showCommentCon, setShowCommentCon] = useState(false);
-  const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
-  const [openLikesCon, setOpenLikesCon] = useState(false);
-
-  //Fetching comments of a post
+  //Fetching comments of a feedPost
   const [comments, setComments] = useState([{}]);
   useEffect(() => {
     const fetchComments = async () => {
-      const res = await axios.post("comments/getComments", {
+      const res = await axios.post("/comments/getComments", {
         postID: post?._id,
       });
       setComments(res.data);
     };
     fetchComments();
   }, [post]);
-  console.log(comments.length);
 
-  //Fetching who liked the post
+  //Fetch comments of a privatePost
+  const [privateComments, setPrivateComments] = useState([{}]);
+  useEffect(() => {
+    const fetchPrivateComments = async () => {
+      const res = await axios.post("/comments/getComments", {
+        postID: privatePost?._id,
+      });
+      setPrivateComments(res.data);
+    };
+    fetchPrivateComments();
+  }, [privatePost]);
+  console.log(privateComments);
+  console.log(privateComments.length);
+
+  //Who liked the post
   const [peopleKoIds, setPeopleKoIds] = useState([]);
   useEffect(() => {
     const fetchPeopleKIds = async () => {
@@ -76,7 +84,6 @@ function FeedPost({ post, privatePost }) {
     };
     fetchPeopleKIds();
   }, [post]);
-  console.log(peopleKoIds);
 
   return (
     <>
@@ -95,19 +102,19 @@ function FeedPost({ post, privatePost }) {
               <span className="fpTime">{format(post?.createdAt)}</span>
             </div>
             <div
+              className="emptyDiv1"
+              onClick={() => setShowDeleteSaveCon(false)}
+            ></div>
+
+            <div className="dltsveWrapper">
+              {showDeleteSaveCon && <DeleteSaveCon postId={post?._id} />}
+            </div>
+            <div
               className="fpMoreIconColumn"
               onClick={() => setShowDeleteSaveCon(!showDeleteSaveCon)}
             >
               <MoreVertOutlinedIcon />
             </div>
-          </div>
-          <div className="deleteSaveConWrapper">
-            {showDeleteSaveCon && (
-              <DeleteSaveCon
-                id={post?._id}
-                currentUserDetail={currentUserDetail}
-              />
-            )}
           </div>
 
           <span className="fpDesc" onClick={() => setShowDeleteSaveCon(false)}>
@@ -123,6 +130,7 @@ function FeedPost({ post, privatePost }) {
           {showCommentCon && (
             <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
           )}
+
           {peopleKoIds.map((peopleKoId, i) => (
             <div key={i} index={i} className="allLikesConWrapper">
               {openLikesCon && (
@@ -142,6 +150,7 @@ function FeedPost({ post, privatePost }) {
               />
             )}
           </div>
+
           <div className="fpIconsRow">
             <div className="fpLikeDislikeIconWrapper">
               <div className="fpIconsItemColumn">
@@ -151,7 +160,7 @@ function FeedPost({ post, privatePost }) {
                 />
                 <span className="fpIconsItemTxt">
                   {" "}
-                  {post?.likes?.length}Likes
+                  {post?.likes?.length} Likes
                 </span>
               </div>
               <span
@@ -160,11 +169,6 @@ function FeedPost({ post, privatePost }) {
               >
                 who Liked
               </span>
-
-              {/* <div className="fpIconsItemColumn ">
-                <ThumbDownAltOutlinedIcon className="fpIconsItemIcon" />
-                <span className="fpIconsItemTxt"> 19 dislikes</span>
-              </div> */}
             </div>
 
             <div
@@ -177,7 +181,7 @@ function FeedPost({ post, privatePost }) {
 
             <div
               className="fpIconsItemColumn"
-              onClick={() => setOpenAllCommentCon(true)}
+              onClick={() => setOpenAllCommentCon(!openAllCommentCon)}
             >
               <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
               <span className="fpIconsItemTxt">
@@ -192,28 +196,27 @@ function FeedPost({ post, privatePost }) {
             <Link to={`/profile/${privatePost?.userID}`} className="link">
               <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
             </Link>
-            <div
-              className="fpProfileInfoColumn"
-              onClick={() => setShowDeleteSaveCon(false)}
-            >
+            <div className="fpProfileInfoColumn">
               <span className="fpUsername">{privatePost?.fullName}</span>
               <span className="fpProfession">{privatePost?.profession}</span>
               <span className="fpTime">{format(privatePost?.createdAt)}</span>
             </div>
+
+            <div className="dltsveWrapper">
+              {showDeleteSaveCon && <DeleteSaveCon postId={privatePost?._id} />}
+            </div>
+
+            <div
+              className="emptyDiv1"
+              onClick={() => setShowDeleteSaveCon(false)}
+            ></div>
+
             <div
               className="fpMoreIconColumn"
               onClick={() => setShowDeleteSaveCon(!showDeleteSaveCon)}
             >
               <MoreVertOutlinedIcon />
             </div>
-          </div>
-          <div className="deleteSaveConWrapper">
-            {showDeleteSaveCon && (
-              <DeleteSaveCon
-                id={privatePost?._id}
-                currentUserDetail={currentUserDetail}
-              />
-            )}
           </div>
 
           <span className="fpDesc" onClick={() => setShowDeleteSaveCon(false)}>
@@ -226,7 +229,29 @@ function FeedPost({ post, privatePost }) {
             onClick={() => setShowDeleteSaveCon(false)}
           />
           <hr className="fpHr" />
-          <div className="fpIconsRow">
+
+          {/* post comment */}
+          {showCommentCon && (
+            <CommentCon
+              setShowCommentCon={setShowCommentCon}
+              id={privatePost?._id}
+            />
+          )}
+
+          {/* all comments */}
+          <div className="allCommentWrapper">
+            {openAllCommentCon && (
+              <AllComments
+                setOpenAllCommentCon={setOpenAllCommentCon}
+                privateComments={privateComments}
+              />
+            )}
+          </div>
+
+          <div
+            className="fpIconsRow"
+            onClick={() => setShowDeleteSaveCon(false)}
+          >
             <div className="fpLikeDislikeIconWrapper">
               <div
                 className="fpIconsItemColumn"
@@ -238,21 +263,24 @@ function FeedPost({ post, privatePost }) {
                   {privatePost?.likes?.length} Likes
                 </span>
               </div>
-
-              {/* <div className="fpIconsItemColumn ">
-                <ThumbDownAltOutlinedIcon className="fpIconsItemIcon" />
-                <span className="fpIconsItemTxt"> 19 dislikes</span>
-              </div> */}
             </div>
 
-            <div className="fpIconsItemColumn">
+            <div
+              className="fpIconsItemColumn"
+              onClick={() => setShowCommentCon(!showCommentCon)}
+            >
               <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt"> 7 comments</span>
+              <span className="fpIconsItemTxt">comments</span>
             </div>
 
-            <div className="fpIconsItemColumn">
-              <ShareOutlinedIcon className="fpIconsItemIcon" />
-              <span className="fpIconsItemTxt"> 4 share</span>
+            <div
+              className="fpIconsItemColumn"
+              onClick={() => setOpenAllCommentCon(!openAllCommentCon)}
+            >
+              <ChatBubbleOutlineOutlinedIcon className="fpIconsItemIcon" />
+              <span className="fpIconsItemTxt">
+                Total {privateComments.length} comments
+              </span>
             </div>
           </div>
         </div>

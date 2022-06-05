@@ -19,8 +19,7 @@
 
         .feedPostCreateCon {
           height: 50px;
-          background-color: blueviolet;
-          color: rgb(223, 220, 220);
+          color: rgb(54, 53, 53);
           display: flex;
           align-items: center;
           border-radius: 10px;
@@ -31,11 +30,12 @@
           font-weight: 600;
           cursor: pointer;
           margin-bottom: 40px;
-          border: 2px solid grey;
+          border: 2px solid  blueviolet;
 
           &:hover {
-            color: rgb(243, 239, 239);
-            background-color: rgb(132, 30, 227);
+            color: rgb(27, 26, 26);
+            
+            
           }
         }
       }

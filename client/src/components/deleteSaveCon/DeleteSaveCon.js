@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import "./deleteSaveCon.scss";
 import axios from "axios";
 
-function DeleteSaveCon({ id, currentUserDetail }) {
+function DeleteSaveCon({ id, currentUserDetail, postId }) {
+  console.log(postId);
+
   //Delete post
   const handleDelete = async () => {
     try {

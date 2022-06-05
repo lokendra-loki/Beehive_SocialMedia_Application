@@ -3,11 +3,13 @@
   margin: 0px 15px;
   background-color: white;
   margin-bottom: 25px;
+  padding: 5px;
 
   .fpRow1 {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+    // background-color: pink;
 
     .fpProfilePic {
       height: 50px;
@@ -21,6 +23,7 @@
       margin-left: 8px;
       display: flex;
       flex-direction: column;
+      // background-color: red;
 
       .fpUsername {
         font-size: 16px;
@@ -39,10 +42,34 @@
       }
     }
 
+    .dltsveWrapper {
+      position: absolute;
+      margin-left: 500px;
+      margin-top: 100px;
+    }
+    .emptyDiv1 {
+      // background-color: yellow;
+      width: 68.5%;
+      height: 55px;
+    }
+
     .fpMoreIconColumn {
       display: flex;
-      margin-left: 500px;
+      // margin-left: 500px;
       cursor: pointer;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // background-color: green;
+
+      &:hover {
+        background-color: blueviolet;
+        color: white;
+        transition: all 0.3s ease-in-out;
+      }
     }
   }
 
@@ -71,7 +98,7 @@
     border-top: 1px solid #e0e0e0;
   }
 
-  .allLikesConWrapper{
+  .allLikesConWrapper {
     position: relative;
     top: -300px;
     left: 20px;
@@ -107,7 +134,7 @@
       &:hover {
         border-bottom: 2px solid blueviolet;
         color: blueviolet;
-        transition: all  0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
     }
 

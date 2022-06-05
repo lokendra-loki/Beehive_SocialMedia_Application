@@ -40,6 +40,7 @@ function Profile() {
     };
     fetchUserKoPosts();
   }, [path]);
+  console.log(userKoPosts);
 
   //all jobPost of a user from path id
   const [userKoJobPosts, setUserKoJobPosts] = React.useState([{}]);
@@ -74,6 +75,7 @@ function Profile() {
   }, [path]);
 
   const [showFeedCreateCon, setShowFeedCreateCon] = React.useState(false);
+
   return (
     <div className="profilePage">
       <Navbar />

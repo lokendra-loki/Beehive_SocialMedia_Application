@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import SearchIcon from "@mui/icons-material/Search";
 import { Link, NavLink } from "react-router-dom";
 import "./navbar.scss";
 
@@ -8,8 +7,8 @@ function Navbar() {
   const { user } = useContext(AuthContext);
   return (
     <div className="navbar">
-      <Link to ={"/"} className="link">
-      <img src="/assets/logo.svg" alt="" className="navbarLogo" />
+      <Link to={"/"} className="link">
+        <img src="/assets/logo.svg" alt="" className="navbarLogo" />
       </Link>
 
       <div className="navbarLinks ">
@@ -21,7 +20,7 @@ function Navbar() {
 
         <NavLink to="/blogs" activeclassname="active" className="link">
           <div className="navLinkCon">
-            <span className="navLink">Blog</span>
+            <span className="navLink">Blogs</span>
           </div>
         </NavLink>
 
@@ -55,14 +54,14 @@ function Navbar() {
       </div>
 
       <div className="navRight">
-        <div className="navSearchCon">
+        {/* <div className="navSearchCon">
           <SearchIcon className="navSearchIcon" />
           <input
             type="text"
             className="navSearchInput"
             placeholder="Type Search Word"
           />
-        </div>
+        </div> */}
 
         <Link to="/profile">
           <img
