@@ -1,35 +1,76 @@
-import React, { useContext, useState } from "react";
-import "./feedPostCreate.scss";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PhotoSizeSelectActualOutlinedIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
-import VideoCameraBackOutlinedIcon from "@mui/icons-material/VideoCameraBackOutlined";
-import LinkIcon from "@mui/icons-material/Link";
-import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
+import React, { useContext, useState } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { useAPI } from "../../context/userDetailContext";
 import axios from "axios";
+import app from "../../firebase";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import "./feedPostCreate.scss";
 
 function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  console.log(path);
   const { user } = useContext(AuthContext);
+  const { currentUserDetail } = useAPI();
+
   //Create UserFeed Post
   const [desc, setDesc] = useState("");
-
+  const [file, setFile] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPost = {
-      username: user.username,
-      fullName: user.fullName,
-      desc,
-    };
-    try {
-      const res = await axios.post("/userPosts/create", newPost);
-      console.log(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+    const fileName = new Date().getTime() + "-" + file?.name;
+    const storage = getStorage(app);
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+        }
+      },
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          //new post
+          const newPost = {
+            userID: user._id,
+            fullName: user.username,
+            profession: currentUserDetail.profession,
+            profilePic: currentUserDetail.profilePic,
+            desc,
+            postImg: downloadURL,
+          };
+          try {
+            const res = axios.post("/userPosts/create", newPost);
+            console.log(res.data);
+            window.location.reload();
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      }
+    );
   };
 
   return (
@@ -74,8 +115,6 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
         />
         <div className="fpcSelectedItemList">
           <div className="fpcSelectedItemCon">1</div>
-          <div className="fpcSelectedItemCon">1</div>
-          <div className="fpcSelectedItemCon">1</div>
         </div>
       </div>
 
@@ -83,25 +122,12 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
         <PhotoSizeSelectActualOutlinedIcon className="fpcImgIcon" />
         <span className="fpcSelectImgTxt">Image</span>
       </label>
-      <input type="file" id="fileInput1" style={{ display: " none" }} />
-
-      <label className="fpcImgVideoInput" htmlFor="fileInput2">
-        <VideoCameraBackOutlinedIcon className="fpcImgIcon" />
-        <span className="fpcSelectImgTxt">Video</span>
-      </label>
-      <input type="file" id="fileInput2" style={{ display: " none" }} />
-
-      <label className="fpcImgVideoInput" htmlFor="fileInput3">
-        <LinkIcon className="fpcImgIcon" />
-        <span className="fpcSelectImgTxt">Video</span>
-      </label>
-      <input type="url" id="fileInput3" style={{ display: " none" }} />
-
-      <label className="fpcImgVideoInput" htmlFor="fileInput4">
-        <PollOutlinedIcon className="fpcImgIcon" />
-        <span className="fpcSelectImgTxt">Poll</span>
-      </label>
-      <input type="url" id="fileInput4" style={{ display: " none" }} />
+      <input
+        type="file"
+        id="fileInput1"
+        style={{ display: " none" }}
+        onChange={(e) => setFile(e.target.files[0])}
+      />
 
       <button className="fpcPostBut" type="submit">
         Post

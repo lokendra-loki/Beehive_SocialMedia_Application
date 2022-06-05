@@ -72,9 +72,7 @@ function FeedPost({ post, privatePost }) {
     };
     fetchPrivateComments();
   }, [privatePost]);
-  console.log(privateComments);
-  console.log(privateComments.length);
-
+  
   //Who liked the post
   const [peopleKoIds, setPeopleKoIds] = useState([]);
   useEffect(() => {
@@ -91,7 +89,11 @@ function FeedPost({ post, privatePost }) {
         <div className="feedPost">
           <div className="fpRow1">
             <Link to={`/profile/${post?.userID}`} className="link">
-              <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
+              <img
+                src={post.profilePic || "/assets/profile.jpeg"}
+                alt=""
+                className="fpProfilePic"
+              />
             </Link>
             <div
               className="fpProfileInfoColumn"
@@ -121,7 +123,7 @@ function FeedPost({ post, privatePost }) {
             {post?.desc}
           </span>
           <img
-            src="/assets/cover.jpeg"
+            src={post.postImg || "/assets/cover.jpeg"}
             alt=""
             className="fpPostImg"
             onClick={() => setShowDeleteSaveCon(false)}
