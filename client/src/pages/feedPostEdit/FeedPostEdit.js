@@ -16,7 +16,7 @@ function FeedPostEdit() {
           </div>
 
           <div className="fpepCenterCon">
-            <FeedPostEditCon/>
+            <FeedPostEditCon />
           </div>
 
           <div className="fpepRightCon">

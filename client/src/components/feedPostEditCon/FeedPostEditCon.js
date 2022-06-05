@@ -18,8 +18,23 @@ function FeedPostEditCon() {
     fetchPostData();
   }, [path]);
 
+  //Edit feedPost
+  const [newDesc, setNewDesc] = React.useState(postData.desc);
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.put(`/userPosts/update/${path}`, {
+        desc: newDesc,
+      });
+      window.location.replace("/");
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className="feedPostEditContainer">
+    <form className="feedPostEditContainer" onSubmit={handleEditSubmit}>
       <span className="fpecTitle">Edit your FeedPost here !</span>
       <hr className="fpecHr" />
       <img src="/assets/cover.jpeg" alt="" className="fpecImg" />
@@ -32,10 +47,11 @@ function FeedPostEditCon() {
 
       <div className="fpecColumnCon">
         <span className="fpecBlogTitle ">Post Description</span>
-        <textarea
+        <input
           type="text"
           className="fpecBlogTitleInput  "
           defaultValue={postData.desc}
+          onChange={(e) => setNewDesc(e.target.value)}
         />
 
         <button className="fpecSubmmitBut" type="submit">

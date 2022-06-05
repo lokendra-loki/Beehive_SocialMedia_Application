@@ -72,7 +72,7 @@ function FeedPost({ post, privatePost }) {
     };
     fetchPrivateComments();
   }, [privatePost]);
-  
+
   //Who liked the post
   const [peopleKoIds, setPeopleKoIds] = useState([]);
   useEffect(() => {

@@ -5,14 +5,15 @@ import ModeEditTwoToneIcon from "@mui/icons-material/ModeEditTwoTone";
 import { Link } from "react-router-dom";
 import "./deleteSaveCon.scss";
 import axios from "axios";
+import { useAPI } from "../../context/userDetailContext";
 
-function DeleteSaveCon({ id, currentUserDetail, postId }) {
-  console.log(postId);
+function DeleteSaveCon({ id, postId }) {
+  const { currentUserDetail } = useAPI();
 
-  //Delete post
+  //Delete a feed post
   const handleDelete = async () => {
     try {
-      await axios.delete(`/userPosts/delete/${id}`);
+      await axios.delete(`/userPosts/delete/${postId}`);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -23,7 +24,7 @@ function DeleteSaveCon({ id, currentUserDetail, postId }) {
   const [saved, setSaved] = useState(false);
   const handleBookmark = async () => {
     try {
-      await axios.put(`/userDetails/bookmark/${id}`, {
+      await axios.put(`/userDetails/bookmark/${postId}`, {
         userDetailId: currentUserDetail?._id,
       });
       setSaved(true);
@@ -32,6 +33,7 @@ function DeleteSaveCon({ id, currentUserDetail, postId }) {
       console.log(error);
     }
   };
+
 
   return (
     <div className="deleteSaveContainer">
@@ -43,11 +45,13 @@ function DeleteSaveCon({ id, currentUserDetail, postId }) {
       <div className="dscItem" onClick={() => handleBookmark()}>
         <BookmarkAddedIcon className="dscIcon" />
         <span className="decSspan">
-          {currentUserDetail?.jobPostsBookmark?.includes(id) ? "Saved" : "Save"}
+          {currentUserDetail?.jobPostsBookmark?.includes(postId)
+            ? "Saved"
+            : "Save"}
         </span>
       </div>
 
-      <Link to={`/postEdit/${id}`} className="link">
+      <Link to={`/postEdit/${postId}`} className="link">
         <div className="dscItem">
           <ModeEditTwoToneIcon className="dscIcon" />
           <span className="decSspan">Edit</span>
