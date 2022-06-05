@@ -13,12 +13,12 @@ function Blog({ blog, privateBlog, catBlog }) {
     <>
       {blog ? (
         <div className="blog">
-          <img src="/assets/cover.jpeg" alt="" className="blogImg" />
+          <img src={blog.img} alt="" className="blogImg" />
 
           <div className="blogInsideCon">
             <div className="blogDateAndTimeRead">
               <span className="blogDate">{format(blog?.createdAt)}</span>
-              <span className="blogTimeRead">{blog?.timeRead}</span>
+              <span className="blogTimeRead">{blog?.timeRead} min read</span>
             </div>
             <span className="blogTitle">{blog?.title} </span>
             <div className="blogAuthorAndLocation">
@@ -106,12 +106,12 @@ function Blog({ blog, privateBlog, catBlog }) {
         </div>
       ) : catBlog ? (
         <div className="blog">
-          <img src="/assets/cover.jpeg" alt="" className="blogImg" />
+          <img src={catBlog.img} alt="" className="blogImg" />
 
           <div className="blogInsideCon">
             <div className="blogDateAndTimeRead">
               <span className="blogDate">{format(catBlog?.createdAt)}</span>
-              <span className="blogTimeRead">{catBlog?.timeRead}</span>
+              <span className="blogTimeRead">{catBlog?.timeRead} min read</span>
             </div>
             <span className="blogTitle">{catBlog?.title} </span>
             <div className="blogAuthorAndLocation">

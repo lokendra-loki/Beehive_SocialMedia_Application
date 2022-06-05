@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import BlogDeleteAlert from "../blogDeleteAlert/BlogDeleteAlert";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
-
 import "./blogLg.scss";
 
 function BlogLg({ blog }) {
@@ -10,7 +9,7 @@ function BlogLg({ blog }) {
 
   return (
     <div className="blogLg">
-      <img src="/assets/cover.jpeg" alt="" className="blogLgImg" />
+      <img src={blog.img} alt="" className="blogLgImg" />
       <div className="blogLgWrapper">
         <div className="blogLgDateAndTimeRead">
           {showBlogDeleteAlert && <BlogDeleteAlert id={blog._id} />}

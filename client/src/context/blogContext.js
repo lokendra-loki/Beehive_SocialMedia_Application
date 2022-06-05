@@ -13,6 +13,14 @@ export function BlogContextProvider({ children }) {
       try {
         const res = await axios.get("/blogs/getAll");
         const res1 = await axios.get("/userPosts/getAll");
+
+        const blogs = res.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        const posts = res1.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+
         setBlogs(res.data);
         setPosts(res1.data);
       } catch (error) {

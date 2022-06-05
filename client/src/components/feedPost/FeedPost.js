@@ -123,11 +123,13 @@ function FeedPost({ post, privatePost }) {
             {post?.desc}
           </span>
           <img
-            src={post.postImg || "/assets/cover.jpeg"}
+            src={post?.postImg}
+            onError={(event) => (event.target.style.display = "none")}
             alt=""
             className="fpPostImg"
             onClick={() => setShowDeleteSaveCon(false)}
           />
+
           <hr className="fpHr" />
           {showCommentCon && (
             <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
@@ -196,7 +198,7 @@ function FeedPost({ post, privatePost }) {
         <div className="feedPost">
           <div className="fpRow1">
             <Link to={`/profile/${privatePost?.userID}`} className="link">
-              <img src="/assets/cover.jpeg" alt="" className="fpProfilePic" />
+              <img src="/assets/profile.jpeg" alt="" className="fpProfilePic" />
             </Link>
             <div className="fpProfileInfoColumn">
               <span className="fpUsername">{privatePost?.fullName}</span>
@@ -225,7 +227,7 @@ function FeedPost({ post, privatePost }) {
             {privatePost?.desc}
           </span>
           <img
-            src="/assets/cover.jpeg"
+            src={privatePost.postImg}
             alt=""
             className="fpPostImg"
             onClick={() => setShowDeleteSaveCon(false)}

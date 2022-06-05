@@ -4,8 +4,9 @@ import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import FeedPost from "../../components/feedPost/FeedPost";
-import "./home.scss";
 import { useAPI } from "../../context/blogContext";
+import "./home.scss";
+
 
 function Home() {
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);

@@ -33,6 +33,9 @@ function Profile() {
         const res = await axios.post("/userPosts/getAllPostsOfAUser", {
           userID: path,
         });
+        res.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
         setUserKoPosts(res.data);
       } catch (error) {
         console.log(error);
@@ -50,6 +53,9 @@ function Profile() {
         const res = await axios.post("/jobPosts/getAllJobPostsOfAUser", {
           userID: path,
         });
+        res.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
         setUserKoJobPosts(res.data);
       } catch (error) {
         console.log(error);
@@ -65,6 +71,9 @@ function Profile() {
       try {
         const res = await axios.post("/blogs/getAllBlogsOfAUser", {
           userID: path,
+        });
+        res.data.sort((a, b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
         });
         setUserKoBlogs(res.data);
       } catch (error) {
