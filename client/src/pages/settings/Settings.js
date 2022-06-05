@@ -1,14 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import "./settings.scss";
 import RightBar from "../../components/rightBar/RightBar";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import axios from "axios";
 
 function Settings() {
   const { user } = useContext(AuthContext);
-
   const [showSettingEditCon, setShowSettingEditCon] = React.useState(false);
+
+  //Edit userCredentials
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.put(`/users/update/${user._id}`, {
+        username,
+        email,
+        password,
+      });
+      //update local storage also
+      localStorage.setItem("user", JSON.stringify(res.data));
+
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="settingsPage">
@@ -54,7 +76,7 @@ function Settings() {
 
             {/* User Credential Edit Mode Container */}
             {showSettingEditCon && (
-              <form className="userCredentialEditForm">
+              <form className="userCredentialEditForm" onSubmit={handleSubmit}>
                 <div className="userCredentialEditModeCon">
                   <div className="ucemcRow1">
                     <span className="ucemcTitle">
@@ -75,6 +97,7 @@ function Settings() {
                       type="text"
                       className="ucemcItemTitleValueInput"
                       placeholder="New Username"
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   <hr className="ucemcHr2" />
@@ -85,6 +108,7 @@ function Settings() {
                       type="text"
                       className="ucemcItemTitleValueInput"
                       placeholder="New Email"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <hr className="ucemcHr2" />
@@ -95,6 +119,7 @@ function Settings() {
                       type="text"
                       className="ucemcItemTitleValueInput"
                       placeholder="New Password"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                   <hr className="ucemcHr1" />
