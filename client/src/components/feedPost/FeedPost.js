@@ -131,10 +131,11 @@ function FeedPost({ post, privatePost }) {
           />
 
           <hr className="fpHr" />
-          {showCommentCon && (
-            <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
-          )}
-
+          <div className="commentConWrapper2">
+            {showCommentCon && (
+              <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
+            )}
+          </div>
           {peopleKoIds.map((peopleKoId, i) => (
             <div key={i} index={i} className="allLikesConWrapper">
               {openLikesCon && (

@@ -30,12 +30,10 @@
           font-weight: 600;
           cursor: pointer;
           margin-bottom: 40px;
-          border: 2px solid  blueviolet;
+          border: 2px solid blueviolet;
 
           &:hover {
             color: rgb(27, 26, 26);
-            
-            
           }
         }
       }
@@ -43,6 +41,33 @@
       .hpRightCon {
         flex: 1.4;
         background-color: rgb(234, 231, 238);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .hpRightCon {
+    display: none;
+  }
+
+  .hpCenterCon {
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .homePage {
+    .hpWrapper {
+      .hpBeforeSplit {
+        .hpLeftCon {
+          display: none;
+        }
+
+        .hpCenterCon {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
       }
     }
   }
