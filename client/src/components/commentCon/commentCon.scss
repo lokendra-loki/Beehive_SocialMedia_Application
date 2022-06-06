@@ -1,5 +1,4 @@
 .commentContainer {
-  height: 42px;
   background-color: white;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
@@ -8,8 +7,8 @@
   align-items: center;
   position: absolute;
   height: 60px;
-  width:400px;
-  
+  width: 400px;
+
   .commentInput {
     height: 100%;
     border: none;
@@ -35,6 +34,22 @@
       box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
       -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .commentContainer {
+    height: 100px;
+    width: 600px;
+
+    .commentInput {
+      font-size: 32px;
+    }
+    .clearSendIcon {
+      .commentSendIcon {
+        font-size: 45px;
+      }
     }
   }
 }

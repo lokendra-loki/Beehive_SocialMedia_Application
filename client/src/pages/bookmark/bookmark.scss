@@ -25,3 +25,41 @@
     }
   }
 }
+
+@media only screen and (max-width: 1250px) {
+  .bpCenterCon {
+    padding-right: 50px;
+  }
+  .bpRightCon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .bookmarkPage {
+    .bpWrapper {
+      .bpBeforeSplit {
+        .bpLeftCon {
+          display: none;
+        }
+        .bpCenterCon {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bookmarkPage {
+    .bpWrapper {
+      .bpBeforeSplit {
+        .bpLeftCon {
+          padding-left: 100px;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}

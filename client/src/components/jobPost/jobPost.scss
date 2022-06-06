@@ -113,3 +113,36 @@
     justify-content: center;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .jobPost {
+    .jpInfoCon {
+      .jpJobTitle {
+        font-size: 38px;
+      }
+
+      .jpPostTime {
+        font-size: 24px;
+      }
+
+      .jpCompanyAddress {
+        font-size: 20px;
+      }
+
+      .jpCompanyName {
+        font-size: 25px;
+      }
+
+      .jobPostDeleteSaveCon {
+        .jpDelete {
+          width: 140px;
+          height: 50px;
+          font-size: 25px;
+        }
+        .viewMore {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

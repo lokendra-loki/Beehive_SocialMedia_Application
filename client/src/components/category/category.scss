@@ -5,7 +5,7 @@
   border-radius: 20px;
   margin-top: 40px;
   height: 270px;
-  width:260px;
+  width: 310px;
 
   .categoryContainerTitle {
     font-size: 20px;
@@ -37,5 +37,11 @@
         transition: all 0.8s ease;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .categoryListContainer {
+    width: 280px;
   }
 }

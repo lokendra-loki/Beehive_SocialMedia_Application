@@ -13,6 +13,57 @@ function RecentPost({ recentBlogTitle }) {
           Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
         </span>
       </div>
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
+
+      <div className="rpList">
+        <FeedOutlinedIcon className="rpListKey" />
+        <span className="rpListValue">
+          Lorem ipsum uifng Lorem ipsum dolor sit amet consectetur adipisicing
+        </span>
+      </div>
     </div>
   );
 }

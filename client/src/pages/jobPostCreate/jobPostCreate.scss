@@ -133,3 +133,29 @@
     }
   }
 }
+
+@media only screen and (max-width: 1150px) {
+  .jpcRightCon {
+    display: none;
+  }
+
+  .jpcCenterCon {
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .jobPostCreate {
+    .jpcWrapper {
+      .jpcBeforeSplit {
+        .jpcLeftCon {
+          display: none;
+        }
+
+        .jpcCenterCon {
+          padding-left: 50px;
+        }
+      }
+    }
+  }
+}

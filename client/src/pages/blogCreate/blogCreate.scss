@@ -25,3 +25,43 @@
     }
   }
 }
+
+@media only screen and (max-width: 1300px) {
+  .bcpRightCon {
+    padding-right: 80px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .bcpLeftCon {
+    padding-left: 80px;
+  }
+  .bcpRightCon {
+    padding-right: 140px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .bcpRightCon {
+    display: none;
+  }
+  .bcpCenterCon {
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .blogCreatePage {
+    .bcpWrapper {
+      .bcpBeforeSplit {
+        .bcpLeftCon {
+          display: none;
+        }
+        .bcpCenterCon {
+          padding-left: 50px;
+        }
+      }
+    }
+  }
+}
+

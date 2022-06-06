@@ -90,7 +90,7 @@
             position: absolute;
             top: 120px;
             z-index: 100;
-            margin-left: 41px;
+            margin-left: 80px;
             left: 306px;
             background-color: white;
             box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
@@ -180,6 +180,72 @@
       .spRightCon {
         flex: 1.4;
         background-color: rgb(234, 231, 238);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .settingsPage {
+    .spWrapper {
+      .spBeforeSplit {
+        .spCenterCon {
+          .userCredentialEditForm {
+            .userCredentialEditModeCon {
+              margin-left: -20px;
+            }
+          }
+        }
+        .spRightCon {
+          padding-right: 80px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .spLeftCon {
+    padding-left: 80px;
+  }
+  .settingsPage {
+    .spWrapper {
+      .spBeforeSplit {
+        .spCenterCon {
+          .userCredentialEditForm {
+            .userCredentialEditModeCon {
+              margin-left: 35px;
+              width:600px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .spRightCon {
+    padding-right: 140px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .spRightCon {
+    display: none;
+  }
+  .spCenterCon {
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .settingsPage {
+    .spWrapper {
+      .spBeforeSplit {
+        .spLeftCon {
+          display: none;
+        }
+        .spCenterCon {
+          padding-left: 50px;
+        }
       }
     }
   }

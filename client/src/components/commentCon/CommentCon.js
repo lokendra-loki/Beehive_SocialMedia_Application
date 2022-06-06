@@ -32,7 +32,7 @@ function CommentCon({ setShowCommentCon, id }) {
       <input
         type="text"
         className="commentInput"
-        placeholder="Comment feature is under maintenance"
+        placeholder="Comment here..."
         onChange={(e) => setComment(e.target.value)}
       />
       <div className="clearSendIcon">

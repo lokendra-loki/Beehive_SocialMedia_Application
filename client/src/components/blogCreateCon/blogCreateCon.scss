@@ -95,6 +95,7 @@
         font-size: 17px;
         cursor: pointer;
         margin-left: 86%;
+        margin-bottom: 200px;
 
         &:hover {
           background-color: white;
@@ -105,4 +106,41 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 1300px) {
+  .blogCreateContainer {
+    .bccWholeContainer {
+      .bccColumnCon {
+        .bccSubmmitBut {
+          margin-left: 70%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .blogCreateContainer {
+    .bccWholeContainer {
+      .bccImg {
+        height: 280px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .blogCreateContainer {
+    .bccWholeContainer {
+      .bccImg {
+        height: 210px;
+      }
+      .bccColumnCon {
+        .bccSubmmitBut {
+          margin-left:40%;
+        }
+    }
+  }
+}
 }

@@ -56,3 +56,31 @@
     margin-bottom: 10px;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .allCommentsContainer {
+    width: 400px;
+    min-height: 400px;
+
+    .allComments {
+      font-size: 30px;
+
+      .allCommentClearIcon {
+        font-size: 45px;
+      }
+    }
+    .comment1{
+      .commentImg{
+        height: 70px;
+        width: 70px;
+      }
+      .fullNameSpan{
+        font-size: 30px;
+      }
+
+    }
+    .acViewProfile{
+      font-size: 28px;
+    }
+  }
+}

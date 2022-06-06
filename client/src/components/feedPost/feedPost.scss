@@ -29,6 +29,7 @@
         font-size: 16px;
         font-weight: 700;
         cursor: pointer;
+        width: 400px;
       }
 
       .fpProfession {
@@ -184,6 +185,47 @@
   .feedPost {
     .allCommentWrapper {
       margin-right: 700px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .feedPost {
+    .fpRow1 {
+      .fpProfileInfoColumn {
+        .fpUsername {
+          font-size: 28px;
+        }
+        .fpProfession {
+          font-size: 24px;
+        }
+        .fpTime {
+          font-size: 20px;
+        }
+      }
+    }
+    .fpDesc {
+      font-size: 40px;
+    }
+    .fpIconsRow {
+      .fpLikeDislikeIconWrapper {
+        .fpIconsItemColumn {
+          .fpIconsItemIcon {
+            font-size: 40px;
+          }
+          .fpIconsItemTxt {
+            font-size: 20px;
+          }
+        }
+      }
+      .fpIconsItemColumn {
+        .fpIconsItemIcon {
+          font-size: 40px;
+        }
+        .fpIconsItemTxt {
+          font-size: 20px;
+        }
+      }
     }
   }
 }

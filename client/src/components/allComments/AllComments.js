@@ -20,7 +20,7 @@ function AllComments({ setOpenAllCommentCon, comments, privateComments }) {
             <Link key={i} to={`/profile/${comment?.userID}`} className="link">
               <span index={i} className="comment1">
                 <img src={comment?.profilePic} alt="" className="commentImg" />
-                {comment?.fullName}
+                <span className="fullNameSpan"> {comment?.fullName}</span>
               </span>
               <span className="acViewProfile">{comment?.comment}</span>
               <hr className="acHr" />
