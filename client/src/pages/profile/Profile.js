@@ -93,7 +93,7 @@ function Profile() {
           <img src="/assets/profile.jpeg" alt="" className="upCoverPic" />
           <img src="/assets/profile.jpeg" alt="" className="upProfilePic" />
         </div>
-        
+
         <div className="pNameProfessionCon">
           <span className="pName">Lokendra Chaulagain</span>
           <span className="pProfession">Software Engineer</span>
