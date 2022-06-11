@@ -12,7 +12,6 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 
-
 function ProfileInfoEditCon() {
   const { user } = useContext(AuthContext);
   console.log(user);
@@ -81,6 +80,19 @@ function ProfileInfoEditCon() {
     currentUserDetail.relationShipStatus
   );
 
+  const [githubLink, setGithubLink] = useState(currentUserDetail.githubLink);
+  const [linkedinLink, setLinkedinLink] = useState(
+    currentUserDetail.linkedinLink
+  );
+
+  const [twitterLink, setTwitterLink] = useState(currentUserDetail.twitterLink);
+
+  const [instagramLink, setInstagramLink] = useState(
+    currentUserDetail.instagramLink
+  );
+
+  const [websiteLink, setWebsiteLink] = useState(currentUserDetail.websiteLink);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -109,6 +121,11 @@ function ProfileInfoEditCon() {
           pastJob2Position,
           pastJob2Company,
           relationShipStatus,
+          githubLink,
+          linkedinLink,
+          twitterLink,
+          instagramLink,
+          websiteLink,
         }
       );
       console.log(res.data);
@@ -116,7 +133,7 @@ function ProfileInfoEditCon() {
       console.log(error);
     }
   };
-  
+
   //Update profilePic
   const [file1, setFile1] = useState(null);
 
@@ -166,7 +183,6 @@ function ProfileInfoEditCon() {
     );
   };
 
-
   //Update coverPic
   const [file2, setFile2] = useState(null);
   const handleCPSave = async (e) => {
@@ -215,7 +231,6 @@ function ProfileInfoEditCon() {
     );
   };
 
-
   return (
     <div className="profileInfoEditCon1">
       <div className="profileCoverChangeCon">
@@ -229,7 +244,11 @@ function ProfileInfoEditCon() {
                 className="ppChange"
               />
             ) : (
-              <img src={currentUserDetail.profilePic} alt="" className="ppChange" />
+              <img
+                src={currentUserDetail.profilePic}
+                alt=""
+                className="ppChange"
+              />
             )}
             <input
               style={{ display: "none" }}
@@ -256,7 +275,11 @@ function ProfileInfoEditCon() {
                 className="cpChange"
               />
             ) : (
-              <img src={currentUserDetail.coverPic} alt="" className="cpChange" />
+              <img
+                src={currentUserDetail.coverPic}
+                alt=""
+                className="cpChange"
+              />
             )}
             <input
               style={{ display: "none" }}
@@ -267,7 +290,9 @@ function ProfileInfoEditCon() {
             />
             <AddPhotoAlternateIcon className="cpChangeIcon" />
           </label>
-          <button className="cpSave" onClick={handleCPSave}>Save</button>
+          <button className="cpSave" onClick={handleCPSave}>
+            Save
+          </button>
         </div>
       </div>
 
@@ -453,6 +478,54 @@ function ProfileInfoEditCon() {
             onChange={(e) => setRelationShipStatus(e.target.value)}
           />
         </div>{" "}
+        <div className="piecItem">
+          <span className="piecTitle">GitHub Link</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail.githubLink}
+            onChange={(e) => setGithubLink(e.target.value)}
+          />
+        </div>
+        <div className="piecItem">
+          <span className="piecTitle">Linkedin Link</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail.linkedinLink}
+            onChange={(e) => setLinkedinLink(e.target.value)}
+          />
+        </div>
+        <div className="piecItem">
+          <span className="piecTitle">Twitter Link</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail.twitterLink}
+            onChange={(e) => setTwitterLink(e.target.value)}
+          />
+        </div>
+
+        <div className="piecItem">
+          <span className="piecTitle">Instagram Link</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail.instagramLink}
+            onChange={(e) => setInstagramLink(e.target.value)}
+          />
+        </div>
+
+      {  <div className="piecItem">
+          <span className="piecTitle">Website Link</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail.websiteLink}
+            onChange={(e) => setWebsiteLink(e.target.value)}
+          />
+        </div>}
+
         <button className="pieSave" type="submit">
           Save
         </button>

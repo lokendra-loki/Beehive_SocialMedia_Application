@@ -14,9 +14,14 @@ import Hobby from "../hobby/Hobby";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import UserInfoEdit from "../userInfoEdit/UserInfoEdit";
 import axios from "axios";
+import { useAPI } from "../../context/userDetailContext";
+import {useLocation} from "react-router-dom";
 
 function UserInfo() {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const path=location.pathname.split("/")[2];
+  console.log(path);
 
   //To open userInfoEditContainer
   const [showUserInfoEditCon, setShowUserInfoEditCon] = useState(false);
@@ -153,7 +158,6 @@ function UserInfo() {
 
         <div className="uiDetailInfoItem">
           <LinkedInIcon className="uiIcon" />
-
           <span className="uiDetailInfoValue">ashiishme</span>
         </div>
 
@@ -177,7 +181,7 @@ function UserInfo() {
 
       <div className="InterestHobbyTxtAndEditButCon">
         <span className="interestHobby">Interest and Hobby</span>
-        
+
         <button
           onClick={() => setShowUserInfoEditCon(!showUserInfoEditCon)}
           className="userInfoEditBut"

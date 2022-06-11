@@ -168,12 +168,9 @@ function FeedPost({ post, privatePost }) {
                   {post?.likes?.length} Likes
                 </span>
               </div>
-              <span
-                className="whLiked"
-                onMouseEnter={() => setOpenLikesCon(true)}
-              >
+              <span className="whLiked" onClick={() => setOpenLikesCon(true)}>
                 who Liked
-              </span>
+              </span>{" "}
             </div>
 
             <div

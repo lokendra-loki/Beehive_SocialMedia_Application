@@ -1,76 +1,114 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./profileRightBar.scss";
+import axios from "axios";
 
-function ProfileRightBar({ userDetail }) {
+function ProfileRightBar() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  console.log(path);
+
+  //Fetching userDetail
+  const [viewUserDetail, setViewUserDetail] = useState({});
+  useEffect(() => {
+    const userDetailsOny = async () => {
+      try {
+        const res = await axios.post("/userDetails/getByUserID", {
+          userID: path,
+        });
+        setViewUserDetail(res.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    userDetailsOny();
+  }, [path]);
+  console.log(viewUserDetail);
+
   return (
     <>
       <h4 className="userInfo">User Information</h4>
       <div className="rightBarInfoContainer">
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            {userDetail?.currentJob1Position} at{" "}
-            <span className="boldSpan">{userDetail?.currentJob1Company}</span>
-          </span>
-        </div>
+        {viewUserDetail.currentJob1Position ? (
+          <div className="ppUserInfoItemCon">
+            <BusinessCenterIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              {viewUserDetail?.currentJob1Position}{" "}
+              {viewUserDetail?.currentJob1Company ? " at " : null}
+              <span className="boldSpan">
+                {viewUserDetail?.currentJob1Company}
+              </span>
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            {userDetail?.currentJob2Position} at{" "}
-            <span className="boldSpan">{userDetail?.currentJob2Company},</span>
-          </span>
-        </div>
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Founder at{" "}
-            <span className="boldSpan">{userDetail?.founderOf1}</span>
-          </span>
-        </div>
+        {viewUserDetail.currentJob2Position ? (
+          <div className="ppUserInfoItemCon">
+            <BusinessCenterIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              {viewUserDetail?.currentJob2Position}{" "}
+              {viewUserDetail?.currentJob2Company ? "at " : null}
+              <span className="boldSpan">
+                {viewUserDetail?.currentJob2Company},
+              </span>
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Co-founder at{" "}
-            <span className="boldSpan">{userDetail?.founderOf1}</span>
-          </span>
-        </div>
+        {viewUserDetail.founderOf1 ? (
+          <div className="ppUserInfoItemCon">
+            <BusinessCenterIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              Founder at{" "}
+              <span className="boldSpan">{viewUserDetail?.founderOf1}</span>
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Former{" "}
-            <span className="boldSpan">{userDetail?.pastJob1Position}</span> at{" "}
-            {userDetail?.pastJob1Company}
-          </span>
-        </div>
+        {viewUserDetail.founderOf1 ? (
+          <div className="ppUserInfoItemCon">
+            <BusinessCenterIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              Co-founder at{" "}
+              <span className="boldSpan">{viewUserDetail?.founderOf1}</span>
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Former{" "}
-            <span className="boldSpan">{userDetail?.pastJob2Position}</span> at{" "}
-            {userDetail?.pastJob2Company}
-          </span>
-        </div>
+        {viewUserDetail.pastJob1Position ? (
+          <div className="ppUserInfoItemCon">
+            <BusinessCenterIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              Former{" "}
+              <span className="boldSpan">
+                {viewUserDetail?.pastJob1Position}
+              </span>{" "}
+              {viewUserDetail?.pastJob1Company ? "at" : null}{" "}
+              {viewUserDetail?.pastJob1Company}
+            </span>
+          </div>
+        ) : null}
 
         <div className="ppUserInfoItemCon">
           <SchoolIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             Studies{" "}
             <span className="boldSpan">
-              {userDetail?.currentStudyingCourse}
+              {viewUserDetail?.currentStudyingCourse}
             </span>{" "}
             at {""}
-            {userDetail?.currentStudyingUniversity}{" "}
+            {viewUserDetail?.currentStudyingUniversity}{" "}
           </span>
         </div>
 
@@ -79,56 +117,116 @@ function ProfileRightBar({ userDetail }) {
           <span className="ppUserInfoItemTxt">
             +2 Completed from{" "}
             <span className="boldSpan">
-              {userDetail?.plus2CompletedCollege}
+              {viewUserDetail?.plus2CompletedCollege}
             </span>{" "}
-            {userDetail?.plus2CompletedCollegeLocation}
+            {viewUserDetail?.plus2CompletedCollegeLocation}
           </span>
         </div>
 
-        <div className="ppUserInfoItemCon">
-          <SchoolIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            SEE completed from{" "}
-            <span className="boldSpan">{userDetail?.sEECompletedCollege}</span>{" "}
-            {userDetail?.sEECompletedSchoolLocation}{" "}
-          </span>
-        </div>
+        {viewUserDetail.sEECompletedCollege ? (
+          <div className="ppUserInfoItemCon">
+            <SchoolIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              SEE completed from{" "}
+              <span className="boldSpan">
+                {viewUserDetail?.sEECompletedCollege}
+              </span>{" "}
+              {viewUserDetail?.sEECompletedSchoolLocation}{" "}
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <LocationCityIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Lives in{" "}
-            <span className="boldSpan">{userDetail?.currentlyLiving}</span>{" "}
-          </span>
-        </div>
+        {viewUserDetail?.currentlyLiving ? (
+          <div className="ppUserInfoItemCon">
+            <LocationCityIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              Lives in{" "}
+              <span className="boldSpan">
+                {viewUserDetail?.currentlyLiving}
+              </span>{" "}
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <LocationOnIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            From <span className="boldSpan">{userDetail?.homeTown}</span>{" "}
-          </span>
-        </div>
+        {viewUserDetail.homeTown ? (
+          <div className="ppUserInfoItemCon">
+            <LocationOnIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              From <span className="boldSpan">{viewUserDetail?.homeTown}</span>{" "}
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <EmailIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">lokendra@gmail.com</span>
-        </div>
+        {viewUserDetail?.relationshipStatus ? (
+          <div className="ppUserInfoItemCon">
+            <LocationOnIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              Relationship:{" "}
+              <span className="boldSpan">
+                {viewUserDetail?.relationshipStatus}
+              </span>{" "}
+            </span>
+          </div>
+        ) : null}
 
-        <div className="ppUserInfoItemCon">
-          <LocationOnIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Relationship: <span className="boldSpan">single</span>{" "}
-          </span>
-        </div>
+        {viewUserDetail?.githubLink ? (
+          <a
+            className="ppUserInfoItemCon link"
+            href={viewUserDetail?.githubLink}
+          >
+            <GitHubIcon className="ppInfoIcon" />
+            <span className="boldSpan">ashiishme</span>
+          </a>
+        ) : null}
+
+        {viewUserDetail?.twitterLink ? (
+          <a
+            className="ppUserInfoItemCon link"
+            href={viewUserDetail?.twitterLink}
+          >
+            <TwitterIcon className="ppInfoIcon" />
+            <span className="boldSpan">ashiishme</span>
+          </a>
+        ) : null}
+
+        {viewUserDetail.linkedinLink ? (
+          <a
+            className="ppUserInfoItemCon link"
+            href={viewUserDetail?.linkedinLink}
+          >
+            <LinkedInIcon className="ppInfoIcon" />
+            <span className="boldSpan">ashiishme</span>
+          </a>
+        ) : null}
+
+        {viewUserDetail.instagramLink ? (
+          <a
+            className="ppUserInfoItemCon link"
+            href={viewUserDetail?.instagramLink}
+          >
+            <InstagramIcon className="ppInfoIcon" />
+            <span className="boldSpan">ashiishme</span>
+          </a>
+        ) : null}
+
+        {viewUserDetail.websiteLink ? (
+          <a
+            className="ppUserInfoItemCon link"
+            href={viewUserDetail.websiteLink}
+          >
+            <InsertLinkIcon className="ppInfoIcon" />
+            <span className="boldSpan">www.ashishme.com.mp</span>
+          </a>
+        ) : null}
 
         <div className="ppUserInfoItemCon">
           <MoreHorizIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             See more about{" "}
-            <span className="boldSpan">{userDetail?.fullName}</span>
+            <span className="boldSpan">{viewUserDetail?.fullName}</span>
           </span>
         </div>
-        
+
         <Link to={"/profileEdit"}>
           <button className="profileInfoEditBut">Edit</button>
         </Link>
