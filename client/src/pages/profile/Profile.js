@@ -93,6 +93,12 @@ function Profile() {
           <img src="/assets/profile.jpeg" alt="" className="upCoverPic" />
           <img src="/assets/profile.jpeg" alt="" className="upProfilePic" />
         </div>
+        
+        <div className="pNameProfessionCon">
+          <span className="pName">Lokendra Chaulagain</span>
+          <span className="pProfession">Software Engineer</span>
+          <p className="bio">This is bio section user can write bio here</p>
+        </div>
 
         <div className="ppBeforeSplit">
           <div className="ppLeft">

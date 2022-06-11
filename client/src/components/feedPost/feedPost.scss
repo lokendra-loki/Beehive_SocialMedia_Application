@@ -52,22 +52,22 @@
       // background-color: yellow;
       width: 68.5%;
       height: 55px;
+      margin-right: 50px;
     }
 
     .fpMoreIconColumn {
       display: flex;
-      // margin-left: 500px;
+     padding: 10px;
+     border-radius: 50%;
       cursor: pointer;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       // background-color: green;
+      margin-right: 20px;
 
       &:hover {
-        background-color: blueviolet;
+        background-color:blueviolet;
         color: white;
         transition: all 0.3s ease-in-out;
       }

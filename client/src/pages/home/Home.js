@@ -7,7 +7,6 @@ import FeedPost from "../../components/feedPost/FeedPost";
 import { useAPI } from "../../context/blogContext";
 import "./home.scss";
 
-
 function Home() {
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
   const { posts } = useAPI();

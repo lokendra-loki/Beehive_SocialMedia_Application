@@ -46,6 +46,19 @@
   }
 }
 
+// @media only screen and (max-width: 1365px) {
+//   .homePage {
+//     .hpBeforeSplit {
+//       .hpBeforeSplit {
+//         .hpCenterCon {
+//           width: 200px !important;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
 @media only screen and (max-width: 1150px) {
   .hpRightCon {
     display: none;
@@ -67,6 +80,21 @@
         .hpCenterCon {
           padding-left: 100px;
           padding-right: 100px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .homePage {
+    .hpWrapper {
+      .hpBeforeSplit {
+        .hpCenterCon {
+          .feedPostCreateCon {
+            height: 100px;
+            font-size: 28px;
+          }
         }
       }
     }

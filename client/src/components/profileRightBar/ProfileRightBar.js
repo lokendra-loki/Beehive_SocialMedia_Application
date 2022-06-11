@@ -128,6 +128,7 @@ function ProfileRightBar({ userDetail }) {
             <span className="boldSpan">{userDetail?.fullName}</span>
           </span>
         </div>
+        
         <Link to={"/profileEdit"}>
           <button className="profileInfoEditBut">Edit</button>
         </Link>

@@ -27,6 +27,26 @@
         z-index: 100;
       }
     }
+
+    .pNameProfessionCon {
+      gap: 7px;
+      display: flex;
+      flex-direction: column;
+      margin-left: 400px;
+      align-items: center;
+      margin-top: -80px;
+      margin-bottom: 50px;
+      margin-left: -250px;
+      .pName {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      .pProfession {
+        font-size: 22px;
+        font-weight: 500;
+      }
+    }
+
     .ppBeforeSplit {
       display: flex;
 
@@ -78,11 +98,49 @@
     }
     .ppRight {
       flex: 1;
-      background-color: rgb(245, 232, 252);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
       overflow-y: scroll;
       position: sticky;
       top: 65px;
       height: 90.7vh;
+      border-radius: 5px;
     }
   }
 }
+
+@media only screen and (max-width: 1250px) {
+  .profilePage {
+    .ppWrapper {
+      padding: 0px 50px;
+
+      .upProfilePic {
+        margin-left: -80px;
+      }
+    }
+    .ppWrapper {
+      .ppBeforeSplit {
+        .ppLeft {
+          width: 20px !important;
+          // background-color: red;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .ppRight {
+    display: none;
+  }
+}
+
+// @media only screen and (max-width: 950px) {
+//   .profilePage {
+//     .ppWrapper {
+//       .upProfilePic {
+//         margin-left: -180px;
+//       }
+//     }
+//   }
+// }

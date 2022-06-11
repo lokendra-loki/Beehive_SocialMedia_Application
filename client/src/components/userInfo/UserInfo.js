@@ -177,6 +177,7 @@ function UserInfo() {
 
       <div className="InterestHobbyTxtAndEditButCon">
         <span className="interestHobby">Interest and Hobby</span>
+        
         <button
           onClick={() => setShowUserInfoEditCon(!showUserInfoEditCon)}
           className="userInfoEditBut"
