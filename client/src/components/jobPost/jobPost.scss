@@ -114,34 +114,81 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+    
+
+
+
+@media only screen and (max-width: 650px) {
   .jobPost {
+    width: 500px;
+    .jpHr {
+      display: none;
+    }
+    .fullTimeBut {
+      position: absolute;
+      margin-top: 122px;
+    }
+  }
+}
+
+@media only screen and (max-width: 565px) {
+  .jobPost {
+    width: 440px;
+
+    .fullTimeBut {
+      left: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .jobPost {
+    width: 400px;
+
     .jpInfoCon {
-      .jpJobTitle {
-        font-size: 38px;
-      }
-
-      .jpPostTime {
-        font-size: 24px;
-      }
-
-      .jpCompanyAddress {
-        font-size: 20px;
-      }
-
-      .jpCompanyName {
-        font-size: 25px;
-      }
-
       .jobPostDeleteSaveCon {
-        .jpDelete {
-          width: 140px;
-          height: 50px;
-          font-size: 25px;
-        }
-        .viewMore {
-          font-size: 22px;
-        }
+        gap: 10px;
+      }
+    }
+
+    .fullTimeBut {
+      left: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .jobPost {
+    width: 350px;
+
+    .jpInfoCon {
+      .jobPostDeleteSaveCon {
+        gap: 10px;
+        margin-left: -100px;
+      }
+    }
+
+    .fullTimeBut {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .jobPost {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .jobPost {
+    width: 260px;
+    margin-left:10px !important;
+
+    .jpInfoCon {
+      .jobPostDeleteSaveCon {
+        gap: 5px;
+        margin-left: -105px;
       }
     }
   }

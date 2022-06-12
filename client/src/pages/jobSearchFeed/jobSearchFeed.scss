@@ -1,5 +1,6 @@
 .jobSearchPage {
   margin-top: 60px;
+  overflow-x: hidden;
 
   .jspWrapper {
     .jspBeforeSplit {
@@ -22,6 +23,12 @@
         background-color: rgb(234, 231, 238);
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1370px) {
+  .jspCenterCon {
+    min-width: 630px;
   }
 }
 
@@ -50,15 +57,19 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   .jobSearchPage {
     .jspWrapper {
       .jspBeforeSplit {
         .jspCenterCon {
-          padding-left: 100px;
-          padding-right: 20px;
+          margin-left: -100px;
+          margin-right: -100px;
         }
       }
     }
   }
 }
+
+
+
+
