@@ -8,6 +8,55 @@
     display: flex;
     flex-direction: column;
 
+    .bccSpanError {
+      background-color: red;
+      width: 350px;
+      padding: 10px;
+      color: rgb(228, 226, 226);
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      position: sticky;
+      top: 72px;
+      display: flex;
+      align-self: end;
+      z-index: 99;
+      margin-right: 2px;
+    }
+
+    .bccSpanSuccess {
+      background-color: green;
+      width: 310px;
+      padding: 10px;
+      color: rgb(228, 226, 226);
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      position: sticky;
+      top: 72px;
+      display: flex;
+      align-self: end;
+      z-index: 99;
+      margin-right: 2px;
+    }
+
+    .bccSpanError2 {
+      background-color: red;
+      width: 200px;
+      padding: 10px;
+      color: rgb(228, 226, 226);
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      position: sticky;
+      top: 72px;
+      display: flex;
+      align-self: end;
+      z-index: 99;
+      margin-right: 2px;
+    }
+
+
     .bccTitle {
       font-size: 28px;
       font-weight: 700;
@@ -21,6 +70,7 @@
     .bccHr {
       border: 1px solid blueviolet;
       margin-top: 8px;
+      background-color: blueviolet;
     }
     .bccImg {
       width: 100%;
@@ -29,6 +79,7 @@
       border: 1px solid blueviolet;
       border-radius: 20px;
       object-fit: cover;
+      overflow: hidden;
     }
 
     .bccImgIconAndTxt {
@@ -37,14 +88,18 @@
       margin-top: 20px;
 
       .bccImgIcon {
-        font-size: 40px;
+        font-size: 50px;
         cursor: pointer;
         color: blueviolet;
       }
+      .bccStar {
+        color: red;
+        font-size: 22px;
+      }
 
       .bccSelectImgTxt {
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 16px;
+        font-weight: 700;
         margin-left: 5px;
       }
     }
@@ -54,6 +109,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      .bccStar {
+        color: red;
+        font-size: 22px;
+      }
 
       .bccBlogTitle1 {
         font-size: 16px;
@@ -71,13 +131,16 @@
         padding-left: 5px;
         font-size: 18px;
       }
+      .bccbt1 {
+        height: 70px;
+      }
 
       .bccBlogDescInput {
         max-width: 730px;
         max-height: 500px;
         min-height: 200px;
-       margin-top: 5px;
-       border: 1px solid grey;
+        margin-top: 5px;
+        border: 1px solid grey;
       }
 
       .bccSubmmitBut {
@@ -132,7 +195,7 @@
   }
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) {
   .blogCreateContainer {
     .bccWholeContainer {
       .bccImg {
@@ -140,9 +203,9 @@
       }
       .bccColumnCon {
         .bccSubmmitBut {
-          margin-left:40%;
+          margin-left: 40%;
         }
+      }
     }
   }
-}
 }

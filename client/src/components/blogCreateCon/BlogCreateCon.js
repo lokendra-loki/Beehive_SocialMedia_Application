@@ -22,6 +22,10 @@ function BlogCreateCon() {
   const [timeRead, setTimeRead] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
+  const [fileError, setFileError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +40,7 @@ function BlogCreateCon() {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
+        setUploading(true);
         switch (snapshot.state) {
           case "paused":
             console.log("Upload is paused");
@@ -47,13 +52,12 @@ function BlogCreateCon() {
         }
       },
       (error) => {
-        // Handle unsuccessful uploads
-        console.log(error);
+        setFileError(true);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.post("/blogs/create", {
+            axios.post("/blogs/create", {
               title,
               desc,
               timeRead,
@@ -63,28 +67,58 @@ function BlogCreateCon() {
               category,
               img: downloadURL,
             });
-            window.location.replace("/blogs");
-            console.log(res.data);
+            window.location.reload();
+            setSuccess(true);
           } catch (error) {
-            console.log(error);
+            setError(true);
           }
         });
       }
     );
   };
+  console.log(category);
+
+  setTimeout(() => {
+    const box = document.getElementById("success");
+    box.style.display = "none";
+  }, 5000);
 
   return (
     <div className="blogCreateContainer">
       <form className="bccWholeContainer" onSubmit={handleSubmit}>
+        {fileError && (
+          <span className="bccSpanError">
+            Something went wrong with photo upload{" "}
+          </span>
+        )}
+
+        {success && (
+          <span id="success" className="bccSpanSuccess">
+            Successfully Blog has been created !{" "}
+          </span>
+        )}
+
+        {error && (
+          <span id="success" className="bccSpanError2">
+            Something went wrong{" "}
+          </span>
+        )}
+
         <span className="bccTitle">
           Share Ideas And Experiences through Blog !
         </span>
         <hr className="bccHr" />
-        <img src="/assets/cover.jpeg" alt="" className="bccImg" />
+        {file ? (
+          <img src={URL.createObjectURL(file)} alt="" className="bccImg" />
+        ) : (
+          <img src="" alt="" className="bccImg" />
+        )}
 
         <label className="bccImgIconAndTxt" htmlFor="fileInput">
           <ImageSearchOutlinedIcon className="bccImgIcon" />
-          <span className="bccSelectImgTxt">Select Image</span>
+          <span className="bccSelectImgTxt">
+            Select Image {!file && <span className="bccStar">*</span>}{" "}
+          </span>
         </label>
         <input
           type="file"
@@ -94,21 +128,33 @@ function BlogCreateCon() {
         />
 
         <div className="bccColumnCon">
-          <span className="bccBlogTitle  bccBlogTitle1 ">Blog Title</span>
-          <input
-            type="text"
-            className="bccBlogTitleInput  bccBlogTitleInput1"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <span className="bccBlogDesc bccBlogTitle1">Blog Description</span>
+          <span className="bccBlogTitle  bccBlogTitle1  ">
+            Blog Title {!title && <span className="bccStar">*</span>}
+          </span>
           <textarea
             type="text"
+            maxLength={150}
+            minLength={10}
+            className="bccBlogTitleInput  bccBlogTitleInput1 bccbt1"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <span className="bccBlogDesc bccBlogTitle1">
+            Blog Description {!desc && <span className="bccStar">*</span>}
+          </span>
+          <textarea
+            type="text"
+            maxLength={2000}
+            minLength={10}
             className="bccBlogDescInput bEBlogTitleInput1"
             onChange={(e) => setDesc(e.target.value)}
           />
-          <label className="bccBlogCategory bccBlogTitle1">Location</label>
+          <label className="bccBlogCategory bccBlogTitle1">
+            Location {!location && <span className="bccStar">*</span>}
+          </label>
           <input
             type="text"
+            max={30}
+            min={6}
             className="bccBlogCategoryInput bccBlogTitleInput1"
             onChange={(e) => setLocation(e.target.value)}
           />
@@ -119,7 +165,9 @@ function BlogCreateCon() {
             value={user.username}
           />
           {/* == */}
-          <span className="  bccBlogTitle1">Category</span>{" "}
+          <span className="  bccBlogTitle1">
+            Category <span className="bccStar">*</span>
+          </span>{" "}
           <select
             className="bccBlogTitleInput1"
             onChange={(e) => setCategory(e.target.value)}
@@ -137,17 +185,18 @@ function BlogCreateCon() {
           </select>
           {/* == */}
           <label className="bccBlogTimeRead bccBlogTitle1">
-            Time to Read (in minute)
+            Time to Read (in minute){" "}
+            {!timeRead && <span className="bccStar">*</span>}
           </label>
           <input
             type="number"
             min={1}
-            max={60}
+            max={20}
             className="bccBlogTimeReadInput bccBlogTitleInput1"
             onChange={(e) => setTimeRead(e.target.value)}
           />
           <button className="bccSubmmitBut" type="submit">
-            Upload
+            {uploading ? "Posting..." : "Post"}
           </button>
         </div>
       </form>
