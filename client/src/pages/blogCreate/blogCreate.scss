@@ -42,11 +42,30 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .bcpRightCon {
-    display: none;
+  .blogCreatePage {
+    .bcpWrapper {
+      .bcpBeforeSplit {
+        .bcpLeftCon {
+          margin-left: -80px;
+        }
+
+        .bcpRightCon {
+          display: none;
+        }
+      }
+    }
   }
-  .bcpCenterCon {
-    padding-right: 50px;
+}
+
+@media only screen and (max-width: 850px) {
+  .blogCreatePage {
+    .bcpWrapper {
+      .bcpBeforeSplit {
+        .bcpLeftCon {
+          margin-left: -40px;
+        }
+      }
+    }
   }
 }
 
@@ -57,11 +76,7 @@
         .bcpLeftCon {
           display: none;
         }
-        .bcpCenterCon {
-          padding-left: 50px;
-        }
       }
     }
   }
 }
-

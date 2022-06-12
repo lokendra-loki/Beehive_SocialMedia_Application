@@ -1,4 +1,5 @@
 .bookmarkJobpost {
+  overflow-x: hidden;
   margin: 10px 15px;
   padding: 20px;
   background-color: white;
@@ -111,3 +112,112 @@
     justify-content: center;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .bookmarkJobpost {
+    .bjpjobCompanyLogo {
+      margin-left: -15px;
+
+      width: 100px;
+      height: 100px;
+    }
+    .bjpInfoCon {
+      .bjpJobTitle {
+        font-size: 32px;
+      }
+      .bjpPostTime {
+        font-size: 18px;
+      }
+      .bjpCompanyAddress {
+        font-size: 22px;
+      }
+      .bjpCompanyName {
+        font-size: 24px;
+      }
+      .bjpjobPostDeleteSaveCon {
+        margin-left: -300px;
+        .bjpDelete {
+          width: 100px;
+          height: 45px;
+          font-size: 21px;
+        }
+        .bjpviewMore {
+          font-size: 18px;
+        }
+      }
+    }
+    .bjpHr {
+      display: none;
+    }
+    .bjpfullTimeBut {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .bookmarkJobpost {
+    .bjpjobCompanyLogo {
+      width: 120px;
+      height: 120px;
+    }
+    .bjpInfoCon {
+      .bjpJobTitle {
+        font-size: 38px;
+      }
+      .bjpPostTime {
+        font-size: 22px;
+      }
+      .bjpCompanyAddress {
+        font-size: 26px;
+      }
+      .bjpCompanyName {
+        font-size: 30px;
+      }
+      .bjpjobPostDeleteSaveCon {
+        .bjpDelete {
+          width: 120px;
+          height: 52px;
+          font-size: 26px;
+        }
+        .bjpviewMore {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .bookmarkJobpost {
+    .bjpjobCompanyLogo {
+      width: 120px;//
+      height: 120px;//
+    }
+    .bjpInfoCon {
+      .bjpJobTitle {
+        font-size: 45px;
+      }
+      .bjpPostTime {
+        font-size: 26px;
+      }
+      .bjpCompanyAddress {
+        font-size: 33px;
+      }
+      .bjpCompanyName {
+        font-size: 35px;
+      }
+      .bjpjobPostDeleteSaveCon {
+        .bjpDelete {
+          width: 150px;
+          height: 62px;
+          font-size: 32px;
+        }
+        .bjpviewMore {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
