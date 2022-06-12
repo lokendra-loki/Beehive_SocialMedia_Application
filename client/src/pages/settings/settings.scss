@@ -337,3 +337,21 @@
     }
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .settingsPage {
+    .spWrapper {
+      .spBeforeSplit {
+        .spCenterCon {
+          .userCredentialEditForm {
+            .ucemcItemCon {
+              .ucemcItemTitleValueInput {
+                width: 240px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,10 +3,17 @@ import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import RightBar from "../../components/rightBar/RightBar";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./jobPostCreate.scss";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase";
 
 function JobSearchFeed() {
   const { user } = useContext(AuthContext);
@@ -29,39 +36,73 @@ function JobSearchFeed() {
   const [requirement5, setRequirement5] = useState("");
   const [requirement6, setRequirement6] = useState("");
   const [requirement7, setRequirement7] = useState("");
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [fileError, setFileError] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newJob = {
-      userID: user._id,
-      position,
-      companyName,
-      companyLocation,
-      salaryRange,
-      companyType,
-      noOfEmployee,
-      contractType,
-      jobType,
-      aboutJob,
-      aboutCompany,
-      aboutRole,
-      requirement1,
-      requirement2,
-      requirement3,
-      requirement4,
-      requirement5,
-      requirement6,
-      requirement7,
-    };
-    console.log(newJob);
-    try {
-      await axios.post("jobPosts/create", newJob);
-      navigate("/jobSearch");
-    } catch (err) {
-      console.error(err.message);
-    }
+    e.preventDefault();
+    const fileName = new Date().getTime() + file?.name;
+    const storage = getStorage(app);
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setUploading(true);
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+        }
+      },
+      (error) => {
+        setFileError(true);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          try {
+            axios.post("jobPosts/create", {
+              userID: user._id,
+              position,
+              companyName,
+              companyLocation,
+              salaryRange,
+              companyType,
+              noOfEmployee,
+              contractType,
+              jobType,
+              aboutJob,
+              aboutCompany,
+              aboutRole,
+              requirement1,
+              requirement2,
+              requirement3,
+              requirement4,
+              requirement5,
+              requirement6,
+              requirement7,
+              file,
+              companyProfileImg: downloadURL,
+            });
+            navigate("/jobSearch");
+          } catch (err) {
+            console.error(err.message);
+          }
+        });
+      }
+    );
   };
 
   return (
@@ -79,18 +120,33 @@ function JobSearchFeed() {
             <div className="jpcWholeContainer">
               <span className="jpcTitle">Post job requirements here!</span>
               <hr className="jpcHr" />
-              <img src="/assets/cover.jpeg" alt="" className="jpcImg" />
+              {file ? (
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt=""
+                  className="jpcImg"
+                />
+              ) : (
+                <img src="/assets/cover.jpeg" alt="" className="jpcImg" />
+              )}
               <label className="jpcIconAndTxt" htmlFor="fileInput">
                 <ImageSearchOutlinedIcon className="jpcImgIcon" />
                 <span className="jpcSelectImgTxt">
                   Select company logo Image
                 </span>
               </label>
-              <input type="file" id="fileInput" style={{ display: " none" }} />
+              <input
+                type="file"
+                id="fileInput"
+                style={{ display: " none" }}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
 
               <form className="jpcColumnCon" onSubmit={handleSubmit}>
                 {/* ========================== */}
-                <span className="jpcCompanyName jpc">Position</span>
+                <span className="jpcCompanyName jpc">
+                  Position {!position && <span className="jpcRequired">*</span>}{" "}
+                </span>
                 <input
                   type="text"
                   className="jpcCompanyNameInput jpcInput jpcInput2"
@@ -98,7 +154,10 @@ function JobSearchFeed() {
                   placeholder="FullStack Developer"
                 />
                 {/* ========================== */}
-                <span className="jpcCompanyName jpc">Company Name</span>
+                <span className="jpcCompanyName jpc">
+                  Company Name{" "}
+                  {!companyName && <span className="jpcRequired">*</span>}
+                </span>
                 <input
                   type="text"
                   className="jpcCompanyNameInput jpcInput jpcInput2"
@@ -106,7 +165,10 @@ function JobSearchFeed() {
                   placeholder="ABC company"
                 />
                 {/* ===========================*/}
-                <span className="jpcCompanyLocation jpc">Company Location</span>
+                <span className="jpcCompanyLocation jpc">
+                  Company Location{" "}
+                  {!companyLocation && <span className="jpcRequired">*</span>}
+                </span>
                 <input
                   type="text"
                   className="jpcCompanyLocationInput jpcInput jpcInput2"
@@ -114,7 +176,10 @@ function JobSearchFeed() {
                   placeholder="Bangalore"
                 />
                 {/* ========================== */}
-                <span className="jpcNoOfEmployee jpc">Salary Range</span>{" "}
+                <span className="jpcNoOfEmployee jpc">
+                  Salary Range{" "}
+                  {!salaryRange && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <select
                   className="jpcNoOfEmployeeInput jpcInput"
                   onChange={(e) => setSalaryRange(e.target.value)}
@@ -136,6 +201,7 @@ function JobSearchFeed() {
                 {/* ====================== */}
                 <span className="jpcCompanyLocation jpc">
                   Company Type
+                  {!companyType && <span className="jpcRequired">*</span>}
                 </span>{" "}
                 <input
                   type="text"
@@ -146,6 +212,7 @@ function JobSearchFeed() {
                 {/* =======================*/}
                 <span className="jpcNoOfEmployee jpc">
                   Required Number
+                  {!noOfEmployee && <span className="jpcRequired">*</span>}
                 </span>{" "}
                 <select
                   className="jpcNoOfEmployeeInput jpcInput"
@@ -165,7 +232,7 @@ function JobSearchFeed() {
                 {/* ========================== */}
                 {/* <span className="jpcCompanyLocation jpc">
                   Company Type
-                </span>{" "}
+                 {<span className="jpcRequired">*</span>}</span>{" "}
                 <input
                   type="text"
                   className="jpcCompanyLocationInput jpcInput jpcInput2"
@@ -173,7 +240,10 @@ function JobSearchFeed() {
                   placeholder="WebApp and MobilApp Development"
                 /> */}
                 {/* ========================== */}
-                <span className="jpcNoOfEmployee jpc">Contract Type</span>{" "}
+                <span className="jpcNoOfEmployee jpc">
+                  Contract Type{" "}
+                  {!contractType && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <select
                   className="jpcNoOfEmployeeInput jpcInput"
                   onChange={(e) => setContractType(e.target.value)}
@@ -188,7 +258,9 @@ function JobSearchFeed() {
                   <option value="Senior">Senior</option>
                 </select>
                 {/* ========================== */}
-                <span className="jpcNoOfEmployee jpc">Job Type</span>{" "}
+                <span className="jpcNoOfEmployee jpc">
+                  Job Type {!jobType && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <select
                   className="jpcNoOfEmployeeInput jpcInput"
                   onChange={(e) => setJobType(e.target.value)}
@@ -201,7 +273,10 @@ function JobSearchFeed() {
                   <option value="Contract">Contract</option>
                 </select>
                 {/* ========================== */}
-                <span className="jpcAboutTheJob jpc">About The Job</span>{" "}
+                <span className="jpcAboutTheJob jpc">
+                  About The Job{" "}
+                  {!aboutJob && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <textarea
                   type="text"
                   className="jpcAboutTheJobInput jpcInputTextArea jpcInput2"
@@ -211,6 +286,7 @@ function JobSearchFeed() {
                 {/* ========================== */}
                 <span className="jpcAboutTheCompany jpc">
                   About The Company
+                  {!aboutCompany && <span className="jpcRequired">*</span>}
                 </span>{" "}
                 <textarea
                   type="text"
@@ -219,7 +295,10 @@ function JobSearchFeed() {
                   placeholder="Describe about the Company"
                 />
                 {/* ========================== */}
-                <span className="jpcAboutTheRole jpc">About The Role</span>{" "}
+                <span className="jpcAboutTheRole jpc">
+                  About The Role{" "}
+                  {!aboutRole && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <textarea
                   type="text"
                   className="jpcAboutTheRoleInput jpcInputTextArea jpcInput2"
@@ -227,7 +306,10 @@ function JobSearchFeed() {
                   placeholder="Describe about the Role"
                 />
                 {/* ========================== */}
-                <span className="jpcRequirements jpc">Requirement1</span>{" "}
+                <span className="jpcRequirements jpc">
+                  Requirement1{" "}
+                  {!requirement1 && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <input
                   type="text"
                   className="jpcRequirementsInput jpcInput"
@@ -235,7 +317,10 @@ function JobSearchFeed() {
                   placeholder="&#9679;"
                 />
                 {/* ========================== */}
-                <span className="jpcRequirements jpc">Requirement2</span>{" "}
+                <span className="jpcRequirements jpc">
+                  Requirement2{" "}
+                  {!requirement2 && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <input
                   type="text"
                   className="jpcRequirementsInput jpcInput"
@@ -243,7 +328,10 @@ function JobSearchFeed() {
                   placeholder="&#9679;"
                 />
                 {/* ========================== */}
-                <span className="jpcRequirements jpc">Requirement3</span>{" "}
+                <span className="jpcRequirements jpc">
+                  Requirement3{" "}
+                  {!requirement3 && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <input
                   type="text"
                   className="jpcRequirementsInput jpcInput"
@@ -251,7 +339,10 @@ function JobSearchFeed() {
                   placeholder="&#9679;"
                 />
                 {/* ========================== */}
-                <span className="jpcRequirements jpc">Requirement4</span>{" "}
+                <span className="jpcRequirements jpc">
+                  Requirement4{" "}
+                  {!requirement4 && <span className="jpcRequired">*</span>}
+                </span>{" "}
                 <input
                   type="text"
                   className="jpcRequirementsInput jpcInput"
@@ -284,7 +375,7 @@ function JobSearchFeed() {
                 />
                 {/* ========================== */}
                 <button className="jpcPostBut" type="submit">
-                  Create Job
+                  {uploading ? "Creating..." : "Create Job"}
                 </button>
               </form>
             </div>

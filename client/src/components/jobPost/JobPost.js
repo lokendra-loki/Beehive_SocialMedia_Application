@@ -30,7 +30,7 @@ function JobPost({ jobPost, privateJobPost }) {
     <>
       {jobPost ? (
         <div className="jobPost">
-          <img src="/assets/cover.jpeg" alt="" className="jobCompanyLogo" />
+          <img src={jobPost?.companyProfileImg} alt="" className="jobCompanyLogo" />
           <div className="jpInfoCon">
             <span className="jpJobTitle">{jobPost?.position}</span>
             <span className="jpPostTime">{format(jobPost?.createdAt)}</span>
