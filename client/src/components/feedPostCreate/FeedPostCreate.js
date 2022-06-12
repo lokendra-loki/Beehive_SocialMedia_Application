@@ -23,12 +23,17 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
   //Create UserFeed Post
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + "-" + file?.name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
+    // setDesc("");
+    // setFile(null);
 
     uploadTask.on(
       "state_changed",
@@ -36,6 +41,7 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
+        setUploading(true);
         switch (snapshot.state) {
           case "paused":
             console.log("Upload is paused");
@@ -62,19 +68,30 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
             postImg: downloadURL,
           };
           try {
-            const res = axios.post("/userPosts/create", newPost);
-            console.log(res.data);
-            window.location.reload();
+            axios.post("/userPosts/create", newPost);
+            // window.location.reload();
+            setSuccess(true);
           } catch (error) {
             console.log(error);
           }
+          setUploading(false);
         });
       }
     );
   };
 
+  setTimeout(() => {
+    const box = document.getElementById("success");
+    box.style.display = "none";
+  }, 3000);
+
   return (
     <form className="feedPostCreate" onSubmit={handleSubmit}>
+      {success && (
+        <span id="success" className="fpcSuccess">
+          Successfully Posted
+        </span>
+      )}
       {path ? (
         <div className="fpcRow1">
           <div
@@ -113,14 +130,21 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
           placeholder="What's on your mind ?"
           onChange={(e) => setDesc(e.target.value)}
         />
-        <div className="fpcSelectedItemList">
-          <div className="fpcSelectedItemCon">1</div>
-        </div>
+
+        {file ? (
+          <img
+            src={URL.createObjectURL(file)}
+            className="fpcSelectedItemCon"
+            alt=""
+          />
+        ) : (
+          <img src="" className="fpcSelectedItemCon" alt="" />
+        )}
       </div>
 
       <label className="fpcImgVideoInput" htmlFor="fileInput1">
         <PhotoSizeSelectActualOutlinedIcon className="fpcImgIcon" />
-        <span className="fpcSelectImgTxt">Image</span>
+        <span className="fpcSelectImgTxt">Select Image</span>
       </label>
       <input
         type="file"
@@ -130,7 +154,7 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
       />
 
       <button className="fpcPostBut" type="submit">
-        Post
+        {uploading ? "Posting..." : "Post"}
       </button>
     </form>
   );
