@@ -11,12 +11,12 @@ const { useFormik } = require("formik");
 
 function Register() {
   //Register
-  const { dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
 
   const onSubmit = async (values, actions) => {
-    console.log(values);
-    console.log(actions);
-    console.log("submitted");
+    // console.log(values);
+    // console.log(actions);
+    // console.log("submitted");
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/register", {

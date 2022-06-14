@@ -111,7 +111,7 @@ function Profile() {
                 type="text"
                 className="upOnYourMindInput"
                 placeholder={
-                  "what's on your mind " + userDetail.fullName + " ?"
+                  "what's on your mind " + userDetail?.fullName + " ?"
                 }
               />
             </div>

@@ -42,7 +42,7 @@ export function BlogContextProvider({ children }) {
   );
 }
 
-export function useAPI() {
+export function useAPI2() {
   const context = useContext(BlogContext);
   if (context === undefined) {
     throw new Error("Context must be used within a Provider");

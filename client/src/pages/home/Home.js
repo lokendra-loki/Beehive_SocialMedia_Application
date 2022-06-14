@@ -4,12 +4,14 @@ import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import FeedPost from "../../components/feedPost/FeedPost";
-import { useAPI } from "../../context/blogContext";
+import { useAPI } from "../../context/userDetailContext";
+import { useAPI2 } from "../../context/blogContext";
 import "./home.scss";
 
 function Home() {
   const [showFeedPostCreateCon, setShowFeedPostCreateCon] = useState(false);
-  const { posts } = useAPI();
+  const { posts } = useAPI2();
+  const { userFromDB } = useAPI();
 
   return (
     <div className="homePage">
@@ -30,7 +32,7 @@ function Home() {
               className="feedPostCreateCon"
               onClick={() => setShowFeedPostCreateCon(!showFeedPostCreateCon)}
             >
-              What's on your mind Lokendra ?
+              What's on your mind {userFromDB.username} ?
             </div>
             {posts.map((post, i) => (
               <FeedPost index={i} key={i} post={post} />

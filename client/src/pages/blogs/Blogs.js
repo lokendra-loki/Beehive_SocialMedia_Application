@@ -4,10 +4,10 @@ import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import Blog from "../../components/blog/Blog";
 import "./blogs.scss";
-import { useAPI } from "../../context/blogContext";
+import {  useAPI2 } from "../../context/blogContext";
 
 function Blogs() {
-  const { blogs } = useAPI();
+  const { blogs } = useAPI2();
 
   return (
     <div className="blogsListPage">

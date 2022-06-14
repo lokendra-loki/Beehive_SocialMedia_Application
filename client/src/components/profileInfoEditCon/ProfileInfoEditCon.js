@@ -22,8 +22,7 @@ function ProfileInfoEditCon() {
   const [currentlyLiving, setCurrentlyLiving] = useState(
     currentUserDetail.currentlyLiving
   );
-  // const [profilePicP, setProfilePicP] = useState(currentUserDetail.profilePicP);
-  // const [coverPic, setCoverPic] = useState(currentUserDetail.coverPic);
+
   const [currentJob1Position, setCurrentJob1Position] = useState(
     currentUserDetail.currentJob1Position
   );
@@ -46,12 +45,7 @@ function ProfileInfoEditCon() {
   const [currentStudyingUniversity, setCurrentStudyingUniversity] = useState(
     currentUserDetail.currentStudyingUniversity
   );
-  // const [graduatedCourse, setGraduatedCourse] = useState(
-  //   currentUserDetail.graduatedCourse
-  // );
-  // const [graduatedUniversity, setGraduatedUniversity] = useState(
-  //   currentUserDetail.graduatedUniversity
-  // );
+
   const [plus2CompletedCollege, setPlus2CompletedCollege] = useState(
     currentUserDetail.plus2CompletedCollege
   );
@@ -92,12 +86,13 @@ function ProfileInfoEditCon() {
   );
 
   const [websiteLink, setWebsiteLink] = useState(currentUserDetail.websiteLink);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `/userDetails/update/${currentUserDetail._id}`,
+        `/userDetails/update/${currentUserDetail[0]?._id}`,
         {
           userID: user._id,
           fullName: user.fullName,
@@ -128,6 +123,7 @@ function ProfileInfoEditCon() {
           websiteLink,
         }
       );
+      setSuccess(true);
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -136,6 +132,8 @@ function ProfileInfoEditCon() {
 
   //Update profilePic
   const [file1, setFile1] = useState(null);
+  const [uploading1, setUploading1] = useState(false);
+  const [success1, setSuccess1] = useState(false);
 
   const handlePPSave = async (e) => {
     e.preventDefault();
@@ -149,7 +147,7 @@ function ProfileInfoEditCon() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        // setUploading1(true);
+        setUploading1(true);
         console.log("Upload is " + progress + "% done");
         switch (snapshot.state) {
           case "paused":
@@ -166,14 +164,12 @@ function ProfileInfoEditCon() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.put(
-              `userDetails/update/${currentUserDetail._id}`,
+              `userDetails/update/${currentUserDetail[0]._id}`,
               {
                 profilePic: downloadURL,
               }
             );
-
-            // setSuccess1(true);
-            console.log(res.data);
+            setSuccess1(true);
             window.location.reload();
           } catch (error) {
             console.log(error);
@@ -185,6 +181,8 @@ function ProfileInfoEditCon() {
 
   //Update coverPic
   const [file2, setFile2] = useState(null);
+  const [uploading2, setUploading2] = useState(false);
+  const [success2, setSuccess2] = useState(false);
   const handleCPSave = async (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file2?.name;
@@ -197,7 +195,7 @@ function ProfileInfoEditCon() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        // setUploading1(true);
+        setUploading2(true);
         console.log("Upload is " + progress + "% done");
         switch (snapshot.state) {
           case "paused":
@@ -214,13 +212,12 @@ function ProfileInfoEditCon() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.put(
-              `userDetails/update/${currentUserDetail._id}`,
+              `userDetails/update/${currentUserDetail[0]._id}`,
               {
                 coverPic: downloadURL,
               }
             );
-
-            // setSuccess1(true);
+            setSuccess2(true);
             console.log(res.data);
             window.location.reload();
           } catch (error) {
@@ -233,6 +230,17 @@ function ProfileInfoEditCon() {
 
   return (
     <div className="profileInfoEditCon1">
+      {success && (
+        <span className="successTxt">"Success"</span>
+      )}
+
+      {success1 && (
+        <span className="ppSuccessTxt">Profile has been updated</span>
+      )}
+
+      {success2 && (
+        <span className="cpSuccessTxt">Cover Picture has been updated</span>
+      )}
       <div className="profileCoverChangeCon">
         <div className="ppChangeWrapper">
           <span className="profileChange">Profile Picture</span>
@@ -245,7 +253,7 @@ function ProfileInfoEditCon() {
               />
             ) : (
               <img
-                src={currentUserDetail.profilePic}
+                src={currentUserDetail[0]?.profilePic}
                 alt=""
                 className="ppChange"
               />
@@ -260,7 +268,7 @@ function ProfileInfoEditCon() {
             <AddPhotoAlternateIcon className="ppChangeIcon" />
           </label>
           <button className="ppSave" onClick={handlePPSave}>
-            Save
+            {uploading1 ? "Saving..." : "Save"}
           </button>
         </div>
 
@@ -276,7 +284,7 @@ function ProfileInfoEditCon() {
               />
             ) : (
               <img
-                src={currentUserDetail.coverPic}
+                src={currentUserDetail[0]?.coverPic}
                 alt=""
                 className="cpChange"
               />
@@ -291,19 +299,19 @@ function ProfileInfoEditCon() {
             <AddPhotoAlternateIcon className="cpChangeIcon" />
           </label>
           <button className="cpSave" onClick={handleCPSave}>
-            Save
+            {uploading2 ? "Saving..." : "Save"}
           </button>
         </div>
       </div>
-
       <form className="profileInfoEditCon" onSubmit={handleSubmit}>
         <div className="piecItem">
-          <span className="piecTitle">Currently Working</span>
+          <span className="piecTitle">Currently Working Role</span>
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentJob1Position}
+            defaultValue={currentUserDetail[0]?.currentJob1Position}
             onChange={(e) => setCurrentJob1Position(e.target.value)}
+            placeholder="Web Developer"
           />
         </div>
         <div className="piecItem">
@@ -311,17 +319,19 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentJob1Company}
+            defaultValue={currentUserDetail[0]?.currentJob1Company}
             onChange={(e) => setCurrentJob1Company(e.target.value)}
+            placeholder="ABC Company"
           />
         </div>
         <div className="piecItem">
-          <span className="piecTitle">Currently working</span>
+          <span className="piecTitle">Currently working Role</span>
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentJob2Position}
+            defaultValue={currentUserDetail[0]?.currentJob2Position}
             onChange={(e) => setCurrentJob2Position(e.target.value)}
+            placeholder="App Developer"
           />
         </div>
         <div className="piecItem">
@@ -329,25 +339,26 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentJob2Company}
+            defaultValue={currentUserDetail[0]?.currentJob2Company}
             onChange={(e) => setCurrentJob2Company(e.target.value)}
+            placeholder="XYZ Company"
           />
         </div>
         <div className="piecItem">
-          <span className="piecTitle">Founder At</span>
+          <span className="piecTitle">Founder Of</span>
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.founderOf1}
+            defaultValue={currentUserDetail[0]?.founderOf1}
             onChange={(e) => setFounderOf1(e.target.value)}
           />
         </div>
         <div className="piecItem">
-          <span className="piecTitle">Co-founder At</span>
+          <span className="piecTitle">Co-founder Of</span>
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.founderOf2}
+            defaultValue={currentUserDetail[0]?.founderOf2}
             onChange={(e) => setFounderOf2(e.target.value)}
           />
         </div>
@@ -356,8 +367,9 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.pastJob1Position}
+            defaultValue={currentUserDetail[0]?.pastJob1Position}
             onChange={(e) => setPastJob1Position(e.target.value)}
+            placeholder="Web Developer"
           />
         </div>
         <div className="piecItem">
@@ -365,8 +377,9 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.pastJob1Company}
+            defaultValue={currentUserDetail[0]?.pastJob1Company}
             onChange={(e) => setPastJob1Company(e.target.value)}
+            placeholder="ABC Company"
           />
         </div>
         <div className="piecItem">
@@ -374,8 +387,9 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.pastJob2Position}
+            defaultValue={currentUserDetail[0]?.pastJob2Position}
             onChange={(e) => setPastJob2Position(e.target.value)}
+            placeholder="App Developer"
           />
         </div>
         <div className="piecItem">
@@ -383,8 +397,9 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.pastJob2Company}
+            defaultValue={currentUserDetail[0]?.pastJob2Company}
             onChange={(e) => setPastJob2Company(e.target.value)}
+            placeholder="XYZ Company"
           />
         </div>
         <div className="piecItem">
@@ -392,8 +407,9 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentStudyingCourse}
+            defaultValue={currentUserDetail[0]?.currentStudyingCourse}
             onChange={(e) => setCurrentStudyingCourse(e.target.value)}
+            placeholder=" Computer Science"
           />
         </div>
         <div className="piecItem">
@@ -403,7 +419,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentStudyingUniversity}
+            defaultValue={currentUserDetail[0]?.currentStudyingUniversity}
             onChange={(e) => setCurrentStudyingUniversity(e.target.value)}
           />
         </div>
@@ -412,7 +428,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.plus2CompletedCollege}
+            defaultValue={currentUserDetail[0]?.plus2CompletedCollege}
             onChange={(e) => setPlus2CompletedCollege(e.target.value)}
           />
         </div>
@@ -421,7 +437,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.plus2CompletedCollegeLocation}
+            defaultValue={currentUserDetail[0]?.plus2CompletedCollegeLocation}
             onChange={(e) => setPlus2CompletedCollegeLocation(e.target.value)}
           />
         </div>
@@ -430,7 +446,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.sEECompletedCollege}
+            defaultValue={currentUserDetail[0]?.sEECompletedCollege}
             onChange={(e) => setSEECompletedCollege(e.target.value)}
           />
         </div>
@@ -439,7 +455,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.sEECompletedSchoolLocation}
+            defaultValue={currentUserDetail[0]?.sEECompletedSchoolLocation}
             onChange={(e) => setSEECompletedSchoolLocation(e.target.value)}
           />
         </div>
@@ -448,7 +464,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.currentlyLiving}
+            defaultValue={currentUserDetail[0]?.currentlyLiving}
             onChange={(e) => setCurrentlyLiving(e.target.value)}
           />
         </div>
@@ -457,7 +473,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.homeTown}
+            defaultValue={currentUserDetail[0]?.homeTown}
             onChange={(e) => setHomeTown(e.target.value)}
           />
         </div>
@@ -466,7 +482,7 @@ function ProfileInfoEditCon() {
         <input
           type="text"
           className="piecInput"
-          defaultValue={currentUserDetail.email}
+          defaultValue={currentUserDetail[0]?.email}
         />
       </div> */}
         <div className="piecItem">
@@ -474,7 +490,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.relationShipStatus}
+            defaultValue={currentUserDetail[0]?.relationShipStatus}
             onChange={(e) => setRelationShipStatus(e.target.value)}
           />
         </div>{" "}
@@ -483,7 +499,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.githubLink}
+            defaultValue={currentUserDetail[0]?.githubLink}
             onChange={(e) => setGithubLink(e.target.value)}
           />
         </div>
@@ -492,7 +508,7 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.linkedinLink}
+            defaultValue={currentUserDetail[0]?.linkedinLink}
             onChange={(e) => setLinkedinLink(e.target.value)}
           />
         </div>
@@ -501,31 +517,30 @@ function ProfileInfoEditCon() {
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.twitterLink}
+            defaultValue={currentUserDetail[0]?.twitterLink}
             onChange={(e) => setTwitterLink(e.target.value)}
           />
         </div>
-
         <div className="piecItem">
           <span className="piecTitle">Instagram Link</span>
           <input
             type="text"
             className="piecInput"
-            defaultValue={currentUserDetail.instagramLink}
+            defaultValue={currentUserDetail[0]?.instagramLink}
             onChange={(e) => setInstagramLink(e.target.value)}
           />
         </div>
-
-      {  <div className="piecItem">
-          <span className="piecTitle">Website Link</span>
-          <input
-            type="text"
-            className="piecInput"
-            defaultValue={currentUserDetail.websiteLink}
-            onChange={(e) => setWebsiteLink(e.target.value)}
-          />
-        </div>}
-
+        {
+          <div className="piecItem">
+            <span className="piecTitle">Website Link</span>
+            <input
+              type="text"
+              className="piecInput"
+              defaultValue={currentUserDetail[0]?.websiteLink}
+              onChange={(e) => setWebsiteLink(e.target.value)}
+            />
+          </div>
+        }
         <button className="pieSave" type="submit">
           Save
         </button>
