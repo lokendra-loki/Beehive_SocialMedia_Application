@@ -16,7 +16,7 @@ export function UserDetailContextProvider({ children }) {
         const res = await axios.post("/userDetails/getByUserID", {
           userID: user?._id,
         });
-        setCurrentUserDetail(res.data);
+        setCurrentUserDetail(res.data[0]);
 
         const re2 = await axios.get(`/users/get/${user?._id}`);
         setUserFromDB(re2.data);

@@ -11,9 +11,11 @@ import ClearIcon from "@mui/icons-material/Clear";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import SettingsIcon from "@mui/icons-material/Settings";
 import "./navbar.scss";
+import { useAPI } from "../../context/userDetailContext";
 
 function Navbar() {
   const { user } = useContext(AuthContext);
+  const { currentUserDetail } = useAPI();
 
   //Toggle Sidebar
   const [sidebar, setSidebar] = useState(false);
@@ -143,7 +145,7 @@ function Navbar() {
 
         <Link to="/profile">
           <img
-            src="/assets/profile.jpeg"
+            src={currentUserDetail?.profilePic}
             alt=""
             className="navbarCircleAvatar"
           />

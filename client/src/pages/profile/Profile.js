@@ -90,8 +90,8 @@ function Profile() {
       <Navbar />
       <div className="ppWrapper">
         <div className="upCoverPicCon">
-          <img src="/assets/profile.jpeg" alt="" className="upCoverPic" />
-          <img src="/assets/profile.jpeg" alt="" className="upProfilePic" />
+          <img src={userDetail.coverPic} alt="" className="upCoverPic" />
+          <img src={userDetail.profilePic} alt="" className="upProfilePic" />
         </div>
 
         <div className="pNameProfessionCon">
@@ -106,7 +106,7 @@ function Profile() {
               className="upSmallWhatsOnYourMindCon"
               onClick={() => setShowFeedCreateCon(!showFeedCreateCon)}
             >
-              <img src="" alt="" className="upTinyProfilePic" />
+              <img src={userDetail.profilePic} alt="" className="upTinyProfilePic" />
               <input
                 type="text"
                 className="upOnYourMindInput"

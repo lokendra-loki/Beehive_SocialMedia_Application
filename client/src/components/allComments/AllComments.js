@@ -4,6 +4,7 @@ import "./allComments.scss";
 import { Link } from "react-router-dom";
 
 function AllComments({ setOpenAllCommentCon, comments, privateComments }) {
+  console.log(comments);
   return (
     <>
       {comments ? (

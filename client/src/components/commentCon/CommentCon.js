@@ -4,10 +4,12 @@ import ClearIcon from "@mui/icons-material/Clear";
 import "./commentCon.scss";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { useAPI } from "../../context/userDetailContext";
 
 function CommentCon({ setShowCommentCon, id }) {
   console.log(id);
   const { user } = useContext(AuthContext);
+  const { currentUserDetail } = useAPI();
 
   //post comment on a post
   const [comment, setComment] = useState("");
@@ -16,6 +18,7 @@ function CommentCon({ setShowCommentCon, id }) {
     postID: id,
     fullName: user.username,
     comment: comment,
+    profilePic: currentUserDetail.profilePic,
   };
 
   const handleComment = async () => {

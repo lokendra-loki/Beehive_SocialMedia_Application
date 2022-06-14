@@ -7,7 +7,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import CommentCon from "../commentCon/CommentCon";
 import AllComments from "../allComments/AllComments";
-import AllLikes from "../allLikes/AllLikes";
 import { format } from "timeago.js";
 import "./feedPost.scss";
 import axios from "axios";
@@ -17,7 +16,6 @@ function FeedPost({ post, privatePost }) {
   const [showDeleteSaveCon, setShowDeleteSaveCon] = useState(false);
   const [showCommentCon, setShowCommentCon] = useState(false);
   const [openAllCommentCon, setOpenAllCommentCon] = useState(false);
-  const [openLikesCon, setOpenLikesCon] = useState(false);
 
   //Like Dislike feedPost
   const [postLiked, setPostLiked] = useState(false);
@@ -77,7 +75,7 @@ function FeedPost({ post, privatePost }) {
   const [peopleKoIds, setPeopleKoIds] = useState([]);
   useEffect(() => {
     const fetchPeopleKIds = async () => {
-      const res = await axios.get(`userPosts/getAllLikesId/${post?._id}`);
+      const res = await axios.get(`/userPosts/getAllLikesId/${post?._id}`);
       setPeopleKoIds(res.data);
     };
     fetchPeopleKIds();
@@ -136,7 +134,8 @@ function FeedPost({ post, privatePost }) {
               <CommentCon setShowCommentCon={setShowCommentCon} id={post._id} />
             )}
           </div>
-          {peopleKoIds.map((peopleKoId, i) => (
+
+          {/* {peopleKoIds.map((peopleKoId, i) => (
             <div key={i} index={i} className="allLikesConWrapper">
               {openLikesCon && (
                 <AllLikes
@@ -145,7 +144,7 @@ function FeedPost({ post, privatePost }) {
                 />
               )}
             </div>
-          ))}
+          ))} */}
 
           <div className="allCommentWrapper">
             {openAllCommentCon && (
@@ -168,9 +167,9 @@ function FeedPost({ post, privatePost }) {
                   {post?.likes?.length} Likes
                 </span>
               </div>
-              <span className="whLiked" onClick={() => setOpenLikesCon(true)}>
+              {/* <span className="whLiked" onClick={() => setOpenLikesCon(true)}>
                 who Liked
-              </span>{" "}
+              </span>{" "} */}
             </div>
 
             <div

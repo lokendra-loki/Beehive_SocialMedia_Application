@@ -69,7 +69,7 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
           };
           try {
             axios.post("/userPosts/create", newPost);
-            // window.location.reload();
+            window.location.reload();
             setSuccess(true);
           } catch (error) {
             console.log(error);
@@ -80,10 +80,10 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
     );
   };
 
-  setTimeout(() => {
-    const box = document.getElementById("success");
-    box.style.display = "none";
-  }, 3000);
+  // setTimeout(() => {
+  //   const box = document.getElementById("success");
+  //   box.style.display = "none";
+  // }, 3000);
 
   return (
     <form className="feedPostCreate" onSubmit={handleSubmit}>
@@ -119,15 +119,21 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
       <hr className="fpcHr" />
 
       <div className="fpcRow2">
-        <img src="/assets/profile.jpeg" alt="" className="fpcProfilePic" />
-        <span className="fpcUsername">Loki Chaulagain</span>
+        <img
+          src={currentUserDetail.profilePic}
+          alt=""
+          className="fpcProfilePic"
+        />
+        <span className="fpcUsername">{currentUserDetail.fullName}</span>
       </div>
 
       <div className="fpcwhatsOnMindAndSelectedItemCon">
         <input
           type="text"
           className="fpcwhatsOnMind"
-          placeholder="What's on your mind ?"
+          placeholder={
+            "what's on your mind " + currentUserDetail?.fullName + " ?"
+          }
           onChange={(e) => setDesc(e.target.value)}
         />
 
