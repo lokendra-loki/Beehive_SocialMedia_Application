@@ -49,7 +49,6 @@
       margin-top: 100px;
     }
     .emptyDiv1 {
-      // background-color: yellow;
       width: 68.5%;
       height: 55px;
       margin-right: 50px;
@@ -88,8 +87,8 @@
   .fpPostImg {
     margin-top: 10px;
     width: 100%;
-    object-fit: cover;
-    height: 330px;
+    object-fit: contain;
+    max-height: 250px;
   }
   .fpHr {
     margin-top: 10px;
@@ -149,6 +148,7 @@
       align-items: center;
       flex-direction: column;
       color: blueviolet;
+      
 
       .fpIconsItemIcon {
         font-size: 20px;
@@ -181,32 +181,31 @@
   }
 }
 
-@media only screen and (max-width: 850px) {
-  .feedPost {
-    .allCommentWrapper {
-      margin-right: 700px;
-    }
-  }
-}
 
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 700px) {
   .feedPost {
     .fpRow1 {
+      .fpProfilePic {
+        height: 80px;
+        width: 80px;
+      }
       .fpProfileInfoColumn {
         .fpUsername {
-          font-size: 28px;
+          font-size: 26px;
         }
         .fpProfession {
-          font-size: 24px;
+          font-size: 22px;
         }
         .fpTime {
-          font-size: 20px;
+          font-size: 18px;
         }
       }
     }
     .fpDesc {
-      font-size: 40px;
+      font-size: 28px;
     }
+
     .fpIconsRow {
       .fpLikeDislikeIconWrapper {
         .fpIconsItemColumn {
@@ -217,6 +216,9 @@
             font-size: 20px;
           }
         }
+        .whLiked {
+          font-size: 20px;
+        }
       }
       .fpIconsItemColumn {
         .fpIconsItemIcon {
@@ -224,6 +226,63 @@
         }
         .fpIconsItemTxt {
           font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .feedPost {
+    .allCommentWrapper {
+      margin-right: 700px;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .feedPost {
+    .fpRow1 {
+      .fpProfilePic {
+        height: 100px;
+        width: 100px;
+      }
+      .fpProfileInfoColumn {
+        .fpUsername {
+          font-size: 34px;
+        }
+        .fpProfession {
+          font-size: 26px;
+        }
+        .fpTime {
+          font-size: 22px;
+        }
+      }
+    }
+    .fpDesc {
+      font-size: 34px;
+    }
+
+    .fpIconsRow {
+      .fpLikeDislikeIconWrapper {
+        .fpIconsItemColumn {
+          .fpIconsItemIcon {
+            font-size: 52px;
+          }
+          .fpIconsItemTxt {
+            font-size: 26px;
+          }
+        }
+        .whLiked {
+          font-size: 26px;
+        }
+      }
+      .fpIconsItemColumn {
+        .fpIconsItemIcon {
+          font-size: 52px;
+        }
+        .fpIconsItemTxt {
+          font-size: 26px;
         }
       }
     }
