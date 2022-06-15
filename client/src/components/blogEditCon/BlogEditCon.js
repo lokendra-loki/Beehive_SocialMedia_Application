@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { format } from "timeago.js";
 import "./blogEditCon.scss";
 
 function BlogEditCon({ blog }) {
+  console.log(blog);
 
-  // const navigate = useNavigate();
   //Edit Blog
   const [edtTitle, setEdtTitle] = useState(blog.title);
   const [editDesc, setEditDesc] = useState(blog.desc);
@@ -15,25 +13,16 @@ function BlogEditCon({ blog }) {
   const [editTimeRead, setEditTimeRead] = useState(blog.timeRead);
   const [editCategory, setEdtCategory] = useState(blog.category);
 
-  // const editBlog = {
-  //   edtTitle,
-  //   editDesc,
-  //   editLocation,
-  //   editTimeRead,
-  //   editCategory,
-  // };
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
-        `/blogs/update/${blog._id}`,
+      const res = await axios.put(`/blogs/update/${blog._id}`, {
         edtTitle,
         editDesc,
         editLocation,
         editTimeRead,
-        editCategory
-      );
+        editCategory,
+      });
       // navigate("/blogs");
       console.log(res.data);
     } catch (error) {

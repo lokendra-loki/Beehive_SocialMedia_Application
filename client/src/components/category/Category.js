@@ -10,21 +10,39 @@ function Category() {
       <hr className="clcHr" />
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <Link to={`/category/programming`} className="link">
+        <Link
+          to={`/category/programming`}
+          className="link"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
           <span className="clcValue">Programming</span>
         </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <Link to={`/category/dataScience`} className="link">
+        <Link
+          to={`/category/dataScience`}
+          className="link"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
           <span className="clcValue">Data Science</span>
         </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <Link to={`/category/cloudComputing`} className="link">
+        <Link
+          to={`/category/cloudComputing`}
+          className="link"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
           <span className="clcValue">Cloud Computing</span>
         </Link>
       </div>
@@ -38,14 +56,26 @@ function Category() {
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <Link to={`/category/webDevelopment`} className="link">
+        <Link
+          to={`/category/webDevelopment`}
+          className="link"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
           <span className="clcValue">Web Development</span>
         </Link>
       </div>
 
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
-        <Link to={`/category/techNews`} className="link">
+        <Link
+          to={`/category/techNews`}
+          className="link"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+        >
           <span className="clcValue">Tech News</span>
         </Link>
       </div>
