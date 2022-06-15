@@ -49,6 +49,8 @@
       color: rgb(44, 44, 44);
       margin-top: 14px;
       cursor: pointer;
+      overflow: hidden;
+      max-height: 64px;
 
       &:hover {
         color: rgb(134, 70, 195);
@@ -68,12 +70,6 @@
         color: blueviolet;
         font-weight: 700;
       }
-    }
-    .blogDesc {
-      font-size: 16px;
-      font-weight: 400;
-      color: rgb(63, 63, 63);
-      margin-top: 14px;
     }
 
     .blogHr {

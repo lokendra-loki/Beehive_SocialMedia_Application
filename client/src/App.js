@@ -17,30 +17,35 @@ import ProfileEdit from "./pages/profileEdit/ProfileEdit";
 import FeedPostEdit from "./pages/feedPostEdit/FeedPostEdit";
 import Settings from "./pages/settings/Settings";
 import Categories from "./pages/categories/Categories";
+import { useContext } from "react";
+import { AuthContext } from "./context/authContext/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogRead/:id" element={<BlogRead />} />
-          <Route path="/blogCreate" element={<BlogCreate />} />
-          <Route path="/jobCreate" element={<JobPostCreate />} />
-          <Route path="/jobSearch" element={<JobSearchFeed />} />
-          <Route path="/trending" element={<Trending />} />
-          <Route path="/jobPost/:id" element={<JobPostRead />} />
-          <Route path="/bookmark" element={<Bookmark />} />
-          <Route path="/jobEdit/:id" element={<JobEdit />} />
-          <Route path="/blogEdit/:id" element={<BlogEdit />} />
-          <Route path="/profileEdit" element={<ProfileEdit />} />
-          <Route path="/postEdit/:id" element={<FeedPostEdit />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/category/:catName" element={<Categories />} />
+
+          <Route path="/" element={user ? <Home />: <Register />} />
+          <Route path="/profile/:id" element={user ? <Profile /> : <Register />} />
+          <Route path="/blogs" element={user ? <Blogs /> : <Register />} />
+          <Route path="/blogRead/:id" element={user ? <BlogRead /> : <Register />} />
+          <Route path="/blogCreate" element={user ? <BlogCreate /> : <Register />} />
+          <Route path="/jobCreate" element={user ? <JobPostCreate /> : <Register />} />
+          <Route path="/jobSearch" element={user ? <JobSearchFeed /> : <Register />} />
+          <Route path="/trending" element={user ? <Trending /> : <Register />} />
+          <Route path="/jobPost/:id" element={user ? <JobPostRead /> : <Register />} />
+          <Route path="/bookmark" element={user ? <Bookmark /> : <Register />} />
+          <Route path="/jobEdit/:id" element={user ? <JobEdit /> : <Register />} />
+          <Route path="/blogEdit/:id" element={user ? <BlogEdit /> : <Register />} />
+          <Route path="/profileEdit" element={user ? <ProfileEdit /> : <Register />} />
+          <Route path="/postEdit/:id" element={user ? <FeedPostEdit /> : <Register />} />
+          <Route path="/settings" element={user ? <Settings /> : <Register />} />
+          <Route path="/category/:catName" element={user ? <Categories /> : <Register />} />
         </Routes>
       </Router>
     </div>

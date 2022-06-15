@@ -14,10 +14,8 @@ import app from "../../firebase";
 
 function ProfileInfoEditCon() {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const { currentUserDetail } = useAPI();
-  console.log(currentUserDetail);
-
+  
   const [homeTown, setHomeTown] = useState(currentUserDetail?.homeTown);
   const [currentlyLiving, setCurrentlyLiving] = useState(
     currentUserDetail?.currentlyLiving
@@ -79,13 +77,19 @@ function ProfileInfoEditCon() {
     currentUserDetail?.linkedinLink
   );
 
-  const [twitterLink, setTwitterLink] = useState(currentUserDetail?.twitterLink);
+  const [twitterLink, setTwitterLink] = useState(
+    currentUserDetail?.twitterLink
+  );
 
   const [instagramLink, setInstagramLink] = useState(
     currentUserDetail?.instagramLink
   );
 
-  const [websiteLink, setWebsiteLink] = useState(currentUserDetail?.websiteLink);
+  const [bio, setBio] = useState(currentUserDetail?.bio);
+
+  const [websiteLink, setWebsiteLink] = useState(
+    currentUserDetail?.websiteLink
+  );
   const [success, setSuccess] = useState(false);
   const [editing, setEditing] = useState(false);
 
@@ -94,10 +98,8 @@ function ProfileInfoEditCon() {
     setEditing(true);
     try {
       await axios.put(`/userDetails/update/${currentUserDetail._id}`, {
-        userID: user._id,
-        fullName: user.fullName,
-        nickName: user.nickName,
         homeTown,
+        bio,
         currentlyLiving,
         currentJob1Position,
         currentJob1Company,
@@ -208,7 +210,7 @@ function ProfileInfoEditCon() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.put(
-              `userDetails/update/${currentUserDetail[0]._id}`,
+              `userDetails/update/${currentUserDetail._id}`,
               {
                 coverPic: downloadURL,
               }
@@ -298,6 +300,16 @@ function ProfileInfoEditCon() {
         </div>
       </div>
       <form className="profileInfoEditCon" onSubmit={handleSubmit}>
+        <div className="piecItem">
+          <span className="piecTitle">Bio</span>
+          <input
+            type="text"
+            className="piecInput"
+            defaultValue={currentUserDetail?.bio}
+            onChange={(e) => setBio(e.target.value)}
+            placeholder="Add your bio here"
+          />
+        </div>
         <div className="piecItem">
           <span className="piecTitle">Currently Working Role</span>
           <input
@@ -528,7 +540,7 @@ function ProfileInfoEditCon() {
           </div>
         }
         <button className="pieSave" type="submit">
-         {editing ?  "Saving..." :  "Save"}
+          {editing ? "Saving..." : "Save"}
         </button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -12,11 +12,13 @@ import SchoolIcon from "@mui/icons-material/School";
 import { Link, useLocation } from "react-router-dom";
 import "./profileRightBar.scss";
 import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function ProfileRightBar() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   console.log(path);
+  const { user } = useContext(AuthContext);
 
   //Fetching userDetail
   const [viewUserDetail, setViewUserDetail] = useState({});
@@ -112,16 +114,18 @@ function ProfileRightBar() {
           </div>
         )}
 
-        {viewUserDetail?.plus2CompletedCollege && <div className="ppUserInfoItemCon">
-          <SchoolIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            +2 Completed from{" "}
-            <span className="boldSpan">
-              {viewUserDetail?.plus2CompletedCollege}
-            </span>{" "}
-            {viewUserDetail?.plus2CompletedCollegeLocation}
-          </span>
-        </div>}
+        {viewUserDetail?.plus2CompletedCollege && (
+          <div className="ppUserInfoItemCon">
+            <SchoolIcon className="ppInfoIcon" />
+            <span className="ppUserInfoItemTxt">
+              +2 Completed from{" "}
+              <span className="boldSpan">
+                {viewUserDetail?.plus2CompletedCollege}
+              </span>{" "}
+              {viewUserDetail?.plus2CompletedCollegeLocation}
+            </span>
+          </div>
+        )}
 
         {viewUserDetail?.sEECompletedCollege ? (
           <div className="ppUserInfoItemCon">
@@ -175,7 +179,9 @@ function ProfileRightBar() {
             href={viewUserDetail?.githubLink}
           >
             <GitHubIcon className="ppInfoIcon" />
-            <span className="boldSpan">ashiishme</span>
+            <span className="boldSpan">
+              {viewUserDetail?.fullName.split(" ")[0].toLowerCase()}
+            </span>
           </a>
         ) : null}
 
@@ -185,7 +191,9 @@ function ProfileRightBar() {
             href={viewUserDetail?.twitterLink}
           >
             <TwitterIcon className="ppInfoIcon" />
-            <span className="boldSpan">ashiishme</span>
+            <span className="boldSpan">
+              {viewUserDetail?.fullName.split(" ")[0].toLowerCase()}
+            </span>
           </a>
         ) : null}
 
@@ -195,7 +203,9 @@ function ProfileRightBar() {
             href={viewUserDetail?.linkedinLink}
           >
             <LinkedInIcon className="ppInfoIcon" />
-            <span className="boldSpan">ashiishme</span>
+            <span className="boldSpan">
+              {viewUserDetail?.fullName.split(" ")[0].toLowerCase()}
+            </span>
           </a>
         ) : null}
 
@@ -205,7 +215,9 @@ function ProfileRightBar() {
             href={viewUserDetail?.instagramLink}
           >
             <InstagramIcon className="ppInfoIcon" />
-            <span className="boldSpan">ashiishme</span>
+            <span className="boldSpan">
+              {viewUserDetail?.fullName.split(" ")[0].toLowerCase()}
+            </span>
           </a>
         ) : null}
 
@@ -215,7 +227,7 @@ function ProfileRightBar() {
             href={viewUserDetail?.websiteLink}
           >
             <InsertLinkIcon className="ppInfoIcon" />
-            <span className="boldSpan">www.ashishme.com.mp</span>
+            <span className="boldSpan">{viewUserDetail.websiteLink}</span>
           </a>
         ) : null}
 
@@ -228,7 +240,7 @@ function ProfileRightBar() {
         </div>
 
         <Link to={"/profileEdit"}>
-          <button className="profileInfoEditBut">Edit</button>
+        {user._id===path && <button className="profileInfoEditBut">Edit</button>}
         </Link>
       </div>
     </>

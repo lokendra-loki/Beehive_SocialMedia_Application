@@ -4,7 +4,7 @@ import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import Blog from "../../components/blog/Blog";
 import "./blogs.scss";
-import {  useAPI2 } from "../../context/blogContext";
+import { useAPI2 } from "../../context/blogContext";
 
 function Blogs() {
   const { blogs } = useAPI2();

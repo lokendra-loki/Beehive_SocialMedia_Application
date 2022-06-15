@@ -4,9 +4,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import { format } from "timeago.js";
 import "./blog.scss";
 import BlogDeleteAlert from "../blogDeleteAlert/BlogDeleteAlert";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function Blog({ blog, privateBlog, catBlog }) {
+  const { user } = useContext(AuthContext);
   const [showBlogDeleteAlert, setShowBlogDeleteAlert] = useState(false);
 
   return (
@@ -20,7 +22,20 @@ function Blog({ blog, privateBlog, catBlog }) {
               <span className="blogDate">{format(blog?.createdAt)}</span>
               <span className="blogTimeRead">{blog?.timeRead} min read</span>
             </div>
-            <span className="blogTitle">{blog?.title} </span>
+
+            <span
+              className="blogTitle"
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              }}
+            >
+              {" "}
+              <Link to={`/blogRead/${blog?._id}`} className="link">
+                {" "}
+                {blog?.title}{" "}
+              </Link>{" "}
+            </span>
+
             <div className="blogAuthorAndLocation">
               <span className="blogAuthor">
                 <span className="author">Author</span> : {blog?.authorName}
@@ -29,8 +44,16 @@ function Blog({ blog, privateBlog, catBlog }) {
             </div>
             {/* <span className="blogDesc">{blog?.desc}</span> */}
             <hr className="blogHr" />
+
             <Link to={`/blogRead/${blog?._id}`} className="link">
-              <span className="blogContinueReading">Continue reading...</span>
+              <span
+                className="blogContinueReading"
+                onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                }}
+              >
+                Continue reading...
+              </span>
             </Link>
             {showBlogDeleteAlert && (
               <BlogDeleteAlert
@@ -39,22 +62,24 @@ function Blog({ blog, privateBlog, catBlog }) {
               />
             )}
 
-            <div className="blogDeleteEditCon">
-              <button
-                className="blogDelete blogDeleteEditBut"
-                onClick={() => setShowBlogDeleteAlert(!showBlogDeleteAlert)}
-              >
-                <DeleteOutlineIcon className="blogDEIcon" />
-                Delete
-              </button>
-
-              <Link to={`/blogEdit/${blog?._id}`} className="link">
-                <button className="blogEdit blogDeleteEditBut">
-                  <EditIcon className="blogDEIcon" />
-                  Edit
+            {user._id === blog.userID && (
+              <div className="blogDeleteEditCon">
+                <button
+                  className="blogDelete blogDeleteEditBut"
+                  onClick={() => setShowBlogDeleteAlert(!showBlogDeleteAlert)}
+                >
+                  <DeleteOutlineIcon className="blogDEIcon" />
+                  Delete
                 </button>
-              </Link>
-            </div>
+
+                <Link to={`/blogEdit/${blog?._id}`} className="link">
+                  <button className="blogEdit blogDeleteEditBut">
+                    <EditIcon className="blogDEIcon" />
+                    Edit
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       ) : privateBlog ? (

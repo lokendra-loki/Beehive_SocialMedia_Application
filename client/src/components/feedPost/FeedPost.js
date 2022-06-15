@@ -37,7 +37,7 @@ function FeedPost({ post, privatePost }) {
   const handleLikeDislike = async (id) => {
     try {
       const res = await axios.put(`/userPosts/like/${id}`, {
-        userId: user._id,
+        userId: user?._id,
       });
       setLiked(true);
       window.location.reload();
@@ -71,27 +71,13 @@ function FeedPost({ post, privatePost }) {
     fetchPrivateComments();
   }, [privatePost]);
 
-  //Who liked the post
-  const [peopleKoIds, setPeopleKoIds] = useState([]);
-  useEffect(() => {
-    const fetchPeopleKIds = async () => {
-      const res = await axios.get(`/userPosts/getAllLikesId/${post?._id}`);
-      setPeopleKoIds(res.data);
-    };
-    fetchPeopleKIds();
-  }, [post]);
-
   return (
     <>
       {post ? (
         <div className="feedPost">
           <div className="fpRow1">
             <Link to={`/profile/${post?.userID}`} className="link">
-              <img
-                src={post.profilePic || "/assets/profile.jpeg"}
-                alt=""
-                className="fpProfilePic"
-              />
+              <img src={post.profilePic} alt="" className="fpProfilePic" />
             </Link>
             <div
               className="fpProfileInfoColumn"
@@ -135,17 +121,6 @@ function FeedPost({ post, privatePost }) {
             )}
           </div>
 
-          {/* {peopleKoIds.map((peopleKoId, i) => (
-            <div key={i} index={i} className="allLikesConWrapper">
-              {openLikesCon && (
-                <AllLikes
-                  peopleKoId={peopleKoId}
-                  setOpenLikesCon={setOpenLikesCon}
-                />
-              )}
-            </div>
-          ))} */}
-
           <div className="allCommentWrapper">
             {openAllCommentCon && (
               <AllComments
@@ -167,9 +142,6 @@ function FeedPost({ post, privatePost }) {
                   {post?.likes?.length} Likes
                 </span>
               </div>
-              {/* <span className="whLiked" onClick={() => setOpenLikesCon(true)}>
-                who Liked
-              </span>{" "} */}
             </div>
 
             <div
@@ -195,7 +167,7 @@ function FeedPost({ post, privatePost }) {
         <div className="feedPost">
           <div className="fpRow1">
             <Link to={`/profile/${privatePost?.userID}`} className="link">
-              <img src="/assets/profile.jpeg" alt="" className="fpProfilePic" />
+              <img src={privatePost.profilePic} alt="" className="fpProfilePic" />
             </Link>
             <div className="fpProfileInfoColumn">
               <span className="fpUsername">{privatePost?.fullName}</span>

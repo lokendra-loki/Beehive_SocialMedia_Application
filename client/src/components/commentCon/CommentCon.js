@@ -10,6 +10,7 @@ function CommentCon({ setShowCommentCon, id }) {
   console.log(id);
   const { user } = useContext(AuthContext);
   const { currentUserDetail } = useAPI();
+  console.log(currentUserDetail);
 
   //post comment on a post
   const [comment, setComment] = useState("");

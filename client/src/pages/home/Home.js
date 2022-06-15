@@ -32,7 +32,7 @@ function Home() {
               className="feedPostCreateCon"
               onClick={() => setShowFeedPostCreateCon(!showFeedPostCreateCon)}
             >
-              What's on your mind {userFromDB.username} ?
+              What's on your mind {userFromDB?.username} ?
             </div>
             {posts.map((post, i) => (
               <FeedPost index={i} key={i} post={post} />

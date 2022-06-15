@@ -6,7 +6,7 @@ import "./category.scss";
 function Category() {
   return (
     <div className="categoryListContainer">
-      <span className="categoryContainerTitle">Categories</span>
+      <span className="categoryContainerTitle">Blogs Categories</span>
       <hr className="clcHr" />
       <div className="categoryList">
         <CategoryOutlinedIcon className="clcKey" />
