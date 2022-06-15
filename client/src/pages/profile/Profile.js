@@ -24,6 +24,7 @@ function Profile() {
     };
     fetchUserDetail();
   }, [path]);
+  console.log(userDetail);
 
   //all posts of a user from path id
   const [userKoPosts, setUserKoPosts] = React.useState([{}]);
@@ -90,14 +91,14 @@ function Profile() {
       <Navbar />
       <div className="ppWrapper">
         <div className="upCoverPicCon">
-          <img src={userDetail.coverPic} alt="" className="upCoverPic" />
-          <img src={userDetail.profilePic} alt="" className="upProfilePic" />
+          <img src={userDetail?.coverPic} alt="" className="upCoverPic" />
+          <img src={userDetail?.profilePic} alt="" className="upProfilePic" />
         </div>
 
         <div className="pNameProfessionCon">
-          <span className="pName">Lokendra Chaulagain</span>
-          <span className="pProfession">Software Engineer</span>
-          <p className="bio">This is bio section user can write bio here</p>
+          <span className="pName">{userDetail?.fullName}</span>
+          <span className="pProfession">{userDetail?.profession}</span>
+          <p className="bio">{userDetail?.bio}</p>
         </div>
 
         <div className="ppBeforeSplit">
@@ -106,7 +107,11 @@ function Profile() {
               className="upSmallWhatsOnYourMindCon"
               onClick={() => setShowFeedCreateCon(!showFeedCreateCon)}
             >
-              <img src={userDetail.profilePic} alt="" className="upTinyProfilePic" />
+              <img
+                src={userDetail?.profilePic}
+                alt=""
+                className="upTinyProfilePic"
+              />
               <input
                 type="text"
                 className="upOnYourMindInput"

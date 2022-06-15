@@ -143,7 +143,7 @@ function Navbar() {
           />
         </div> */}
 
-        <Link to="/profile">
+        <Link to={`/profile/${user?._id}`}>
           <img
             src={currentUserDetail?.profilePic}
             alt=""

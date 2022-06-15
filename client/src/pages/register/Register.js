@@ -26,6 +26,13 @@ function Register() {
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       await new Promise((resolve) => setTimeout(resolve, 500)); //wait 0.5 sec
+
+      const res1 = await axios.post("/userDetails/create", {
+        userID: res.data._id,
+        fullName: res.data.username,
+      });
+      console.log(res1);
+
       actions.resetForm();
       console.log(res.data);
       window.location.replace("/");

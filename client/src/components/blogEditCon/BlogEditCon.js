@@ -6,7 +6,7 @@ import { format } from "timeago.js";
 import "./blogEditCon.scss";
 
 function BlogEditCon({ blog }) {
-  console.log(blog)
+
   // const navigate = useNavigate();
   //Edit Blog
   const [edtTitle, setEdtTitle] = useState(blog.title);
@@ -48,7 +48,7 @@ function BlogEditCon({ blog }) {
           Share Ideas And Experiences through Blog !
         </span>
         <hr className="bEHr" />
-        <img src="/assets/cover.jpeg" alt="" className="bEImg" />
+        <img src={blog.img} alt="" className="bEImg" />
 
         <label className="brImgIconAndTxt" htmlFor="fileInput">
           <ImageSearchOutlinedIcon className="bEImgIcon" />

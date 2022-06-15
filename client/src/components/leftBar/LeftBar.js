@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 function LeftBar() {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   //Logout
   // const handleLogout = () => {
   //   localStorage.clear();
@@ -40,12 +40,13 @@ function LeftBar() {
           </div>
         </Link>
 
-        <Link to={`/profile/${user?._id}` }className="link">
+        <Link to={`/profile/${user?._id}`} className="link">
           <div className="lbListItem">
             <PersonOutlineOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Profile</span>
           </div>
         </Link>
+        {/* onClick={()=>window.location.replace(`/profile/${user?._id}`)} */}
 
         <Link to="/blogs" className="link">
           <div className="lbListItem">
@@ -83,11 +84,11 @@ function LeftBar() {
         </Link>
 
         <Link to="/settings" className="link">
-        <div className="lbListItem">
-          <SettingsIcon className="lbListItemKey" />
-          <span className="lbListItemValue">Settings</span>
-        </div>
-      </Link>
+          <div className="lbListItem">
+            <SettingsIcon className="lbListItemKey" />
+            <span className="lbListItemValue">Settings</span>
+          </div>
+        </Link>
 
         <div className="lbListItem">
           <WhatshotIcon className="lbListItemKey" />

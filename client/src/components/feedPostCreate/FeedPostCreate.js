@@ -61,9 +61,9 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
           //new post
           const newPost = {
             userID: user._id,
-            fullName: user.username,
-            profession: currentUserDetail.profession,
-            profilePic: currentUserDetail.profilePic,
+            fullName: user?.username,
+            profession: currentUserDetail?.profession,
+            profilePic: currentUserDetail?.profilePic,
             desc,
             postImg: downloadURL,
           };
@@ -120,15 +120,15 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
 
       <div className="fpcRow2">
         <img
-          src={currentUserDetail.profilePic}
+          src={currentUserDetail?.profilePic}
           alt=""
           className="fpcProfilePic"
         />
-        <span className="fpcUsername">{currentUserDetail.fullName}</span>
+        <span className="fpcUsername">{currentUserDetail?.fullName}</span>
       </div>
 
       <div className="fpcwhatsOnMindAndSelectedItemCon">
-        <input
+        <textarea
           type="text"
           className="fpcwhatsOnMind"
           placeholder={
