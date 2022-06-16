@@ -11,6 +11,10 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { useNavigate } from "react-router-dom";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,7 +22,8 @@ function ProfileInfoEditCon() {
   const { user } = useContext(AuthContext);
   const { currentUserDetail } = useAPI();
 
-  const notifySuccess = (msg) => toast.success(msg);
+  // const notifySuccess = (msg) => toast.success(msg);
+  const navigate = useNavigate();
 
   const [homeTown, setHomeTown] = useState(currentUserDetail?.homeTown);
   const [currentlyLiving, setCurrentlyLiving] = useState(
@@ -127,12 +132,8 @@ function ProfileInfoEditCon() {
         instagramLink,
         websiteLink,
       });
-    
-      // window.location.reload();
-      setTimeout(function () {
-        window.location.reload();
-      }, 3000);
-      notifySuccess("Profile Updated Successfully");
+      navigate(-1);
+      toast.success("Profile Updated Successfully", { theme: "colored" });
     } catch (error) {
       console.log(error);
     }
@@ -141,7 +142,6 @@ function ProfileInfoEditCon() {
   //Update profilePic
   const [file1, setFile1] = useState(null);
   const [uploading1, setUploading1] = useState(false);
-
 
   const handlePPSave = async (e) => {
     e.preventDefault();
@@ -174,8 +174,9 @@ function ProfileInfoEditCon() {
             axios.put(`userDetails/update/${currentUserDetail?._id}`, {
               profilePic: downloadURL,
             });
-            notifySuccess("Profile Picture Updated Successfully");
-            window.location.reload();
+            navigate(-1);
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            toast.success("Profile Picture Updated", { theme: "colored" });
           } catch (error) {
             console.log(error);
           }
@@ -215,15 +216,12 @@ function ProfileInfoEditCon() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.put(
-              `userDetails/update/${currentUserDetail._id}`,
-              {
-                coverPic: downloadURL,
-              }
-            );
-            notifySuccess("Cover Picture Updated Successfully");
-            console.log(res.data);
-            window.location.reload();
+            axios.put(`userDetails/update/${currentUserDetail._id}`, {
+              coverPic: downloadURL,
+            });
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            navigate(-1);
+            toast.success("Cover Picture Updated", { theme: "colored" });
           } catch (error) {
             console.log(error);
           }
@@ -260,7 +258,7 @@ function ProfileInfoEditCon() {
             />
             <AddPhotoAlternateIcon className="ppChangeIcon" />
           </label>
-          <button className="ppSave" onClick={handlePPSave}>
+          <button className="ppSave" onClick={handlePPSave}  >
             {uploading1 ? "Saving..." : "Save"}
           </button>
         </div>

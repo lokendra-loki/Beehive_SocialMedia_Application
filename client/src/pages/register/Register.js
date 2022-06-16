@@ -75,8 +75,8 @@ function Register() {
               <span className="newHereSpan">New here !</span> Create an account
             </span>
             <span className="rp-loginDesc">
-              Lorffem ipsumfffdd dolors sit amet constetur aipisicing elits.
-              Consatur, svvxi plavvvvt lab rerum quae fugiat nihil.
+             Dummy text Lorffem ipsumfffdd dolors sit amet constetur aipisicing elits.
+              Consatur, svvxi plavvvvt lab rerum quae 
             </span>
 
             <div className="rp-loginInputCon">
@@ -196,7 +196,14 @@ function Register() {
             </Link>
           </form>
         </div>
-        <div className="lpRight">right</div>
+        <div className="lpRight">
+          <div className="rpRightCon">
+            <span className="rprTitle">Beehive</span>
+            <span className="rprDesc">
+              Connect and share with people in your life .
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -36,6 +36,11 @@ function ProfileRightBar() {
     userDetailsOny();
   }, [path]);
 
+  const onClick = (e) => {
+    window.location.replace("/profileEdit");
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <h4 className="userInfo">User Information</h4>
@@ -240,7 +245,9 @@ function ProfileRightBar() {
         </div>
 
         <Link to={"/profileEdit"}>
-        {user._id===path && <button className="profileInfoEditBut">Edit</button>}
+          {user._id === path && (
+            <button className="profileInfoEditBut" onClick={onClick}>Edit</button>
+          )}
         </Link>
       </div>
     </>

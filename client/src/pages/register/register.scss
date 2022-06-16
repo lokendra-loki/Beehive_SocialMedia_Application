@@ -1,6 +1,7 @@
 .registerPage {
   overflow-y: hidden;
   height: 100vh;
+  overflow: hidden;
 
   .rp-Wrapper {
     display: flex;
@@ -155,7 +156,29 @@
     .lpRight {
       flex: 1;
       background-color: blueviolet;
-      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -50px;
+
+      .rpRightCon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .rprTitle {
+          font-size: 40px;
+          color: white;
+          font-weight: 600;
+        }
+
+        .rprDesc {
+          font-size: 25px;
+          font-weight: 600;
+          color: white;
+        }
+      }
     }
   }
 }

@@ -19,7 +19,8 @@ import Settings from "./pages/settings/Settings";
 import Categories from "./pages/categories/Categories";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -91,6 +92,7 @@ function App() {
           />
         </Routes>
       </Router>
+      <ToastContainer />
     </div>
   );
 }

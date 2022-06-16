@@ -15,7 +15,7 @@ const {
 router.post("/create", createBlog);
 
 //Update
-router.put("/update/:id", updateBlog);
+router.put("/update/:id",verifyUser, updateBlog);
 
 //Get
 router.get("/get/:id", getBlog);
@@ -24,7 +24,7 @@ router.get("/get/:id", getBlog);
 router.get("/getAll", getAllBlogs);
 
 //Delete
-router.delete("/delete/:id", deleteBlog);
+router.delete("/delete/:id",verifyUser, deleteBlog);
 
 //Get allBlogs of a user
 router.post("/getAllBlogsOfAUser", getAllBlogsOfAUser);

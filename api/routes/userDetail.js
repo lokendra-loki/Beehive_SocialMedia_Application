@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { verify } = require("jsonwebtoken");
 const {
   createUserDetail,
   updateUserDetail,
@@ -10,12 +11,13 @@ const {
   getBookmarkJobPost,
 } = require("../controllers/userDetailController");
 const { likeDislikePost } = require("../controllers/userPostController");
+const { verifyUser } = require("../utils/verifyToken");
 
 //Create
 router.post("/create", createUserDetail);
 
 //Update
-router.put("/update/:id", updateUserDetail);
+router.put("/update/:id",verifyUser, updateUserDetail);
 
 //Get
 router.get("/get/:id", getUserDetail);

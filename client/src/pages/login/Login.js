@@ -101,7 +101,14 @@ function Login() {
             </div>
           </form>
         </div>
-        <div className="lpRight">right</div>
+        <div className="lpRight">
+          <div className="lpRightCon">
+            <span className="lprTitle">Beehive</span>
+            <span className="lprDesc">
+              Connect and share with people in your life .
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
