@@ -20,6 +20,7 @@ import Categories from "./pages/categories/Categories";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 
+
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -30,22 +31,64 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/" element={user ? <Home />: <Register />} />
-          <Route path="/profile/:id" element={user ? <Profile /> : <Register />} />
+          <Route path="/" element={user ? <Home /> : <Register />} />
+          <Route
+            path="/profile/:id"
+            element={user ? <Profile /> : <Register />}
+          />
           <Route path="/blogs" element={user ? <Blogs /> : <Register />} />
-          <Route path="/blogRead/:id" element={user ? <BlogRead /> : <Register />} />
-          <Route path="/blogCreate" element={user ? <BlogCreate /> : <Register />} />
-          <Route path="/jobCreate" element={user ? <JobPostCreate /> : <Register />} />
-          <Route path="/jobSearch" element={user ? <JobSearchFeed /> : <Register />} />
-          <Route path="/trending" element={user ? <Trending /> : <Register />} />
-          <Route path="/jobPost/:id" element={user ? <JobPostRead /> : <Register />} />
-          <Route path="/bookmark" element={user ? <Bookmark /> : <Register />} />
-          <Route path="/jobEdit/:id" element={user ? <JobEdit /> : <Register />} />
-          <Route path="/blogEdit/:id" element={user ? <BlogEdit /> : <Register />} />
-          <Route path="/profileEdit" element={user ? <ProfileEdit /> : <Register />} />
-          <Route path="/postEdit/:id" element={user ? <FeedPostEdit /> : <Register />} />
-          <Route path="/settings" element={user ? <Settings /> : <Register />} />
-          <Route path="/category/:catName" element={user ? <Categories /> : <Register />} />
+          <Route
+            path="/blogRead/:id"
+            element={user ? <BlogRead /> : <Register />}
+          />
+          <Route
+            path="/blogCreate"
+            element={user ? <BlogCreate /> : <Register />}
+          />
+          <Route
+            path="/jobCreate"
+            element={user ? <JobPostCreate /> : <Register />}
+          />
+          <Route
+            path="/jobSearch"
+            element={user ? <JobSearchFeed /> : <Register />}
+          />
+          <Route
+            path="/trending"
+            element={user ? <Trending /> : <Register />}
+          />
+          <Route
+            path="/jobPost/:id"
+            element={user ? <JobPostRead /> : <Register />}
+          />
+          <Route
+            path="/bookmark"
+            element={user ? <Bookmark /> : <Register />}
+          />
+          <Route
+            path="/jobEdit/:id"
+            element={user ? <JobEdit /> : <Register />}
+          />
+          <Route
+            path="/blogEdit/:id"
+            element={user ? <BlogEdit /> : <Register />}
+          />
+          <Route
+            path="/profileEdit"
+            element={user ? <ProfileEdit /> : <Register />}
+          />
+          <Route
+            path="/postEdit/:id"
+            element={user ? <FeedPostEdit /> : <Register />}
+          />
+          <Route
+            path="/settings"
+            element={user ? <Settings /> : <Register />}
+          />
+          <Route
+            path="/category/:catName"
+            element={user ? <Categories /> : <Register />}
+          />
         </Routes>
       </Router>
     </div>

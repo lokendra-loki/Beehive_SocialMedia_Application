@@ -11,11 +11,15 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProfileInfoEditCon() {
   const { user } = useContext(AuthContext);
   const { currentUserDetail } = useAPI();
-  
+
+  const notifySuccess = (msg) => toast.success(msg);
+
   const [homeTown, setHomeTown] = useState(currentUserDetail?.homeTown);
   const [currentlyLiving, setCurrentlyLiving] = useState(
     currentUserDetail?.currentlyLiving
@@ -90,7 +94,6 @@ function ProfileInfoEditCon() {
   const [websiteLink, setWebsiteLink] = useState(
     currentUserDetail?.websiteLink
   );
-  const [success, setSuccess] = useState(false);
   const [editing, setEditing] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -124,8 +127,12 @@ function ProfileInfoEditCon() {
         instagramLink,
         websiteLink,
       });
-      setSuccess(true);
-      window.location.reload();
+    
+      // window.location.reload();
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
+      notifySuccess("Profile Updated Successfully");
     } catch (error) {
       console.log(error);
     }
@@ -134,7 +141,7 @@ function ProfileInfoEditCon() {
   //Update profilePic
   const [file1, setFile1] = useState(null);
   const [uploading1, setUploading1] = useState(false);
-  const [success1, setSuccess1] = useState(false);
+
 
   const handlePPSave = async (e) => {
     e.preventDefault();
@@ -167,7 +174,7 @@ function ProfileInfoEditCon() {
             axios.put(`userDetails/update/${currentUserDetail?._id}`, {
               profilePic: downloadURL,
             });
-            setSuccess1(true);
+            notifySuccess("Profile Picture Updated Successfully");
             window.location.reload();
           } catch (error) {
             console.log(error);
@@ -180,7 +187,6 @@ function ProfileInfoEditCon() {
   //Update coverPic
   const [file2, setFile2] = useState(null);
   const [uploading2, setUploading2] = useState(false);
-  const [success2, setSuccess2] = useState(false);
   const handleCPSave = async (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file2?.name;
@@ -215,7 +221,7 @@ function ProfileInfoEditCon() {
                 coverPic: downloadURL,
               }
             );
-            setSuccess2(true);
+            notifySuccess("Cover Picture Updated Successfully");
             console.log(res.data);
             window.location.reload();
           } catch (error) {
@@ -228,15 +234,6 @@ function ProfileInfoEditCon() {
 
   return (
     <div className="profileInfoEditCon1">
-      {success && <span className="successTxt">"Success"</span>}
-
-      {success1 && (
-        <span className="ppSuccessTxt">Profile has been updated</span>
-      )}
-
-      {success2 && (
-        <span className="cpSuccessTxt">Cover Picture has been updated</span>
-      )}
       <div className="profileCoverChangeCon">
         <div className="ppChangeWrapper">
           <span className="profileChange">Profile Picture</span>
@@ -543,6 +540,7 @@ function ProfileInfoEditCon() {
           {editing ? "Saving..." : "Save"}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

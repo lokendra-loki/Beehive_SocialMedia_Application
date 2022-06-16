@@ -4,7 +4,6 @@ import LeftBar from "../../components/leftBar/LeftBar";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import RightBar from "../../components/rightBar/RightBar";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./jobPostCreate.scss";
 import {
@@ -14,9 +13,15 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function JobSearchFeed() {
   const { user } = useContext(AuthContext);
+
+  const notifySuccess = (msg) => toast.success(msg, { theme: "colored" });
+  const notifyFailure = (msg) => toast.error(msg, { theme: "colored" });
+
   //Create Job Post
   const [position, setPosition] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -40,11 +45,8 @@ function JobSearchFeed() {
   const [uploading, setUploading] = useState(false);
   const [fileError, setFileError] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const fileName = new Date().getTime() + file?.name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
@@ -68,6 +70,7 @@ function JobSearchFeed() {
         }
       },
       (error) => {
+        notifyFailure("Something wrong with company image upload");
         setFileError(true);
       },
       () => {
@@ -97,8 +100,12 @@ function JobSearchFeed() {
               companyProfileImg: downloadURL,
             });
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-            navigate("/jobSearch");
+            setTimeout(function () {
+              window.location.reload();
+            }, 2000);
+            notifySuccess("Job Post Created Successfully");
           } catch (err) {
+            notifyFailure("Error Creating Job Post");
             console.error(err.message);
           }
         });
@@ -393,6 +400,7 @@ function JobSearchFeed() {
           </div>
         </div>
       </div>
+ 
     </div>
   );
 }

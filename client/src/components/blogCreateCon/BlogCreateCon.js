@@ -9,11 +9,15 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./blogCreateCon.scss";
 
 function BlogCreateCon() {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
+  const notifySuccess = (msg) => toast.success(msg, { theme: "colored" });
+  const notifyFailure = (msg) => toast.error(msg, { theme: "colored" });
 
   //Create a blog
   const [title, setTitle] = useState("");
@@ -23,9 +27,6 @@ function BlogCreateCon() {
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState(false);
-  const [fileError, setFileError] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +53,7 @@ function BlogCreateCon() {
         }
       },
       (error) => {
-        setFileError(true);
+        notifyFailure("Upload failed");
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -67,16 +68,18 @@ function BlogCreateCon() {
               category,
               img: downloadURL,
             });
-            window.location.reload();
-            setSuccess(true);
+            setTimeout(function () {
+              window.location.reload();
+            }, 2000);
+            notifySuccess("Blog created successfully");
           } catch (error) {
-            setError(true);
+            notifyFailure("Error creating blog");
           }
         });
       }
     );
   };
-  console.log(category);
+  // console.log(category)
 
   setTimeout(() => {
     const box = document.getElementById("success");
@@ -86,24 +89,6 @@ function BlogCreateCon() {
   return (
     <div className="blogCreateContainer">
       <form className="bccWholeContainer" onSubmit={handleSubmit}>
-        {fileError && (
-          <span className="bccSpanError">
-            Something went wrong with photo upload{" "}
-          </span>
-        )}
-
-        {success && (
-          <span id="success" className="bccSpanSuccess">
-            Successfully Blog has been created !{" "}
-          </span>
-        )}
-
-        {error && (
-          <span id="success" className="bccSpanError2">
-            Something went wrong{" "}
-          </span>
-        )}
-
         <span className="bccTitle">
           Share Ideas And Experiences through Blog !
         </span>
@@ -200,6 +185,7 @@ function BlogCreateCon() {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 }

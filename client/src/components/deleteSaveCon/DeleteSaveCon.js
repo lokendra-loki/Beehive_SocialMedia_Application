@@ -7,10 +7,14 @@ import "./deleteSaveCon.scss";
 import axios from "axios";
 import { useAPI } from "../../context/userDetailContext";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function DeleteSaveCon({ postId }) {
   const { currentUserDetail } = useAPI();
   const { user } = useContext(AuthContext);
+
+  const notifyDelete = (msg) => toast.success(msg);
 
   //Delete a feed post
   const [deleting, setDeleting] = useState(false);
@@ -18,8 +22,8 @@ function DeleteSaveCon({ postId }) {
     setDeleting(true);
     try {
       await axios.delete(`/userPosts/delete/${postId}`);
-
       window.location.reload();
+      notifyDelete("Post deleted successfully");
     } catch (error) {
       console.log(error);
     }
@@ -82,6 +86,7 @@ function DeleteSaveCon({ postId }) {
           <span className="decSspan">Edit</span>
         </div>
       </Link>
+    
     </div>
   );
 }

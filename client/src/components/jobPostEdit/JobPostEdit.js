@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ImageSearchOutlinedIcon from "@mui/icons-material/ImageSearchOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./jobPostEdit.scss";
 
 function JobPostEdit() {
@@ -9,6 +11,9 @@ function JobPostEdit() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   console.log(path);
+
+  const notifySuccess = (msg) => toast.success(msg, { theme: "colored" });
+  const notifyFailure = (msg) => toast.error(msg, { theme: "colored" });
 
   const [jobPost, setJobPost] = React.useState({});
   useEffect(() => {
@@ -43,8 +48,6 @@ function JobPostEdit() {
   const [requirement7, setRequirement7] = useState(jobPost.requirement7);
   const [updating, setUpdating] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     setUpdating(true);
@@ -72,8 +75,12 @@ function JobPostEdit() {
     try {
       await axios.put(`/jobPosts/update/${path}`, newJob);
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      navigate("/jobSearch");
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
+      notifySuccess("Job Post Updated Successfully");
     } catch (err) {
+      notifyFailure("Job Post Update Failed");
       console.error(err.message);
     }
   };
@@ -276,6 +283,7 @@ function JobPostEdit() {
           {updating ? "Updating..." : "Update"}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

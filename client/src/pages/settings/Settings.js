@@ -5,10 +5,15 @@ import "./settings.scss";
 import RightBar from "../../components/rightBar/RightBar";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Settings() {
   const { user } = useContext(AuthContext);
   const [showSettingEditCon, setShowSettingEditCon] = React.useState(false);
+
+  const notifySuccess = (msg) => toast.success(msg, { theme: "colored" });
+  const notifyFailure = (msg) => toast.error(msg, { theme: "colored" });
 
   //Edit userCredentials
   const [username, setUsername] = useState(user.username);
@@ -25,10 +30,15 @@ function Settings() {
       });
       //update local storage also
       localStorage.setItem("user", JSON.stringify(res.data));
-      window.location.reload();
+      // window.location.reload();
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
+      notifySuccess("Credential updated successfully");
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     } catch (error) {
       console.log(error);
+      notifyFailure("Something went wrong");
     }
   };
 
@@ -105,7 +115,7 @@ function Settings() {
                   <div className="ucemcItemCon">
                     <span className="ucemcItemTitle">Email</span>
                     <input
-                      type="text"
+                      type="email"
                       className="ucemcItemTitleValueInput"
                       placeholder="New Email"
                       onChange={(e) => setEmail(e.target.value)}
@@ -136,6 +146,7 @@ function Settings() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
