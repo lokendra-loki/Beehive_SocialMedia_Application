@@ -35,7 +35,4 @@ router.put("/bookmark/:postId", bookmark);
 //GetAll bookmarks of a user
 router.get("/getAllBookmarks/:userDetailId", getBookmarkJobPost);
 
-
-
-//export
 module.exports = router;

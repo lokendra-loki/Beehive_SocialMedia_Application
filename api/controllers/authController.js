@@ -2,21 +2,16 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const { createError } = require("../utils/error");
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
 
 //Register
 const register = async (req, res, next) => {
   try {
-    //hash the password
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-    //create new user
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
     });
-    //save
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (error) {
@@ -27,15 +22,13 @@ const register = async (req, res, next) => {
 //Login
 const login = async (req, res, next) => {
   try {
-    //find user by email
     const user = await User.findOne({ email: req.body.email });
-    //if user exists check password
     if (user) {
       const validPassword = await bcrypt.compare(
         req.body.password,
         user.password
       );
-      //if password match create token
+
       if (validPassword) {
         const token = jwt.sign(
           {
@@ -63,5 +56,4 @@ const login = async (req, res, next) => {
   }
 };
 
-//export
 module.exports = { register, login };

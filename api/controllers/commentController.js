@@ -1,41 +1,6 @@
 const PostComment = require("../models/PostComment");
 const UserPost = require("../models/UserPost");
 
-//Create a new comment
-// router.post("/create/:postId", async (req, res, next) => {
-//   const { userID, fullName, profilePic, comment } = req.body;
-//   try {
-//     const newComment = new UserPost({
-//       userID,
-//       fullName,
-//       profilePic,
-//       comment,
-//       postID: req.params.postId,
-//     });
-//     const savedComment = await newComment.save();
-//     res.status(200).json(savedComment);
-//   } catch (error) {
-//     next(error);
-//   }
-// })
-
-// const createComment = async (req, res, next) => {
-//   const { userID, fullName, profilePic, comment } = req.body;
-//   try {
-//     const newComment = new UserPost({
-//       userID,
-//       fullName,
-//       profilePic,
-//       comment,
-//       postID: req.params.postId,
-//     });
-//     const savedComment = await newComment.save();
-//     res.status(200).json(savedComment);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 //Create comments
 const createComment = async (req, res, next) => {
   const newComment = new PostComment(req.body);
@@ -58,7 +23,6 @@ const getCommentsByPostID = async (req, res, next) => {
   }
 };
 
-//export
 module.exports = {
   createComment,
   getCommentsByPostID,

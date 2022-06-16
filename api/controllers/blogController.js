@@ -87,7 +87,6 @@ const getAllBlogsTitles = async (req, res, next) => {
   }
 };
 
-//export
 module.exports = {
   createBlog,
   updateBlog,

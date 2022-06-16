@@ -1,6 +1,6 @@
 const JobPost = require("../models/JobPost");
 
-//Create JopPost
+//Create
 const createJobPost = async (req, res, next) => {
   const newJobPost = new JobPost(req.body);
   try {
@@ -11,7 +11,7 @@ const createJobPost = async (req, res, next) => {
   }
 };
 
-//Update JopPost
+//Update
 const updateJobPost = async (req, res, next) => {
   try {
     const updatedJobPost = await JobPost.findByIdAndUpdate(
@@ -25,7 +25,7 @@ const updateJobPost = async (req, res, next) => {
   }
 };
 
-//Get JopPost
+//Get
 const getJobPost = async (req, res, next) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
@@ -35,7 +35,7 @@ const getJobPost = async (req, res, next) => {
   }
 };
 
-//GetAll JopPost
+//GetAll
 const GetAllJobPosts = async (req, res, next) => {
   try {
     const JobPosts = await JobPost.find();
@@ -45,7 +45,7 @@ const GetAllJobPosts = async (req, res, next) => {
   }
 };
 
-//Delete JopPost
+//Delete
 const deleteJobPost = async (req, res, next) => {
   try {
     const deletedJobPost = await JobPost.findByIdAndDelete(req.params.id);
@@ -68,7 +68,6 @@ const getAllJobPostsOfAUser = async (req, res, next) => {
   }
 };
 
-//export
 module.exports = {
   createJobPost,
   updateJobPost,

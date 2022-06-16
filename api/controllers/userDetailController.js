@@ -98,7 +98,7 @@ const getBookmarkJobPost = async (req, res, next) => {
   } catch (error) {}
 };
 
-//export
+
 module.exports = {
   createUserDetail,
   updateUserDetail,

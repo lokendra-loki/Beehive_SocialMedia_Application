@@ -30,5 +30,4 @@ const PostCommentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-//export
 module.exports = mongoose.model("Comment", PostCommentSchema);

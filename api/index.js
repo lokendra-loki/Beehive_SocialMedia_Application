@@ -9,11 +9,8 @@ const userPostRoute = require("./routes/userPost");
 const userDetailRoute = require("./routes/userDetail");
 const userRoute = require("./routes/user");
 const commentRoute = require("./routes/comment");
-const cors = require("cors");
-const cookieSession = require("cookie-session"); // create  session
 const cookieParser = require("cookie-parser");
 
-//json parser
 app.use(express.json());
 
 //MongoDB connection
@@ -44,7 +41,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-//Post listening
+//Port listening
 app.listen(process.env.PORT, () => {
   console.log("Backend Server is running on port " + process.env.PORT);
 });

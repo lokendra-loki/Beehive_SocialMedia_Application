@@ -43,5 +43,4 @@ const verifyAdmin = (req, res, next) => {
   });
 };
 
-//export
 module.exports = { verifyToken, verifyUser, verifyAdmin };

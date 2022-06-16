@@ -9,7 +9,6 @@ const {
   likeDislikePost,
   getAllLikesId,
 } = require("../controllers/userPostController");
-const UserPost = require("../models/UserPost");
 const { verifyUser, verifyToken } = require("../utils/verifyToken");
 
 //Create UserPost
@@ -36,5 +35,4 @@ router.put("/like/:id", likeDislikePost);
 //Get all likes id
 router.get("/getAllLikesId/:id", getAllLikesId);
 
-//export
 module.exports = router;

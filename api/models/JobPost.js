@@ -126,5 +126,4 @@ const JobPostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-//export
 module.exports = mongoose.model("JobPost", JobPostSchema);

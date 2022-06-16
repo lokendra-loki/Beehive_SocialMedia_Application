@@ -1,6 +1,6 @@
 const UserPost = require("../models/UserPost");
 
-// Create UserPost
+// Create
 const createUserPost = async (req, res, next) => {
   const newUserPost = new UserPost(req.body);
   try {
@@ -11,7 +11,7 @@ const createUserPost = async (req, res, next) => {
   }
 };
 
-// Update UserPost
+// Update
 const updateUserPost = async (req, res, next) => {
   try {
     const updatedUserPost = await UserPost.findByIdAndUpdate(
@@ -25,7 +25,7 @@ const updateUserPost = async (req, res, next) => {
   }
 };
 
-// Get UserPost
+// Get
 const getUserPost = async (req, res, next) => {
   try {
     const post = await UserPost.findById(req.params.id);
@@ -35,7 +35,7 @@ const getUserPost = async (req, res, next) => {
   }
 };
 
-// Get All UserPost
+// Get All
 const getAllUserPosts = async (req, res, next) => {
   try {
     const posts = await UserPost.find();
@@ -45,7 +45,7 @@ const getAllUserPosts = async (req, res, next) => {
   }
 };
 
-// Delete UserPost
+// Delete
 const deleteUserPost = async (req, res, next) => {
   try {
     const deletedUserPost = await UserPost.findByIdAndDelete(req.params.id);
@@ -92,7 +92,6 @@ const getAllLikesId = async (req, res, next) => {
   }
 };
 
-//export
 module.exports = {
   createUserPost,
   updateUserPost,

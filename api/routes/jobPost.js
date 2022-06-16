@@ -29,5 +29,4 @@ router.delete("/delete/:id", verifyUser, deleteJobPost);
 //Get all Posts of a user
 router.post("/getAllJobPostsOfAUser", getAllJobPostsOfAUser);
 
-//export
 module.exports = router;

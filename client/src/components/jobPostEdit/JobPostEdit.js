@@ -23,14 +23,16 @@ function JobPostEdit() {
   // Update
   const [position, setPosition] = useState(jobPost.position);
   const [companyName, setCompanyName] = useState(jobPost.companyName);
-  const [companyLocation, setCompanyLocation] = useState(jobPost.companyLocation);
+  const [companyLocation, setCompanyLocation] = useState(
+    jobPost.companyLocation
+  );
   const [salaryRange, setSalaryRange] = useState(jobPost.salaryRange);
   const [companyType, setCompanyType] = useState(jobPost.companyType);
   const [noOfEmployee, setNoOfEmployee] = useState(jobPost.noOfEmployee);
   const [contractType, setContractType] = useState(jobPost.contractType);
   const [jobType, setJobType] = useState(jobPost.jobType);
   const [aboutJob, setAboutJob] = useState(jobPost.aboutJob);
-  const [aboutCompany, setAboutCompany] = useState( jobPost.aboutCompany);
+  const [aboutCompany, setAboutCompany] = useState(jobPost.aboutCompany);
   const [aboutRole, setAboutRole] = useState(jobPost.aboutRole);
   const [requirement1, setRequirement1] = useState(jobPost.requirement1);
   const [requirement2, setRequirement2] = useState(jobPost.requirement2);
@@ -39,11 +41,13 @@ function JobPostEdit() {
   const [requirement5, setRequirement5] = useState(jobPost.requirement5);
   const [requirement6, setRequirement6] = useState(jobPost.requirement6);
   const [requirement7, setRequirement7] = useState(jobPost.requirement7);
+  const [updating, setUpdating] = useState(false);
 
   const navigate = useNavigate();
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setUpdating(true);
     const newJob = {
       position,
       companyName,
@@ -67,6 +71,7 @@ function JobPostEdit() {
     console.log(newJob);
     try {
       await axios.put(`/jobPosts/update/${path}`, newJob);
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       navigate("/jobSearch");
     } catch (err) {
       console.error(err.message);
@@ -107,7 +112,7 @@ function JobPostEdit() {
           type="text"
           className="jpecCompanyLocationInput jpecInput jpecInput2"
           onChange={(e) => setCompanyLocation(e.target.value)}
-         defaultValue={jobPost.companyLocation}
+          defaultValue={jobPost.companyLocation}
         />
         {/* ==*/}
         <span className="jpecNoOfEmployee jpec">Salary Range</span>{" "}
@@ -268,7 +273,7 @@ function JobPostEdit() {
           defaultValue={jobPost.requirement7}
         />
         <button className="jpecPostBut" type="submit">
-          Create Job
+          {updating ? "Updating..." : "Update"}
         </button>
       </form>
     </div>

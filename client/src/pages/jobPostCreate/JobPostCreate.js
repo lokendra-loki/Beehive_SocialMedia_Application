@@ -44,7 +44,7 @@ function JobSearchFeed() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.preventDefault();
+    setFileError(true);
     const fileName = new Date().getTime() + file?.name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
@@ -96,6 +96,7 @@ function JobSearchFeed() {
               file,
               companyProfileImg: downloadURL,
             });
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             navigate("/jobSearch");
           } catch (err) {
             console.error(err.message);
@@ -132,7 +133,10 @@ function JobSearchFeed() {
               <label className="jpcIconAndTxt" htmlFor="fileInput">
                 <ImageSearchOutlinedIcon className="jpcImgIcon" />
                 <span className="jpcSelectImgTxt">
-                  Select company logo Image
+                  Select company logo Image{" "}
+                  {!file && (
+                    <span className="requiredTxt">(Image is required)</span>
+                  )}
                 </span>
               </label>
               <input
@@ -365,7 +369,7 @@ function JobSearchFeed() {
                   onChange={(e) => setRequirement6(e.target.value)}
                   placeholder="&#9679;"
                 />
-                {/* ========================== */}
+                {/* ========================== */}{" "}
                 <span className="jpcRequirements jpc">Requirement7</span>{" "}
                 <input
                   type="text"
@@ -377,6 +381,9 @@ function JobSearchFeed() {
                 <button className="jpcPostBut" type="submit">
                   {uploading ? "Creating..." : "Create Job"}
                 </button>
+                {fileError && (
+                  <span className="imageError">Company logo img required</span>
+                )}
               </form>
             </div>
           </div>

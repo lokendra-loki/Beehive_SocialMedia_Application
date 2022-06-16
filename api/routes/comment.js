@@ -10,5 +10,4 @@ router.post("/create", createComment);
 //Get comments by postID
 router.post("/getComments", getCommentsByPostID);
 
-//export
 module.exports = router;

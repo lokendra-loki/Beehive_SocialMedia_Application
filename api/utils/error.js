@@ -6,5 +6,4 @@ const createError = (status, message) => {
   return error;
 };
 
-//export
 module.exports = { createError };

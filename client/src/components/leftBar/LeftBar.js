@@ -36,7 +36,14 @@ function LeftBar() {
         <Link to="/" className="link">
           <div className="lbListItem">
             <HomeOutlined className="lbListItemKey" />
-            <span className="lbListItemValue">Home</span>
+            <span
+              className="lbListItemValue"
+              onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              }}
+            >
+              Home
+            </span>
           </div>
         </Link>
 
@@ -49,35 +56,60 @@ function LeftBar() {
         {/* onClick={()=>window.location.replace(`/profile/${user?._id}`)} */}
 
         <Link to="/blogs" className="link">
-          <div className="lbListItem">
+          <div
+            className="lbListItem"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
             <BookOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Blogs</span>
           </div>
         </Link>
 
         <Link to="/blogCreate" className="link">
-          <div className="lbListItem">
+          <div
+            className="lbListItem"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
             <BorderColorOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Write Blogs</span>
           </div>
         </Link>
 
         <Link to="/bookmark" className="link">
-          <div className="lbListItem">
+          <div
+            className="lbListItem"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
             <BookmarkIcon className="lbListItemKey" />
             <span className="lbListItemValue">Bookmarked</span>
           </div>
         </Link>
 
         <Link to="/jobSearch" className="link">
-          <div className="lbListItem">
+          <div
+            className="lbListItem"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
             <BusinessCenterOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Find Jobs</span>
           </div>
         </Link>
 
         <Link to="/jobCreate" className="link">
-          <div className="lbListItem">
+          <div
+            className="lbListItem"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}
+          >
             <EngineeringOutlinedIcon className="lbListItemKey" />
             <span className="lbListItemValue">Create Jobs</span>
           </div>

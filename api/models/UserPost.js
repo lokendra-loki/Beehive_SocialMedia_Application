@@ -12,19 +12,24 @@ const UserPostSchema = new mongoose.Schema(
       required: true,
     },
 
+    profilePic: {
+      type: String,
+      default: "",
+    },
+
     profession: {
       type: String,
-      required: true,
+      default: "",
     },
 
     desc: {
       type: String,
-      required: true,
+      default: "",
     },
 
     postImg: {
       type: String,
-      default: "",
+      default: null,
     },
 
     likes: {
@@ -40,5 +45,4 @@ const UserPostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-//export
 module.exports = mongoose.model("UserPost", UserPostSchema);

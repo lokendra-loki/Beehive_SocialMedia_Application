@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -10,9 +10,11 @@ import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import axios from "axios";
 import "./jobPostLg.scss";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function JobPostLg({ jobPost }) {
   const { currentUserDetail } = useAPI();
+  const {user}=useContext(AuthContext)
 
   //Bookmark
   const [bookmarked, setBookmarked] = useState(false);
@@ -161,10 +163,10 @@ function JobPostLg({ jobPost }) {
 
         {/* Edit Button */}
         <Link to={`/jobEdit/${jobPost._id}`} className="link">
-          <button className="editBut">
+          {user._id===jobPost.userID && <button className="editBut">
             <EditIcon />
             Edit
-          </button>
+          </button>}
         </Link>
       </div>
       <hr className="jplHr" />

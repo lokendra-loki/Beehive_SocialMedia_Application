@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { format } from "timeago.js";
 import "./jobPost.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DeleteAlert from "../deleteAlert/DeleteAlert";
 import { useAPI } from "../../context/userDetailContext";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function JobPost({ jobPost, privateJobPost }) {
   const { currentUserDetail } = useAPI();
+  const {user} =useContext(AuthContext)
 
   //Bookmark
   const [bookmarked, setBookmarked] = useState(false);
@@ -38,13 +40,13 @@ function JobPost({ jobPost, privateJobPost }) {
             <span className="jpCompanyName">{jobPost?.companyName}</span>
 
             <div className="jobPostDeleteSaveCon">
-              <button
+              {user._id===jobPost.userID &&<button
                 className="jpDelete"
                 onClick={() => setShowDeleteAlert(!showDeleteAlert)}
               >
                 Delete
               </button>
-
+}
               <button
                 className="jpDelete"
                 onClick={() => handleBookmark(jobPost?._id)}
@@ -86,6 +88,7 @@ function JobPost({ jobPost, privateJobPost }) {
             <span className="jpCompanyName">{privateJobPost?.companyName}</span>
 
             <div className="jobPostDeleteSaveCon">
+              
               <button
                 className="jpDelete"
                 onClick={() => setShowDeleteAlert(!showDeleteAlert)}

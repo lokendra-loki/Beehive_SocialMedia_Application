@@ -1,12 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import LeftBar from "../../components/leftBar/LeftBar";
 import "./jobSearchFeed.scss";
 import RightBar from "../../components/rightBar/RightBar";
-import JobPost from "../../components/jobPost/JobPost";
-import { JobPostsContext } from "../../context/jobPostContext/JobPostContext";
-import { getAllJobPosts } from "../../context/jobPostContext/apiCalls";
-import { useAPI } from "../../context/userDetailContext";
 
 function JobSearchFeed() {
   return (

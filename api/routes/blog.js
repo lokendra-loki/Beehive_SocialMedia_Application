@@ -9,14 +9,13 @@ const {
   getAllBlogsOfAUser,
   getAllBlogsOfACategory,
   getAllBlogsTitles,
-
 } = require("../controllers/blogController");
 
 //Create
-router.post("/create", verifyUser, createBlog);
+router.post("/create", createBlog);
 
 //Update
-router.put("/update/:id", verifyUser, updateBlog);
+router.put("/update/:id", updateBlog);
 
 //Get
 router.get("/get/:id", getBlog);
@@ -25,16 +24,16 @@ router.get("/get/:id", getBlog);
 router.get("/getAll", getAllBlogs);
 
 //Delete
-router.delete("/delete/:id", verifyAdmin, deleteBlog);
+router.delete("/delete/:id", deleteBlog);
 
 //Get allBlogs of a user
 router.post("/getAllBlogsOfAUser", getAllBlogsOfAUser);
 
 //Get blogs according category
-router.get("/getAllBlogsOfACategory/:category",   getAllBlogsOfACategory);
+router.get("/getAllBlogsOfACategory/:category", getAllBlogsOfACategory);
 
 //Get all titles of blogs
 router.get("/getAllTitles", getAllBlogsTitles);
 
-//export
+
 module.exports = router;

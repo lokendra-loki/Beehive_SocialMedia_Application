@@ -12,17 +12,12 @@ const UserDetailSchema = new mongoose.Schema(
       default: "",
     },
 
-    email: {
-      type: String,
-      default: "",
-    },
-
     nickName: {
       type: String,
       default: "",
     },
 
-    profilePicP: {
+    profilePic: {
       type: String,
       default: "",
     },
@@ -169,6 +164,31 @@ const UserDetailSchema = new mongoose.Schema(
     jobPostsBookmark: {
       type: Array,
       default: [],
+    },
+
+    githubLink: {
+      type: String,
+      default: "",
+    },
+
+    linkedinLink: {
+      type: String,
+      default: "",
+    },
+
+    twitterLink: {
+      type: String,
+      default: "",
+    },
+
+    instagramLink: {
+      type: String,
+      default: "",
+    },
+
+    websiteLink: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }
