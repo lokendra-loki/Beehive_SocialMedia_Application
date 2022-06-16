@@ -16,6 +16,14 @@
 
       .bpCenterCon {
         flex: 2.5;
+        .EmptyBookmark {
+          display: flex;
+          justify-content: center;
+          font-size: 26px;
+          font-weight: 700;
+          color: blueviolet;
+          margin-top: 20px;
+        }
       }
 
       .bpRightCon {
@@ -94,5 +102,3 @@
 //     }
 //   }
 // }
-
-

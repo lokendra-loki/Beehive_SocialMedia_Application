@@ -1,13 +1,11 @@
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
-  apiKey: "AIzaSyCfYWwqy5R5lPLbf9Tiwo7zRyjl5fVyOq8",
-  authDomain: "beehive-678bf.firebaseapp.com",
-  projectId: "beehive-678bf",
+  apiKey: process.env.APT_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
   storageBucket: "beehive-678bf.appspot.com",
-  messagingSenderId: "485329141884",
-  appId: "1:485329141884:web:468802b585182c318949f9",
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export default app;

@@ -36,13 +36,15 @@ function BookmarkJobpost({ bookmarkJobpostId }) {
     }
   };
 
+
+
   return (
     <div className="bookmarkJobpost">
-      <img src="/assets/cover.jpeg" alt="" className="bjpjobCompanyLogo" />
+      <img src={jobPost?.companyProfileImg} alt="" className="bjpjobCompanyLogo" />
       <div className="bjpInfoCon">
         <span className="bjpJobTitle">{jobPost?.position}</span>
         <span className="bjpPostTime">{format(jobPost?.createdAt)}</span>
-        <span className="bjpCompanyAddress">{jobPost?.location}</span>
+        <span className="bjpCompanyAddress">{jobPost?.companyLocation}</span>
         <span className="bjpCompanyName">{jobPost?.companyName}</span>
 
         <div className="bjpjobPostDeleteSaveCon">

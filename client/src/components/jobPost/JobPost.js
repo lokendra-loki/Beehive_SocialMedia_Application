@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 
 function JobPost({ jobPost, privateJobPost }) {
   const { currentUserDetail } = useAPI();
-  const {user} =useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   //Bookmark
   const [bookmarked, setBookmarked] = useState(false);
@@ -32,21 +32,26 @@ function JobPost({ jobPost, privateJobPost }) {
     <>
       {jobPost ? (
         <div className="jobPost">
-          <img src={jobPost?.companyProfileImg} alt="" className="jobCompanyLogo" />
+          <img
+            src={jobPost?.companyProfileImg}
+            alt=""
+            className="jobCompanyLogo"
+          />
           <div className="jpInfoCon">
             <span className="jpJobTitle">{jobPost?.position}</span>
             <span className="jpPostTime">{format(jobPost?.createdAt)}</span>
-            <span className="jpCompanyAddress">{jobPost?.location}</span>
+            <span className="jpCompanyAddress">{jobPost?.companyLocation}</span>
             <span className="jpCompanyName">{jobPost?.companyName}</span>
 
             <div className="jobPostDeleteSaveCon">
-              {user._id===jobPost.userID &&<button
-                className="jpDelete"
-                onClick={() => setShowDeleteAlert(!showDeleteAlert)}
-              >
-                Delete
-              </button>
-}
+              {user._id === jobPost.userID && (
+                <button
+                  className="jpDelete"
+                  onClick={() => setShowDeleteAlert(!showDeleteAlert)}
+                >
+                  Delete
+                </button>
+              )}
               <button
                 className="jpDelete"
                 onClick={() => handleBookmark(jobPost?._id)}
@@ -78,7 +83,7 @@ function JobPost({ jobPost, privateJobPost }) {
         </div>
       ) : privateJobPost ? (
         <div className="jobPost">
-          <img src="/assets/cover.jpeg" alt="" className="jobCompanyLogo" />
+          <img src={privateJobPost?.companyProfileImg} alt="" className="jobCompanyLogo" />
           <div className="jpInfoCon">
             <span className="jpJobTitle">{privateJobPost?.position}</span>
             <span className="jpPostTime">
@@ -88,7 +93,6 @@ function JobPost({ jobPost, privateJobPost }) {
             <span className="jpCompanyName">{privateJobPost?.companyName}</span>
 
             <div className="jobPostDeleteSaveCon">
-              
               <button
                 className="jpDelete"
                 onClick={() => setShowDeleteAlert(!showDeleteAlert)}

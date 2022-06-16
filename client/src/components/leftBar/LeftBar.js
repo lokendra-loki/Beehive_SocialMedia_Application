@@ -116,7 +116,9 @@ function LeftBar() {
         </Link>
 
         <Link to="/settings" className="link">
-          <div className="lbListItem">
+          <div className="lbListItem"  onClick={() => {
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }}>
             <SettingsIcon className="lbListItemKey" />
             <span className="lbListItemValue">Settings</span>
           </div>

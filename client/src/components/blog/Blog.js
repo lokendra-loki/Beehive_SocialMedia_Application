@@ -84,7 +84,7 @@ function Blog({ blog, privateBlog, catBlog }) {
         </div>
       ) : privateBlog ? (
         <div className="blog">
-          <img src="/assets/cover.jpeg" alt="" className="blogImg" />
+          <img src={privateBlog.img} alt="" className="blogImg" />
 
           <div className="blogInsideCon">
             <div className="blogDateAndTimeRead">

@@ -37,6 +37,11 @@ function Bookmark() {
           </div>
 
           <div className="bpCenterCon">
+            {currentUserDetail?.jobPostsBookmark?.length === 0 && (
+              <span className="EmptyBookmark">
+                Yoy haven't Bookmarked any Job Post yet !
+              </span>
+            )}
             {bookmarkJobpostIds.map((bookmarkJobpostId, i) => (
               <BookmarkJobpost
                 key={i}

@@ -25,8 +25,8 @@ function Settings() {
       });
       //update local storage also
       localStorage.setItem("user", JSON.stringify(res.data));
-
       window.location.reload();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     } catch (error) {
       console.log(error);
     }

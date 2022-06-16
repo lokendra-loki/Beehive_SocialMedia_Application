@@ -16,6 +16,7 @@
     border-radius: 50%;
     border: 1px solid grey;
     object-fit: cover;
+    overflow: hidden;
   }
 
   .bjpInfoCon {
@@ -191,8 +192,8 @@
 @media only screen and (max-width: 350px) {
   .bookmarkJobpost {
     .bjpjobCompanyLogo {
-      width: 120px;//
-      height: 120px;//
+      width: 120px; //
+      height: 120px; //
     }
     .bjpInfoCon {
       .bjpJobTitle {
@@ -220,4 +221,3 @@
     }
   }
 }
-

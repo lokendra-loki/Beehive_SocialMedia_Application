@@ -103,6 +103,10 @@ function Profile() {
 
         <div className="ppBeforeSplit">
           <div className="ppLeft">
+            <span className="profileSpanTitle">
+              FeedPost , JobPost , Blogs that you have created till now are here
+              ! scroll down
+            </span>
             <div
               className="upSmallWhatsOnYourMindCon"
               onClick={() => setShowFeedCreateCon(!showFeedCreateCon)}
