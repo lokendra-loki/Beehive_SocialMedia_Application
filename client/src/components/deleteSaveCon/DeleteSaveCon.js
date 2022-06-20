@@ -7,14 +7,12 @@ import "./deleteSaveCon.scss";
 import axios from "axios";
 import { useAPI } from "../../context/userDetailContext";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function DeleteSaveCon({ postId }) {
   const { currentUserDetail } = useAPI();
   const { user } = useContext(AuthContext);
-
-  const notifyDelete = (msg) => toast.success(msg);
 
   //Delete a feed post
   const [deleting, setDeleting] = useState(false);
@@ -23,13 +21,13 @@ function DeleteSaveCon({ postId }) {
     try {
       await axios.delete(`/userPosts/delete/${postId}`);
       window.location.reload();
-      notifyDelete("Post deleted successfully");
+      toast.success("Post deleted successfully", { theme: "colored" });
     } catch (error) {
       console.log(error);
     }
   };
 
-  //
+  //Get
   const [feedPost, setFeedPost] = useState([{}]);
   useEffect(() => {
     const getFeedPost = async () => {
@@ -53,6 +51,7 @@ function DeleteSaveCon({ postId }) {
       });
       setSaved(true);
       window.location.reload();
+      toast.success("Post saved successfully", { theme: "colored" });
     } catch (error) {
       console.log(error);
     }
@@ -60,15 +59,7 @@ function DeleteSaveCon({ postId }) {
 
   return (
     <div className="deleteSaveContainer">
-      {user._id === feedPost.userID && (
-        <div className="dscItem" onClick={handleDelete}>
-          <DeleteForeverIcon className="dscIcon" />
-          <span className="decSspan">
-            {" "}
-            {deleting ? "Deleting..." : "Delete"}
-          </span>
-        </div>
-      )}
+     
       <div className="dscItem" onClick={() => handleBookmark()}>
         <BookmarkAddedIcon className="dscIcon" />
         <span className="decSspan">
@@ -86,7 +77,16 @@ function DeleteSaveCon({ postId }) {
           <span className="decSspan">Edit</span>
         </div>
       </Link>
-    
+
+      {user._id === feedPost.userID && (
+        <div className="dscItem" onClick={handleDelete}>
+          <DeleteForeverIcon className="dscIcon" />
+          <span className="decSspan">
+            {" "}
+            {deleting ? "Deleting..." : "Delete"}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

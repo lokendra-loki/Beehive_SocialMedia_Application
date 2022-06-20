@@ -14,8 +14,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import "./feedPostCreate.scss";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
   const location = useLocation();
@@ -34,8 +33,6 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
-    // setDesc("");
-    // setFile(null);
 
     uploadTask.on(
       "state_changed",
@@ -55,8 +52,7 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
         }
       },
       (error) => {
-        notifyError("Something went wrong");
-        // Handle unsuccessful uploads
+        toast.error("Error uploading file", { theme: "colored" });
         console.log(error);
       },
       () => {
@@ -73,7 +69,7 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
           try {
             axios.post("/userPosts/create", newPost);
             window.location.reload();
-            notify("Post Created Successfully");
+            toast.success("Post Created Successfully", { theme: "colored" });
           } catch (error) {
             console.log(error);
           }
@@ -83,20 +79,8 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
     );
   };
 
-  // setTimeout(() => {
-  //   const box = document.getElementById("success");
-  //   box.style.display = "none";
-  // }, 3000);
-  const notify = (msg) => toast.success(msg);
-  const notifyError = (msg) => toast.error(msg);
-
   return (
     <form className="feedPostCreate" onSubmit={handleSubmit}>
-      {/* {success && (
-        <span id="success" className="fpcSuccess">
-          Successfully Posted
-        </span>
-      )} */}
       {path ? (
         <div className="fpcRow1">
           <div
@@ -167,7 +151,6 @@ function FeedPostCreate({ setShowFeedPostCreateCon, setShowFeedCreateCon }) {
       <button className="fpcPostBut" type="submit">
         {uploading ? "Posting..." : "Post"}
       </button>
-      {<ToastContainer />}
     </form>
   );
 }

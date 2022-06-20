@@ -31,68 +31,62 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route path="/" element={user ? <Home /> : <Register />} />
-          <Route
-            path="/profile/:id"
-            element={user ? <Profile /> : <Register />}
-          />
-          <Route path="/blogs" element={user ? <Blogs /> : <Register />} />
+          <Route path="/" element={user ? <Home /> : <Login />} />
+          <Route path="/profile/:id" element={user ? <Profile /> : <Login />} />
+          <Route path="/blogs" element={user ? <Blogs /> : <Login />} />
           <Route
             path="/blogRead/:id"
-            element={user ? <BlogRead /> : <Register />}
+            element={user ? <BlogRead /> : <Login />}
           />
           <Route
             path="/blogCreate"
-            element={user ? <BlogCreate /> : <Register />}
+            element={user ? <BlogCreate /> : <Login />}
           />
           <Route
             path="/jobCreate"
-            element={user ? <JobPostCreate /> : <Register />}
+            element={user ? <JobPostCreate /> : <Login />}
           />
           <Route
             path="/jobSearch"
-            element={user ? <JobSearchFeed /> : <Register />}
+            element={user ? <JobSearchFeed /> : <Login />}
           />
-          <Route
-            path="/trending"
-            element={user ? <Trending /> : <Register />}
-          />
+          <Route path="/trending" element={user ? <Trending /> : <Login />} />
           <Route
             path="/jobPost/:id"
-            element={user ? <JobPostRead /> : <Register />}
+            element={user ? <JobPostRead /> : <Login />}
           />
-          <Route
-            path="/bookmark"
-            element={user ? <Bookmark /> : <Register />}
-          />
-          <Route
-            path="/jobEdit/:id"
-            element={user ? <JobEdit /> : <Register />}
-          />
+          <Route path="/bookmark" element={user ? <Bookmark /> : <Login />} />
+          <Route path="/jobEdit/:id" element={user ? <JobEdit /> : <Login />} />
           <Route
             path="/blogEdit/:id"
-            element={user ? <BlogEdit /> : <Register />}
+            element={user ? <BlogEdit /> : <Login />}
           />
           <Route
             path="/profileEdit"
-            element={user ? <ProfileEdit /> : <Register />}
+            element={user ? <ProfileEdit /> : <Login />}
           />
           <Route
             path="/postEdit/:id"
-            element={user ? <FeedPostEdit /> : <Register />}
+            element={user ? <FeedPostEdit /> : <Login />}
           />
-          <Route
-            path="/settings"
-            element={user ? <Settings /> : <Register />}
-          />
+          <Route path="/settings" element={user ? <Settings /> : <Login />} />
           <Route
             path="/category/:catName"
-            element={user ? <Categories /> : <Register />}
+            element={user ? <Categories /> : <Login />}
           />
         </Routes>
       </Router>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

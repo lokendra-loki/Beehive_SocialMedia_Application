@@ -14,7 +14,7 @@ function Login() {
   //Login
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, dispatch, isFetching } = useContext(AuthContext);
+  const { dispatch, isFetching } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -22,7 +22,6 @@ function Login() {
     loginCall({ email, password }, dispatch);
     navigate("/");
   };
-  console.log(user);
 
   return (
     <div className="loginPage">
