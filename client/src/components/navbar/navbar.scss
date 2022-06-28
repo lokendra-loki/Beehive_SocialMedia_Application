@@ -21,6 +21,7 @@
     font-size: 35px;
     margin-left: -260px;
     padding-left: 30px;
+    display: none;
   }
 
   // SideBar-----------------
@@ -169,6 +170,14 @@
 
 @media only screen and (max-width: 800px) {
   .navbar {
+    width: 140vw;
+    height: 80px;
+
+    .barIcon {
+      display: block;
+      font-size: 60px;
+      margin-left: -600px;
+    }
     .sideBar {
       display: block;
     }
@@ -182,11 +191,19 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .navbar {
     .barIcon {
-      margin-left: -100px;
-      padding-left: 30px;
+      margin-left: -500px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    width: 170vw;
+    .barIcon {
+      margin-left: -400px;
     }
     .sideBar {
       width: 50vw;

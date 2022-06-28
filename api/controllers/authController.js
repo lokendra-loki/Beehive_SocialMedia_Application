@@ -2,8 +2,6 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const { createError } = require("../utils/error");
 const jwt = require("jsonwebtoken");
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 //Register
 const register = async (req, res, next) => {

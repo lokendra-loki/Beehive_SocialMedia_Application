@@ -73,6 +73,18 @@
   }
 }
 
+@media only screen and (max-width: 800px) {
+  .homePage {
+    .hpWrapper {
+      .hpBeforeSplit{
+      .hpCenterCon {
+        margin-top: 50px;
+        
+      }
+    }
+  }
+}
+}
 @media only screen and (max-width: 600px) {
   .homePage {
     .hpWrapper {

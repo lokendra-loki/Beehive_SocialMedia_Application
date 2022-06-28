@@ -24,3 +24,28 @@
     }
   }
 }
+
+@media only screen and (max-width: 1150px) {
+  .jobPostReadPage {
+    .jprBeforeSplit {
+      .jprRightCon {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .jobPostReadPage {
+    .jprWrapper {
+      .jprBeforeSplit {
+        .jprLeftCon {
+          display: none;
+        }
+        .jprCenterCon{
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

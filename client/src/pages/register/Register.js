@@ -5,13 +5,16 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import React, { useContext } from "react";
 import { registerSchema } from "./formValidationSchema";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const { useFormik } = require("formik");
 
 function Register() {
   //Register
   const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
     // console.log(values);
@@ -27,15 +30,13 @@ function Register() {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       await new Promise((resolve) => setTimeout(resolve, 500)); //wait 0.5 sec
 
-      const res1 = await axios.post("/userDetails/create", {
+      await axios.post("/userDetails/create", {
         userID: res.data._id,
         fullName: res.data.username,
       });
-      console.log(res1);
-
       actions.resetForm();
-      console.log(res.data);
-      window.location.replace("/");
+      navigate("/");
+      toast.success("Login Successful", { theme: "colored" });
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
@@ -75,8 +76,8 @@ function Register() {
               <span className="newHereSpan">New here !</span> Create an account
             </span>
             <span className="rp-loginDesc">
-             Dummy text Lorffem ipsumfffdd dolors sit amet constetur aipisicing elits.
-              Consatur, svvxi plavvvvt lab rerum quae 
+              Dummy text Lorffem ipsumfffdd dolors sit amet constetur aipisicing
+              elits. Consatur, svvxi plavvvvt lab rerum quae
             </span>
 
             <div className="rp-loginInputCon">
